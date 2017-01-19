@@ -1,0 +1,204 @@
+{
+	"id": "01bc297498012b612c6712b34c62178",
+	"author": "Joe Bloggs",
+	"category": "Skill for friendship",
+	"skill": "Introducing others",
+	"location": "Classroom",
+	"title": "My Story",
+	"outline": "Bob is having a party. Bob wants his old friend Alice to meet his new friend Charlie.",
+	"characters": [
+		{
+			"id": "1",
+			"name": "Bob"
+		},
+		{
+			"id": "2",
+			"name": "Alice"
+		},
+		{
+			"id": "3",
+			"name": "Charlie"
+		}
+	],
+	"scene": {
+		"characters": {
+			"1": {
+				"emotion": "happy"
+			},
+			"2": {
+				"emition": "neutral"
+			},
+			"3": {
+				"emition": "neutral"
+			}
+		},
+		"choices": [
+			{
+				"action": "Bob looks at Alice and Charlie",
+				"feedback": "Looking at people lets them know you are paying attention to them.",
+				"scene": {
+					"characters": {
+						"1": {
+							"emotion": "happy"
+						},
+						"2": {
+							"emition": "happy"
+						},
+						"3": {
+							"emition": "happy"
+						}
+					},
+					"choices": [
+						{
+							"action": "I don't know what to say!",
+							"feedback": "When introducing people, try focus on what they have in common.",
+							"scene": {
+								"characters": {
+									"1": {
+										"emotion": "sad"
+									},
+									"2": {
+										"emotion": "angry"
+									},
+									"3": {
+										"emotion": "angry"
+									}
+								}
+							}
+						},
+						{
+							"action": "Alice meet Charlie, Charlie meet Alice",
+							"feedback": "Great! You've used both of their names so they now know how to address one another.",
+							"scene": {
+								"choices": [
+									{
+										"action": "You both like chocolate!",
+										"feedback": "Great! When introducing people, focusing on what they have in common is a good conversation starter.",
+										"scene": {
+											"characters": {
+												"1": {
+													"emotion": "happy"
+												},
+												"2": {
+													"emotion": "happy"
+												},
+												"3": {
+													"emotion": "happy"
+												}
+											}
+										}
+									},
+									{
+										"action": "I don't know what to say!",
+										"feedback": "When introducing people, try focus on what they have in common.",
+										"scene": {
+											"characters": {
+												"1": {
+													"emotion": "neutral"
+												},
+												"2": {
+													"emotion": "angry"
+												},
+												"3": {
+													"emotion": "angry"
+												}
+											}
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"action": "Bob looks at the floor",
+				"feedback": "Looking at the floor confuses people.",
+				"scene": {
+					"characters": {
+						"1": {
+							"emotion": "neutral"
+						},
+						"2": {
+							"emition": "angry"
+						},
+						"3": {
+							"emition": "angry"
+						}
+					},
+					"choices": [
+						{
+							"action": "I wanted to introduce you two to each other!",
+							"feedback": "It would have been better to use both of their names while making eye contact.",
+							"scene": {
+								"characters": {
+									"1": {
+										"emotion": "happy"
+									},
+									"2": {
+										"emotion": "happy"
+									},
+									"3": {
+										"emotion": "happy"
+									}
+								},
+								"choices": [
+									{
+										"action": "You both like chocolate!",
+										"feedback": "Great! When introducing people, focusing on what they have in common is a good conversation starter.",
+										"scene": {
+											"characters": {
+												"1": {
+													"emotion": "happy"
+												},
+												"2": {
+													"emotion": "happy"
+												},
+												"3": {
+													"emotion": "happy"
+												}
+											}
+										}
+									},
+									{
+										"action": "I don't know what to say!",
+										"feedback": "When introducing people, try focus on what they have in common.",
+										"scene": {
+											"characters": {
+												"1": {
+													"emotion": "sad"
+												},
+												"2": {
+													"emotion": "angry"
+												},
+												"3": {
+													"emotion": "angry"
+												}
+											}
+										}
+									}
+								]
+							}
+						},
+						{
+							"action": "The floor is grey!",
+							"scene": {
+								"characters": {
+									"1": {
+										"emotion": "neutral"
+									},
+									"2": {
+										"emition": "angry"
+									},
+									"3": {
+										"emition": "angry"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		]
+	}
+}
