@@ -5,16 +5,23 @@
 
 	<!-- libs -->
 	<script src="node_modules/angular/angular.js" type="text/javascript"></script>
+	<script src="node_modules/angular-ui-router/release/angular-ui-router.js" type="text/javascript"></script>
 
 	<!-- app -->
 	<script src="app/app.module.js" type="text/javascript"></script>
+	<script src="app/app.route.js" type="text/javascript"></script>
 
-	<!-- story tree -->
-	<script src="app/story/tree/story.controller.js" type="text/javascript"></script>
-	<script src="app/story/tree/scene/scene-node.directive.js" type="text/javascript"></script>
+	<!-- story viewer -->
+	<script src="app/story/viewer/story.controller.js" type="text/javascript"></script>
+	<script src="app/story/viewer/scene/scene-node.directive.js" type="text/javascript"></script>
 
 </head>
 <body ng-app="storyGameMaker">
-	<div ng-include="'app/story/tree/story.view.html'"></div>
+	
+	<button ui-sref="player">Player</button>
+	<button ui-sref="viewer">Viewer</button>
+
+	<div ui-view></div>
+
 </body>
 </html>

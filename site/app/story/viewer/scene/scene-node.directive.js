@@ -6,6 +6,6 @@ angular
 			scope: {
 				scene: "="
 			},
-			templateUrl: "app/story/tree/scene/scene-node.html",
+			templateUrl: "app/story/viewer/scene/scene-node.html",
 		};
 	});

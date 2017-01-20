@@ -1,2 +1,2 @@
 angular
-	.module('storyGameMaker', []);
+	.module('storyGameMaker', ['ui.router']);
