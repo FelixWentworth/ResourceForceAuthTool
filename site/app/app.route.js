@@ -1,7 +1,6 @@
 angular
 	.module('storyGameMaker')
 	.config(function($stateProvider, $urlRouterProvider){
-
 		$stateProvider
 			.state('browse-stories', 
 			{

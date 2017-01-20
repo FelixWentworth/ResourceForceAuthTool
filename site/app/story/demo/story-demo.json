@@ -2,12 +2,17 @@
 	"$type": "Story",
 
 	"id": "01bc297498012b612c6712b34c62178",
-	"author": "Joe Bloggs",
-	"category": "Skill for friendship",
-	"skill": "Introducing others",
-	"location": "Classroom",
-	"title": "My Story",
-	"outline": "Bob is having a party. Bob wants his old friend Alice to meet his new friend Charlie.",
+	"metadata": {
+		"$type": "StoryMetadata",
+
+		"author": "Joe Bloggs",
+		"category": "Skill for friendship",
+		"skill": "Introducing others",
+		"location": "Classroom",
+		"title": "My Story",
+		"outline": "Bob is having a party. Bob wants his old friend Alice to meet his new friend Charlie."
+	},
+
 	"characters": [
 		{
 			"$type": "Character",
