@@ -1,16 +1,23 @@
 angular
 	.module('storyGameMaker')
-	.config(function($stateProvider){
+	.config(function($stateProvider, $urlRouterProvider){
 
 		$stateProvider
-			.state('player', 
+			.state('browse-stories', 
 			{
-				url: "/player",
-				templateUrl: "app/pages/player.html"
+				url: "/browse-stories",
+				templateUrl: "app/pages/browse-stories.html"
 			})
-			.state('viewer', 
+			.state('play-story', 
 			{
-				url: "/viewer",
-				templateUrl: "app/pages/viewer.html"
-			});
+				url: "/play-story",
+				templateUrl: "app/pages/play-story.html"
+			})
+			.state('view-story', 
+			{
+				url: "/view-story",
+				templateUrl: "app/pages/view-story.html"
+			});			
+
+			$urlRouterProvider.otherwise("/browse-stories");
 	});
