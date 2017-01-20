@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Story Game Maker</title>
+
+	<script src="node_modules/angular/angular.js" type="text/javascript"></script>
+	<script src="app/app.module.js" type="text/javascript"></script>
+	<script src="app/story/tree/story-tree.controller.js" type="text/javascript"></script>
+
+</head>
+<body ng-app="storyGameMaker">
+
+	<div ng-controller="StoryTreeCtrl">
+		<ul>
+			<li>Title: {{story.title}}</li>
+			<li>Outline: {{story.outline}}</li>
+			<li>Author: {{story.author}}</li>
+			<li>Category: {{story.category}}</li>
+			<li>Skill: {{story.skill}}</li>
+			<li>Location: {{story.location}}</li>		
+			<li>Characters:
+				<ul ng-repeat="character in story.characters">
+					<li>Name: {{character.name}}</li>
+					<li>Emotion: {{character.emotion}}</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+</body>
+</html>
