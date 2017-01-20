@@ -11,17 +11,17 @@
 	<script src="app/app.module.js" type="text/javascript"></script>
 	<script src="app/app.route.js" type="text/javascript"></script>
 
-	<!-- story viewer -->
-	<script src="app/story/viewer/story.controller.js" type="text/javascript"></script>
-	<script src="app/story/viewer/scene/scene-node.directive.js" type="text/javascript"></script>
+	<!-- tree-view -->
+	<script src="app/story/tree-view/story.controller.js" type="text/javascript"></script>
+	<script src="app/story/tree-view/scene/scene-node.directive.js" type="text/javascript"></script>
 
 </head>
 <body ng-app="storyGameMaker">
 	
-	<button ui-sref="player">Player</button>
-	<button ui-sref="viewer">Viewer</button>
-
-	<div ui-view></div>
+	<div ui-view>
+		<button ui-sref="player">Player</button>
+		<button ui-sref="viewer">Viewer</button>
+	</div>
 
 </body>
 </html>

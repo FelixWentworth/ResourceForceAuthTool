@@ -6,11 +6,11 @@ angular
 			.state('player', 
 			{
 				url: "/player",
-				templateUrl: "app/story/player/story.view.html"
+				templateUrl: "app/pages/player.html"
 			})
 			.state('viewer', 
 			{
 				url: "/viewer",
-				templateUrl: "app/story/viewer/story.view.html"
+				templateUrl: "app/pages/viewer.html"
 			});
 	});
