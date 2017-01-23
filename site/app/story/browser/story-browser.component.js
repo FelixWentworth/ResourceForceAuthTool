@@ -1,8 +1,14 @@
 angular
 	.module('storyGameMaker')
 	.component('storyBrowser', {
-		controller: function($scope, StoryCache){
-			$scope.awaitingLoad = StoryCache.getIsLoading();
-			$scope.storyPreviews = StoryCache.getPreviewList();
-		}
+		templateUrl: "app/story/browser/story-browser.html",
+		controller: ['$scope', 'StoryService', "$log", function($scope, StoryService, $log) {
+			$scope.isLoading = true;
+			$scope.stories = {};
+
+			StoryService.getStories().then(function(stories) {
+					$scope.stories = stories;
+					$scope.isLoading = false;
+				});
+		}]
 	});

@@ -4,12 +4,19 @@
 	<title>Story Game Maker</title>
 
 	<!-- libs -->
+	<script src="node_modules/jquery/dist/jquery.js" type="text/javascript"></script>
 	<script src="node_modules/angular/angular.js" type="text/javascript"></script>
 	<script src="node_modules/angular-ui-router/release/angular-ui-router.js" type="text/javascript"></script>
 
 	<!-- app -->
 	<script src="app/app.module.js" type="text/javascript"></script>
 	<script src="app/app.route.js" type="text/javascript"></script>
+
+	<!-- story service -->
+	<script src="app/story/service/story-service.factory.js" type="text/javascript"></script>
+
+	<!-- story metadata -->
+	<script src="app/story/metadata/story-metadata.component.js" type="text/javascript"></script>	
 
 	<!-- story browser -->
 	<script src="app/story/browser/story-browser.component.js" type="text/javascript"></script>
@@ -19,10 +26,7 @@
 	<script src="app/story/tree-view/scene/scene-node.component.js" type="text/javascript"></script>
 
 	<!-- story player -->
-	<script src="app/story/player/story-player.component.js" type="text/javascript"></script>
-
-	<!-- story cache -->
-	<script src="app/story/cache/story-cache.factory.js" type="text/javascript"></script>
+	<script src="app/story/player/story-player.component.js" type="text/javascript"></script>		
 
 </head>
 <body ng-app="storyGameMaker">

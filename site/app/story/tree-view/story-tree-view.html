@@ -1,16 +1,12 @@
-Story:
+Story: {{story.id}}
 <ul>
-	<li>Title: {{story.title}}</li>
-	<li>Outline: {{story.outline}}</li>
-	<li>Author: {{story.author}}</li>
-	<li>Category: {{story.category}}</li>
-	<li>Skill: {{story.skill}}</li>
-	<li>Location: {{story.location}}</li>		
-	<li>Characters:
-		<ul ng-repeat="character in story.characters">
-			<li>Name: {{character.name}}</li>
-			<li>Emotion: {{character.emotion}}</li>
-		</ul>
-	</li>
+	<story-metadata metadata="story.metadata"></story-metadata>
+	
+	Characters:
+	<ul ng-repeat="character in $ctrl.metadata.characters">
+		<li>Name: {{character.name}}</li>
+		<li>Emotion: {{character.emotion}}</li>
+	</ul>
+
 	<scene-node ng-if="story.scene != null" scene="story.scene"></scene-node>
 </ul>

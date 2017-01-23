@@ -1,10 +1,11 @@
-<div ng-switch="$ctrl.awaitingLoad">
+<div id="loadingSwitch" ng-switch="isLoading">
 	<div ng-switch-when="true">
 		Waiting for load
 	</div>
 	<ul ng-switch-when="false">
-		<li ng-repeat="preview in $ctrl.storyPreviews">
-			<a>Author: preview.metadata.author</a>
+		<li ng-repeat="story in stories">
+			Story: {{story.id}}
+			<story-metadata metadata="story.metadata"></story-metadata>
 		</li>
 	</ul>
 </div>
