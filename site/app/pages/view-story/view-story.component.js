@@ -2,7 +2,7 @@ angular
 	.module('storyGameMaker')
 	.component('viewStory', {
 		templateUrl: "app/pages/view-story/view-story.html",
-		controller: ['StoryService', '$log', '$stateParams', function(StoryService, $log, $stateParams) {
+		controller: ['$stateParams', 'StoryService', function($stateParams, StoryService) {
 			var ctrl = this;
 
 			ctrl.isLoading = true;

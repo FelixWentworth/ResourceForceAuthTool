@@ -4,7 +4,7 @@ angular
 		$stateProvider
 			.state('browse-stories', {
 				url: "/browse-stories",
-				templateUrl: "app/pages/browse-stories/browse-stories.html"
+				component: 'browseStories'
 			})
 			.state('play-story', {
 				url: "/play-story/{storyId}",				

@@ -1,3 +1,10 @@
 Select a story to view or play
 
-<story-browser></story-browser>
+<div ng-switch="$ctrl.isLoading">
+	<div ng-switch-when="true">
+		Waiting for load
+	</div>
+	<ul ng-switch-when="false">
+		<story-browser stories="$ctrl.stories"></story-browser>		
+	</ul>
+</div>

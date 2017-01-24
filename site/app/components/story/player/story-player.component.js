@@ -1,5 +1,16 @@
 angular
 	.module('storyGameMaker')
-	.controller('storyPlayer', ['StoryService', function(StoryService){
-		var ctrl = this;
-	}]);
+	.component('storyPlayer', {
+		templateUrl: "app/components/story/player/player.html",
+		bindings: {
+			story: "<"
+		},
+		controller: function(StoryService) {
+			var ctrl = this;
+
+			// init
+			ctrl.$onInit = function() {
+
+			}
+		}
+	});
