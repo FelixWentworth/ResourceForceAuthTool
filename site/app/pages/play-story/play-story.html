@@ -1,7 +1,8 @@
 <button ui-sref="browse-stories">Browse Stories</button>
 
-{{$ctrl.story.id}}
-
-<!-- 
-<story-player storyId="$crtl.storyId"></story-player>
- -->
+<div ng-switch="$ctrl.loader.isLoading">
+	<div ng-switch-when="true">
+		Waiting for load
+	</div>
+	<story-player storyId="$crtl.storyId"></story-player>
+</div>

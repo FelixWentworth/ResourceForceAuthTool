@@ -1,7 +1,8 @@
 <button ui-sref="browse-stories">Browse Stories</button>
 
-EDIT
-
-ctrl {{$ctrl.storyId}}
-scope {{$scope.storyId}}
-nuffink {{storyId}}
+<div ng-switch="$ctrl.loader.isLoading">
+	<div ng-switch-when="true">
+		Waiting for load
+	</div>
+	EDIT
+</div>

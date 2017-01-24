@@ -5,20 +5,9 @@ angular
 		controller: ['$stateParams', 'StoryService', function($stateParams, StoryService) {
 			var ctrl = this;
 
-			ctrl.isLoading = true;
-			ctrl.story = {};
-			
-			// private methods
-			function onStoryLoaded(story) {
-				ctrl.isLoading = false
-				ctrl.story = story;
-			};
-
-			function getStoryById(storyId) {
-				StoryService.getById(storyId).then(onStoryLoaded);
-			};
+			ctrl.loader = new StoryFromIdLoader(StoryService);
 
 			// init
-			getStoryById($stateParams.storyId);
+			ctrl.loader.load($stateParams.storyId);
 		}]
 	});
