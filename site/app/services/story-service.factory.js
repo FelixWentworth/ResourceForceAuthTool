@@ -10,7 +10,7 @@ angular
 
 		// private methods
 		function load() {
-			$http.get("app/data/demo/story-demo.json")
+			$http.get("data/demo/story-demo.json")
 				.then(function(story){
 					isLoaded = true;
 					storyPromise.resolve(story.data);					
