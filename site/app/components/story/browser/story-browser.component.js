@@ -10,8 +10,8 @@ angular
 
 			// private methods
 			function onStoriesLoaded(stories) {
-					ctrl.stories = stories;
 					ctrl.isLoading = false;
+					ctrl.stories = stories;					
 				};
 
 			// init

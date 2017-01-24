@@ -1,12 +1,11 @@
 angular
 	.module('storyGameMaker')
 	.factory('StoryService', ['$http', '$q', function($http, $q) {
-		// instance
 		var service = {};
-		var storyPromise = $q.defer();
-		var isLoaded = false;
 
 		// private variables
+		var storyPromise = $q.defer();
+		var isLoaded = false;
 		var stories = {};
 
 		// private methods
@@ -20,7 +19,7 @@ angular
 
 		// public methods
 		service.getById = function(id) {
-			return getStories.then(function(stories){
+			return service.getStories().then(function(stories){
 				var story = stories.find(function(story){
 					return story.id == id;
 				})

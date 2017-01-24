@@ -3,6 +3,6 @@ angular
 	.component("storyMetadata", {		
 		templateUrl: "app/components/story/metadata/story-metadata.html",
 		bindings: {
-			metadata: "="
+			metadata: "<"
 		}
 	});
