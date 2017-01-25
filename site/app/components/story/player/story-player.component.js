@@ -5,7 +5,11 @@ angular
 		bindings: {
 			story: "<"
 		},
-		controller: function(StoryService) {
+		controller: function() {
 			var ctrl = this;
+			
+			ctrl.$onInit = function() {
+				ctrl.storyPlayer = new StoryPlayer(ctrl.characters, ctrl.story.scene);
+			}
 		}
 	});

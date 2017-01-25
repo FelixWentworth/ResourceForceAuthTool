@@ -1,1 +1,11 @@
 PLAY
+
+<div ng-switch="$ctrl.storyPlayer != null">
+	<div ng-switch-when="true">
+		Active State: {{$ctrl.storyPlayer.state}}
+		scene: {{$ctrl.storyPlayer.activeScene}}
+	</div>
+	<div ng-switch-when="false">
+		Waiting for StoryPlayer to load
+	</div>
+</div>
