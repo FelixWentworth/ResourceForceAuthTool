@@ -32,5 +32,7 @@
 
 <!-- ENDED -->
 <div ng-if="$ctrl.storyPlayer.state == 'ENDED'">
-	<story-player-end></story-player-end>
+	<story-player-end 
+		story="$ctrl.story">
+	</story-player-end>
 </div>
