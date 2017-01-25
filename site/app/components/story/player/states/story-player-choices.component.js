@@ -4,6 +4,6 @@ angular
 		templateUrl: "app/components/story/player/states/story-player-choices.html",
 		bindings: {
 			choices: "<",
-			starter: "="
+			weeewooo: "="
 		}	
 	});
