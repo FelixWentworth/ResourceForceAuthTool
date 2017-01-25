@@ -20,9 +20,7 @@ angular
 		// public methods
 		service.getById = function(id) {
 			return service.getStories().then(function(stories){
-				var story = stories.find(function(story){
-					return story.id == id;
-				})
+				var story = stories.find(s => s.id == id);
 
 				if(story != null) {
 					return story;

@@ -20,19 +20,41 @@
 				"$type": "Character",
 
 				"name": "Bob",
-				"emotion": "happy"
+
+				"states": [
+					{
+						"$type" : "Emotion",
+
+						"value": "happy"
+					}
+				]
 			},
 			{
 				"$type": "Character",
 				
 				"name": "Alice",
-				"emotion": "neutral"
+
+				"states": [
+					{
+						"$type" : "Emotion",
+
+						"value": "neutral"
+					}
+				]
 			},
 			{
 				"$type": "Character",
 				
 				"name": "Charlie",
-				"emotion": "neutral"
+
+				"states": [
+					{
+						"$type" : "Emotion",
+
+						"value": "neutral"
+					}
+				]
+
 			}
 		],
 
@@ -50,11 +72,11 @@
 							"$type": "CharacterEffects",
 
 							"name": "Bob",
-							"effects": [
+							"states": [
 								{
 									"$type" : "Emotion",
 
-									"emotion" : "happy"
+									"value" :"happy"
 								}
 							]
 						},
@@ -62,11 +84,11 @@
 							"$type": "CharacterEffects",
 
 							"name": "Alice",
-							"effects": [
+							"states": [
 								{
 									"$type" : "Emotion",
 
-									"emotion" : "happy"
+									"value" :"happy"
 								}
 							]
 						},
@@ -74,11 +96,11 @@
 							"$type": "CharacterEffects",
 
 							"name": "Charlie",
-							"effects": [
+							"states": [
 								{
 									"$type" : "Emotion",
 
-									"emotion" : "happy"
+									"value" :"happy"
 								}
 							]
 						}
@@ -97,11 +119,11 @@
 										"$type": "CharacterEffects",
 
 										"name": "Bob",
-										"effects": [
+										"states": [
 											{
 												"$type" : "Emotion",
 
-												"emotion" : "sad"
+												"value" :"sad"
 											}
 										]
 									},
@@ -109,11 +131,11 @@
 										"$type": "CharacterEffects",
 
 										"name": "Alice",
-										"effects": [
+										"states": [
 											{
 												"$type" : "Emotion",
 
-												"emotion" : "angry"
+												"value" :"angry"
 											}
 										]
 									},
@@ -121,11 +143,11 @@
 										"$type": "CharacterEffects",
 
 										"name": "Charlie",
-										"effects": [
+										"states": [
 											{
 												"$type" : "Emotion",
 
-												"emotion" : "angry"
+												"value" :"angry"
 											}
 										]
 									}
@@ -141,11 +163,11 @@
 										"$type": "CharacterEffects",
 
 										"name": "Bob",
-										"effects": [
+										"states": [
 											{
 												"$type" : "Emotion",
 
-												"emotion" : "happy"
+												"value" :"happy"
 											}
 										]
 									},
@@ -153,11 +175,11 @@
 										"$type": "CharacterEffects",
 
 										"name": "Alice",
-										"effects": [
+										"states": [
 											{
 												"$type" : "Emotion",
 
-												"emotion" : "happy"
+												"value" :"happy"
 											}
 										]
 									},
@@ -165,11 +187,11 @@
 										"$type": "CharacterEffects",
 
 										"name": "Charlie",
-										"effects": [
+										"states": [
 											{
 												"$type" : "Emotion",
 
-												"emotion" : "happy"
+												"value" :"happy"
 											}
 										]
 									}
@@ -188,11 +210,11 @@
 													"$type": "CharacterEffects",
 
 													"name": "Bob",
-													"effects": [
+													"states": [
 														{
 															"$type" : "Emotion",
 
-															"emotion" : "happy"
+															"value" :"happy"
 														}
 													]
 												},
@@ -200,11 +222,11 @@
 													"$type": "CharacterEffects",
 
 													"name": "Alice",
-													"effects": [
+													"states": [
 														{
 															"$type" : "Emotion",
 
-															"emotion" : "happy"
+															"value" :"happy"
 														}
 													]
 												},
@@ -212,11 +234,11 @@
 													"$type": "CharacterEffects",
 
 													"name": "Charlie",
-													"effects": [
+													"states": [
 														{
 															"$type" : "Emotion",
 
-															"emotion" : "happy"
+															"value" :"happy"
 														}
 													]
 												}
@@ -232,11 +254,11 @@
 													"$type": "CharacterEffects",
 
 													"name": "Bob",
-													"effects": [
+													"states": [
 														{
 															"$type" : "Emotion",
 
-															"emotion" : "sad"
+															"value" :"sad"
 														}
 													]
 												},
@@ -244,11 +266,11 @@
 													"$type": "CharacterEffects",
 
 													"name": "Alice",
-													"effects": [
+													"states": [
 														{
 															"$type" : "Emotion",
 
-															"emotion" : "angry"
+															"value" :"angry"
 														}
 													]
 												},
@@ -256,11 +278,11 @@
 													"$type": "CharacterEffects",
 
 													"name": "Charlie",
-													"effects": [
+													"states": [
 														{
 															"$type" : "Emotion",
 
-															"emotion" : "angry"
+															"value" :"angry"
 														}
 													]
 												}
@@ -282,11 +304,11 @@
 							"$type": "CharacterEffects",
 
 							"name": "Bob",
-							"effects": [
+							"states": [
 								{
 									"$type" : "Emotion",
 
-									"emotion" : "neutral"
+									"value" :"neutral"
 								}
 							]
 						},
@@ -294,11 +316,11 @@
 							"$type": "CharacterEffects",
 
 							"name": "Alice",
-							"effects": [
+							"states": [
 								{
 									"$type" : "Emotion",
 
-									"emotion" : "angry"
+									"value" :"angry"
 								}
 							]
 						},
@@ -306,11 +328,11 @@
 							"$type": "CharacterEffects",
 
 							"name": "Charlie",
-							"effects": [
+							"states": [
 								{
 									"$type" : "Emotion",
 
-									"emotion" : "angry"
+									"value" :"angry"
 								}
 							]
 						}
@@ -329,11 +351,11 @@
 										"$type": "CharacterEffects",
 
 										"name": "Bob",
-										"effects": [
+										"states": [
 											{
 												"$type" : "Emotion",
 
-												"emotion" : "happy"
+												"value" :"happy"
 											}
 										]
 									},
@@ -341,11 +363,11 @@
 										"$type": "CharacterEffects",
 
 										"name": "Alice",
-										"effects": [
+										"states": [
 											{
 												"$type" : "Emotion",
 
-												"emotion" : "happy"
+												"value" :"happy"
 											}
 										]
 									},
@@ -353,11 +375,11 @@
 										"$type": "CharacterEffects",
 
 										"name": "Charlie",
-										"effects": [
+										"states": [
 											{
 												"$type" : "Emotion",
 
-												"emotion" : "happy"
+												"value" :"happy"
 											}
 										]
 									}
@@ -376,11 +398,11 @@
 													"$type": "CharacterEffects",
 
 													"name": "Bob",
-													"effects": [
+													"states": [
 														{
 															"$type" : "Emotion",
 
-															"emotion" : "happy"
+															"value" :"happy"
 														}
 													]
 												},
@@ -388,11 +410,11 @@
 													"$type": "CharacterEffects",
 
 													"name": "Alice",
-													"effects": [
+													"states": [
 														{
 															"$type" : "Emotion",
 
-															"emotion" : "happy"
+															"value" :"happy"
 														}
 													]
 												},
@@ -400,11 +422,11 @@
 													"$type": "CharacterEffects",
 
 													"name": "Charlie",
-													"effects": [
+													"states": [
 														{
 															"$type" : "Emotion",
 
-															"emotion" : "happy"
+															"value" :"happy"
 														}
 													]
 												}
@@ -420,11 +442,11 @@
 													"$type": "CharacterEffects",
 
 													"name": "Bob",
-													"effects": [
+													"states": [
 														{
 															"$type" : "Emotion",
 
-															"emotion" : "sad"
+															"value" :"sad"
 														}
 													]
 												},
@@ -432,11 +454,11 @@
 													"$type": "CharacterEffects",
 
 													"name": "Alice",
-													"effects": [
+													"states": [
 														{
 															"$type" : "Emotion",
 
-															"emotion" : "angry"
+															"value" :"angry"
 														}
 													]
 												},
@@ -444,11 +466,11 @@
 													"$type": "CharacterEffects",
 
 													"name": "Charlie",
-													"effects": [
+													"states": [
 														{
 															"$type" : "Emotion",
 
-															"emotion" : "angry"
+															"value" :"angry"
 														}
 													]
 												}
@@ -467,11 +489,11 @@
 										"$type": "CharacterEffects",
 
 										"name": "Bob",
-										"effects": [
+										"states": [
 											{
 												"$type" : "Emotion",
 
-												"emotion" : "neutral"
+												"value" :"neutral"
 											}
 										]
 									},
@@ -479,11 +501,11 @@
 										"$type": "CharacterEffects",
 
 										"name": "Alice",
-										"effects": [
+										"states": [
 											{
 												"$type" : "Emotion",
 
-												"emotion" : "angry"
+												"value" :"angry"
 											}
 										]
 									},
@@ -491,11 +513,11 @@
 										"$type": "CharacterEffects",
 
 										"name": "Charlie",
-										"effects": [
+										"states": [
 											{
 												"$type" : "Emotion",
 
-												"emotion" : "angry"
+												"value" :"angry"
 											}
 										]
 									}
@@ -529,13 +551,27 @@
 				"$type": "Character",
 
 				"name": "Frank",
-				"emotion": "happy"
+
+				"states": [
+					{
+						"$type" : "Emotion",
+
+						"value": "happy"
+					}
+				]
 			},
 			{
 				"$type": "Character",
 				
 				"name": "Sue",
-				"emotion": "angry"
+
+				"states": [
+					{
+						"$type" : "Emotion",
+
+						"value": "angry"
+					}
+				]
 			}
 		],
 
@@ -553,11 +589,11 @@
 							"$type": "CharacterEffects",
 
 							"name": "Frank",
-							"effects": [
+							"states": [
 								{
 									"$type" : "Emotion",
 
-									"emotion" : "concerned"
+									"value" :"concerned"
 								}
 							]
 						},
@@ -565,11 +601,11 @@
 							"$type": "CharacterEffects",
 
 							"name": "Sue",
-							"effects": [
+							"states": [
 								{
 									"$type" : "Emotion",
 
-									"emotion" : "happy"
+									"value" :"happy"
 								}
 							]
 						}
@@ -585,11 +621,11 @@
 							"$type": "CharacterEffects",
 
 							"name": "Frank",
-							"effects": [
+							"states": [
 								{
 									"$type" : "Emotion",
 
-									"emotion" : "angry"
+									"value" :"angry"
 								}
 							]
 						},
@@ -597,11 +633,11 @@
 							"$type": "CharacterEffects",
 
 							"name": "Sue",
-							"effects": [
+							"states": [
 								{
 									"$type" : "Emotion",
 
-									"emotion" : "angry"
+									"value" :"angry"
 								}
 							]
 						}

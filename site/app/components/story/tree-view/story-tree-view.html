@@ -3,9 +3,11 @@ Story: {{$ctrl.story.id}}
 	<story-metadata metadata="$ctrl.story.metadata"></story-metadata>
 	
 	Characters:
-	<ul ng-repeat="character in $ctrl.metadata.characters">
+	<ul ng-repeat="character in $ctrl.story.characters">
 		<li>Name: {{character.name}}</li>
-		<li>Emotion: {{character.emotion}}</li>
+		<ul>State:
+			<li ng-repeat="state in character.state">{{state.$type}}: {{state.value}}</li>
+		</ul>		
 	</ul>
 
 	<scene-node ng-if="$ctrl.story.scene != null" scene="$ctrl.story.scene"></scene-node>

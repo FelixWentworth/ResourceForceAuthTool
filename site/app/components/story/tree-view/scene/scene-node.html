@@ -7,10 +7,9 @@
 				<li>Characters Effects:
 					<ul ng-repeat="characterEffects in choice.charactersEffects">
 						<li>Name: {{characterEffects.name}}</li>
-						<li>Effects:
-							<ul ng-repeat="effect in characterEffects.effects"
-								ng-switch="effect.$type">
-								<li ng-switch-when="Emotion">Emotion: {{effect.emotion}}</li>
+						<li>States:
+							<ul ng-repeat="state in characterEffects.states">
+								<li>{{state.$type}}: {{state.value}}</li>
 							</ul>
 						</li>
 					</ul>
