@@ -3,7 +3,7 @@
 	<story-player-start 
 		story="$ctrl.story"
 		start="$ctrl.storyPlayer.start">				
-		</story-player-start>
+	</story-player-start>
 </div>
 
 <!-- PLAYING -->
@@ -12,14 +12,20 @@
 	<story-characters characters="$ctrl.storyPlayer.characters"></story-characters>
 
 	<div ng-switch="$ctrl.storyPlayer.state">
+		<!-- CHOICES -->
 		<div ng-switch-when="AWAITING_CHOICE">
 			<story-player-choices 						
 				choices="$ctrl.storyPlayer.activeScene.choices"
 				set-choice="$ctrl.storyPlayer.applyChoice">
 			</story-player-choices>
 		</div>
+
+		<!-- FEEDBACK -->
 		<div ng-switch-when="FEEDBACK">
-			<story-player-feedback></story-player-feedback>
+			<story-player-feedback
+				feedback="$ctrl.storyPlayer.selectedChoice.feedback"
+				accept-feedback="$ctrl.storyPlayer.acceptFeedback">
+			</story-player-feedback>
 		</div>
 	</div>
 </div>

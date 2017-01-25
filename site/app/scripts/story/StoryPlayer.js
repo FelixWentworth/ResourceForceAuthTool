@@ -9,7 +9,7 @@ class StoryPlayer {
 		self.characters = characters;
 
 		// public methods
-		self.start = function(text) {
+		self.start = function() {
 			self.state = "AWAITING_CHOICE";
 		};
 
@@ -19,9 +19,9 @@ class StoryPlayer {
 			self.state = "FEEDBACK";
 		};
 
-		self.acceptFeedback = function () {
-			if(selectedChoice.scene != null) {
-				self.activeScene = selectedChoice.scene;
+		self.acceptFeedback = function() {
+			if(self.selectedChoice.scene != null) {
+				self.activeScene = self.selectedChoice.scene;
 				self.state = "AWAITING_CHOICE";
 			} else {
 				self.state = "ENDED";
