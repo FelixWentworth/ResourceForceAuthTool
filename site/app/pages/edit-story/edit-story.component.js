@@ -1,11 +1,11 @@
 angular
-	.module('storyGameMaker')
-	.component('editStory', {
+	.module("storyGameMaker")
+	.component("editStory", {
 		templateUrl: "app/pages/edit-story/edit-story.html",
 		bindings: {
 			storyId: "<"
 		},
-		controller: ['StoryService', function(StoryService) {
+		controller: ["StoryService", function(StoryService) {
 			var ctrl = this;
 
 			ctrl.loader = new StoryFromIdLoader(StoryService);

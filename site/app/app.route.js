@@ -1,31 +1,31 @@
 angular
-	.module('storyGameMaker')
-	.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+	.module("storyGameMaker")
+	.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
 		$stateProvider
-			.state('browse-stories', {
+			.state("browse-stories", {
 				url: "/browse-stories",
-				component: 'browseStories'
+				component: "browseStories"
 			})
-			.state('play-story', {
+			.state("play-story", {
 				url: "/play-story/{storyId}",				
 				resolve: {
-					storyId: ['$stateParams', s => s.storyId ]
+					storyId: ["$stateParams", s => s.storyId ]
 				},
-				component: 'playStory'
+				component: "playStory"
 			})
-			.state('view-story', {
+			.state("view-story", {
 				url: "/view-story/{storyId}",
 				resolve: {
-					storyId: ['$stateParams', s => s.storyId ]
+					storyId: ["$stateParams", s => s.storyId ]
 				},
-				component: 'viewStory'				
+				component: "viewStory"				
 			})
-			.state('edit-story', {
+			.state("edit-story", {
 				url: "/edit-story/{storyId}",				
 				resolve: {
-					storyId: ['$stateParams', s => s.storyId ]
+					storyId: ["$stateParams", s => s.storyId ]
 				},
-				component: 'editStory'
+				component: "editStory"
 			});			
 
 			$urlRouterProvider.otherwise("/browse-stories");

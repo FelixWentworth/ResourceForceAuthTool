@@ -1,6 +1,6 @@
 angular
-	.module('storyGameMaker')
-	.factory('StoryService', ['$http', '$q', function($http, $q) {
+	.module("storyGameMaker")
+	.factory("StoryService", ["$http", "$q", function($http, $q) {
 		var service = {};
 
 		// private variables

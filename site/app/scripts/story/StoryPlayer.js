@@ -3,23 +3,28 @@ class StoryPlayer {
 		var self = this;
 
 		// private variables
-		this.state = "START";
-		this.activeScene = startScene;		
-		this.selectedChoice = {};
+		self.state = "AWAITING_START";
+		self.activeScene = startScene;		
+		self.selectedChoice = {};
+		self.characters = characters;
 
 		// public methods
-		this.applyChoice = function (choice) {
+		self.start = function() {
+			self.state = "AWAITING_CHOICE";
+		}
+
+		self.applyChoice = function (choice) {
 			applyCharactersEffects(choice.charactersEffects);
 			self.selectedChoice = choice;
 			self.state = "FEEDBACK";
 		}
 
-		this.acceptFeedback = function () {
+		self.acceptFeedback = function () {
 			if(selectedChoice.scene != null) {
 				self.activeScene = selectedChoice.scene;
-				self.state = "CHOICE";
+				self.state = "AWAITING_CHOICE";
 			} else {
-				self.state = "END";
+				self.state = "ENDED";
 			}
 		}
 

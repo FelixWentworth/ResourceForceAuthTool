@@ -1,8 +1,8 @@
 angular
-	.module('storyGameMaker')
-	.component('browseStories', {
+	.module("storyGameMaker")
+	.component("browseStories", {
 		templateUrl: "app/pages/browse-stories/browse-stories.html",
-		controller: ['StoryService', function(StoryService) {
+		controller: ["StoryService", function(StoryService) {
 			var ctrl = this;
 
 			ctrl.isLoading = true;

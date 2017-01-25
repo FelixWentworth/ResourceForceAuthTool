@@ -20,7 +20,6 @@
 				"$type": "Character",
 
 				"name": "Bob",
-
 				"states": [
 					{
 						"$type" : "Emotion",
@@ -33,7 +32,6 @@
 				"$type": "Character",
 				
 				"name": "Alice",
-
 				"states": [
 					{
 						"$type" : "Emotion",
@@ -46,7 +44,6 @@
 				"$type": "Character",
 				
 				"name": "Charlie",
-
 				"states": [
 					{
 						"$type" : "Emotion",

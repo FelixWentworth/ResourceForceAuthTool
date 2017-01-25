@@ -5,14 +5,7 @@
 				<li>Action: {{choice.action}}</li>
 				<li>Feedback: {{choice.feedback}}</li>
 				<li>Characters Effects:
-					<ul ng-repeat="characterEffects in choice.charactersEffects">
-						<li>Name: {{characterEffects.name}}</li>
-						<li>States:
-							<ul ng-repeat="state in characterEffects.states">
-								<li>{{state.$type}}: {{state.value}}</li>
-							</ul>
-						</li>
-					</ul>
+					<story-characters characters="choice.charactersEffects"></story-characters>
 				</li>
 				<scene-node ng-if="choice.scene != null" scene="choice.scene"></scene-node>
 			</ul>

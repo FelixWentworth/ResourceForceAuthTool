@@ -1,15 +1,15 @@
 angular
-	.module('storyGameMaker')
-	.component('storyPlayer', {
+	.module("storyGameMaker")
+	.component("storyPlayer", {
 		templateUrl: "app/components/story/player/story-player.html",
 		bindings: {
 			story: "<"
 		},
-		controller: function() {
+		controller: function($log) {
 			var ctrl = this;
-			
+
 			ctrl.$onInit = function() {
-				ctrl.storyPlayer = new StoryPlayer(ctrl.characters, ctrl.story.scene);
+				ctrl.storyPlayer = new StoryPlayer(ctrl.story.characters, ctrl.story.scene);
 			}
 		}
 	});

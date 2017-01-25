@@ -1,0 +1,11 @@
+Characters:
+<ul>
+	<li ng-repeat="character in $ctrl.characters">
+		Name: {{character.name}}
+		<ul>States:
+			<li ng-repeat="state in character.states">
+				{{state.$type}}: {{state.value}}
+			</li>
+		</ul>
+	</li>		
+</ul>
