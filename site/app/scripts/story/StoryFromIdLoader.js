@@ -12,12 +12,12 @@ class StoryFromIdLoader {
 		// public methods
 		this.load = function(storyId) {
 			storyService.getById(storyId).then(onStoryLoaded);
-		}
+		};
 
 		// private methods
 		function onStoryLoaded(story) {
 			self.isLoading = false;
 			self.story = story;
-		}
+		};
 	}
 }

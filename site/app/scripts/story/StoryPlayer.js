@@ -9,15 +9,15 @@ class StoryPlayer {
 		self.characters = characters;
 
 		// public methods
-		self.start = function() {
+		self.start = function(text) {
 			self.state = "AWAITING_CHOICE";
-		}
+		};
 
-		self.applyChoice = function (choice) {
+		self.applyChoice = function(choice) {
 			applyCharactersEffects(choice.charactersEffects);
 			self.selectedChoice = choice;
 			self.state = "FEEDBACK";
-		}
+		};
 
 		self.acceptFeedback = function () {
 			if(selectedChoice.scene != null) {
@@ -26,7 +26,7 @@ class StoryPlayer {
 			} else {
 				self.state = "ENDED";
 			}
-		}
+		};
 
 		// private methods
 		function applyCharactersEffects(charactersEffects) {
@@ -45,6 +45,6 @@ class StoryPlayer {
 					}
 				}
 			}
-		}
+		};
 	}
 }

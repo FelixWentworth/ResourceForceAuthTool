@@ -5,6 +5,7 @@
 		start="$ctrl.storyPlayer.start">				
 		</story-player-start>
 </div>
+
 <!-- PLAYING -->
 <div ng-if="$ctrl.storyPlayer.state == 'AWAITING_CHOICE' || $ctrl.storyPlayer.state == 'FEEDBACK'">
 
@@ -12,13 +13,17 @@
 
 	<div ng-switch="$ctrl.storyPlayer.state">
 		<div ng-switch-when="AWAITING_CHOICE">
-			<story-player-choice></story-player-choice>
+			<story-player-choices 		
+				starter="$ctrl.storyPlayer.applyChoice"		
+				choices="$ctrl.storyPlayer.activeScene.choices">
+			</story-player-choices>
 		</div>
 		<div ng-switch-when="FEEDBACK">
 			<story-player-feedback></story-player-feedback>
 		</div>
 	</div>
 </div>
+
 <!-- ENDED -->
 <div ng-if="$ctrl.storyPlayer.state == 'ENDED'">
 	<story-player-end></story-player-end>
