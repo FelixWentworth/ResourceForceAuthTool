@@ -13,9 +13,9 @@
 
 	<div ng-switch="$ctrl.storyPlayer.state">
 		<div ng-switch-when="AWAITING_CHOICE">
-			<story-player-choices 		
-				weeewooo="$ctrl.storyPlayer.applyChoice"		
-				choices="$ctrl.storyPlayer.activeScene.choices">
+			<story-player-choices 						
+				choices="$ctrl.storyPlayer.activeScene.choices"
+				set-choice="$ctrl.storyPlayer.applyChoice">
 			</story-player-choices>
 		</div>
 		<div ng-switch-when="FEEDBACK">
