@@ -1,11 +1,41 @@
  Metadata
- <form>
- <ul>
-	<li>Title: <input type="text" ng-model="$ctrl.metadata.title"/></li>
-	<li>Outline: <input type="text" ng-model="$ctrl.metadata.outline"/></li>
-	<li>Author: <input type="text" ng-model="$ctrl.metadata.author"/></li>
-	<li>Category: <input type="text" ng-model="$ctrl.metadata.category"/></li>
-	<li>Skill: <input type="text" ng-model="$ctrl.metadata.skill"/></li>
-	<li>Location: <input type="text" ng-model="$ctrl.metadata.location"/></li>		
-</ul>
-</form>
+ <div ng-form="metadataForm" novalidate>
+	 <ul>
+		<li>
+			Title: 
+			<input type="text" ng-model="$ctrl.metadata.title" 
+				minlength="5"
+				ng-required="true"/>
+		</li>
+		<li>
+			Outline: 
+			<input type="textarea" ng-model="$ctrl.metadata.outline" 
+				minlength="20"
+				ng-required="true"/>
+		</li>
+		<li>
+			Author:
+			<input type="text" ng-model="$ctrl.metadata.author" 
+				ng-minlength="3"
+				ng-required="true"/>
+		</li>
+		<li>
+			Category: 
+			<input type="text" ng-model="$ctrl.metadata.category" 
+				minlength="10"
+				ng-required="true"/>
+		</li>
+		<li>
+			Skill: 
+			<input type="text" ng-model="$ctrl.metadata.skill" 
+				minlength="5"
+				ng-required="true"/>
+		</li>
+		<li>
+			Location: 
+			<input type="text" ng-model="$ctrl.metadata.location" 				
+				minlength="5"
+				ng-required="true"/>
+		</li>
+	</ul>
+</div>
