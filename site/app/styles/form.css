@@ -1,0 +1,7 @@
+input.ng-invalid {
+	background: red;
+}
+
+.ng-invalid {
+	background: red;
+}

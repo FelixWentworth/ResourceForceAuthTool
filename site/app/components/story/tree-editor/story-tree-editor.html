@@ -1,8 +1,15 @@
 Story: {{$ctrl.story.id}}
-<ul>
-	<story-metadata-editor metadata="$ctrl.story.metadata"></story-metadata-editor>
-	
-	<p>Characters Go Here</p>
-
-	<p>Scene Goes Here</p>
-</ul>
+<div ng-form="storyTreeForm" novalidate>
+	<ul>
+		<li>
+			<story-metadata-editor metadata="$ctrl.story.metadata"></story-metadata-editor>
+		</li>
+		<li>
+			<story-characters-editor characters="$ctrl.story.characters"></story-characters-editor>
+		</li>
+		<li>
+			<p>Scene Goes Here</p>
+		</li>
+	</ul>
+	<input type="submit" ng-click="$ctrl.apply(storyTreeForm.$valid)" value="Apply">
+</div>

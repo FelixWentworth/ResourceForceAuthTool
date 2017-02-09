@@ -2,7 +2,7 @@ class StoryPlayer {
 	constructor (characters, startScene) {
 		var self = this;
 
-		// private variables
+		// public variables
 		self.state = "AWAITING_START";
 		self.activeScene = startScene;		
 		self.selectedChoice = {};

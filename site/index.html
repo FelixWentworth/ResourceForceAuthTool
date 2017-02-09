@@ -18,7 +18,7 @@
 	<!-- COMPONENTS -->	
 	<!-- story metadata -->
 	<script src="app/components/story/metadata/story-metadata.component.js" type="text/javascript"></script>	
-	<!-- story metadata -->
+	<!-- story characters -->
 	<script src="app/components/story/characters/story-characters.component.js" type="text/javascript"></script>	
 	<!-- story browser -->
 	<link href="app/components/story/browser/story-browser.css" rel="stylesheet" type="text/css"></link>
@@ -34,8 +34,10 @@
 	<script src="app/components/story/player/states/story-player-end.component.js" type="text/javascript"></script>		
 	<!-- story tree editor -->
 	<script src="app/components/story/tree-editor/story-tree-editor.component.js" type="text/javascript"></script>
-	<!-- metadata-editor -->
+	<!-- story metadata editor -->
 	<script src="app/components/story/metadata-editor/story-metadata-editor.component.js" type="text/javascript"></script>
+	<!-- story characters editor -->
+	<script src="app/components/story/characters-editor/story-characters-editor.component.js" type="text/javascript"></script>	
 
 	<!-- PAGES -->
 	<script src="app/pages/browse-stories/browse-stories.component.js" type="text/javascript"></script>	
@@ -44,8 +46,14 @@
 	<script src="app/pages/edit-story/edit-story.component.js" type="text/javascript"></script>		
 
 	<!-- SCRIPTS -->	
+	<!-- story -->
 	<script src="app/scripts/story/StoryFromIdLoader.js" type="text/javascript"></script>
 	<script src="app/scripts/story/StoryPlayer.js" type="text/javascript"></script>
+	<script src="app/scripts/story/Character.js" type="text/javascript"></script>
+	<script src="app/scripts/DBHandler.js" type="text/javascript"></script>
+
+	<!-- STYLES -->
+	<link href="app/styles/form.css" rel="stylesheet" type="text/css"></link>
 
 </head>
 <body ng-app="storyGameMaker">

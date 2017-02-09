@@ -1,8 +1,12 @@
 Story: {{$ctrl.story.id}}
 <ul>
-	<story-metadata metadata="$ctrl.story.metadata"></story-metadata>
-	
-	<story-characters characters="$ctrl.story.characters"></story-characters>
-
-	<scene-node ng-if="$ctrl.story.scene != null" scene="$ctrl.story.scene"></scene-node>
+	<li>
+		<story-metadata metadata="$ctrl.story.metadata"></story-metadata>
+	</li>	
+	<li>
+		<story-characters characters="$ctrl.story.characters"></story-characters>
+	</li>
+	<li>
+		<scene-node ng-if="$ctrl.story.scene != null" scene="$ctrl.story.scene"></scene-node>
+	</li>
 </ul>

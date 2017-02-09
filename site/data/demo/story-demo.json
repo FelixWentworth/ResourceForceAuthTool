@@ -23,7 +23,6 @@
 				"states": [
 					{
 						"$type" : "Emotion",
-
 						"value": "happy"
 					}
 				]
@@ -35,7 +34,6 @@
 				"states": [
 					{
 						"$type" : "Emotion",
-
 						"value": "neutral"
 					}
 				]
@@ -47,7 +45,6 @@
 				"states": [
 					{
 						"$type" : "Emotion",
-
 						"value": "neutral"
 					}
 				]
@@ -66,37 +63,34 @@
 					"feedback": "Looking at people lets them know you are paying attention to them.",
 					"charactersEffects": [
 						{
-							"$type": "CharacterEffects",
+							"$type": "Character",
 
 							"name": "Bob",
 							"states": [
 								{
 									"$type" : "Emotion",
-
 									"value" :"happy"
 								}
 							]
 						},
 						{
-							"$type": "CharacterEffects",
+							"$type": "Character",
 
 							"name": "Alice",
 							"states": [
 								{
 									"$type" : "Emotion",
-
 									"value" :"happy"
 								}
 							]
 						},
 						{
-							"$type": "CharacterEffects",
+							"$type": "Character",
 
 							"name": "Charlie",
 							"states": [
 								{
 									"$type" : "Emotion",
-
 									"value" :"happy"
 								}
 							]
@@ -113,37 +107,34 @@
 								"feedback": "When introducing people, try focus on what they have in common.",
 								"charactersEffects": [
 									{
-										"$type": "CharacterEffects",
+										"$type": "Character",
 
 										"name": "Bob",
 										"states": [
 											{
 												"$type" : "Emotion",
-
 												"value" :"sad"
 											}
 										]
 									},
 									{
-										"$type": "CharacterEffects",
+										"$type": "Character",
 
 										"name": "Alice",
 										"states": [
 											{
 												"$type" : "Emotion",
-
 												"value" :"angry"
 											}
 										]
 									},
 									{
-										"$type": "CharacterEffects",
+										"$type": "Character",
 
 										"name": "Charlie",
 										"states": [
 											{
 												"$type" : "Emotion",
-
 												"value" :"angry"
 											}
 										]
@@ -157,37 +148,34 @@
 								"feedback": "Great! You've used both of their names so they now know how to address one another.",
 								"charactersEffects": [
 									{
-										"$type": "CharacterEffects",
+										"$type": "Character",
 
 										"name": "Bob",
 										"states": [
 											{
 												"$type" : "Emotion",
-
 												"value" :"happy"
 											}
 										]
 									},
 									{
-										"$type": "CharacterEffects",
+										"$type": "Character",
 
 										"name": "Alice",
 										"states": [
 											{
 												"$type" : "Emotion",
-
 												"value" :"happy"
 											}
 										]
 									},
 									{
-										"$type": "CharacterEffects",
+										"$type": "Character",
 
 										"name": "Charlie",
 										"states": [
 											{
 												"$type" : "Emotion",
-
 												"value" :"happy"
 											}
 										]
@@ -204,37 +192,34 @@
 											"feedback": "Great! When introducing people, focusing on what they have in common is a good conversation starter.",
 											"charactersEffects": [
 												{
-													"$type": "CharacterEffects",
+													"$type": "Character",
 
 													"name": "Bob",
 													"states": [
 														{
 															"$type" : "Emotion",
-
 															"value" :"happy"
 														}
 													]
 												},
 												{
-													"$type": "CharacterEffects",
+													"$type": "Character",
 
 													"name": "Alice",
 													"states": [
 														{
 															"$type" : "Emotion",
-
 															"value" :"happy"
 														}
 													]
 												},
 												{
-													"$type": "CharacterEffects",
+													"$type": "Character",
 
 													"name": "Charlie",
 													"states": [
 														{
 															"$type" : "Emotion",
-
 															"value" :"happy"
 														}
 													]
@@ -248,37 +233,34 @@
 											"feedback": "When introducing people, try focus on what they have in common.",
 											"charactersEffects": [
 												{
-													"$type": "CharacterEffects",
+													"$type": "Character",
 
 													"name": "Bob",
 													"states": [
 														{
 															"$type" : "Emotion",
-
 															"value" :"sad"
 														}
 													]
 												},
 												{
-													"$type": "CharacterEffects",
+													"$type": "Character",
 
 													"name": "Alice",
 													"states": [
 														{
 															"$type" : "Emotion",
-
 															"value" :"angry"
 														}
 													]
 												},
 												{
-													"$type": "CharacterEffects",
+													"$type": "Character",
 
 													"name": "Charlie",
 													"states": [
 														{
 															"$type" : "Emotion",
-
 															"value" :"angry"
 														}
 													]
@@ -298,37 +280,34 @@
 					"feedback": "Looking at the floor confuses people.",
 					"charactersEffects": [
 						{
-							"$type": "CharacterEffects",
+							"$type": "Character",
 
 							"name": "Bob",
 							"states": [
 								{
 									"$type" : "Emotion",
-
 									"value" :"neutral"
 								}
 							]
 						},
 						{
-							"$type": "CharacterEffects",
+							"$type": "Character",
 
 							"name": "Alice",
 							"states": [
 								{
 									"$type" : "Emotion",
-
 									"value" :"angry"
 								}
 							]
 						},
 						{
-							"$type": "CharacterEffects",
+							"$type": "Character",
 
 							"name": "Charlie",
 							"states": [
 								{
 									"$type" : "Emotion",
-
 									"value" :"angry"
 								}
 							]
@@ -345,37 +324,34 @@
 								"feedback": "It would have been better to use both of their names while making eye contact.",
 								"charactersEffects": [
 									{
-										"$type": "CharacterEffects",
+										"$type": "Character",
 
 										"name": "Bob",
 										"states": [
 											{
 												"$type" : "Emotion",
-
 												"value" :"happy"
 											}
 										]
 									},
 									{
-										"$type": "CharacterEffects",
+										"$type": "Character",
 
 										"name": "Alice",
 										"states": [
 											{
 												"$type" : "Emotion",
-
 												"value" :"happy"
 											}
 										]
 									},
 									{
-										"$type": "CharacterEffects",
+										"$type": "Character",
 
 										"name": "Charlie",
 										"states": [
 											{
 												"$type" : "Emotion",
-
 												"value" :"happy"
 											}
 										]
@@ -392,37 +368,34 @@
 											"feedback": "Great! When introducing people, focusing on what they have in common is a good conversation starter.",
 											"charactersEffects": [
 												{
-													"$type": "CharacterEffects",
+													"$type": "Character",
 
 													"name": "Bob",
 													"states": [
 														{
 															"$type" : "Emotion",
-
 															"value" :"happy"
 														}
 													]
 												},
 												{
-													"$type": "CharacterEffects",
+													"$type": "Character",
 
 													"name": "Alice",
 													"states": [
 														{
 															"$type" : "Emotion",
-
 															"value" :"happy"
 														}
 													]
 												},
 												{
-													"$type": "CharacterEffects",
+													"$type": "Character",
 
 													"name": "Charlie",
 													"states": [
 														{
 															"$type" : "Emotion",
-
 															"value" :"happy"
 														}
 													]
@@ -436,37 +409,34 @@
 											"feedback": "When introducing people, try focus on what they have in common.",
 											"charactersEffects": [
 												{
-													"$type": "CharacterEffects",
+													"$type": "Character",
 
 													"name": "Bob",
 													"states": [
 														{
 															"$type" : "Emotion",
-
 															"value" :"sad"
 														}
 													]
 												},
 												{
-													"$type": "CharacterEffects",
+													"$type": "Character",
 
 													"name": "Alice",
 													"states": [
 														{
 															"$type" : "Emotion",
-
 															"value" :"angry"
 														}
 													]
 												},
 												{
-													"$type": "CharacterEffects",
+													"$type": "Character",
 
 													"name": "Charlie",
 													"states": [
 														{
 															"$type" : "Emotion",
-
 															"value" :"angry"
 														}
 													]
@@ -483,37 +453,34 @@
 								"feedback" : "When introducing, talk about something they have in common.",
 								"charactersEffects": [
 									{
-										"$type": "CharacterEffects",
+										"$type": "Character",
 
 										"name": "Bob",
 										"states": [
 											{
 												"$type" : "Emotion",
-
 												"value" :"neutral"
 											}
 										]
 									},
 									{
-										"$type": "CharacterEffects",
+										"$type": "Character",
 
 										"name": "Alice",
 										"states": [
 											{
 												"$type" : "Emotion",
-
 												"value" :"angry"
 											}
 										]
 									},
 									{
-										"$type": "CharacterEffects",
+										"$type": "Character",
 
-										"name": "Charlie",
+										"name": "Charlie",										
 										"states": [
 											{
 												"$type" : "Emotion",
-
 												"value" :"angry"
 											}
 										]
@@ -548,11 +515,9 @@
 				"$type": "Character",
 
 				"name": "Frank",
-
 				"states": [
 					{
 						"$type" : "Emotion",
-
 						"value": "happy"
 					}
 				]
@@ -561,11 +526,9 @@
 				"$type": "Character",
 				
 				"name": "Sue",
-
 				"states": [
 					{
 						"$type" : "Emotion",
-
 						"value": "angry"
 					}
 				]
@@ -583,25 +546,23 @@
 					"feedback": "Explaining how you feel lets other people understand how their actions are effecting you.",
 					"charactersEffects": [
 						{
-							"$type": "CharacterEffects",
+							"$type": "Character",
 
 							"name": "Frank",
 							"states": [
 								{
 									"$type" : "Emotion",
-
 									"value" :"concerned"
 								}
 							]
 						},
 						{
-							"$type": "CharacterEffects",
+							"$type": "Character",
 
 							"name": "Sue",
 							"states": [
 								{
 									"$type" : "Emotion",
-
 									"value" :"happy"
 								}
 							]
@@ -615,25 +576,23 @@
 					"feedback": "Releasing aggression leads to fights which result in both parties being unhappy.",
 					"charactersEffects": [
 						{
-							"$type": "CharacterEffects",
+							"$type": "Character",
 
 							"name": "Frank",
 							"states": [
 								{
 									"$type" : "Emotion",
-
 									"value" :"angry"
 								}
 							]
 						},
 						{
-							"$type": "CharacterEffects",
+							"$type": "Character",
 
 							"name": "Sue",
 							"states": [
 								{
 									"$type" : "Emotion",
-
 									"value" :"angry"
 								}
 							]
