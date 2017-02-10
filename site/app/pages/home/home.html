@@ -1,10 +1,16 @@
+<button>Create New Story</button>
+<br/>
+<br/>
+OR
+<br/>
+<br/>
 Select a story to view or play
-
 <div ng-switch="$ctrl.loader.isLoading">
 	<div ng-switch-when="true">
 		Waiting for load
 	</div>
-	<ul ng-switch-when="false">
+
+	<ul ng-switch-when="false">		
 		<story-browser stories="$ctrl.loader.stories"></story-browser>		
 	</ul>
 </div>

@@ -1,7 +1,7 @@
 angular
 	.module("storyGameMaker")
-	.component("browseStories", {
-		templateUrl: "app/pages/browse-stories/browse-stories.html",
+	.component("home", {
+		templateUrl: "app/pages/home/home.html",
 		controller: ["StoryService", function(StoryService) {
 			var ctrl = this;
 
@@ -9,6 +9,3 @@ angular
 			ctrl.loader.load();
 		}]
 	});
-
-
-		

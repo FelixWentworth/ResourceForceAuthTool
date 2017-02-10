@@ -2,6 +2,10 @@ angular
 	.module("storyGameMaker")
 	.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
 		$stateProvider
+			.state("home", {
+				url: "/home",
+				component: "home"
+			})
 			.state("browse-stories", {
 				url: "/browse-stories",
 				component: "browseStories"
@@ -28,5 +32,5 @@ angular
 				component: "editStory"
 			});			
 
-			$urlRouterProvider.otherwise("/browse-stories");
+			$urlRouterProvider.otherwise("/home");
 	}]);
