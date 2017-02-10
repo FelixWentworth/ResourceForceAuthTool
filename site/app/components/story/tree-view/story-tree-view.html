@@ -7,6 +7,6 @@ Story: {{$ctrl.story.id}}
 		<story-characters characters="$ctrl.story.characters"></story-characters>
 	</li>
 	<li>
-		<scene-node ng-if="$ctrl.story.scene != null" scene="$ctrl.story.scene"></scene-node>
+		<scene ng-if="$ctrl.story.scene != null" scene="$ctrl.story.scene"></scene>
 	</li>
 </ul>
