@@ -2,26 +2,21 @@ Characters:
 <div ng-form="charactersForm" novalidate>
 	<ul>
 		<li ng-repeat="character in $ctrl.characters">			
-			<ul>
-				<li>
-					<button ng-click="$ctrl.removeCharacter(character)">Remove</button>
-				</li>
-				<li>
-					Name: 
-					<input type="text" ng-model="character.name"
-						minlength="3"
-						required/>
-				</li>
-				<li>
-					States:
-					<ul>
-						<li ng-repeat="state in character.states">
-							{{state.$type}}: {{state.value}}
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</li>	
+			<span>
+				<button ng-click="$ctrl.removeCharacter(character)">Remove</button>
+				<ul>
+					<li>
+						Name: 
+						<input type="text" ng-model="character.name"
+							minlength="3"
+							required/>
+					</li>
+					<li>
+						<character-states-editor states="character.states"></character-states-editor>
+					</li>
+				</ul>
+			</span>
+		</li>
 		<li>
 			<button ng-click="$ctrl.addCharacter()">Add</button>
 		</li>

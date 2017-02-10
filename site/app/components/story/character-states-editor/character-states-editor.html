@@ -1,0 +1,17 @@
+States:
+<ul>
+	<li ng-repeat="state in $ctrl.states">
+		<span>
+			<button ng-click="$ctrl.removeState(state)">Remove</button>
+			Type: <input type="text" ng-model="state.$type"
+					minlength="3"
+					required/>
+			Value: <input type="text" ng-model="state.value"
+					minlength="3"
+						required/>
+		</span>
+	</li>
+	<li>
+		<button ng-click="$ctrl.addState()">Add</button>
+	</li>
+</ul>

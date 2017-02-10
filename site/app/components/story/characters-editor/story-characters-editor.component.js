@@ -6,14 +6,14 @@ angular
 			characters: "="
 		},
 		controller : function() {
-			ctrl = this;
+			var ctrl = this;
 
 			ctrl.addCharacter = function () {
 				ctrl.characters.push(new Character());
 			};
 
 			ctrl.removeCharacter= function (character) {
-				var index = ctrl.characters.findIndex(c => c.name == character.name);
+				var index = ctrl.characters.findIndex(c => c == character);
 
 				if(0 <= index && index < ctrl.characters.length) {
 					ctrl.characters.splice(index, 1);

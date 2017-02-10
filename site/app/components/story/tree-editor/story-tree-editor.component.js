@@ -17,10 +17,5 @@ angular
 						" \nIt should be hilighted to help you identify it.");
 				}
 			};
-
-			ctrl.$onInit = function () {
-				// make a copy so the original in memory reference isn't affected
-				ctrl.story = angular.copy(ctrl.story);
-			}
 		}]
 	});
