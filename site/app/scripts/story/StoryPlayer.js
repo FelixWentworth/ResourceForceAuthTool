@@ -14,7 +14,7 @@ class StoryPlayer {
 		};
 
 		self.applyChoice = function(choice) {
-			applyCharactersEffects(choice.charactersEffects);
+			self.characters = choice.characters;
 			self.selectedChoice = choice;
 			self.state = "FEEDBACK";
 		};
@@ -26,25 +26,6 @@ class StoryPlayer {
 			} else {
 				self.state = "ENDED";
 			}
-		};
-
-		// private methods
-		function applyCharactersEffects(charactersEffects) {
-			// Iterate over all the effects to be applied to the characters and either update
-			// the characters' current state or append the new state to it doesn't already exist.
-			charactersEffects.forEach(characterEffects => {
-				var character = self.characters.find(c => c.name == characterEffects.name);
-
-				characterEffects.states.forEach(effectState => {
-					var currentState = character.states.find(s => s.$type == effectState.$type);
-
-					if(currentState != null) {
-						currentState.value = effectState.value;
-					} else {
-						character.states.push(effectState);
-					}
-				});
-			});
 		};
 	}
 }

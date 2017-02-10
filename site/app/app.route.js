@@ -6,10 +6,6 @@ angular
 				url: "/home",
 				component: "home"
 			})
-			.state("browse-stories", {
-				url: "/browse-stories",
-				component: "browseStories"
-			})
 			.state("play-story", {
 				url: "/play-story/{storyId}",				
 				resolve: {
