@@ -5,9 +5,9 @@
 				<li>Action: {{choice.action}}</li>
 				<li>Feedback: {{choice.feedback}}</li>
 				<li>Characters Effects:
-					<story-characters characters="choice.charactersEffects"></story-characters>
+					<story-characters-editor characters="choice.charactersEffects"></story-characters-editor>
 				</li>
-				<scene ng-if="choice.scene != null" scene="choice.scene"></scene>
+				<story-scene-editor ng-if="choice.scene != null" scene="choice.scene"></story-scene-editor>
 			</ul>
 		</li>
 	</ul>				

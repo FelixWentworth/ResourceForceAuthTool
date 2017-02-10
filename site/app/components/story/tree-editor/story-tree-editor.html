@@ -8,7 +8,7 @@ Story: {{$ctrl.story.id}}
 			<story-characters-editor characters="$ctrl.story.characters"></story-characters-editor>
 		</li>
 		<li>
-			<p>Scene Goes Here</p>
+			<story-scene-editor scene="$ctrl.story.scene"></story-scene-editor>
 		</li>
 	</ul>
 	<input type="submit" ng-click="$ctrl.apply(storyTreeForm.$valid)" value="Apply">
