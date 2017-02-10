@@ -3,7 +3,7 @@ Characters:
 	<ul>
 		<li ng-repeat="character in $ctrl.characters">			
 			<span>
-				<button ng-click="$ctrl.removeCharacter(character)">Remove</button>
+				<button ng-click="$ctrl.removeCharacter(character)">Remove {{character.name}}</button>
 				<ul>
 					<li>
 						Name: 
@@ -18,7 +18,7 @@ Characters:
 			</span>
 		</li>
 		<li>
-			<button ng-click="$ctrl.addCharacter()">Add</button>
+			<button ng-click="$ctrl.addCharacter()">Add Character</button>
 		</li>
 	</ul>
 </div>

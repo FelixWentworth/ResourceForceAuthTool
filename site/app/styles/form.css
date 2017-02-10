@@ -3,5 +3,5 @@ input.ng-invalid {
 }
 
 .ng-invalid {
-	background: red;
+	background: #ffdddd;
 }
