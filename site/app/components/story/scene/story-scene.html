@@ -9,8 +9,13 @@ Scene:
 					<li>
 						<story-characters characters="choice.characters"></story-characters>
 					</li>
-					<li>
-						<story-scene ng-if="choice.scene != null" scene="choice.scene"></story-scene>
+					<!-- IF -->
+					<li class="storyBranchEnd" ng-if="choice.scene == null">
+						End of story branch.
+					</li>
+					<!-- ELSE -->
+					<li ng-if="choice.scene != null">
+						<story-scene scene="choice.scene"></story-scene>
 					</li>
 				</ul>
 			</li>

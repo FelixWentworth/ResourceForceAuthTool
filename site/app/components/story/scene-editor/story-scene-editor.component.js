@@ -15,5 +15,10 @@ angular
 			ctrl.removeChoice = function (choice) {
 				ArrayUtil.tryRemove(ctrl.scene.choices, choice);
 			};
+
+			ctrl.addScene = function(choice) {
+				choice.scene = new Scene();
+				choice.scene.choices.push(new Choice());
+			}
 		}
 	});
