@@ -1,8 +1,11 @@
 Characters:
 <div ng-form="charactersForm" novalidate>
 	<ul>
-		<li ng-repeat="character in $ctrl.dirtyCharacters">
+		<li ng-repeat="character in $ctrl.characters">			
 			<ul>
+				<li>
+					<button ng-click="$ctrl.removeCharacter(character)">Remove</button>
+				</li>
 				<li>
 					Name: 
 					<input type="text" ng-model="character.name"
@@ -20,7 +23,7 @@ Characters:
 			</ul>
 		</li>	
 		<li>
-			<button ng-click="$ctrl.addCharacter()">Add Character</button>
+			<button ng-click="$ctrl.addCharacter()">Add</button>
 		</li>
 	</ul>
 </div>
