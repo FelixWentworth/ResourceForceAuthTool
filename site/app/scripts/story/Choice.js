@@ -6,6 +6,6 @@ class Choice {
 		self.action = "";
 		self.feedback = "";
 		self.characters = [];
-		self.scene = new Scene();		
+		self.scene = null;		
 	}
 }

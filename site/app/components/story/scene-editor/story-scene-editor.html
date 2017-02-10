@@ -1,34 +1,40 @@
-<li>Scene:
-	<ul>
-		<li>Choices:
-			<ul>				
-				<li ng-repeat="choice in $ctrl.scene.choices">
-					<span>
-						<button ng-click="$ctrl.removeChoice(choice)">Remove</button>						
-						<ul>
-							<li>
-								Action: 
-								<input type="text" ng-model="choice.action" 
-									required
-									minlength="3"/>
-							</li>
-							<li>
-								Feedback: 
-								<input type="text" ng-model="choice.feedback"
-									required
-									minlength="10"/>
-							</li>
-							<li>
-								<story-characters-editor characters="choice.characters"></story-characters-editor>
-							</li>
-							<story-scene-editor ng-if="choice.scene != null" scene="choice.scene"></story-scene-editor>			
-						</ul>
-					</span>					
-				</li>
-				<li>
-					<button ng-click="$ctrl.addChoice()">Add Choice</button>
-				</li>
-			</ul>
-		</li>
-	</ul>
-</li>
+Scene:
+<ul>
+	<li>Choices:
+		<ul>				
+			<li ng-repeat="choice in $ctrl.scene.choices">
+				<span>
+					<button ng-click="$ctrl.removeChoice(choice)">Remove</button>				
+					<ul>
+						<li>
+							Action: 
+							<input type="text" ng-model="choice.action" 
+								required
+								minlength="3"/>
+						</li>
+						<li>
+							Feedback: 
+							<input type="text" ng-model="choice.feedback"
+								required
+								minlength="10"/>
+						</li>
+						<li>
+							<story-characters-editor characters="choice.characters"></story-characters-editor>
+						</li>
+						<!-- IF -->
+						<li ng-if="choice.scene == null"> 
+							End of story branch ====================
+						</li>
+						<!-- ELSE -->	
+						<li ng-if="choice.scene != null" > 
+							<story-scene-editor scene="choice.scene"></story-scene-editor>
+						</li>
+					</ul>
+				</span>					
+			</li>
+			<li>
+				<button ng-click="$ctrl.addChoice()">Add Choice</button>
+			</li>
+		</ul>
+	</li>
+</ul>
