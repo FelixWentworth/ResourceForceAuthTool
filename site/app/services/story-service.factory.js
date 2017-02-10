@@ -60,5 +60,9 @@ angular
 				.then(updateLocalStorageCache);
 		};
 		
+		service.getNewStoryId = function() {
+			return "temp-new-story-id";
+		};
+
 		return service;
 	}]);

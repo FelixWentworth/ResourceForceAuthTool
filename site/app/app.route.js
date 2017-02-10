@@ -26,6 +26,10 @@ angular
 					storyId: ["$stateParams", s => s.storyId ]
 				},
 				component: "editStory"
+			})
+			.state("create-story", {
+				url: "/create-story",
+				component: "createStory"
 			});			
 
 			$urlRouterProvider.otherwise("/home");
