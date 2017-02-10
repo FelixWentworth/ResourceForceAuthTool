@@ -1,13 +1,17 @@
 <li>Scene:
 	<ul>
 		<li>Choices:
-			<ul ng-repeat="choice in $ctrl.scene.choices">
-				<li>Action: {{choice.action}}</li>
-				<li>Feedback: {{choice.feedback}}</li>
-				<li>Characters Effects:
-					<story-characters characters="choice.characters"></story-characters>
+			<ul>
+				<li ng-repeat="choice in $ctrl.scene.choices">
+					<ul>
+						<li>Action: {{choice.action}}</li>
+						<li>Feedback: {{choice.feedback}}</li>
+						<li>
+							<story-characters characters="choice.characters"></story-characters>
+						</li>
+						<story-scene ng-if="choice.scene != null" scene="choice.scene"></story-scene>
+					</ul>
 				</li>
-				<story-scene ng-if="choice.scene != null" scene="choice.scene"></story-scene>
 			</ul>
 		</li>
 	</ul>				
