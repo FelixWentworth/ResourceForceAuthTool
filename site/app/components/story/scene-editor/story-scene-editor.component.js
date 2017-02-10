@@ -13,12 +13,22 @@ angular
 			};
 
 			ctrl.removeChoice = function (choice) {
-				ArrayUtil.tryRemove(ctrl.scene.choices, choice);
+				if(ctrl.scene.choices.length == 1) {
+					alert("A scene must have at least one choice." +
+						" \n\nEither modify this choice or remove this " +
+						"scene if you don't want to keep it.");
+				} else {
+					ArrayUtil.tryRemove(ctrl.scene.choices, choice);
+				}
 			};
 
-			ctrl.addScene = function(choice) {
+			ctrl.addChoiceScene = function(choice) {
 				choice.scene = new Scene();
 				choice.scene.choices.push(new Choice());
+			}
+
+			ctrl.removeChoiceScene = function(choice) {
+				choice.scene = null;
 			}
 		}
 	});

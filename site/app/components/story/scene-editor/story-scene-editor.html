@@ -24,11 +24,14 @@ Scene:
 						<!-- IF -->
 						<li ng-if="choice.scene == null" class="storyBranchEnd"> 
 							End of story branch
-							<button ng-click="$ctrl.addScene(choice)">Add Scene</button>
+							<button ng-click="$ctrl.addChoiceScene(choice)">Add Scene</button>
 						</li>
 						<!-- ELSE -->	
 						<li ng-if="choice.scene != null" > 
-							<story-scene-editor scene="choice.scene"></story-scene-editor>
+							<span>
+								<button ng-click="$ctrl.removeChoiceScene(choice)">Remove</button>
+								<story-scene-editor scene="choice.scene"></story-scene-editor>
+							</span>
 						</li>
 					</ul>
 				</span>					
