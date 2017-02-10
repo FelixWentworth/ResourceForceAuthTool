@@ -13,14 +13,7 @@ angular
 			};
 
 			ctrl.removeChoice = function (choice) {
-				var index = ctrl.scene.choices.findIndex(c => c == choice);
-
-				if(0 <= index && index < ctrl.scene.choices.length) {
-					ctrl.scene.choices.splice(index, 1);
-				} else {
-					throw "Choice to remove was not found in the list of choices." + 
-						" \nAction: " + choice.action;
-				}
+				ArrayUtil.tryRemove(ctrl.scene.choices, choice);
 			};
 		}
 	});

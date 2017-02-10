@@ -13,14 +13,7 @@ angular
 			};
 
 			ctrl.removeState= function (state) {
-				var index = ctrl.states.findIndex(s => s == state);
-
-				if(0 <= index && index < ctrl.states.length) {
-					ctrl.states.splice(index, 1);
-				} else {
-					throw "State to remove was not found in the list of states." + 
-						" \nType: " + state.$type + " Value: " + state.value;
-				}
+				ArrayUtil.tryRemove(ctrl.states, state);
 			}
 		}
 	});
