@@ -1,15 +1,17 @@
 Characters:
-<div ng-form="charactersForm" novalidate>
-	<ul>
-		<li ng-repeat="character in $ctrl.characters">			
+<ul>
+	<li ng-repeat="character in $ctrl.characters">			
+		<div ng-form="characterForm" novalidate>
 			<span>
 				<button ng-click="$ctrl.removeCharacter(character)">Remove {{character.name}}</button>
 				<ul>
 					<li>
 						Name: 
 						<input type="text" ng-model="character.name"
+							name="character"
 							minlength="3"
 							required/>
+						<span class="validation-error-help" ng-show="characterForm.character.$error.minlength">Too short.</span>
 					</li>
 					<li>
 						<character-states-editor states="character.states"></character-states-editor>
@@ -20,5 +22,5 @@ Characters:
 		<li>
 			<button ng-click="$ctrl.addCharacter()">Add Character</button>
 		</li>
-	</ul>
-</div>
+	</div>
+</ul>
