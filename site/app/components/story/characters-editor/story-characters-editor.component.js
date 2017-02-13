@@ -14,7 +14,7 @@ angular
 			};
 
 			ctrl.removeCharacter= function (character) {
-				if(ctrl.minChars != null && ctrl.characters.length <= ctrl.minChars) {
+				if(ctrl.minChars != null && ctrl.characters.length == ctrl.minChars) {
 					alert("Cannot remove character." 
 						+ " \nThe minimum amount of characters required is: " + ctrl.minChars);
 				} else {
