@@ -8,44 +8,62 @@
 	<script src="node_modules/angular/angular.js" type="text/javascript"></script>
 	<script src="node_modules/angular-ui-router/release/angular-ui-router.js" type="text/javascript"></script>
 
+	<!-- MODULES -->
+	<!-- STORY -->
+	<script src="app/modules/story/story.module.js" type="text/javascript"></script>
+	<!-- SERVICES -->
+	<script src="app/modules/story/services/story-service.factory.js" type="text/javascript"></script>
+	<!-- COMPONENTS -->	
+	<!-- story metadata -->
+	<script src="app/modules/story/components/metadata/story-metadata.component.js" type="text/javascript"></script>	
+	<!-- story characters -->
+	<script src="app/modules/story/components/characters/story-characters.component.js" type="text/javascript"></script>
+	<!-- story browser -->
+	<link href="app/modules/story/components/browser/story-browser.css" rel="stylesheet" type="text/css"></link>
+	<script src="app/modules/story/components/browser/story-browser.component.js" type="text/javascript"></script>
+	<!-- story tree view -->
+	<script src="app/modules/story/components/tree-view/story-tree-view.component.js" type="text/javascript"></script>
+	<!-- story scene -->	
+	<script src="app/modules/story/components/scene/story-scene.component.js" type="text/javascript"></script>
+	<link href="app/modules/story/components/scene/story-scene.css" rel="stylesheet" type="text/css"></link>
+	<!-- story player -->
+	<script src="app/modules/story/components/player/story-player.component.js" type="text/javascript"></script>
+	<script src="app/modules/story/components/player/states/story-player-start.component.js" type="text/javascript"></script>		
+	<script src="app/modules/story/components/player/states/story-player-choices.component.js" type="text/javascript"></script>		
+	<script src="app/modules/story/components/player/states/story-player-feedback.component.js" type="text/javascript"></script>		
+	<script src="app/modules/story/components/player/states/story-player-end.component.js" type="text/javascript"></script>		
+	<!-- story tree editor -->
+	<script src="app/modules/story/components/tree-editor/story-tree-editor.component.js" type="text/javascript"></script>
+	<link href="app/modules/story/components/tree-editor/story-tree-editor.css" rel="stylesheet" type="text/css"></link>
+	<!-- story metadata editor -->
+	<script src="app/modules/story/components/metadata-editor/story-metadata-editor.component.js" type="text/javascript"></script>
+	<!-- story characters editor -->
+	<script src="app/modules/story/components/characters-editor/story-characters-editor.component.js" type="text/javascript"></script>	
+	<!-- story character states editor -->
+	<script src="app/modules/story/components/character-states-editor/character-states-editor.component.js" type="text/javascript"></script>	
+	<!-- story scene editor -->	
+	<script src="app/modules/story/components/scene-editor/story-scene-editor.component.js" type="text/javascript"></script>
+	<!-- story tree creator -->
+	<script src="app/modules/story/components/tree-creator/story-tree-creator.component.js" type="text/javascript"></script>
+	<!-- SCRIPTS -->		
+	<script src="app/modules/story/scripts/StoryPlayer.js" type="text/javascript"></script>
+	<!-- story model -->
+	<script src="app/modules/story/scripts/model/Story.js" type="text/javascript"></script>
+	<script src="app/modules/story/scripts/model/Metadata.js" type="text/javascript"></script>
+	<script src="app/modules/story/scripts/model/Character.js" type="text/javascript"></script>
+	<script src="app/modules/story/scripts/model/Scene.js" type="text/javascript"></script>
+	<script src="app/modules/story/scripts/model/Choice.js" type="text/javascript"></script>
+	<script src="app/modules/story/scripts/model/State.js" type="text/javascript"></script>
+	<!-- story data access -->
+	<script src="app/modules/story/scripts/data-access/StoriesLoader.js" type="text/javascript"></script>
+	<script src="app/modules/story/scripts/data-access/StoryFromIdLoader.js" type="text/javascript"></script>
+	<script src="app/modules/story/scripts/data-access/DBHandler.js" type="text/javascript"></script>	
+
 	<!-- APP -->
 	<script src="app/app.module.js" type="text/javascript"></script>
 	<script src="app/app.route.js" type="text/javascript"></script>
 
-	<!-- SERVICES -->
-	<script src="app/services/story-service.factory.js" type="text/javascript"></script>
-
 	<!-- COMPONENTS -->	
-	<!-- story metadata -->
-	<script src="app/components/story/metadata/story-metadata.component.js" type="text/javascript"></script>	
-	<!-- story characters -->
-	<script src="app/components/story/characters/story-characters.component.js" type="text/javascript"></script>
-	<!-- story browser -->
-	<link href="app/components/story/browser/story-browser.css" rel="stylesheet" type="text/css"></link>
-	<script src="app/components/story/browser/story-browser.component.js" type="text/javascript"></script>
-	<!-- story tree view -->
-	<script src="app/components/story/tree-view/story-tree-view.component.js" type="text/javascript"></script>
-	<!-- story scene -->	
-	<script src="app/components/story/scene/story-scene.component.js" type="text/javascript"></script>
-	<!-- story player -->
-	<script src="app/components/story/player/story-player.component.js" type="text/javascript"></script>
-	<script src="app/components/story/player/states/story-player-start.component.js" type="text/javascript"></script>		
-	<script src="app/components/story/player/states/story-player-choices.component.js" type="text/javascript"></script>		
-	<script src="app/components/story/player/states/story-player-feedback.component.js" type="text/javascript"></script>		
-	<script src="app/components/story/player/states/story-player-end.component.js" type="text/javascript"></script>		
-	<!-- story tree editor -->
-	<script src="app/components/story/tree-editor/story-tree-editor.component.js" type="text/javascript"></script>
-	<!-- story metadata editor -->
-	<script src="app/components/story/metadata-editor/story-metadata-editor.component.js" type="text/javascript"></script>
-	<!-- story characters editor -->
-	<script src="app/components/story/characters-editor/story-characters-editor.component.js" type="text/javascript"></script>	
-	<!-- story character states editor -->
-	<script src="app/components/story/character-states-editor/character-states-editor.component.js" type="text/javascript"></script>	
-	<!-- story scene editor -->	
-	<script src="app/components/story/scene-editor/story-scene-editor.component.js" type="text/javascript"></script>
-	<!-- story tree creator -->
-	<script src="app/components/story/tree-creator/story-tree-creator.component.js" type="text/javascript"></script>
-
 	<!-- validated-input -->
 	<script src="app/components/validated-input/validated-text-input.component.js" type="text/javascript"></script>
 
@@ -56,26 +74,9 @@
 	<script src="app/pages/edit-story/edit-story.component.js" type="text/javascript"></script>	
 	<script src="app/pages/create-story/create-story.component.js" type="text/javascript"></script>	
 
-	<!-- SCRIPTS -->	
-	<!-- story -->	
-	<script src="app/scripts/story/StoryPlayer.js" type="text/javascript"></script>
-	<!-- story model -->
-	<script src="app/scripts/story/model/Story.js" type="text/javascript"></script>
-	<script src="app/scripts/story/model/Metadata.js" type="text/javascript"></script>
-	<script src="app/scripts/story/model/Character.js" type="text/javascript"></script>
-	<script src="app/scripts/story/model/Scene.js" type="text/javascript"></script>
-	<script src="app/scripts/story/model/Choice.js" type="text/javascript"></script>
-	<script src="app/scripts/story/model/State.js" type="text/javascript"></script>
-	<!-- story data access -->
-	<script src="app/scripts/story/data-access/StoriesLoader.js" type="text/javascript"></script>
-	<script src="app/scripts/story/data-access/StoryFromIdLoader.js" type="text/javascript"></script>
-	<script src="app/scripts/story/data-access/DBHandler.js" type="text/javascript"></script>
+	<!-- SCRIPTS -->		
 	<!-- utilities -->
-	<script src="app/scripts/utilities/ArrayUtil.js" type="text/javascript"></script>
-
-	<!-- STYLES -->
-	<link href="app/styles/form.css" rel="stylesheet" type="text/css"></link>
-	<link href="app/styles/story.css" rel="stylesheet" type="text/css"></link>
+	<script src="app/scripts/utilities/ArrayUtil.js" type="text/javascript"></script>	
 
 </head>
 <body ng-app="storyGameMaker">

@@ -1,0 +1,11 @@
+story-tree-editor input.ng-invalid {
+	background: red;
+}
+
+story-tree-editor .ng-invalid {
+	background: #ffdddd;
+}
+
+story-tree-editor span.help-block {
+	color: red;
+}

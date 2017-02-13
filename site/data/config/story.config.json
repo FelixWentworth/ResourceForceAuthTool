@@ -1,0 +1,7 @@
+{
+	"$type": "StoryConfig",
+
+	"sceneMaxDepth":3,
+
+	"choiceMaxDepth":3
+}
