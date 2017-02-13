@@ -1,0 +1,9 @@
+<span ng-form="form" novalidate>
+	<input type="text" 
+		ng-model="$ctrl.ngModel"
+		name="input"
+		ng-minlength="$ctrl.ngMinlength"
+		ng-required="$ctrl.ngRequired"/>
+
+	<span ng-show="form.input.$error.minlength" class="help-block">Too short. Must be at least {{$ctrl.ngMinlength}} characters.</span>
+</span>

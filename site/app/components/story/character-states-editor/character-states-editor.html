@@ -3,12 +3,10 @@ States:
 	<li ng-repeat="state in $ctrl.states">
 		<span>
 			<button ng-click="$ctrl.removeState(state)">Remove</button>
-			Type: <input type="text" ng-model="state.$type"
-					minlength="3"
-					required/>			
-			Value: <input type="text" ng-model="state.value"
-					minlength="3"
-						required/>
+			Type: 
+			<validated-text-input ng-model="state.$type" ng-minlength="3" ng-required="true"/>
+			Value: 
+			<validated-text-input ng-model="state.value" ng-minlength="3" ng-required="true"/>
 		</span>
 	</li>
 	<li>

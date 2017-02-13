@@ -8,15 +8,11 @@ Scene:
 					<ul>
 						<li>
 							Action: 
-							<input type="text" ng-model="choice.action" 
-								required
-								minlength="3"/>
+							<validated-text-input ng-model="choice.action" ng-minlength="3" ng-required="true"/>
 						</li>
 						<li>
 							Feedback: 
-							<input type="text" ng-model="choice.feedback"
-								required
-								minlength="10"/>
+							<validated-text-input ng-model="choice.feedback" ng-minlength="10" ng-required="true"/>
 						</li>
 						<li>
 							<story-characters-editor characters="choice.characters"></story-characters-editor>

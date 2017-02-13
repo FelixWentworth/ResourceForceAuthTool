@@ -6,6 +6,6 @@ input.ng-invalid {
 	background: #ffdddd;
 }
 
-.validation-error-help {
+span.help-block {
 	color: red;
 }
