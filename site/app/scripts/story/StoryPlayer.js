@@ -26,6 +26,6 @@ class StoryPlayer {
 			} else {
 				self.state = "ENDED";
 			}
-		};		
+		};
 	}
 }
