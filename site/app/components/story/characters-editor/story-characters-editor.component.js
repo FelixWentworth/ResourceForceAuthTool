@@ -3,7 +3,8 @@ angular
 	.component("storyCharactersEditor", {		
 		templateUrl: "app/components/story/characters-editor/story-characters-editor.html",
 		bindings: {
-			characters: "="
+			characters: "=",
+			minChars: "<"
 		},
 		controller : function() {
 			var ctrl = this;
@@ -13,7 +14,12 @@ angular
 			};
 
 			ctrl.removeCharacter= function (character) {
-				ArrayUtil.tryRemove(ctrl.characters, character);
+				if(ctrl.minChars != null && ctrl.characters.length <= ctrl.minChars) {
+					alert("Cannot remove character." 
+						+ " \nThe minimum amount of characters required is: " + ctrl.minChars);
+				} else {
+					ArrayUtil.tryRemove(ctrl.characters, character);
+				}
 			}
 		}
 	});
