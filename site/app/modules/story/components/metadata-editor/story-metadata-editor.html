@@ -1,27 +1,50 @@
  Metadata
- <ul>
+ <ul ng-form="metadataForm">
 	<li>
 		Title: 
-		<validated-text-input ng-model="$ctrl.metadata.title" ng-minlength="5" ng-required="true"/>
+		<input ng-model="$ctrl.metadata.title" 
+			placeholder="{{$ctrl.metadataHelp.title}}"
+			ng-minlength="5" 
+			ng-required="true"/>
 	</li>
-	<li>
-		Outline: 
-		<validated-text-input ng-model="$ctrl.metadata.outline" ng-minlength="20" ng-required="true"/>
-	</li>
-	<li>
-		Author:
-		<validated-text-input ng-model="$ctrl.metadata.author" ng-minlength="3" ng-required="true"/>
-	</li>
+
 	<li>
 		Category: 
-		<validated-text-input ng-model="$ctrl.metadata.category" ng-minlength="10" ng-required="true"/>
+		<select ng-model="$ctrl.metadata.category" 
+			ng-options="category for category in $ctrl.metadataOptions.category"
+			ng-required="true"/>
 	</li>
+	
 	<li>
 		Skill: 
-		<validated-text-input ng-model="$ctrl.metadata.skill" ng-minlength="5" ng-required="true"/>
+		<select ng-model="$ctrl.metadata.skill" 
+			ng-options="skill for skill in $ctrl.metadataOptions.skill"
+			ng-required="true"/>
 	</li>
+
+	<li>
+		Outline: 
+		<input ng-model="$ctrl.metadata.outline" 
+			placeholder="{{$ctrl.metadataHelp.outline}}"
+			ng-minlength="20" 
+			ng-required="true"/>
+
+		<br/>
+		{{$ctrl.metadataExamples.outline}}
+	</li>
+	
+	<li>
+		Author:
+		<input ng-model="$ctrl.metadata.author"
+			placeholder="{{$ctrl.metadataHelp.author}}" 
+			ng-minlength="3"
+			ng-required="true"/>
+	</li>
+	
 	<li>
 		Location: 
-		<validated-text-input ng-model="$ctrl.metadata.location" ng-minlength="5" ng-required="true"/>
+		<select ng-model="$ctrl.metadata.location" 
+			ng-options="location for location in $ctrl.metadataOptions.location"
+			ng-required="true"/>
 	</li>
 </ul>

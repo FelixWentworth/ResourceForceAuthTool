@@ -3,7 +3,8 @@
 		ng-model="$ctrl.ngModel"
 		name="input"
 		ng-minlength="$ctrl.ngMinlength"
-		ng-required="$ctrl.ngRequired"/>
+		ng-required="$ctrl.ngRequired"
+		placeholder="$ctrl.placeholder"/>
 
 	<span ng-show="form.input.$error.minlength" class="help-block">Too short. Must be at least {{$ctrl.ngMinlength}} characters.</span>
 </span>

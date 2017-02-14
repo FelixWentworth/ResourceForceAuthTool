@@ -5,6 +5,7 @@ angular
 		bindings: {
 			ngModel: "=",
 			ngMinlength: "<",
-			ngRequired: "<"
+			ngRequired: "<",
+			placeholder: "<",
 		}
 	});
