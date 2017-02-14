@@ -1,507 +1,9 @@
 [
 	{
 		"$type": "Story",
-
-		"id": "01bc297498012b612c6712b34c62178",
-
+		"id": "9845235987322189c4b023",		
 		"metadata": {
 			"$type": "StoryMetadata",
-
-			"author": "Joe Bloggs",
-			"category": "Skill for friendship",
-			"skill": "Introducing others",
-			"location": "Classroom",
-			"title": "My Story",
-			"outline": "Bob is having a party. Bob wants his old friend Alice to meet his new friend Charlie."
-		},
-
-		"characters": [
-			{
-				"$type": "Character",
-
-				"name": "Bob",
-				"states": [
-					{
-						"$type" : "Emotion",
-						"value": "happy"
-					}
-				]
-			},
-			{
-				"$type": "Character",
-				
-				"name": "Alice",
-				"states": [
-					{
-						"$type" : "Emotion",
-						"value": "neutral"
-					}
-				]
-			},
-			{
-				"$type": "Character",
-				
-				"name": "Charlie",
-				"states": [
-					{
-						"$type" : "Emotion",
-						"value": "neutral"
-					}
-				]
-
-			}
-		],
-
-		"scene": {
-			"$type": "Scene",
-
-			"choices": [
-				{
-					"$type": "Choice",
-
-					"action": "Bob looks at Alice and Charlie",
-					"feedback": "Looking at people lets them know you are paying attention to them.",
-					"characters": [
-						{
-							"$type": "Character",
-
-							"name": "Bob",
-							"states": [
-								{
-									"$type" : "Emotion",
-									"value" :"happy"
-								}
-							]
-						},
-						{
-							"$type": "Character",
-
-							"name": "Alice",
-							"states": [
-								{
-									"$type" : "Emotion",
-									"value" :"happy"
-								}
-							]
-						},
-						{
-							"$type": "Character",
-
-							"name": "Charlie",
-							"states": [
-								{
-									"$type" : "Emotion",
-									"value" :"happy"
-								}
-							]
-						}
-					],
-					"scene": {
-						"$type": "Scene",
-
-						"choices": [
-							{
-								"$type": "Choice",
-
-								"action": "I don't know what to say!",
-								"feedback": "When introducing people, try focus on what they have in common.",
-								"characters": [
-									{
-										"$type": "Character",
-
-										"name": "Bob",
-										"states": [
-											{
-												"$type" : "Emotion",
-												"value" :"sad"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-
-										"name": "Alice",
-										"states": [
-											{
-												"$type" : "Emotion",
-												"value" :"angry"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-
-										"name": "Charlie",
-										"states": [
-											{
-												"$type" : "Emotion",
-												"value" :"angry"
-											}
-										]
-									}
-								]
-							},
-							{
-								"$type": "Choice",
-
-								"action": "Alice meet Charlie, Charlie meet Alice",
-								"feedback": "Great! You've used both of their names so they now know how to address one another.",
-								"characters": [
-									{
-										"$type": "Character",
-
-										"name": "Bob",
-										"states": [
-											{
-												"$type" : "Emotion",
-												"value" :"happy"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-
-										"name": "Alice",
-										"states": [
-											{
-												"$type" : "Emotion",
-												"value" :"happy"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-
-										"name": "Charlie",
-										"states": [
-											{
-												"$type" : "Emotion",
-												"value" :"happy"
-											}
-										]
-									}
-								],
-								"scene": {
-									"$type": "scene",
-
-									"choices": [
-										{
-											"$type": "Choice",
-
-											"action": "You both like chocolate!",
-											"feedback": "Great! When introducing people, focusing on what they have in common is a good conversation starter.",
-											"characters": [
-												{
-													"$type": "Character",
-
-													"name": "Bob",
-													"states": [
-														{
-															"$type" : "Emotion",
-															"value" :"happy"
-														}
-													]
-												},
-												{
-													"$type": "Character",
-
-													"name": "Alice",
-													"states": [
-														{
-															"$type" : "Emotion",
-															"value" :"happy"
-														}
-													]
-												},
-												{
-													"$type": "Character",
-
-													"name": "Charlie",
-													"states": [
-														{
-															"$type" : "Emotion",
-															"value" :"happy"
-														}
-													]
-												}
-											]
-										},
-										{
-											"$type": "Choice",
-
-											"action": "I don't know what to say!",
-											"feedback": "When introducing people, try focus on what they have in common.",
-											"characters": [
-												{
-													"$type": "Character",
-
-													"name": "Bob",
-													"states": [
-														{
-															"$type" : "Emotion",
-															"value" :"sad"
-														}
-													]
-												},
-												{
-													"$type": "Character",
-
-													"name": "Alice",
-													"states": [
-														{
-															"$type" : "Emotion",
-															"value" :"angry"
-														}
-													]
-												},
-												{
-													"$type": "Character",
-
-													"name": "Charlie",
-													"states": [
-														{
-															"$type" : "Emotion",
-															"value" :"angry"
-														}
-													]
-												}
-											]
-										}
-									]
-								}
-							}
-						]
-					}
-				},
-				{
-					"$type": "Choice",
-
-					"action": "Bob looks at the floor",
-					"feedback": "Looking at the floor confuses people.",
-					"characters": [
-						{
-							"$type": "Character",
-
-							"name": "Bob",
-							"states": [
-								{
-									"$type" : "Emotion",
-									"value" :"neutral"
-								}
-							]
-						},
-						{
-							"$type": "Character",
-
-							"name": "Alice",
-							"states": [
-								{
-									"$type" : "Emotion",
-									"value" :"angry"
-								}
-							]
-						},
-						{
-							"$type": "Character",
-
-							"name": "Charlie",
-							"states": [
-								{
-									"$type" : "Emotion",
-									"value" :"angry"
-								}
-							]
-						}
-					],
-					"scene": {
-						"$type": "Scene",
-
-						"choices": [
-							{
-								"$type": "Choice",
-
-								"action": "I wanted to introduce you two to each other!",
-								"feedback": "It would have been better to use both of their names while making eye contact.",
-								"characters": [
-									{
-										"$type": "Character",
-
-										"name": "Bob",
-										"states": [
-											{
-												"$type" : "Emotion",
-												"value" :"happy"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-
-										"name": "Alice",
-										"states": [
-											{
-												"$type" : "Emotion",
-												"value" :"happy"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-
-										"name": "Charlie",
-										"states": [
-											{
-												"$type" : "Emotion",
-												"value" :"happy"
-											}
-										]
-									}
-								],
-								"scene": {
-									"$type": "Scene",
-
-									"choices": [
-										{
-											"$type": "Choice",
-
-											"action": "You both like chocolate!",
-											"feedback": "Great! When introducing people, focusing on what they have in common is a good conversation starter.",
-											"characters": [
-												{
-													"$type": "Character",
-
-													"name": "Bob",
-													"states": [
-														{
-															"$type" : "Emotion",
-															"value" :"happy"
-														}
-													]
-												},
-												{
-													"$type": "Character",
-
-													"name": "Alice",
-													"states": [
-														{
-															"$type" : "Emotion",
-															"value" :"happy"
-														}
-													]
-												},
-												{
-													"$type": "Character",
-
-													"name": "Charlie",
-													"states": [
-														{
-															"$type" : "Emotion",
-															"value" :"happy"
-														}
-													]
-												}
-											]
-										},
-										{
-											"$type": "Choice",
-
-											"action": "I don't know what to say!",
-											"feedback": "When introducing people, try focus on what they have in common.",
-											"characters": [
-												{
-													"$type": "Character",
-
-													"name": "Bob",
-													"states": [
-														{
-															"$type" : "Emotion",
-															"value" :"sad"
-														}
-													]
-												},
-												{
-													"$type": "Character",
-
-													"name": "Alice",
-													"states": [
-														{
-															"$type" : "Emotion",
-															"value" :"angry"
-														}
-													]
-												},
-												{
-													"$type": "Character",
-
-													"name": "Charlie",
-													"states": [
-														{
-															"$type" : "Emotion",
-															"value" :"angry"
-														}
-													]
-												}
-											]
-										}
-									]
-								}
-							},
-							{
-								"$type": "Choice",
-
-								"action": "The floor is grey!",
-								"feedback" : "When introducing, talk about something they have in common.",
-								"characters": [
-									{
-										"$type": "Character",
-
-										"name": "Bob",
-										"states": [
-											{
-												"$type" : "Emotion",
-												"value" :"neutral"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-
-										"name": "Alice",
-										"states": [
-											{
-												"$type" : "Emotion",
-												"value" :"angry"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-
-										"name": "Charlie",										
-										"states": [
-											{
-												"$type" : "Emotion",
-												"value" :"angry"
-											}
-										]
-									}
-								]
-							}
-						]
-					}
-				}
-			]
-		}
-	},
-
-	{
-		"$type": "Story",
-
-		"id": "9845235987322189c4b023",
-		
-		"metadata": {
-			"$type": "StoryMetadata",
-
 			"author": "Jen Bubbles",
 			"category": "Skill for leadership",
 			"skill": "Destroying your enemies",
@@ -509,97 +11,178 @@
 			"title": "A dark and stormy playground.",
 			"outline": "Frank is getting to big for his boots. Sue is offended."
 		},
-
-		"characters": [
-			{
-				"$type": "Character",
-
-				"name": "Frank",
-				"states": [
-					{
-						"$type" : "Emotion",
-						"value": "happy"
-					}
-				]
-			},
-			{
-				"$type": "Character",
-				
-				"name": "Sue",
-				"states": [
-					{
-						"$type" : "Emotion",
-						"value": "angry"
-					}
-				]
-			}
-		],
-
 		"scene": {
 			"$type": "Scene",
-
-			"choices": [
+			"name": "1",
+			"elements": [
 				{
-					"$type": "Choice",
-
-					"action": "Sue tells Frank how she feels.",
-					"feedback": "Explaining how you feel lets other people understand how their actions are effecting you.",
-					"characters": [
+					"$type": "Narrator",					
+					"value": "Sue and Frank have been mortal enemies for many years."
+				},
+				{
+					"$type": "Character",
+					"name": "Sue",
+					"elements": [
 						{
-							"$type": "Character",
-
-							"name": "Frank",
-							"states": [
-								{
-									"$type" : "Emotion",
-									"value" :"concerned"
-								}
-							]
+							"$type": "Emotion",
+							"value": "angry"
 						},
 						{
-							"$type": "Character",
-
-							"name": "Sue",
-							"states": [
-								{
-									"$type" : "Emotion",
-									"value" :"happy"
-								}
-							]
+							"$type": "Speech",
+							"value": "I don't like you Frank. You've always been mean to me."	
+						}
+					]
+				},
+				{
+					"$type": "Character",
+					"name": "Frank",
+					"elements": [
+						{
+							"$type": "Emotion",
+							"value": "angry"
+						},
+						{
+							"$type": "Speech",
+							"value": "Well, you're always mean to me too!"	
 						}
 					]
 				},
 				{
 					"$type": "Choice",
-
-					"action": "Sue punches Frank",
-					"feedback": "Releasing aggression leads to fights which result in both parties being unhappy.",
-					"characters": [
+					"name": "1.1",
+					"action": "Sue decides to stop being mean to Frank first.",											
+					"elements": [
+						{
+							"$type": "Feedback",
+							"value": "Explaining how you feel lets other people understand how their actions are effecting you."
+						},
 						{
 							"$type": "Character",
-
 							"name": "Frank",
-							"states": [
+							"elements": [
 								{
-									"$type" : "Emotion",
-									"value" :"angry"
+									"$type": "Emotion",
+									"value": "happy"
+								},
+								{
+									"$type": "Speech",
+									"value": "You've stopped being mean to me. This is better. Let's be friends!"	
 								}
 							]
 						},
 						{
 							"$type": "Character",
-
 							"name": "Sue",
-							"states": [
+							"elements": [
 								{
-									"$type" : "Emotion",
-									"value" :"angry"
+									"$type": "Emotion",
+									"value": "happy"
+								},
+								{
+									"$type": "Speech",
+									"value": "Yay! Why didn't we do this sooner?!"	
+								}
+							]
+						},
+						{
+							"$type": "Narrator",
+							"value": "And everyone lived happile ever after."
+						},	
+						{
+							"$type": "End"
+						}
+					]
+				},
+				{
+					"$type": "Choice",
+					"name": "1.2",
+					"action": "Sue decides to kick Frank.",					
+					"elements": [									
+						{
+							"$type": "Character",
+							"name": "Frank",
+							"elements": [
+								{
+									"$type": "Emotion",
+									"value": "sad"
+								},
+								{
+									"$type": "Speech",
+									"value": "Ouch!"	
+								}
+							]
+						},
+						{
+							"$type": "Character",
+							"name": "Sue",
+							"elements": [
+								{
+									"$type": "Emotion",
+									"value": "angry"
+								},
+								{
+									"$type": "Speech",
+									"value": "Well you started it!"	
+								}
+							]
+						},
+						{
+							"$type": "Feedback",
+							"value": "Being mean just because someone did it first doesn't make it right!"
+						},
+						{
+							"$type": "Narrator",
+							"value": "Frank and Sue got into a fight."	
+						},	
+						{
+							"$type": "Character",
+							"name": "Mr.Teacherson",
+							"elements": [
+								{
+									"$type": "Emotion",
+									"value": "angry"
+								},
+								{
+									"$type": "Speech",
+									"value": "Stop fighting you two. You both have detention!"	
+								}
+							]
+						},
+						{
+							"$type": "Narrator",
+							"value": "Sue and Frank stayed enemies throughout high school, even though they could've become friends if they had just learnt to get along."
+						},	
+						{
+							"$type": "Choice",
+							"name": "1.2.1",
+							"action": "Time travel and make Sue forgive Frank",
+							"elements": [
+								{
+									"$type": "Feedback",
+									"value": "Well done, you've discovered time travel and healed a friendship."
+								},
+								{
+									"$type": "End"
+								}
+							]
+						},
+						{
+							"$type": "Choice",
+							"name": "1.2.2",
+							"action": "Time travel and make Sue destroy Frank",
+							"elements": [
+								{
+									"$type": "Narrator",
+									"value": "Sue spends the rest of her life regretting her decision from a parallel dimension."
+								},
+								{
+									"$type": "End"
 								}
 							]
 						}
 					]
 				}
-			]
+			]			
 		}
 	}
 ]

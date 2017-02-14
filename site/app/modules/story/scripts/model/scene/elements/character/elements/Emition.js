@@ -1,8 +1,8 @@
-class State {
+class Emotion {
 	constructor() {
 		var self = this;
 
-		self.$type = "";
+		self.$type = "Emotion";
 		self.value = "";
 	}
 }

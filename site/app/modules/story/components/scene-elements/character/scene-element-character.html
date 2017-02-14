@@ -1,0 +1,13 @@
+{{$ctrl.character.name}}
+<ul>
+	<li ng-repeat="element in $ctrl.character.elements">
+		<div ng-switch="element.$type">
+			<div ng-switch-when="Emotion">
+				Emotion: {{element.value}}
+			</div>
+			<div ng-switch-when="Speech">
+				Speech: {{element.value}}
+			</div>
+		</div>
+	</li>
+</ul>
