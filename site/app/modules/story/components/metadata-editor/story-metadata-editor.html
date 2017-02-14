@@ -1,28 +1,27 @@
- Metadata
- <ul ng-form="metadataForm">
-	<li>
+ <div ng-form="metadataForm">
+ 	<div>
 		Title: 
 		<input ng-model="$ctrl.metadata.title" 
 			placeholder="{{$ctrl.metadataHelp.title}}"
 			ng-minlength="5" 
 			ng-required="true"/>
-	</li>
+	</div>
 
-	<li>
+	<div>
 		Category: 
 		<select ng-model="$ctrl.metadata.category" 
 			ng-options="category for category in $ctrl.metadataOptions.category"
 			ng-required="true"/>
-	</li>
-	
-	<li>
+	</div>
+
+	<div>
 		Skill: 
 		<select ng-model="$ctrl.metadata.skill" 
 			ng-options="skill for skill in $ctrl.metadataOptions.skill"
 			ng-required="true"/>
-	</li>
+	</div>
 
-	<li>
+	<div>
 		Outline: 
 		<input ng-model="$ctrl.metadata.outline" 
 			placeholder="{{$ctrl.metadataHelp.outline}}"
@@ -31,20 +30,20 @@
 
 		<br/>
 		{{$ctrl.metadataExamples.outline}}
-	</li>
-	
-	<li>
+	</div>
+
+	<div>
 		Author:
 		<input ng-model="$ctrl.metadata.author"
 			placeholder="{{$ctrl.metadataHelp.author}}" 
 			ng-minlength="3"
 			ng-required="true"/>
-	</li>
-	
-	<li>
+	</div>
+
+	<div>
 		Location: 
 		<select ng-model="$ctrl.metadata.location" 
 			ng-options="location for location in $ctrl.metadataOptions.location"
 			ng-required="true"/>
-	</li>
-</ul>
+	</div>
+</div>

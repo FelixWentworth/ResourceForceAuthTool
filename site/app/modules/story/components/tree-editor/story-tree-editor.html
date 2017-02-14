@@ -1,14 +1,14 @@
-Story: {{$ctrl.story.id}}
 <div ng-form="storyTreeForm" novalidate>
-	<ul>
+	<story-metadata-editor metadata="$ctrl.story.metadata"/>
+	<ul>		
 		<li>
-			<story-metadata-editor metadata="$ctrl.story.metadata"></story-metadata-editor>
-		</li>
-		<li>
-			<story-characters-editor min-chars="1" characters="$ctrl.story.characters"></story-characters-editor>
-		</li>
-		<li>
-			<story-scene-editor scene="$ctrl.story.scene"></story-scene-editor>
+			Scene: 
+			<input type="text" ng-model="$ctrl.story.scene.name"
+				ng-minlength="1"
+				ng-required="true">
+			<ul>
+				<scene-tree-elements-editor elements="$ctrl.story.scene.elements"/>			
+			</ul>				
 		</li>
 	</ul>
 	<input type="submit" ng-click="$ctrl.apply(storyTreeForm.$valid)" value="Save">

@@ -1,0 +1,10 @@
+<li ng-repeat="element in $ctrl.elements">
+	<button ng-click="$ctrl.removeElement(element)">-</button>
+	<span ng-switch="element.$type">
+		<scene-element-narrator-editor ng-switch-when="Narrator" narrator="element"/>
+		<scene-element-character-editor ng-switch-when="Character" character="element"/>
+		<scene-element-feedback-editor ng-switch-when="Feedback" feedback="element"/>
+		<scene-element-end ng-switch-when="End"/>
+		<story-tree-choice-editor ng-switch-when="Choice" choice="element"/>			
+	</span>
+</li>
