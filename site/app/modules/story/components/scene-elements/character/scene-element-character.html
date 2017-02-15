@@ -1,13 +1,9 @@
-{{$ctrl.character.name}}
-<ul>
-	<li ng-repeat="element in $ctrl.character.elements">
-		<div ng-switch="element.$type">
-			<div ng-switch-when="Emotion">
-				Emotion: {{element.value}}
-			</div>
-			<div ng-switch-when="Speech">
-				Speech: {{element.value}}
-			</div>
-		</div>
-	</li>
-</ul>
+<div>{{$ctrl.character.name}}</div>
+<span ng-repeat="element in $ctrl.character.elements" 
+		ng-switch="element.$type">
+
+	<img ng-switch-when="Emotion"
+			ng-src="app/modules/story/images/emotions/{{element.value}}.png"/>
+
+	<span ng-switch-when="Speech">{{element.value}}</span>	
+</span>

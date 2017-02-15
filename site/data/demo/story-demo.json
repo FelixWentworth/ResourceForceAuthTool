@@ -1,7 +1,7 @@
 [
 	{
 		"$type": "Story",
-		"id": "9845235987322189c4b023",		
+		"id": "37u465923497859827bb32947865",		
 		"metadata": {
 			"$type": "Metadata",
 			"author": "Jen Bubbles",
@@ -101,7 +101,7 @@
 							"elements": [
 								{
 									"$type": "Emotion",
-									"value": "sad"
+									"value": "upset"
 								},
 								{
 									"$type": "Speech",
@@ -253,7 +253,7 @@
 							"elements": [
 								{
 									"$type": "Emotion",
-									"value": "happy"
+									"value": "glee"
 								},
 								{
 									"$type": "Speech",
@@ -281,7 +281,7 @@
 							"elements": [
 								{
 									"$type": "Emotion",
-									"value": "sad"
+									"value": "upset"
 								},
 								{
 									"$type": "Speech",
@@ -317,7 +317,7 @@
 							"elements": [
 								{
 									"$type": "Emotion",
-									"value": "angry"
+									"value": "sad"
 								},
 								{
 									"$type": "Speech",

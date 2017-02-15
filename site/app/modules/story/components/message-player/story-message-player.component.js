@@ -3,7 +3,8 @@ angular
 	.component("storyMessagePlayer", {
 		templateUrl: "app/modules/story/components/message-player/story-message-player.html",
 		bindings: {
-			story: "<"
+			story: "<",
+			isComplete: "="
 		},
 		controller: function() {
 			var ctrl = this;
@@ -16,11 +17,14 @@ angular
 				choice.selected = true;
 				ctrl.sceneElements.forEach(e => e.disabled = true);
 				ctrl.sceneElementsHistory = ctrl.sceneElementsHistory.concat(ctrl.sceneElements);
-				ctrl.sceneElements = choice.elements;				
+				ctrl.sceneElements = choice.elements;
+
+				ctrl.isComplete = ArrayUtil.contains(ctrl.sceneElements, e => e.$type == "End");
 			};
 			
 			ctrl.$onInit = function() {
 				ctrl.sceneElements = ctrl.story.scene.elements;
+				ctrl.isComplete = false;
 			}
 		}
 	});

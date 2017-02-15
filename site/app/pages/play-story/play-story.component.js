@@ -9,6 +9,7 @@ angular
 			var ctrl = this;
 
 			ctrl.loader = new StoryFromIdLoader(StoryService);
+			ctrl.isPlayerComplete = false;
 
 			ctrl.$onInit = function() {
 				ctrl.loader.load(ctrl.storyId);

@@ -1,10 +1,12 @@
-<button ui-sref="home">Home</button>
-
 <div ng-switch="$ctrl.loader.isLoading">
 	<div ng-switch-when="true">
 		Waiting for load
 	</div>
 	<div ng-switch-when="false">
-		<story-message-player story="$ctrl.loader.story"></story-message-player>
+		<story-message-player story="$ctrl.loader.story" 
+								is-complete="$ctrl.isPlayerComplete"/>
 	</div>	
 </div>
+
+<button ng-show="$ctrl.isPlayerComplete" 
+		ui-sref="home">Home</button>

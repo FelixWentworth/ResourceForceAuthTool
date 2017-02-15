@@ -8,6 +8,13 @@ angular
 		controller: function() {
 			var ctrl = this;
 
-			ctrl.emotionOptions = ["placeholder 1", "placeholder 2", "placeholder 3"];
+			ctrl.imageIdPaths = {
+				"glee": "app/modules/story/images/emotions/glee.png",
+				"happy": "app/modules/story/images/emotions/happy.png",
+				"neutral": "app/modules/story/images/emotions/neutral.png",
+				"sad": "app/modules/story/images/emotions/sad.png",
+				"angry": "app/modules/story/images/emotions/angry.png",
+				"upset": "app/modules/story/images/emotions/upset.png",
+			};
 		}
 	});

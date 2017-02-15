@@ -1,5 +1,3 @@
-Emotion: 
-<select type="text" ng-model="$ctrl.emotion.value"
-	ng-options="emotion for emotion in $ctrl.emotionOptions"
-	ng-require="true">
-</select>
+<image-picker
+	image-id-paths="$ctrl.imageIdPaths"
+	selected-id="$ctrl.emotion.value"/>
