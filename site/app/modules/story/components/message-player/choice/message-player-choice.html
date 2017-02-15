@@ -3,4 +3,4 @@
 	{{$ctrl.choice.action}}
 </button>
 
-<div ng-if="$ctrl.choice.disabled">{{$ctrl.choice.action}}</div>
+<div ng-if="$ctrl.choice.disabled && $ctrl.choice.selected">{{$ctrl.choice.action}}</div>

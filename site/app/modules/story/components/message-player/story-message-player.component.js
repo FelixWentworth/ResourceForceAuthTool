@@ -13,9 +13,10 @@ angular
 
 			// public methods
 			ctrl.applyChoice = function(choice) {
+				choice.selected = true;
 				ctrl.sceneElements.forEach(e => e.disabled = true);
 				ctrl.sceneElementsHistory = ctrl.sceneElementsHistory.concat(ctrl.sceneElements);
-				ctrl.sceneElements = choice.elements;
+				ctrl.sceneElements = choice.elements;				
 			};
 			
 			ctrl.$onInit = function() {
