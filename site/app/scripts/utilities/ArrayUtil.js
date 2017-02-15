@@ -28,3 +28,17 @@ ArrayUtil.remove = function (array, item) {
 			" \nItem: " + item;
 	}
 };
+
+ArrayUtil.contains = function (array, predicate) {
+	if(array.constructor !== Array) {
+		throw "Object reference does not have an array constructor.";
+	}
+
+    var index = array.findIndex(predicate);
+
+	if(0 <= index && index < array.length) {
+		return true;
+	} else {
+		return false;
+	}
+};

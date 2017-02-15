@@ -8,3 +8,10 @@
 		<story-tree-choice-editor ng-switch-when="Choice" choice="element"/>			
 	</span>
 </li>
+<li ng-show="$ctrl.doesntContain(['End'])">
+	<button ng-show="$ctrl.doesntContain(['Choice'])">+ Narrator</button>	
+	<button ng-show="$ctrl.doesntContain(['Choice'])">+ Character</button>		
+	<button ng-show="$ctrl.doesntContain(['Choice'])">+ Feedback</button>
+	<button>+ Choice</button>	
+	<button ng-show="$ctrl.doesntContain(['Choice'])">End</button>
+</li>

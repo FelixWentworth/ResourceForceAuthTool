@@ -1,1 +1,7 @@
-CHOICE EDITOR
+Choice:
+<input type="text" ng-model="$ctrl.choice.name"
+	ng-minlength="1"
+	ng-required="true">
+<ul>
+	<scene-tree-elements-editor elements="$ctrl.choice.elements"/>			
+</ul>				
