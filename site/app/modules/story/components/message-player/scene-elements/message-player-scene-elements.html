@@ -1,0 +1,9 @@
+<div ng-repeat="element in $ctrl.elements">
+	<div ng-switch="element.$type">
+		<scene-element-narrator ng-switch-when="Narrator" narrator="element"/>
+		<scene-element-character ng-switch-when="Character" character="element"/>
+		<scene-element-feedback ng-switch-when="Feedback" feedback="element"/>
+		<message-player-choice ng-switch-when="Choice" choice="element" apply="$ctrl.applyChoice"/>
+		<scene-element-end ng-switch-when="End"/>		
+	</div>
+</div>
