@@ -1,4 +1,6 @@
  <div ng-form="metadataForm">
+ 	<story-metadata-title-editor title="$ctrl.metadata.title"/>
+
  	<span>		
 		Category: 
 		<select ng-model="$ctrl.metadata.category" 
@@ -14,26 +16,9 @@
 		<select ng-model="$ctrl.metadata.location" 
 			ng-options="location for location in $ctrl.metadataOptions.location"
 			ng-required="true"/>
-	</span>
- 
-	<div>
-		Title: 
-		<input ng-model="$ctrl.metadata.title" 
-			placeholder="{{$ctrl.metadataHelp.title}}"
-			ng-minlength="5" 
-			ng-required="true"/>
-	</div>
+	</span>	
 
-	<div>
-		Outline: 
-		<input ng-model="$ctrl.metadata.outline" 
-			placeholder="{{$ctrl.metadataHelp.outline}}"
-			ng-minlength="20" 
-			ng-required="true"/>
-
-		<br/>
-		{{$ctrl.metadataExamples.outline}}
-	</div>
+	<story-metadata-outline metadata="$ctrl.metadata"/>
 
 	<div>
 		Author:

@@ -1,7 +1,7 @@
 angular
 	.module("story")
 	.component("storyMetadataEditor", {		
-		templateUrl: "app/modules/story/components/metadata-editor/story-metadata-editor.html",
+		templateUrl: "modules/story/components/metadata-editor/story-metadata-editor.html",
 		bindings: {
 			metadata: "="
 		},
@@ -14,10 +14,6 @@ angular
 				"title": "placeholder metadata help.",
 				"outline": "placeholder outline help.",
 				"author": "placeholder author help",
-			};
-
-			ctrl.metadataExamples = {
-				"outline": "placeholder outline example.",
 			};
 
 			ctrl.metadataOptions = {

@@ -8,6 +8,5 @@ class Metadata {
 		self.skill = "";
 		self.location = "";
 		self.title = "";
-		self.outline = "";
 	}
 }

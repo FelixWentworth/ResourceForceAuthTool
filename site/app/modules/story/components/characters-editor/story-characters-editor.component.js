@@ -1,7 +1,7 @@
 angular
 	.module("story")
 	.component("storyCharactersEditor", {		
-		templateUrl: "app/modules/story/components/characters-editor/story-characters-editor.html",
+		templateUrl: "modules/story/components/characters-editor/story-characters-editor.html",
 		bindings: {
 			characters: "="
 		},

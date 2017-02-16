@@ -1,7 +1,7 @@
 angular
 	.module("storyGameMaker")
 	.component("home", {
-		templateUrl: "app/pages/home/home.html",
+		templateUrl: "pages/home/home.html",
 		controller: ["StoryService", function(StoryService) {
 			var ctrl = this;
 

@@ -1,7 +1,7 @@
 angular
 	.module("storyGameMaker")
 	.component("validatedTextInput", {		
-		templateUrl: "app/components/validated-input/validated-text-input.html",
+		templateUrl: "components/validated-input/validated-text-input.html",
 		bindings: {
 			ngModel: "=",
 			ngMinlength: "<",

@@ -1,7 +1,7 @@
 angular
 	.module("imagePicker")
 	.component("imagePicker", {
-		templateUrl: "app/modules/image-picker/image-picker.html",
+		templateUrl: "modules/image-picker/image-picker.html",
 		bindings: {
 			imageIdPaths: "=",
 			selectedId: "="

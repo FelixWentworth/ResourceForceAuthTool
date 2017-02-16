@@ -1,7 +1,7 @@
 angular
 	.module("storyGameMaker")
 	.component("playStory", {
-		templateUrl: "app/pages/play-story/play-story.html",
+		templateUrl: "pages/play-story/play-story.html",
 		bindings: {
 			storyId: "<"
 		},

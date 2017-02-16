@@ -1,7 +1,7 @@
 angular
 	.module("story")
 	.component("sceneElementNarratorEditor", {		
-		templateUrl: "app/modules/story/components/scene-elements-editors/narrator/scene-element-narrator-editor.html",
+		templateUrl: "modules/story/components/scene-elements-editors/narrator/scene-element-narrator-editor.html",
 		bindings: {
 			narrator: "="
 		}

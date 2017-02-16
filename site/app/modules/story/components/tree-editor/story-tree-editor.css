@@ -2,12 +2,22 @@ story-tree-editor input.ng-invalid {
 	background: red;
 }
 
+story-tree-editor input[type=text]:not(:focus) {
+	border: none;
+	color: #1111ff;
+	width: 100%;
+}
+
+story-tree-editor button {
+	color: #1111ff;
+}
+
 story-tree-editor select.ng-invalid {
 	background-color: red;
 }
 
 story-tree-editor .ng-invalid {
-	background: #ffdddd;
+	background: #5555dd;
 }
 
 story-tree-editor span.help-block {
