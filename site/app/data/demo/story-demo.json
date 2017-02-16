@@ -28,29 +28,24 @@
 				{
 					"$type": "Narrator",					
 					"value": "Sue and Frank have been mortal enemies for many years."
-				},
+				},		
 				{
-					"$type": "Response",
+					"$type": "Character",
+					"name": "Frank",
 					"elements": [
 						{
-							"$type": "Character",
-							"name": "Frank",
-							"elements": [
-								{
-									"$type": "Emotion",
-									"value": "neutral"
-								}
-							]
-						},
+							"$type": "Emotion",
+							"value": "neutral"
+						}
+					]
+				},
+				{
+					"$type": "Character",
+					"name": "Sue",
+					"elements": [
 						{
-							"$type": "Character",
-							"name": "Sue",
-							"elements": [
-								{
-									"$type": "Emotion",
-									"value": "neutral"
-								}
-							]
+							"$type": "Emotion",
+							"value": "neutral"
 						}
 					]
 				},
@@ -61,31 +56,20 @@
 						{
 							"$type": "Speech",
 							"value": "I don't like you Frank. You've always been mean to me."	
-						}
-					]
-				},
-				{
-					"$type": "Response",
-					"elements": [
-						{
-							"$type": "Character",
-							"name": "Frank",
-							"elements": [
-								{
-									"$type": "Emotion",
-									"value": "sad"
-								}
-							]
 						},
 						{
-							"$type": "Character",
-							"name": "Sue",
-							"elements": [
-								{
-									"$type": "Emotion",
-									"value": "neutral"
-								}
-							]
+							"$type": "Emotion",
+							"value": "neutral"
+						}
+					]
+				},		
+				{
+					"$type": "Character",
+					"name": "Frank",
+					"elements": [
+						{
+							"$type": "Emotion",
+							"value": "sad"
 						}
 					]
 				},
@@ -96,34 +80,23 @@
 						{
 							"$type": "Speech",
 							"value": "Well, you're always mean to me too!"	
+						},
+						{
+							"$type": "Emotion",
+							"value": "angry"
 						}
 					]
 				},
 				{
-					"$type": "Response",
+					"$type": "Character",
+					"name": "Sue",
 					"elements": [
 						{
-							"$type": "Character",
-							"name": "Frank",
-							"elements": [
-								{
-									"$type": "Emotion",
-									"value": "angry"
-								}
-							]
-						},
-						{
-							"$type": "Character",
-							"name": "Sue",
-							"elements": [
-								{
-									"$type": "Emotion",
-									"value": "angry"
-								}
-							]
+							"$type": "Emotion",
+							"value": "angry"
 						}
 					]
-				},
+				},					
 				{
 					"$type": "Choice",					
 					"action": "Sue decides to stop being mean to Frank first.",											
@@ -132,27 +105,22 @@
 						"name": "1.1",
 						"elements": [
 							{
-								"$type": "Response",
+								"$type": "Character",
+								"name": "Frank",
 								"elements": [
 									{
-										"$type": "Character",
-										"name": "Frank",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "happy"
-											}
-										]
-									},
+										"$type": "Emotion",
+										"value": "happy"
+									}
+								]
+							},
+							{
+								"$type": "Character",
+								"name": "Sue",
+								"elements": [
 									{
-										"$type": "Character",
-										"name": "Sue",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "angry"
-											}
-										]
+										"$type": "Emotion",
+										"value": "angry"
 									}
 								]
 							},
@@ -163,31 +131,20 @@
 									{
 										"$type": "Speech",
 										"value": "You've stopped being mean to me. This is better. Let's be friends!"	
+									},
+									{
+										"$type": "Emotion",
+										"value": "happy"
 									}
 								]
 							},
 							{
-								"$type": "Response",
+								"$type": "Character",
+								"name": "Sue",
 								"elements": [
 									{
-										"$type": "Character",
-										"name": "Frank",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "happy"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-										"name": "Sue",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "happy"
-											}
-										]
+										"$type": "Emotion",
+										"value": "happy"
 									}
 								]
 							},
@@ -198,31 +155,20 @@
 									{
 										"$type": "Speech",
 										"value": "Yay! Why didn't we do this sooner?!"	
+									},
+									{
+										"$type": "Emotion",
+										"value": "glee"
 									}
 								]
 							},
 							{
-								"$type": "Response",
+								"$type": "Character",
+								"name": "Frank",
 								"elements": [
 									{
-										"$type": "Character",
-										"name": "Frank",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "glee"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-										"name": "Sue",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "glee"
-											}
-										]
+										"$type": "Emotion",
+										"value": "glee"
 									}
 								]
 							},
@@ -240,27 +186,22 @@
 						"action": "Sue decides to kick Frank.",					
 						"elements": [		
 							{
-								"$type": "Response",
+								"$type": "Character",
+								"name": "Frank",
 								"elements": [
 									{
-										"$type": "Character",
-										"name": "Frank",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "upset"
-											}
-										]
-									},
+										"$type": "Emotion",
+										"value": "upset"
+									}
+								]
+							},
+							{
+								"$type": "Character",
+								"name": "Sue",
+								"elements": [
 									{
-										"$type": "Character",
-										"name": "Sue",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "angry"
-											}
-										]
+										"$type": "Emotion",
+										"value": "angry"
 									}
 								]
 							},						
@@ -271,31 +212,20 @@
 									{
 										"$type": "Speech",
 										"value": "Ouch!"	
+									},
+									{
+										"$type": "Emotion",
+										"value": "upset"
 									}
 								]
 							},
 							{
-								"$type": "Response",
+								"$type": "Character",
+								"name": "Sue",
 								"elements": [
 									{
-										"$type": "Character",
-										"name": "Frank",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "upset"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-										"name": "Sue",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "angry"
-											}
-										]
+										"$type": "Emotion",
+										"value": "angry"
 									}
 								]
 							},						
@@ -306,60 +236,44 @@
 									{
 										"$type": "Speech",
 										"value": "Well you started it!"	
+									},
+									{
+										"$type": "Emotion",
+										"value": "sad"
 									}
 								]
 							},
 							{
-								"$type": "Response",
+								"$type": "Character",
+								"name": "Frank",
 								"elements": [
 									{
-										"$type": "Character",
-										"name": "Frank",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "upset"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-										"name": "Sue",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "sad"
-											}
-										]
+										"$type": "Emotion",
+										"value": "upset"
 									}
 								]
-							},							
+							},					
 							{
 								"$type": "Narrator",
 								"value": "Frank and Sue got into a fight."	
 							},	
 							{
-								"$type": "Response",
+								"$type": "Character",
+								"name": "Frank",
 								"elements": [
 									{
-										"$type": "Character",
-										"name": "Frank",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "angry"
-											}
-										]
-									},
+										"$type": "Emotion",
+										"value": "angry"
+									}
+								]
+							},
+							{
+								"$type": "Character",
+								"name": "Sue",
+								"elements": [
 									{
-										"$type": "Character",
-										"name": "Sue",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "angry"
-											}
-										]
+										"$type": "Emotion",
+										"value": "angry"
 									}
 								]
 							},						
@@ -368,27 +282,22 @@
 								"value": "Sue and Frank stayed enemies throughout high school, even though they could've become friends if they had just learnt to get along."
 							},	
 							{
-								"$type": "Response",
+								"$type": "Character",
+								"name": "Frank",
 								"elements": [
 									{
-										"$type": "Character",
-										"name": "Frank",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "angry"
-											}
-										]
-									},
+										"$type": "Emotion",
+										"value": "angry"
+									}
+								]
+							},
+							{
+								"$type": "Character",
+								"name": "Sue",
+								"elements": [
 									{
-										"$type": "Character",
-										"name": "Sue",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "angry"
-											}
-										]
+										"$type": "Emotion",
+										"value": "angry"
 									}
 								]
 							},						
@@ -400,27 +309,22 @@
 									"action": "Time travel and make Sue forgive Frank",
 									"elements": [
 										{
-											"$type": "Response",
+											"$type": "Character",
+											"name": "Frank",
 											"elements": [
 												{
-													"$type": "Character",
-													"name": "Frank",
-													"elements": [
-														{
-															"$type": "Emotion",
-															"value": "happy"
-														}
-													]
-												},
+													"$type": "Emotion",
+													"value": "happy"
+												}
+											]
+										},
+										{
+											"$type": "Character",
+											"name": "Sue",
+											"elements": [
 												{
-													"$type": "Character",
-													"name": "Sue",
-													"elements": [
-														{
-															"$type": "Emotion",
-															"value": "happy"
-														}
-													]
+													"$type": "Emotion",
+													"value": "happy"
 												}
 											]
 										},						
@@ -438,56 +342,46 @@
 									"action": "Time travel and make Sue destroy Frank",
 									"elements": [
 										{
-											"$type": "Response",
+											"$type": "Character",
+											"name": "Frank",
 											"elements": [
 												{
-													"$type": "Character",
-													"name": "Frank",
-													"elements": [
-														{
-															"$type": "Emotion",
-															"value": "upset"
-														}
-													]
-												},
+													"$type": "Emotion",
+													"value": "upset"
+												}
+											]
+										},
+										{
+											"$type": "Character",
+											"name": "Sue",
+											"elements": [
 												{
-													"$type": "Character",
-													"name": "Sue",
-													"elements": [
-														{
-															"$type": "Emotion",
-															"value": "upset"
-														}
-													]
+													"$type": "Emotion",
+													"value": "upset"
 												}
 											]
 										},								
 										{
 											"$type": "Narrator",
 											"value": "Sue spends the rest of her life regretting her decision from a parallel dimension."
-										},
+										},																		
 										{
-											"$type": "Response",
+											"$type": "Character",
+											"name": "Frank",
 											"elements": [
 												{
-													"$type": "Character",
-													"name": "Frank",
-													"elements": [
-														{
-															"$type": "Emotion",
-															"value": "upset"
-														}
-													]
-												},
+													"$type": "Emotion",
+													"value": "upset"
+												}
+											]
+										},
+										{
+											"$type": "Character",
+											"name": "Sue",
+											"elements": [
 												{
-													"$type": "Character",
-													"name": "Sue",
-													"elements": [
-														{
-															"$type": "Emotion",
-															"value": "upset"
-														}
-													]
+													"$type": "Emotion",
+													"value": "upset"
 												}
 											]
 										},						
