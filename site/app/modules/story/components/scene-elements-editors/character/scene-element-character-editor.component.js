@@ -9,7 +9,7 @@ angular
 			var ctrl = this;
 
 			ctrl.removeElement = function(element) {
-				ArrayUtil.remove(ctrl.character.elements, element);
+				Array.removeWhere(ctrl.character.elements, element);
 			};
 		}
 	});

@@ -9,19 +9,19 @@ angular
 			var ctrl = this;
 
 			ctrl.removeElement = function(element) {
-				ArrayUtil.remove(ctrl.elements, element);
+				Array.removeWhere(ctrl.elements, element);
 			};
 
 			ctrl.doesntContain = function(types) {
-				var containsType = false;
+				var containsWhereType = false;
 				for(var i in types) {
-					if(ArrayUtil.contains(ctrl.elements, e => e.$type == types[i])) {
-						containsType = true;
+					if(Array.containsWhere(ctrl.elements, e => e.$type == types[i])) {
+						containsWhereType = true;
 						break;
 					}
 				}
 
-				return !containsType;
+				return !containsWhereType;
 			}
 		}
 	});
