@@ -358,10 +358,10 @@
 								},
 								{
 									"_type": "Choice",
+									"action": "Time travel and make Sue forgive Frank",
 									"scene": {
 										"_type": "Scene",
-										"name": "1.2.1",
-										"action": "Time travel and make Sue forgive Frank",
+										"name": "1.2.1",										
 										"elements": [
 											{
 												"_type": "Subscene",						
@@ -396,10 +396,10 @@
 								},
 								{
 									"_type": "Choice",
+									"action": "Time travel and make Sue destroy Frank",
 									"scene": {
 										"_type": "Scene",
-										"name": "1.2.2",
-										"action": "Time travel and make Sue destroy Frank",
+										"name": "1.2.2",										
 										"elements": [
 											{
 												"_type": "Subscene",						

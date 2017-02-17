@@ -4,22 +4,20 @@ angular
 		var service = {};
 
 		// private variables
-		var storyPromise = $q.defer();
-		var storiesMetadataPromise = $q.defer();
-
-		var dbHandler = new DBHandler();
+		var storiesPromise = null;
+		var storiesMetadataPromise = null;
 
 		// private methods
-		function load() {
+		function getStories() {
+			// get new data every time
+			storiesPromise = $q.defer();		
+			
 			$http.get("data/demo/story-demo.json")
 				.then(function(story){
-					storyPromise.resolve(story.data);		
+					storiesPromise.resolve(story.data);		
 				});
-		};
 
-		function getStories() {
-			load();
-			return storyPromise.promise;
+			return storiesPromise.promise;
 		}
 
 		function updateMemoryCache(story) {
@@ -33,10 +31,6 @@ angular
 
 					stories.splice(0, 0, story);
 				});
-		}
-
-		function updateLocalStorageCache(story) {
-			// todo update local db representation
 		}
 
 		// public methods
@@ -54,6 +48,9 @@ angular
 		};		
 
 		service.getStoriesMetadata = function () {
+			// get new data every time
+			storiesMetadataPromise = $q.defer();
+
 			getStories()
 				.then(function(stories) {
 					var metadatas = [];
@@ -69,8 +66,7 @@ angular
 		};
 
 		service.save = function(story) {
-			return updateMemoryCache(story)
-				.then(updateLocalStorageCache);
+			return updateMemoryCache(story);
 		};
 		
 		service.getNewStoryId = function() {

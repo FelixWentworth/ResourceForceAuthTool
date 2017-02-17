@@ -1,0 +1,36 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'uninstall',
+1 verbose cli   'material-design-icons',
+1 verbose cli   '--save' ]
+2 info using npm@2.15.8
+3 info using node@v4.4.7
+4 verbose unbuild node_modules\material-design-icons
+5 info preuninstall material-design-icons@3.0.1
+6 info uninstall material-design-icons@3.0.1
+7 verbose unbuild rmStuff material-design-icons@3.0.1 from D:\Projects\story-game-maker\site\node_modules
+8 info postuninstall material-design-icons@3.0.1
+9 silly gentlyRm D:\Projects\story-game-maker\site\node_modules\material-design-icons is being purged from base D:\Projects\story-game-maker\site
+10 verbose gentlyRm don't care about contents; nuking D:\Projects\story-game-maker\site\node_modules\material-design-icons
+11 silly vacuum-fs purging D:\Projects\story-game-maker\site\node_modules\material-design-icons
+12 verbose stack Error: EPERM: operation not permitted, unlink 'D:\Projects\story-game-maker\site\node_modules\material-design-icons\sprites'
+12 verbose stack     at Error (native)
+13 verbose cwd D:\Projects\story-game-maker\site
+14 error Windows_NT 10.0.14393
+15 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "uninstall" "material-design-icons" "--save"
+16 error node v4.4.7
+17 error npm  v2.15.8
+18 error path D:\Projects\story-game-maker\site\node_modules\material-design-icons\sprites
+19 error code EPERM
+20 error errno -4048
+21 error syscall unlink
+22 error Error: EPERM: operation not permitted, unlink 'D:\Projects\story-game-maker\site\node_modules\material-design-icons\sprites'
+22 error     at Error (native)
+22 error  { [Error: EPERM: operation not permitted, unlink 'D:\Projects\story-game-maker\site\node_modules\material-design-icons\sprites']
+22 error   errno: -4048,
+22 error   code: 'EPERM',
+22 error   syscall: 'unlink',
+22 error   path: 'D:\\Projects\\story-game-maker\\site\\node_modules\\material-design-icons\\sprites' }
+23 error Please try running this command again as root/Administrator.
+24 verbose exit [ -4048, true ]

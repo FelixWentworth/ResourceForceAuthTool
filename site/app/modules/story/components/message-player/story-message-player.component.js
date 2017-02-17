@@ -17,13 +17,13 @@ angular
 				choice.selected = true;
 				ctrl.sceneElements.forEach(e => e.disabled = true);
 				ctrl.sceneElementsHistory = ctrl.sceneElementsHistory.concat(ctrl.sceneElements);
-				ctrl.sceneElements = choice.elements;
+				ctrl.sceneElements = choice.scene.elements;
 
-				ctrl.isComplete = Array.containsWhere(ctrl.sceneElements, e => e.type == "End");
+				ctrl.isComplete = Array.containsWhere(ctrl.sceneElements, e => e._type == "End");
 			};
 			
 			ctrl.$onInit = function() {
-				ctrl.sceneElements = ctrl.story.scene.elements;
+				ctrl.sceneElements = ctrl.story.content.scene.elements;
 				ctrl.isComplete = false;
 			}
 		}

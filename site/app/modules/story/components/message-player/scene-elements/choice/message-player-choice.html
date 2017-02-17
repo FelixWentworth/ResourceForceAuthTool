@@ -1,0 +1,6 @@
+<md-button class="md-raised"
+	ng-show="!$ctrl.choice.disabled || $ctrl.choice.selected""
+	ng-disabled="$ctrl.choice.disabled"
+	ng-click="$ctrl.apply($ctrl.choice)">
+	{{$ctrl.choice.action}}	
+</md-button>

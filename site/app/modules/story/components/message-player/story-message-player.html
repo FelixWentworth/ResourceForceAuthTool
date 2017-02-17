@@ -1,9 +1,6 @@
-<md-content layout-padding>
+<story-metadata metadata="$ctrl.story.metadata"/>
 
-	<story-metadata metadata="$ctrl.story.metadata"/>
+<message-player-scene-elements elements="$ctrl.sceneElementsHistory"/>
 
-	<message-player-scene-elements elements="$ctrl.sceneElementsHistory"/>
-
-	<message-player-scene-elements apply-choice="$ctrl.applyChoice" elements="$ctrl.sceneElements"/>
-
-</md-content>
+<message-player-scene-elements apply-choice="$ctrl.applyChoice" 
+									elements="$ctrl.sceneElements"/>
