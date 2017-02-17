@@ -1,8 +1,8 @@
-class Scene {
+class Subscene {
 	constructor() {
 		var self = this;
 
-		self.$type = "Scene";
+		self.$type = "Subscene";
 		self.elements = [];
 	}
 }
