@@ -2,7 +2,7 @@ class Narrator {
 	constructor () {
 		var self = this;
 
-		self.type = "Narrator";
+		self._type = "Narrator";
 		self.value = [];
 	}
 }

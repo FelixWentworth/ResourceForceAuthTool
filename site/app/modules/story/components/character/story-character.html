@@ -1,9 +1,9 @@
-<div>{{$ctrl.character.name}}</div>
 <span ng-repeat="element in $ctrl.character.elements"
-		ng-switch="element.type">
+		ng-switch="element._type">
 
 	<img ng-switch-when="Emotion"
 			ng-src="modules/story/images/emotions/{{element.value}}.png"/>
 
-	<span ng-switch-when="Speech">{{element.value}}</span>	
+	<span ng-switch-when="Speech">{{element.value}}</span>
 </span>
+<div>{{$ctrl.character.name}}</div>

@@ -2,7 +2,7 @@ class Scene {
 	constructor() {
 		var self = this;
 
-		self.type = "Scene";
+		self._type = "Scene";
 		self.elements = [];
 	}
 }

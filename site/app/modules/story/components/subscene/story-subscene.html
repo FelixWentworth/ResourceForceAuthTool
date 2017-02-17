@@ -1,8 +1,10 @@
 <span>
-	<span>
-		
+	<span class="story-interaction">	
+		<subscene-element-switch element="$ctrl.interaction"/>	
 	</span>
+	
 	<span class="story-responses">
-		<story-character ng-repeat="$ctrl.responses" character="character"></story-character>
+		<subscene-element-switch ng-repeat="response in $ctrl.responses" 
+							element="response"/>
 	</span>
 </span>

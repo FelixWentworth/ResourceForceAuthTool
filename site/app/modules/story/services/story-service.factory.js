@@ -43,7 +43,7 @@ angular
 		service.getById = function(id) {
 			return getStories()
 				.then(function(stories){
-					var story = stories.find(s => s.id == id);
+					var story = stories.find(s => s.metadata.id == id);
 
 					if(story != null) {
 						return story;

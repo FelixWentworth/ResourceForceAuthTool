@@ -2,7 +2,7 @@ class Speech {
 	constructor() {
 		var self = this;
 
-		self.type = "Speech";
+		self._type = "Speech";
 		self.value = "";
 	}
 }

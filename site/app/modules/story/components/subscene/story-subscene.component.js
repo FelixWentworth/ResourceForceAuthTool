@@ -14,13 +14,13 @@ angular
 
 			// public methods
 			ctrl.$onInit = function () {
-				ctrl.subscene.elements.forEach(e => {
-					switch(subsceneElement.type) {
+				ctrl.subscene.elements.forEach(subsceneElement => {
+					switch(subsceneElement._type) {
 						case "Narrator":
 							setInteraction(subsceneElement);
 							break;
 
-						case "Charracter":
+						case "Character":
 							if(subsceneElement.elements.length == 1 && subsceneElement.elements.length) {
 								addResponse(subsceneElement);
 							}
@@ -46,7 +46,7 @@ angular
 			};
 
 			var addResponse = function (subsceneElement) {
-				responses.push(subsceneElement);
+				ctrl.responses.push(subsceneElement);
 			};
 		}
 	});

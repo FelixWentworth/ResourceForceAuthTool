@@ -1,12 +1,12 @@
-<story-metadata metadata="$ctrl.story.metadata"></story-metadata>
+<story-metadata metadata="$ctrl.story.metadata"/>
 
-<story-character ng-repeat="$ctrl.story.characters" character="character"/>
+<story-character ng-repeat="character in $ctrl.story.content.characters" character="character"/>
 
 <ul>
 	<li>
-		Scene: {{$ctrl.story.scene.name}}
+		Scene: {{$ctrl.story.content.scene.name}}
 		<ul>
-			<scene-tree-elements elements=$ctrl.story.scene.elements>
+			<scene-tree-elements elements=$ctrl.story.content.scene.elements>
 		</ul>
 	</li>
 </ul>

@@ -2,7 +2,7 @@ class Character {
 	constructor() {
 		var self = this;
 
-		self.type = "Character";
+		self._type = "Character";
 		self.name = "";
 		self.elements = [];
 	}
