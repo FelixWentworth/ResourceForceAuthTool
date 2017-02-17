@@ -1,8 +1,8 @@
-class Speech {
+class Emotion {
 	constructor() {
 		var self = this;
 
-		self.$type = "Speech";
+		self.type = "Emotion";
 		self.value = "";
 	}
 }

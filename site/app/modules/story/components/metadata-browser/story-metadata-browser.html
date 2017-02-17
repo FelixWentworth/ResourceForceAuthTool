@@ -1,0 +1,8 @@
+<ul>
+	<li ng-repeat="metadata in $ctrl.storiesMetadata">
+		<story-metadata metadata="metadata"></story-metadata>
+		<button ui-sref="play-story({ storyId: metadata.id })">Play</button>
+		<button ui-sref="view-story({ storyId: metadata.id })">View</button>
+		<button ui-sref="edit-story({ storyId: metadata.id })">Edit</button>			
+	</li>
+</ul>

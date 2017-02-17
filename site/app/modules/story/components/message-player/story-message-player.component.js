@@ -19,7 +19,7 @@ angular
 				ctrl.sceneElementsHistory = ctrl.sceneElementsHistory.concat(ctrl.sceneElements);
 				ctrl.sceneElements = choice.elements;
 
-				ctrl.isComplete = Array.containsWhere(ctrl.sceneElements, e => e.$type == "End");
+				ctrl.isComplete = Array.containsWhere(ctrl.sceneElements, e => e.type == "End");
 			};
 			
 			ctrl.$onInit = function() {

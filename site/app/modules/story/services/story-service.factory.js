@@ -5,20 +5,25 @@ angular
 
 		// private variables
 		var storyPromise = $q.defer();
-		var isLoaded = false;
+		var storiesMetadataPromise = $q.defer();
+
 		var dbHandler = new DBHandler();
 
 		// private methods
 		function load() {
 			$http.get("data/demo/story-demo.json")
 				.then(function(story){
-					isLoaded = true;
-					storyPromise.resolve(story.data);					
+					storyPromise.resolve(story.data);		
 				});
 		};
 
+		function getStories() {
+			load();
+			return storyPromise.promise;
+		}
+
 		function updateMemoryCache(story) {
-			return service.getStories()
+			return getStories()
 				.then(function(stories){
 					var existingIndex = stories.findIndex(s => s.id == story.id);
 
@@ -36,7 +41,7 @@ angular
 
 		// public methods
 		service.getById = function(id) {
-			return service.getStories()
+			return getStories()
 				.then(function(stories){
 					var story = stories.find(s => s.id == id);
 
@@ -46,14 +51,22 @@ angular
 
 					throw "Couldn't find story for id: " + id;
 				});
-		};
+		};		
 
-		service.getStories = function() {
-			if(!isLoaded) {
-				load();
-			}
-			return storyPromise.promise;
-		}
+		service.getStoriesMetadata = function () {
+			getStories()
+				.then(function(stories) {
+					var metadatas = [];
+
+					stories.forEach(s => {
+						metadatas.push(s.metadata)
+					});
+
+					storiesMetadataPromise.resolve(metadatas);
+				});
+
+			return storiesMetadataPromise.promise;
+		};
 
 		service.save = function(story) {
 			return updateMemoryCache(story)

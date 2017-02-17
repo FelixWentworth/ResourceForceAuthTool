@@ -3,18 +3,16 @@
 </md-toolbar>
 
 <button ui-sref="create-story">Create New Story</button>
-<br/>
-<br/>
-OR
-<br/>
-<br/>
+
+<br>OR</br>
+
 Select a story to view or play
 <div ng-switch="$ctrl.loader.isLoading">
 	<div ng-switch-when="true">
 		Waiting for load
 	</div>
 
-	<ul ng-switch-when="false">		
-		<story-browser stories="$ctrl.loader.stories"></story-browser>		
+	<ul ng-switch-when="false">
+		<story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata"/>
 	</ul>
 </div>

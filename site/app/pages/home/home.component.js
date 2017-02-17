@@ -5,7 +5,7 @@ angular
 		controller: ["StoryService", function(StoryService) {
 			var ctrl = this;
 
-			ctrl.loader = new StoriesLoader(StoryService);
+			ctrl.loader = new StoriesMetadataLoader(StoryService);
 			ctrl.loader.load();
 		}]
 	});

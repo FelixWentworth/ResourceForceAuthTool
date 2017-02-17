@@ -5,7 +5,7 @@
 <ul>
 	<li ng-repeat="element in $ctrl.character.elements">
 		<button ng-click="$ctrl.removeElement(element)">-</button>
-		<span ng-switch="element.$type">
+		<span ng-switch="element.type">
 			<character-element-emotion-editor ng-switch-when="Emotion" emotion="element"/>
 			<character-element-speech-editor ng-switch-when="Speech" speech="element"/>
 		</span>

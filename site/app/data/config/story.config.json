@@ -1,5 +1,5 @@
 {
-	"$type": "StoryConfig",
+	"type": "StoryConfig",
 
 	"sceneMaxDepth":3,
 

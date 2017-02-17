@@ -3,8 +3,9 @@
 <head>
 	<title>Story Game Maker</title>
 
-	<!-- libs -->
+	<!-- LIBS -->
 	<script src="../node_modules/jquery/dist/jquery.js" type="text/javascript"></script>
+	<!-- angular -->
 	<script src="../node_modules/angular/angular.js" type="text/javascript" ></script>
 	<script src="../node_modules/angular-ui-router/release/angular-ui-router.js" type="text/javascript"></script>
     <script src="../node_modules/angular-animate/angular-animate.js" type="text/javascript" ></script>
@@ -26,39 +27,40 @@
 	<script src="modules/story/story.module.js" type="text/javascript"></script>
 	<!-- SCRIPTS -->
 	<!-- data access -->
-	<script src="modules/story/scripts/data-access/StoriesLoader.js" type="text/javascript"></script>
+	<script src="modules/story/scripts/data-access/StoriesMetadataLoader.js" type="text/javascript"></script>
 	<script src="modules/story/scripts/data-access/StoryFromIdLoader.js" type="text/javascript"></script>
 	<script src="modules/story/scripts/data-access/DBHandler.js" type="text/javascript"></script>	
 	<!-- model -->
 	<script src="modules/story/scripts/model/Story.js" type="text/javascript"></script>	
-	<script src="modules/story/scripts/model/Metadata.js" type="text/javascript"></script>	
-	<script src="modules/story/scripts/model/scene/Scene.js" type="text/javascript"></script>	
-	<script src="modules/story/scripts/model/scene/elements/subscene/Subscene.js" type="text/javascript"></script>	
-	<script src="modules/story/scripts/model/scene/elements/Choice.js" type="text/javascript"></script>	
-	<script src="modules/story/scripts/model/scene/elements/End.js" type="text/javascript"></script>	
-	<script src="modules/story/scripts/model/scene/elements/subscene/elements/Narrator.js" type="text/javascript"></script>	
-	<script src="modules/story/scripts/model/scene/elements/subscene/elements/character/Character.js" type="text/javascript"></script>	
-	<script src="modules/story/scripts/model/scene/elements/subscene/elements/character/elements/Emotion.js" type="text/javascript"></script>	
-	<script src="modules/story/scripts/model/scene/elements/subscene/elements/character/elements/Speech.js" type="text/javascript"></script>	
+	<script src="modules/story/scripts/model/Metadata.js" type="text/javascript"></script>		
+	<script src="modules/story/scripts/model/content/Content.js" type="text/javascript"></script>	
+	<script src="modules/story/scripts/model/content/scene/Scene.js" type="text/javascript"></script>
+	<script src="modules/story/scripts/model/content/scene/elements/Choice.js" type="text/javascript"></script>
+	<script src="modules/story/scripts/model/content/scene/elements/End.js" type="text/javascript"></script>
+	<script src="modules/story/scripts/model/content/scene/elements/subscene/Subscene.js" type="text/javascript"></script>
+	<script src="modules/story/scripts/model/content/scene/elements/subscene/elements/Narrator.js" type="text/javascript"></script>
+	<script src="modules/story/scripts/model/content/scene/elements/subscene/elements/character/Character.js" type="text/javascript"></script>
+	<script src="modules/story/scripts/model/content/scene/elements/subscene/elements/character/elements/Emotion.js" type="text/javascript"></script>
+	<script src="modules/story/scripts/model/content/scene/elements/subscene/elements/character/elements/Speech.js" type="text/javascript"></script>
 	<!-- SERVICES -->
 	<script src="modules/story/services/story-service.factory.js" type="text/javascript"></script>	
 	<!-- COMPONENTS -->
-	<!-- browser -->
-	<script src="modules/story/components/browser/story-browser.component.js" type="text/javascript"></script>	
-	<link href="modules/story/components/browser/story-browser.css" rel="stylesheet" type="text/css"></link>
+	<!-- story metadata browser -->
+	<script src="modules/story/components/metadata-browser/story-metadata-browser.component.js" type="text/javascript"></script>	
 	<!-- metadata -->
 	<script src="modules/story/components/metadata/story-metadata.component.js" type="text/javascript"></script>	
-	<script src="modules/story/components/metadata/outline/story-metadata-outline.component.js" type="text/javascript"></script>	
-	<!-- characters -->
-	<script src="modules/story/components/characters/story-characters.component.js" type="text/javascript"></script>	
 	<!-- tree view -->
 	<script src="modules/story/components/tree-view/story-tree-view.component.js" type="text/javascript"></script>
 	<script src="modules/story/components/tree-view/scene-elements/scene-tree-elements.component.js" type="text/javascript"></script>
 	<script src="modules/story/components/tree-view/choice/story-tree-choice.component.js" type="text/javascript"></script>
+	<!-- subscene -->
+	<script src="modules/story/components/subscene/story-subscene.component.js" type="text/javascript"></script>
+	<!-- narrator -->
+	<script src="modules/story/components/narrator/story-narrator.component.js" type="text/javascript"></script>
+	<!-- character -->
+	<script src="modules/story/components/character/story-character.component.js" type="text/javascript"></script>
 	<!-- scene elements -->
-	<script src="modules/story/components/scene-elements/narrator/scene-element-narrator.component.js" type="text/javascript"></script>
-	<script src="modules/story/components/scene-elements/character/scene-element-character.component.js" type="text/javascript"></script>
-	<link href="modules/story/components/scene-elements/character/scene-element-character.css" rel="stylesheet" type="text/css"></link>
+	<link href="modules/story/components/character/story-character.css" rel="stylesheet" type="text/css"></link>
 	<script src="modules/story/components/scene-elements/end/scene-element-end.component.js" type="text/javascript"></script>
 	<link href="modules/story/components/scene-elements/end/scene-element-end.css" rel="stylesheet" type="text/css"></link>
 	<!-- metadata editor -->
@@ -69,8 +71,6 @@
 	<link href="modules/story/components/tree-editor/story-tree-editor.css" rel="stylesheet" type="text/css"></link>
 	<script src="modules/story/components/tree-editor/scene-elements/scene-tree-elements-editor.component.js" type="text/javascript"></script>
 	<script src="modules/story/components/tree-editor/choice/story-tree-choice-editor.component.js" type="text/javascript"></script>
-	<!-- characters editor -->
-	<script src="modules/story/components/characters-editor/story-characters-editor.component.js" type="text/javascript"></script>
 	<!-- scene elements editors -->
 	<script src="modules/story/components/scene-elements-editors/narrator/scene-element-narrator-editor.component.js" type="text/javascript"></script>
 	<script src="modules/story/components/scene-elements-editors/character/scene-element-character-editor.component.js" type="text/javascript"></script>

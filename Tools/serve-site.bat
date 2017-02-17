@@ -1,1 +1,2 @@
-http-server ..\site
+pushd ..\site
+live-server --open=app

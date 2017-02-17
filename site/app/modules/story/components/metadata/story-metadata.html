@@ -1,11 +1,5 @@
 <div>Title: {{$ctrl.metadata.title}}</div>
 
-<story-metadata-outline metadata="$ctrl.metadata"/>
+{{$ctrl.generateOutline()}}
 
-<div>Author: {{$ctrl.metadata.author}}</div>
-
-<div>Category: {{$ctrl.metadata.category}}</div>
-
-<div>Skill: {{$ctrl.metadata.skill}}</div>
-
-<div>Location: {{$ctrl.metadata.location}}</div>
+<div>By: {{$ctrl.metadata.author}}</div>

@@ -1,471 +1,472 @@
 [
 	{
-		"$type": "Story",
-		"id": "9845235987322189c4b023",		
-		"metadata": {
-			"$type": "Metadata",
+		"type": "Story",		
+		"metadata": {			
+			"type": "Metadata",
+			"id": "9845235987322189c4b023",
 			"author": "Jen Bubbles",
 			"category": "Skill for leadership",
 			"skill": "Destroying your enemies",
 			"location": "Playground",
-			"title": "A dark and stormy playground.",
-			"outline": "Frank is getting to big for his boots. Sue is offended."
+			"title": "A dark and stormy playground."
 		},
-		"characters": [
-			{
-				"$type": "Character",
-				"name": "Frank"
-			},
-			{
-				"$type": "Character",
-				"name": "Sue"
-			}
-		],
-		"scene": {
-			"$type": "Scene",
-			"name": "1",
-			"elements": [
+		"content": {
+			"characters": [
 				{
-					"$type": "Subscene",						
-					"elements": [				
-						{
-							"$type": "Narrator",					
-							"value": "Sue and Frank have been mortal enemies for many years."
-						},		
-						{
-							"$type": "Character",
-							"name": "Frank",
-							"elements": [
-								{
-									"$type": "Emotion",
-									"value": "neutral"
-								}
-							]
-						},
-						{
-							"$type": "Character",
-							"name": "Sue",
-							"elements": [
-								{
-									"$type": "Emotion",
-									"value": "neutral"
-								}
-							]
-						}
-					]
+					"type": "Character",
+					"name": "Frank"
 				},
 				{
-					"$type": "Subscene",						
-					"elements": [
-						{
-							"$type": "Character",
-							"name": "Sue",
-							"elements": [
-								{
-									"$type": "Speech",
-									"value": "I don't like you Frank. You've always been mean to me."	
-								},
-								{
-									"$type": "Emotion",
-									"value": "neutral"
-								}
-							]
-						},		
-						{
-							"$type": "Character",
-							"name": "Frank",
-							"elements": [
-								{
-									"$type": "Emotion",
-									"value": "sad"
-								}
-							]
-						}
-					]
-				},
-				{
-					"$type": "Subscene",						
-					"elements": [
-						{
-							"$type": "Character",
-							"name": "Frank",
-							"elements": [
-								{
-									"$type": "Speech",
-									"value": "Well, you're always mean to me too!"	
-								},
-								{
-									"$type": "Emotion",
-									"value": "angry"
-								}
-							]
-						},
-						{
-							"$type": "Character",
-							"name": "Sue",
-							"elements": [
-								{
-									"$type": "Emotion",
-									"value": "angry"
-								}
-							]
-						}
-					]
-				},
-				{
-					"$type": "Choice",					
-					"action": "Sue decides to stop being mean to Frank first.",											
-					"scene": {
-						"$type": "Scene",
-						"name": "1.1",
-						"elements": [
+					"type": "Character",
+					"name": "Sue"
+				}
+			],
+			"scene": {
+				"type": "Scene",
+				"name": "1",
+				"elements": [
+					{
+						"type": "Subscene",						
+						"elements": [				
 							{
-								"$type": "Subscene",						
+								"type": "Narrator",					
+								"value": "Sue and Frank have been mortal enemies for many years."
+							},		
+							{
+								"type": "Character",
+								"name": "Frank",
 								"elements": [
 									{
-										"$type": "Character",
-										"name": "Frank",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "happy"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-										"name": "Sue",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "angry"
-											}
-										]
+										"type": "Emotion",
+										"value": "neutral"
 									}
 								]
 							},
 							{
-								"$type": "Subscene",						
+								"type": "Character",
+								"name": "Sue",
 								"elements": [
 									{
-										"$type": "Character",
-										"name": "Frank",
-										"elements": [
-											{
-												"$type": "Speech",
-												"value": "You've stopped being mean to me. This is better. Let's be friends!"	
-											},
-											{
-												"$type": "Emotion",
-												"value": "happy"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-										"name": "Sue",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "happy"
-											}
-										]
+										"type": "Emotion",
+										"value": "neutral"
 									}
 								]
-							},
-							{
-								"$type": "Subscene",						
-								"elements": [
-									{
-										"$type": "Character",
-										"name": "Sue",
-										"elements": [									
-											{
-												"$type": "Speech",
-												"value": "Yay! Why didn't we do this sooner?!"	
-											},
-											{
-												"$type": "Emotion",
-												"value": "glee"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-										"name": "Frank",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "glee"
-											}
-										]
-									}
-								]
-							},
-							{
-								"$type": "End"
-							}
-						]	
-					}
-				},
-				{
-					"$type": "Choice",
-					"scene": {
-						"$type": "Scene",
-						"name": "1.2",
-						"action": "Sue decides to kick Frank.",					
-						"elements": [		
-							{
-								"$type": "Subscene",						
-								"elements": [
-									{
-										"$type": "Character",
-										"name": "Frank",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "upset"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-										"name": "Sue",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "angry"
-											}
-										]
-									}				
-								]
-							},
-							{
-								"$type": "Subscene",						
-								"elements": [
-									{
-										"$type": "Character",
-										"name": "Frank",
-										"elements": [
-											{
-												"$type": "Speech",
-												"value": "Ouch!"	
-											},
-											{
-												"$type": "Emotion",
-												"value": "upset"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-										"name": "Sue",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "angry"
-											}
-										]
-									}
-								]
-							},
-							{
-								"$type": "Subscene",						
-								"elements": [
-									{
-										"$type": "Character",
-										"name": "Sue",
-										"elements": [
-											{
-												"$type": "Speech",
-												"value": "Well you started it!"	
-											},
-											{
-												"$type": "Emotion",
-												"value": "sad"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-										"name": "Frank",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "upset"
-											}
-										]
-									}				
-								]
-							},
-							{
-								"$type": "Subscene",						
-								"elements": [
-									{
-										"$type": "Narrator",
-										"value": "Frank and Sue got into a fight."	
-									},	
-									{
-										"$type": "Character",
-										"name": "Frank",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "angry"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-										"name": "Sue",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "angry"
-											}
-										]
-									}					
-								]
-							},
-							{
-								"$type": "Subscene",						
-								"elements": [
-									{
-										"$type": "Narrator",
-										"value": "Sue and Frank stayed enemies throughout high school, even though they could've become friends if they had just learnt to get along."
-									},	
-									{
-										"$type": "Character",
-										"name": "Frank",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "angry"
-											}
-										]
-									},
-									{
-										"$type": "Character",
-										"name": "Sue",
-										"elements": [
-											{
-												"$type": "Emotion",
-												"value": "angry"
-											}
-										]
-									}					
-								]
-							},
-							{
-								"$type": "Choice",
-								"scene": {
-									"$type": "Scene",
-									"name": "1.2.1",
-									"action": "Time travel and make Sue forgive Frank",
-									"elements": [
-										{
-											"$type": "Subscene",						
-											"elements": [
-												{
-													"$type": "Character",
-													"name": "Frank",
-													"elements": [
-														{
-															"$type": "Emotion",
-															"value": "happy"
-														}
-													]
-												},
-												{
-													"$type": "Character",
-													"name": "Sue",
-													"elements": [
-														{
-															"$type": "Emotion",
-															"value": "happy"
-														}
-													]
-												}					
-											]
-										},
-										{
-											"$type": "End"
-										}
-									]
-								}
-							},
-							{
-								"$type": "Choice",
-								"scene": {
-									"$type": "Scene",
-									"name": "1.2.2",
-									"action": "Time travel and make Sue destroy Frank",
-									"elements": [
-										{
-											"$type": "Subscene",						
-											"elements": [
-												{
-
-													"$type": "Character",
-													"name": "Frank",
-													"elements": [
-														{
-															"$type": "Emotion",
-															"value": "upset"
-														}
-													]
-												},
-												{
-													"$type": "Character",
-													"name": "Sue",
-													"elements": [
-														{
-															"$type": "Emotion",
-															"value": "upset"
-														}
-													]
-												}							
-											]
-										},
-										{
-											"$type": "Subscene",						
-											"elements": [
-												{
-													"$type": "Narrator",
-													"value": "Sue spends the rest of her life regretting her decision from a parallel dimension."
-												},																		
-												{
-													"$type": "Character",
-													"name": "Frank",
-													"elements": [
-														{
-															"$type": "Emotion",
-															"value": "upset"
-														}
-													]
-												},
-												{
-													"$type": "Character",
-													"name": "Sue",
-													"elements": [
-														{
-															"$type": "Emotion",
-															"value": "upset"
-														}
-													]
-												}					
-											]
-										},
-										{
-											"$type": "End"
-										}
-									]
-								}
 							}
 						]
+					},
+					{
+						"type": "Subscene",						
+						"elements": [
+							{
+								"type": "Character",
+								"name": "Sue",
+								"elements": [
+									{
+										"type": "Speech",
+										"value": "I don't like you Frank. You've always been mean to me."	
+									},
+									{
+										"type": "Emotion",
+										"value": "neutral"
+									}
+								]
+							},		
+							{
+								"type": "Character",
+								"name": "Frank",
+								"elements": [
+									{
+										"type": "Emotion",
+										"value": "sad"
+									}
+								]
+							}
+						]
+					},
+					{
+						"type": "Subscene",						
+						"elements": [
+							{
+								"type": "Character",
+								"name": "Frank",
+								"elements": [
+									{
+										"type": "Speech",
+										"value": "Well, you're always mean to me too!"	
+									},
+									{
+										"type": "Emotion",
+										"value": "angry"
+									}
+								]
+							},
+							{
+								"type": "Character",
+								"name": "Sue",
+								"elements": [
+									{
+										"type": "Emotion",
+										"value": "angry"
+									}
+								]
+							}
+						]
+					},
+					{
+						"type": "Choice",					
+						"action": "Sue decides to stop being mean to Frank first.",											
+						"scene": {
+							"type": "Scene",
+							"name": "1.1",
+							"elements": [
+								{
+									"type": "Subscene",						
+									"elements": [
+										{
+											"type": "Character",
+											"name": "Frank",
+											"elements": [
+												{
+													"type": "Emotion",
+													"value": "happy"
+												}
+											]
+										},
+										{
+											"type": "Character",
+											"name": "Sue",
+											"elements": [
+												{
+													"type": "Emotion",
+													"value": "angry"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "Subscene",						
+									"elements": [
+										{
+											"type": "Character",
+											"name": "Frank",
+											"elements": [
+												{
+													"type": "Speech",
+													"value": "You've stopped being mean to me. This is better. Let's be friends!"	
+												},
+												{
+													"type": "Emotion",
+													"value": "happy"
+												}
+											]
+										},
+										{
+											"type": "Character",
+											"name": "Sue",
+											"elements": [
+												{
+													"type": "Emotion",
+													"value": "happy"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "Subscene",						
+									"elements": [
+										{
+											"type": "Character",
+											"name": "Sue",
+											"elements": [									
+												{
+													"type": "Speech",
+													"value": "Yay! Why didn't we do this sooner?!"	
+												},
+												{
+													"type": "Emotion",
+													"value": "glee"
+												}
+											]
+										},
+										{
+											"type": "Character",
+											"name": "Frank",
+											"elements": [
+												{
+													"type": "Emotion",
+													"value": "glee"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "End"
+								}
+							]	
+						}
+					},
+					{
+						"type": "Choice",
+						"scene": {
+							"type": "Scene",
+							"name": "1.2",
+							"action": "Sue decides to kick Frank.",					
+							"elements": [		
+								{
+									"type": "Subscene",						
+									"elements": [
+										{
+											"type": "Character",
+											"name": "Frank",
+											"elements": [
+												{
+													"type": "Emotion",
+													"value": "upset"
+												}
+											]
+										},
+										{
+											"type": "Character",
+											"name": "Sue",
+											"elements": [
+												{
+													"type": "Emotion",
+													"value": "angry"
+												}
+											]
+										}				
+									]
+								},
+								{
+									"type": "Subscene",						
+									"elements": [
+										{
+											"type": "Character",
+											"name": "Frank",
+											"elements": [
+												{
+													"type": "Speech",
+													"value": "Ouch!"	
+												},
+												{
+													"type": "Emotion",
+													"value": "upset"
+												}
+											]
+										},
+										{
+											"type": "Character",
+											"name": "Sue",
+											"elements": [
+												{
+													"type": "Emotion",
+													"value": "angry"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "Subscene",						
+									"elements": [
+										{
+											"type": "Character",
+											"name": "Sue",
+											"elements": [
+												{
+													"type": "Speech",
+													"value": "Well you started it!"	
+												},
+												{
+													"type": "Emotion",
+													"value": "sad"
+												}
+											]
+										},
+										{
+											"type": "Character",
+											"name": "Frank",
+											"elements": [
+												{
+													"type": "Emotion",
+													"value": "upset"
+												}
+											]
+										}				
+									]
+								},
+								{
+									"type": "Subscene",						
+									"elements": [
+										{
+											"type": "Narrator",
+											"value": "Frank and Sue got into a fight."	
+										},	
+										{
+											"type": "Character",
+											"name": "Frank",
+											"elements": [
+												{
+													"type": "Emotion",
+													"value": "angry"
+												}
+											]
+										},
+										{
+											"type": "Character",
+											"name": "Sue",
+											"elements": [
+												{
+													"type": "Emotion",
+													"value": "angry"
+												}
+											]
+										}					
+									]
+								},
+								{
+									"type": "Subscene",						
+									"elements": [
+										{
+											"type": "Narrator",
+											"value": "Sue and Frank stayed enemies throughout high school, even though they could've become friends if they had just learnt to get along."
+										},	
+										{
+											"type": "Character",
+											"name": "Frank",
+											"elements": [
+												{
+													"type": "Emotion",
+													"value": "angry"
+												}
+											]
+										},
+										{
+											"type": "Character",
+											"name": "Sue",
+											"elements": [
+												{
+													"type": "Emotion",
+													"value": "angry"
+												}
+											]
+										}					
+									]
+								},
+								{
+									"type": "Choice",
+									"scene": {
+										"type": "Scene",
+										"name": "1.2.1",
+										"action": "Time travel and make Sue forgive Frank",
+										"elements": [
+											{
+												"type": "Subscene",						
+												"elements": [
+													{
+														"type": "Character",
+														"name": "Frank",
+														"elements": [
+															{
+																"type": "Emotion",
+																"value": "happy"
+															}
+														]
+													},
+													{
+														"type": "Character",
+														"name": "Sue",
+														"elements": [
+															{
+																"type": "Emotion",
+																"value": "happy"
+															}
+														]
+													}					
+												]
+											},
+											{
+												"type": "End"
+											}
+										]
+									}
+								},
+								{
+									"type": "Choice",
+									"scene": {
+										"type": "Scene",
+										"name": "1.2.2",
+										"action": "Time travel and make Sue destroy Frank",
+										"elements": [
+											{
+												"type": "Subscene",						
+												"elements": [
+													{
+
+														"type": "Character",
+														"name": "Frank",
+														"elements": [
+															{
+																"type": "Emotion",
+																"value": "upset"
+															}
+														]
+													},
+													{
+														"type": "Character",
+														"name": "Sue",
+														"elements": [
+															{
+																"type": "Emotion",
+																"value": "upset"
+															}
+														]
+													}							
+												]
+											},
+											{
+												"type": "Subscene",						
+												"elements": [
+													{
+														"type": "Narrator",
+														"value": "Sue spends the rest of her life regretting her decision from a parallel dimension."
+													},																		
+													{
+														"type": "Character",
+														"name": "Frank",
+														"elements": [
+															{
+																"type": "Emotion",
+																"value": "upset"
+															}
+														]
+													},
+													{
+														"type": "Character",
+														"name": "Sue",
+														"elements": [
+															{
+																"type": "Emotion",
+																"value": "upset"
+															}
+														]
+													}					
+												]
+											},
+											{
+												"type": "End"
+											}
+										]
+									}
+								}
+							]
+						}
 					}
-				}
-			]
+				]
+			}
 		}
 	}
 ]

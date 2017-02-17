@@ -2,10 +2,8 @@ class Story {
 	constructor(id) {
 		var self = this;
 
-		self.$type = "Story";
-		self.id = id;
+		self.type = "Story";
 		self.metadata = new Metadata();
-		self.characters = [];
-		self.scene = new Scene();
+		self.content = new Content();
 	}
 }
