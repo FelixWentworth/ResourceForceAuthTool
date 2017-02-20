@@ -1,2 +1,2 @@
 angular
-	.module("story", ["imagePicker", "validatedInput"]);
+	.module("story", ["imagePicker", "validatedInputs"]);

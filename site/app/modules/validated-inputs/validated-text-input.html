@@ -1,0 +1,29 @@
+<span ng-form="mdForm">
+	<md-input-container>
+		<label>{{$ctrl.label}}</label>
+
+		<!-- input -->
+		<input ng-if="$ctrl.type == 'field'" type="text" 
+				name="input" 
+				ng-model="$ctrl.ngModel"
+				placeholder="{{$ctrl.placeholder}}"
+				ng-minlength="$ctrl.minlength"
+		   		ng-maxlength="$ctrl.maxlength"
+		   		required="$ctrl.required"/>
+
+   		<!-- text area -->
+   		<textarea ng-if="$ctrl.type == 'area'"
+				name="input" 
+				ng-model="$ctrl.ngModel"
+				placeholder="{{$ctrl.placeholder}}"
+				ng-minlength="$ctrl.minlength"
+		   		ng-maxlength="$ctrl.maxlength"
+		   		required="$ctrl.required"/>
+
+		<div ng-messages="mdForm.input.$error">
+		    <div ng-message="required">You cannot leave this empty</div>
+		    <div ng-message="minlength">This is too short. Minimum length is {{$ctrl.minlength}} characters</div>
+		    <div ng-message="maxlength">This is too long. Maximum length is {{$ctrl.maxlength}} characters.</div>
+		</div>
+	</md-input-container>
+</span>

@@ -1,0 +1,18 @@
+<span ng-form="mdForm">
+	<md-input-container>
+		<label>{{$ctrl.label}}</label>
+
+		<md-select name="select"
+			ng-model="$ctrl.ngModel" 				
+			placeholder="{{$ctrl.placeholder}}"
+			required="$ctrl.required">
+
+			<md-option ng-value="option" ng-repeat="option in $ctrl.options">{{option}}</md-option>
+
+		</md-select>
+		
+		<div ng-messages="mdForm.select.$error">
+		    <div ng-message="required">You must select an option.</div>
+		</div>
+	</md-input-container>
+</span>
