@@ -12,7 +12,7 @@ angular
 			// get new data every time
 			storiesPromise = $q.defer();		
 			
-			$http.get("data/demo/story-demo.json")
+			$http.get('http://localhost:8728/api' + '/story')
 				.then(function(story){
 					storiesPromise.resolve(story.data);		
 				});
@@ -20,25 +20,22 @@ angular
 			return storiesPromise.promise;
 		}
 
-		function updateMemoryCache(story) {
-			return getStories()
-				.then(function(stories){
-					var existingIndex = stories.findIndex(s => s.id == story.id);
-
-					if(0 <= existingIndex && existingIndex < stories.length) {
-						stories.splice(existingIndex, 1);
-					}
-
-					stories.splice(0, 0, story);
+		function getStory(id) {
+			// get new data every time
+			storiesPromise = $q.defer();		
+			
+			$http.get('http://localhost:8728/api' + '/story/' + id)
+				.then(function(story){
+					storiesPromise.resolve(story.data);		
 				});
+
+			return storiesPromise.promise;
 		}
 
 		// public methods
 		service.getById = function(id) {
-			return getStories()
-				.then(function(stories){
-					var story = stories.find(s => s.metadata.id == id);
-
+			return getStory(id)
+				.then(function(story){
 					if(story != null) {
 						return story;
 					} 
@@ -56,7 +53,7 @@ angular
 					var metadatas = [];
 
 					stories.forEach(s => {
-						metadatas.push(s.metadata)
+						metadatas.push(s)
 					});
 
 					storiesMetadataPromise.resolve(metadatas);
@@ -66,7 +63,7 @@ angular
 		};
 
 		service.save = function(story) {
-			return updateMemoryCache(story);
+			return $http.post('http://localhost:8728/api' + '/story', ctrl.story);
 		};
 		
 		service.getNewStoryId = function() {
