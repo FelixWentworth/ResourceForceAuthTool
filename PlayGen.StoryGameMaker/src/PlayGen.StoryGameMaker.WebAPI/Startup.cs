@@ -51,6 +51,7 @@ namespace PlayGen.StoryGameMaker.WebAPI
             loggerFactory.AddDebug();
 
 			app.UseCors("AllowAll");
+			app.UseStaticFiles();
 			app.UseMvc();
 		}
     }
