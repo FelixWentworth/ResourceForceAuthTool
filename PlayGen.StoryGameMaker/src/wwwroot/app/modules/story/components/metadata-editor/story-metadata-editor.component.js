@@ -9,6 +9,12 @@ angular
 			var ctrl = this;
 
 			// todo make data driven
+			ctrl.outline = {
+				preCategory: "A story about",
+				postCategory: "and",
+				postSkill: "at",
+				postLocation: "."
+			};
 
 			ctrl.metadataHelp = {
 				"title": "placeholder metadata help.",

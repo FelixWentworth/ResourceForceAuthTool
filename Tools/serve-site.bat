@@ -1,2 +1,2 @@
-pushd ..\site
+pushd ..\PlayGen.StoryGameMaker\src\wwwroot
 live-server --open=app

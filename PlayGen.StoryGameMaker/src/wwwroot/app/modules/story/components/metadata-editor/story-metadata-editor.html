@@ -9,23 +9,29 @@
 </div>
 
 <span>		
+	{{$ctrl.outline.preCategory}}
+
 	<validated-select label="'Category'" 
 		ng-model="$ctrl.metadata.category" 
 		options="$ctrl.metadataOptions.category"
 		required="true"/>
+
+	{{$ctrl.outline.postCategory}}
 
 	<validated-select label="'Skill'" 
 		ng-model="$ctrl.metadata.skill" 
 		options="$ctrl.metadataOptions.skill"
 		required="true"/>
 
+	{{$ctrl.outline.postSkill}}
+
 	<validated-select label="'Location'" 
 		ng-model="$ctrl.metadata.location" 
 		options="$ctrl.metadataOptions.location"
 		required="true"/>
-</span>	
 
-<story-metadata-outline metadata="$ctrl.metadata"/>
+	{{$ctrl.outline.postLocation}}
+</span>	
 
 <div>
 	<validated-text-input type="'field'"
