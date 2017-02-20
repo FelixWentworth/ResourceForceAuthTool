@@ -1,5 +1,11 @@
- <div ng-form="metadataForm">
- 	<story-metadata-title-editor title="$ctrl.metadata.title"/>
+ <div ng-form="$ctrl.metadataForm"> 
+
+	<validated-input label="'Title'"
+				ng-model="$ctrl.metadata.title"
+				placeholder="'story title goes here'"
+				minlength="5"
+           		maxlength="20"
+           		required/>
 
  	<span>		
 		Category: 

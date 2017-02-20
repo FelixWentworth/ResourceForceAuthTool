@@ -1,0 +1,19 @@
+<span ng-form="mdForm">
+	<md-input-container>
+		<label>{{$ctrl.label}}</label>
+		<input type="text" 
+				name="input" 
+				ng-model="$ctrl.ngModel"
+				placeholder="{{$ctrl.placeholder}}"
+				ng-minlength="$ctrl.minlength"
+		   		ng-maxlength="$ctrl.maxlength"
+		   		required="$ctrl.required"/>
+
+		<!-- Example from https://docs.angularjs.org/api/ngMessages/directive/ngMessages but doesn't work-->
+		<div ng-messages="mdForm.input.$error">
+		    <div ng-message="required">You did not enter a field</div>
+		    <div ng-message="minlength">Your field is too short</div>
+		    <div ng-message="maxlength">Your field is too long</div>
+		</div>
+	</md-input-container>
+</span>
