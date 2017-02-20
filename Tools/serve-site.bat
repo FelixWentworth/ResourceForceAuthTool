@@ -1,2 +1,2 @@
-pushd ..\PlayGen.StoryGameMaker\src\wwwroot
+pushd ..\PlayGen.StoryGameMaker\src\PlayGen.StoryGameMaker.WebAPI\wwwroot
 live-server --open=app
