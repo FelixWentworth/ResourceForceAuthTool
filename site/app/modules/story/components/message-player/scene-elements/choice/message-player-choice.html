@@ -1,6 +1,8 @@
-<md-button class="md-raised"
-	ng-show="!$ctrl.choice.disabled || $ctrl.choice.selected""
-	ng-disabled="$ctrl.choice.disabled"
-	ng-click="$ctrl.apply($ctrl.choice)">
-	{{$ctrl.choice.action}}	
-</md-button>
+<span ng-show="$ctrl.choice.isEnabled">
+	<subscene-choice-action choice-action="$ctrl.choiceAction"
+							ng-click="$ctrl.apply($ctrl.choice)"/>
+</span>
+
+<story-subscene ng-show="$ctrl.choice.wasSelected"
+				subscene="$ctrl.choice.action"
+				on-element-clicked="$ctrl.apply"/>

@@ -1,5 +1,7 @@
 Choice: {{$ctrl.choice.scene.name}}
 <ul>
-	<li>Action: {{$ctrl.choice.action}}</li>
+	<li>
+		<story-subscene subscene="$ctrl.choice.action"/>
+	</li>
 	<tree-view-scene-elements elements="$ctrl.choice.scene.elements"/>
 </ul>

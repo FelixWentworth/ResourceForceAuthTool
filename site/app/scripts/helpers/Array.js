@@ -68,3 +68,23 @@ if(Array.containsWhere) {
 		}
 	};
 }
+
+if(Array.single) {
+	throw "Array.select is already defined somewhere else. This may lead to unexpected behaviour";
+} else {
+	Array.single = function (array, predicate) {
+		if(array.constructor !== Array) {
+			throw "Object reference does not have an array constructor.";
+		}
+
+	    var index = array.findIndex(predicate);
+
+		if(0 <= index && index < array.length) {
+			return array[index];
+		} else {
+			throw "Match not found in array. "
+				" \nArray: " + array +
+				" \nPredicate: " + predicate;
+		}
+	};
+}

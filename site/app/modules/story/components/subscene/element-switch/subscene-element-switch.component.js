@@ -3,6 +3,7 @@ angular
 	.component("subsceneElementSwitch", {		
 		templateUrl: "modules/story/components/subscene/element-switch/subscene-element-switch.html",
 		bindings: {
-			element: "<"
+			element: "<",
+			onElementClicked: "="
 		}
 	});

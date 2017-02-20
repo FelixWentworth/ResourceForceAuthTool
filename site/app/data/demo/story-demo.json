@@ -114,36 +114,39 @@
 					},
 					{
 						"_type": "Choice",					
-						"action": "Sue decides to stop being mean to Frank first.",											
-						"scene": {
-							"_type": "Scene",
-							"name": "1.1",
+						"action": {
+							"_type": "Subscene",						
 							"elements": [
 								{
-									"_type": "Subscene",						
+									"_type": "ChoiceAction",
+									"value": "Sue decides to stop being mean to Frank first."
+								},
+								{
+									"_type": "Character",
+									"name": "Frank",
 									"elements": [
 										{
-											"_type": "Character",
-											"name": "Frank",
-											"elements": [
-												{
-													"_type": "Emotion",
-													"value": "happy"
-												}
-											]
-										},
-										{
-											"_type": "Character",
-											"name": "Sue",
-											"elements": [
-												{
-													"_type": "Emotion",
-													"value": "angry"
-												}
-											]
+											"_type": "Emotion",
+											"value": "happy"
 										}
 									]
 								},
+								{
+									"_type": "Character",
+									"name": "Sue",
+									"elements": [
+										{
+											"_type": "Emotion",
+											"value": "angry"
+										}
+									]
+								}
+							]
+						},
+						"scene": {
+							"_type": "Scene",
+							"name": "1.1",
+							"elements": [								
 								{
 									"_type": "Subscene",						
 									"elements": [
@@ -210,36 +213,39 @@
 					},
 					{
 						"_type": "Choice",
-						"action": "Sue decides to kick Frank.",					
+						"action": {
+							"_type": "Subscene",						
+							"elements": [
+								{
+									"_type": "ChoiceAction",
+									"value": "Sue decides to kick Frank."
+								},
+								{
+									"_type": "Character",
+									"name": "Frank",
+									"elements": [
+										{
+											"_type": "Emotion",
+											"value": "upset"
+										}
+									]
+								},
+								{
+									"_type": "Character",
+									"name": "Sue",
+									"elements": [
+										{
+											"_type": "Emotion",
+											"value": "angry"
+										}
+									]
+								}				
+							]
+						},
 						"scene": {
 							"_type": "Scene",
 							"name": "1.2",							
-							"elements": [		
-								{
-									"_type": "Subscene",						
-									"elements": [
-										{
-											"_type": "Character",
-											"name": "Frank",
-											"elements": [
-												{
-													"_type": "Emotion",
-													"value": "upset"
-												}
-											]
-										},
-										{
-											"_type": "Character",
-											"name": "Sue",
-											"elements": [
-												{
-													"_type": "Emotion",
-													"value": "angry"
-												}
-											]
-										}				
-									]
-								},
+							"elements": [										
 								{
 									"_type": "Subscene",						
 									"elements": [
@@ -358,36 +364,39 @@
 								},
 								{
 									"_type": "Choice",
-									"action": "Time travel and make Sue forgive Frank",
+									"action": {
+										"_type": "Subscene",						
+										"elements": [
+											{
+												"_type": "ChoiceAction",
+												"value": "Time travel and make Sue forgive Frank"
+											},
+											{
+												"_type": "Character",
+												"name": "Frank",
+												"elements": [
+													{
+														"_type": "Emotion",
+														"value": "happy"
+													}
+												]
+											},
+											{
+												"_type": "Character",
+												"name": "Sue",
+												"elements": [
+													{
+														"_type": "Emotion",
+														"value": "happy"
+													}
+												]
+											}					
+										]
+									},
 									"scene": {
 										"_type": "Scene",
 										"name": "1.2.1",										
-										"elements": [
-											{
-												"_type": "Subscene",						
-												"elements": [
-													{
-														"_type": "Character",
-														"name": "Frank",
-														"elements": [
-															{
-																"_type": "Emotion",
-																"value": "happy"
-															}
-														]
-													},
-													{
-														"_type": "Character",
-														"name": "Sue",
-														"elements": [
-															{
-																"_type": "Emotion",
-																"value": "happy"
-															}
-														]
-													}					
-												]
-											},
+										"elements": [											
 											{
 												"_type": "End"
 											}
@@ -396,37 +405,40 @@
 								},
 								{
 									"_type": "Choice",
-									"action": "Time travel and make Sue destroy Frank",
+									"action": {
+										"_type": "Subscene",						
+										"elements": [
+											{
+												"_type": "ChoiceAction",
+												"value": "Time travel and make Sue destroy Frank"
+											},
+											{
+
+												"_type": "Character",
+												"name": "Frank",
+												"elements": [
+													{
+														"_type": "Emotion",
+														"value": "upset"
+													}
+												]
+											},
+											{
+												"_type": "Character",
+												"name": "Sue",
+												"elements": [
+													{
+														"_type": "Emotion",
+														"value": "upset"
+													}
+												]
+											}							
+										]
+									},
 									"scene": {
 										"_type": "Scene",
 										"name": "1.2.2",										
-										"elements": [
-											{
-												"_type": "Subscene",						
-												"elements": [
-													{
-
-														"_type": "Character",
-														"name": "Frank",
-														"elements": [
-															{
-																"_type": "Emotion",
-																"value": "upset"
-															}
-														]
-													},
-													{
-														"_type": "Character",
-														"name": "Sue",
-														"elements": [
-															{
-																"_type": "Emotion",
-																"value": "upset"
-															}
-														]
-													}							
-												]
-											},
+										"elements": [											
 											{
 												"_type": "Subscene",						
 												"elements": [

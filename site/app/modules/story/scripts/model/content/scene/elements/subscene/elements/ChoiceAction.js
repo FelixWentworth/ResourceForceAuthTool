@@ -1,8 +1,8 @@
-class Narrator {
+class ChoiceAction {
 	constructor () {
 		var self = this;
 
-		self._type = "Narrator";
+		self._type = "ChoiceAction";
 		self.value = "";
 	}
 }

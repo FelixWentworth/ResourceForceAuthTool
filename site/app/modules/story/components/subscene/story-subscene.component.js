@@ -3,7 +3,7 @@ angular
 	.component("storySubscene", {		
 		templateUrl: "modules/story/components/subscene/story-subscene.html",
 		bindings: {
-			subscene: "<"
+			subscene: "<",
 		},
 		controller: function() {
 			var ctrl = this;
@@ -17,6 +17,7 @@ angular
 				ctrl.subscene.elements.forEach(subsceneElement => {
 					switch(subsceneElement._type) {
 						case "Narrator":
+						case "ChoiceAction":
 							setInteraction(subsceneElement);
 							break;
 
