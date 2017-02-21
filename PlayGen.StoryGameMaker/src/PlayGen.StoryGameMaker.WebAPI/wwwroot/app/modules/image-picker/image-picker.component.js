@@ -1,5 +1,6 @@
 angular
-	.module("imagePicker")
+	angular
+	.module("imagePicker", [])
 	.component("imagePicker", {
 		templateUrl: "modules/image-picker/image-picker.html",
 		bindings: {

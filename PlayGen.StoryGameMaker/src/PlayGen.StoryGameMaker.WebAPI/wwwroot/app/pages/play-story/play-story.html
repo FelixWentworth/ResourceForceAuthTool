@@ -1,5 +1,11 @@
-<md-toolbar>
+<md-toolbar layout="row">
+	
 	<h2>Story Game Maker</h2>
+	
+	<md-button class="md-fab" aria-label="Close">
+		<md-icon ui-sref="home">highlight_off</md-icon>
+	</md-button>
+
 </md-toolbar>
 
 <div ng-switch="$ctrl.loader.isLoading">

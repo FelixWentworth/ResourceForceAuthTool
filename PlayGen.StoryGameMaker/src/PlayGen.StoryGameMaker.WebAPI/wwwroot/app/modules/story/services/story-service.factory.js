@@ -62,7 +62,7 @@ angular
 			return storiesMetadataPromise.promise;
 		};
 
-		service.save = function(story) {
+		service.save = function() {
 			return $http.post('api' + '/story', ctrl.story);
 		};
 		

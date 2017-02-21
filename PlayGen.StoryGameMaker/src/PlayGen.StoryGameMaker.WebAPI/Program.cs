@@ -9,7 +9,8 @@ namespace PlayGen.StoryGameMaker.WebAPI
         {
             var host = new WebHostBuilder()
                 .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
+				.UseWebRoot("wwwroot/app")
+				.UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
