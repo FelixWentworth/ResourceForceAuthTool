@@ -1,11 +1,11 @@
 <div ng-form="storyTreeForm" novalidate>
 	<story-metadata-editor metadata="$ctrl.story.metadata"/>
 
-	<!--  
+	<!-- add new characters, can't  set emotion for validity -->
+	<story-characters-editor characters="$ctrl.story.characters" 
+							create-mode="true"/>
 
-	<story-characters-editor characters="$ctrl.story.characters"/>
-
-	<ul>		
+	<!-- <ul>		
 		<li>
 			Scene: 
 			<input type="text" ng-model="$ctrl.story.scene.name"
@@ -16,7 +16,7 @@
 			</ul>				
 		</li>
 	</ul>
-	<input type="submit" ng-click="$ctrl.apply(storyTreeForm.$valid)" value="Save">
+	<input type="submit" ng-click="$ctrl.apply(storyTreeForm.$valid)" value="Save"> -->
 
-	-->
+	
 </div>

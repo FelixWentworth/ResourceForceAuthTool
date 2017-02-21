@@ -14,11 +14,23 @@
 			"characters": [
 				{
 					"_type": "Character",
-					"name": "Frank"
+					"name": "Frank",
+					"elements": [
+						{
+							"_type": "Emotion",
+							"value": "neutral"
+						}
+					]
 				},
 				{
 					"_type": "Character",
-					"name": "Sue"
+					"name": "Sue",
+					"elements": [
+						{
+							"_type": "Emotion",
+							"value": "neutral"
+						}
+					]
 				}
 			],
 			"scene": {
