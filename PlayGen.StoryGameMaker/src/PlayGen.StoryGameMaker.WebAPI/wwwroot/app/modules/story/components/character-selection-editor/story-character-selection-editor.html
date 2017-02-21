@@ -3,7 +3,8 @@
 		<md-button ng-repeat="character in $ctrl.selectableCharacters" 
 					aria-label="character.name"
 					ng-click="$ctrl.toggleSelected(character)"
-					ng-class="{'md-raised md-primary' : character.__selected}">	 
+					class="md-raised"
+					ng-class="{'md-primary' : character.__selected}">	 
 			<story-character character="character"/>				
 		</md-button>	
 	</flex>
