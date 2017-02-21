@@ -1,11 +1,11 @@
 <flex layout="row">
 	<span class="story-interaction">	
-		<subscene-element-switch element="$ctrl.elementSplitter.interaction"
+		<subscene-element-editor-switch element="$ctrl.elementSplitter.interaction"
 									on-element-clicked="$ctrl.onElementClicked"/>	
 	</span>
 	
 	<flex flex layout="row" class="story-responses">
-			<subscene-element-switch ng-repeat="response in $ctrl.elementSplitter.responses" 
+			<subscene-element-editor-switch ng-repeat="response in $ctrl.elementSplitter.responses" 
 							element="response"
 							on-element-clicked="$ctrl.onElementClicked"/>
 	</flex>

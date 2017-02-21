@@ -4,8 +4,6 @@ class Character {
 
 		self._type = "Character";
 		self.name = name;
-		self.elements = [
-			new Emotion("neutral")
-		];		
+		self.elements = [];
 	}
 }

@@ -20,7 +20,7 @@ angular
 					ctrl.selectedCharacters.push(character);					
 				}
 
-				checkValidity();
+				updateValidity();
 			};
 
 			ctrl.$onInit = function () {
@@ -33,11 +33,11 @@ angular
 			};
 
 			ctrl.$postLink = function () {
-				checkValidity();
+				updateValidity();
 			};
 
 			// private methods
-			function checkValidity() {
+			function updateValidity() {
 				ctrl.charactersForm.$setValidity("minimumCharacters", ctrl.selectedCharacters.length >= ctrl.minimumCharacters);
 			}
 		}

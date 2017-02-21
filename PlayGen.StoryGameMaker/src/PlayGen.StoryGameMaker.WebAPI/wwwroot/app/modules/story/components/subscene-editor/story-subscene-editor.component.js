@@ -8,6 +8,9 @@ angular
 		controller: function() {
 			var ctrl = this;
 
+			// todo validation rule that ensures all characters have their emotion set from undefined
+
+
 			// public fields
 			ctrl.elementSplitter = new SubsceneElementSplitter();
 			
