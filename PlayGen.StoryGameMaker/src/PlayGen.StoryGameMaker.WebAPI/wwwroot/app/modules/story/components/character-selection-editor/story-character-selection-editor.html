@@ -1,0 +1,15 @@
+<div ng-form="$ctrl.charactersForm">
+	<flex layout="row">
+		<md-button ng-repeat="character in $ctrl.selectableCharacters" 
+					aria-label="character.name"
+					ng-click="$ctrl.toggleSelected(character)"
+					ng-class="{'md-raised md-primary' : character.__selected}">	 
+			<story-character character="character"/>				
+		</md-button>	
+	</flex>
+	
+	<!-- todo make this display the same as the rest of the error messages -->
+	<div ng-messages="$ctrl.charactersForm.$error">
+		<div ng-message="minimumCharacters">You must select at least {{$ctrl.minimumCharacters}} characters.</div>
+	</div>
+</div>

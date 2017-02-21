@@ -1,9 +1,10 @@
 <div ng-form="storyTreeForm" novalidate>
 	<story-metadata-editor metadata="$ctrl.story.metadata"/>
 
-	<!-- add new characters, can't  set emotion for validity -->
-	<story-characters-editor characters="$ctrl.story.characters" 
-							create-mode="true"/>
+	Story Characters:
+	<story-character-selection-editor selected-characters="$ctrl.story.content.characters" 
+										selectable-characters="$ctrl.config.characters.all"
+										minimum-characters="$ctrl.config.characters.minimum"/>
 
 	<!-- <ul>		
 		<li>

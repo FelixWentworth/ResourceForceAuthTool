@@ -12,7 +12,7 @@ angular
 			ctrl.outline = {
 				preCategory: "A story about",
 				postCategory: "and",
-				postSkill: "at",
+				postSkill: "at the",
 				postLocation: "."
 			};
 

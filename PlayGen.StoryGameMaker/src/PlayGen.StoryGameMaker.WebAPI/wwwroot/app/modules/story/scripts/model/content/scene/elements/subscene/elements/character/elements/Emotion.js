@@ -1,8 +1,8 @@
 class Emotion {
-	constructor() {
+	constructor(value) {
 		var self = this;
 
 		self._type = "Emotion";
-		self.value = "";
+		self.value = value;
 	}
 }
