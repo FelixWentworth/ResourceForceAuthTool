@@ -1,20 +1,28 @@
 <li ng-repeat="element in $ctrl.elements">
-	<flex layout="row">
+	
+		<md-card ng-if="element._type != 'Choice'">
+    		<md-card-content layout="row">
+				<md-button ng-click="$ctrl.removeElement(element)"
+							class="md-raised">
+					-
+				</md-button>
 
-		<md-button ng-click="$ctrl.removeElement(element)"
-				class="md-raised">-</md-button>
+				<story-subscene-editor ng-if="element._type == 'Subscene'" subscene="element"></story-subscene-editor>		
+				<scene-element-end ng-if="element._type == 'End'"></scene-element-end>
+			</md-card-content>
+		</md-card>
 
-		<span ng-switch="element._type">
-			<story-subscene-editor ng-switch-when="Subscene" subscene="element"/>		
-			<scene-element-end ng-switch-when="End"/>
-			<story-tree-choice-editor ng-switch-when="Choice" choice="element"/>
-		</span>
-	</flex>
+		<story-tree-choice-editor ng-if="element._type == 'Choice'" choice="element"
+									on-clicked="$ctrl.removeElement"></story-tree-choice-editor>
 </li>
 
 <li ng-show="$ctrl.doesntContain(['End'])">
-	<md-button class="md-raised" ng-show="$ctrl.doesntContain(['Choice'])">+ Narrator</md-button>	
-	<md-button class="md-raised" ng-show="$ctrl.doesntContain(['Choice'])">+ Character</md-button>		
-	<md-button class="md-raised">+ Choice</md-button>	
-	<md-button class="md-raised" ng-show="$ctrl.doesntContain(['Choice'])">End</md-button>
+	<md-card ng-if="element._type != 'Choice'">
+		<md-card-content layout="row">
+			<md-button class="md-raised" ng-show="$ctrl.doesntContain(['Choice'])">+ Narrator</md-button>	
+			<md-button class="md-raised" ng-show="$ctrl.doesntContain(['Choice'])">+ Character</md-button>		
+			<md-button class="md-raised">+ Choice</md-button>	
+			<md-button class="md-raised" ng-show="$ctrl.doesntContain(['Choice'])">End</md-button>
+		</md-card-content>	
+	</md-card>
 </li>
