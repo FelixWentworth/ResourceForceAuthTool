@@ -9,17 +9,22 @@ angular
 			var ctrl = this;
 
 			// todo make data driven
+			ctrl.outline = {
+				preCategory: "A story about",
+				postCategory: "and",
+				postSkill: "at the",
+				postLocation: "."
+			};
 
 			ctrl.metadataHelp = {
-				"title": "placeholder metadata help.",
-				"outline": "placeholder outline help.",
-				"author": "placeholder author help",
+				"title": "give your story a title",
+				"author": "what's your name",
 			};
 
 			ctrl.metadataOptions = {
-				"category": ["placeholder 1", "placeholder 2", "placeholder 3"],
-				"skill": ["placeholder 1", "placeholder 2", "placeholder 3"],
-				"location": ["placeholder 1", "placeholder 2", "placeholder 3"],
+				"category": ["Skills for leadership", "Skills for friendship", "Skills for conflict resolution"],
+				"skill": ["Destroying your enemies", "Making new friends", "Introducing others"],
+				"location": ["Playground", "Classroom", "Office"],
 			};
 		}
 	});

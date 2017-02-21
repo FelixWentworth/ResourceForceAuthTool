@@ -1,12 +1,15 @@
 angular
 	.module("story")
-	.component("storySubscene", {		
-		templateUrl: "modules/story/components/subscene/story-subscene.html",
+	.component("storySubsceneEditor", {
+		templateUrl: "modules/story/components/subscene-editor/story-subscene-editor.html",
 		bindings: {
-			subscene: "<",
+			subscene: "="
 		},
 		controller: function() {
 			var ctrl = this;
+
+			// todo validation rule that ensures all characters have their emotion set from undefined
+
 
 			// public fields
 			ctrl.elementSplitter = new SubsceneElementSplitter();

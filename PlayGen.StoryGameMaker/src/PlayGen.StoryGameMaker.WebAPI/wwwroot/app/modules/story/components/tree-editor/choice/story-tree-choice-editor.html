@@ -1,7 +1,14 @@
-Choice:
-<input type="text" ng-model="$ctrl.choice.name"
-	ng-minlength="1"
-	ng-required="true">
+<validated-text-input type="'field'" 
+						label="'Choice'"
+						ng-model="$ctrl.choice.scene.name"
+						minlength="1"
+						maxlength="10"
+						required="true"/>
+
+<div>
+	<story-subscene-editor subscene="$ctrl.choice.action"/>
+</div>
+
 <ul>
-	<scene-tree-elements-editor elements="$ctrl.choice.elements"/>			
+	<scene-tree-elements-editor elements="$ctrl.choice.scene.elements"/>
 </ul>				

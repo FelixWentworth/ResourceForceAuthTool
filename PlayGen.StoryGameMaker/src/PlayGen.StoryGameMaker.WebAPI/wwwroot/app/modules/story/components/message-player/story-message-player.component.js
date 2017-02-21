@@ -14,7 +14,7 @@ angular
 
 			// public methods
 			ctrl.applyChoice = function(choice) {
-				choice.wasSelected = true;
+				choice.__wasSelected = true;
 			
 				setEnabled(ctrl.sceneElements, false);
 
@@ -36,7 +36,7 @@ angular
 			// private methods
 			function setEnabled(elements, isEnabled) {
 				elements.forEach(e => {
-					e.isEnabled = isEnabled;
+					e.__isEnabled = isEnabled;
 
 					if(e._type == "Subscene") {
 						setEnabled(e.elements, isEnabled);

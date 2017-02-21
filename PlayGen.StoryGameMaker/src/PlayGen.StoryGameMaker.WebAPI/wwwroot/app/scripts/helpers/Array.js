@@ -47,7 +47,7 @@ if(Array.contains) {
 	throw "Array.contains is already defined somewhere else. This may lead to unexpected behaviour";
 } else {
 	Array.contains = function (array, item) {
-		return Array.containsWhere(i => i == item);
+		return Array.containsWhere(array, i => i == item);
 	};
 }
 
@@ -86,5 +86,17 @@ if(Array.single) {
 				" \nArray: " + array +
 				" \nPredicate: " + predicate;
 		}
+	};
+}
+
+if(Array.insert) {
+	throw "Array.insert is already defined somewhere else. This may lead to unexpected behaviour";
+} else {
+	Array.insert = function (array, index, item) {
+		if(array.constructor !== Array) {
+			throw "Object reference does not have an array constructor.";
+		}
+
+		array.splice(index, 0, item);
 	};
 }

@@ -1,30 +1,44 @@
- <div ng-form="metadataForm">
- 	<story-metadata-title-editor title="$ctrl.metadata.title"/>
+<div>
+	<validated-text-input type="'field'"
+				label="'Title'"
+				ng-model="$ctrl.metadata.title"
+				placeholder="$ctrl.metadataHelp.title"
+				minlength="5"
+	       		maxlength="50"
+	       		required/>
+</div>
 
- 	<span>		
-		Category: 
-		<select ng-model="$ctrl.metadata.category" 
-			ng-options="category for category in $ctrl.metadataOptions.category"
-			ng-required="true"/>
+<span>		
+	{{$ctrl.outline.preCategory}}
 
-		Skill: 
-		<select ng-model="$ctrl.metadata.skill" 
-			ng-options="skill for skill in $ctrl.metadataOptions.skill"
-			ng-required="true"/>
+	<validated-select label="'Category'" 
+		ng-model="$ctrl.metadata.category" 
+		options="$ctrl.metadataOptions.category"
+		required="true"/>
 
-		Location: 
-		<select ng-model="$ctrl.metadata.location" 
-			ng-options="location for location in $ctrl.metadataOptions.location"
-			ng-required="true"/>
-	</span>	
+	{{$ctrl.outline.postCategory}}
 
-	<story-metadata-outline metadata="$ctrl.metadata"/>
+	<validated-select label="'Skill'" 
+		ng-model="$ctrl.metadata.skill" 
+		options="$ctrl.metadataOptions.skill"
+		required="true"/>
 
-	<div>
-		Author:
-		<input ng-model="$ctrl.metadata.author"
-			placeholder="{{$ctrl.metadataHelp.author}}" 
-			ng-minlength="3"
-			ng-required="true"/>
-	</div>	
+	{{$ctrl.outline.postSkill}}
+
+	<validated-select label="'Location'" 
+		ng-model="$ctrl.metadata.location" 
+		options="$ctrl.metadataOptions.location"
+		required="true"/>
+
+	{{$ctrl.outline.postLocation}}
+</span>	
+
+<div>
+	<validated-text-input type="'field'"
+		label="'Author'"
+		ng-model="$ctrl.metadata.author"
+		placeholder="$ctrl.metadataHelp.author"
+		minlength="3"
+		maxlength="50"
+		required/>
 </div>

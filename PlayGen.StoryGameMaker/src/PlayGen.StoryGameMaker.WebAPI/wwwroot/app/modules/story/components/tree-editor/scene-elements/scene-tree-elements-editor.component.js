@@ -15,7 +15,7 @@ angular
 			ctrl.doesntContain = function(types) {
 				var containsWhereType = false;
 				for(var i in types) {
-					if(Array.containsWhere(ctrl.elements, e => e.type == types[i])) {
+					if(Array.containsWhere(ctrl.elements, e => e._type == types[i])) {
 						containsWhereType = true;
 						break;
 					}

@@ -1,9 +1,9 @@
 class Character {
-	constructor() {
+	constructor(name) {
 		var self = this;
 
 		self._type = "Character";
-		self.name = "";
+		self.name = name;
 		self.elements = [];
 	}
 }

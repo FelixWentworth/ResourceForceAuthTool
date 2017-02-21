@@ -12,7 +12,7 @@ angular
 			// get new data every time
 			storiesPromise = $q.defer();		
 			
-			$http.get('api' + '/story')
+			$http.get('../api' + '/story')
 				.then(function(story){
 					storiesPromise.resolve(story.data);		
 				});
@@ -24,7 +24,7 @@ angular
 			// get new data every time
 			storiesPromise = $q.defer();		
 			
-			$http.get('api' + '/story/' + id)
+			$http.get('../api' + '/story/' + id)
 				.then(function(story){
 					storiesPromise.resolve(story.data);		
 				});
@@ -62,8 +62,8 @@ angular
 			return storiesMetadataPromise.promise;
 		};
 
-		service.save = function() {
-			return $http.post('api' + '/story', ctrl.story);
+		service.save = function (story) {
+			return $http.post('../api' + '/story', story);
 		};
 		
 		service.getNewStoryId = function() {

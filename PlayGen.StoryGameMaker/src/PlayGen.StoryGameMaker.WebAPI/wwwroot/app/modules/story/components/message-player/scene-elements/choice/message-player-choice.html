@@ -1,8 +1,8 @@
-<span ng-show="$ctrl.choice.isEnabled">
+<span ng-show="$ctrl.choice.__isEnabled">
 	<subscene-choice-action choice-action="$ctrl.choiceAction"
 							ng-click="$ctrl.apply($ctrl.choice)"/>
 </span>
 
-<story-subscene ng-show="$ctrl.choice.wasSelected"
+<story-subscene ng-show="$ctrl.choice.__wasSelected"
 				subscene="$ctrl.choice.action"
 				on-element-clicked="$ctrl.apply"/>
