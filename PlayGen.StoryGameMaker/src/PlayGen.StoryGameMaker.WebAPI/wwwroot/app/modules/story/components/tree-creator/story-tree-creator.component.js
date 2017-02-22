@@ -2,7 +2,7 @@ angular
 	.module("story")
 	.component("storyTreeCreator", {		
 		templateUrl: "modules/story/components/tree-creator/story-tree-creator.html",
-		controller: ["StoryStorageService", function (StoryStorageService) {
+		controller: ["StoryStorageService", "uuid", function (StoryStorageService, uuid) {
 			var ctrl = this;
 
 			ctrl.isLoading = true;
@@ -12,8 +12,7 @@ angular
 				var storyId = StoryStorageService.getNewStoryId();
 				ctrl.isLoading = false;
 
-
-
+				var storyId = uuid.v4();
 				ctrl.story = new Story(storyId);								
 			};
 		}]

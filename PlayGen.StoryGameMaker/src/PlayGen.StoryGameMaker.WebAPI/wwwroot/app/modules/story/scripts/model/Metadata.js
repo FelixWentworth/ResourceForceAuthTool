@@ -1,9 +1,9 @@
 class Metadata {
-	constructor() {
+	constructor(id) {
 		var self = this;
 
 		self._type = "Metadata";
-		self.id = "";
+		self.id = id;
 		self.author = "";
 		self.category = "";
 		self.skill = "";

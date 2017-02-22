@@ -1,2 +1,2 @@
 angular
-	.module("story", ["validatedInputs"]);
+	.module("story", ["validatedInputs", "angular-uuid"]);
