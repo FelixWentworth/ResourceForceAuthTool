@@ -31,12 +31,18 @@ angular
 				ctrl.scene.elements.push(narratorSubscene);
 			};
 
-			ctrl.addCharacter = function () {
 
-				// todo sleetc character name
-				var selectedCharacter = new Character("Sue");
+			ctrl.openAddCharacterMenu = function ($mdMenu, event) {
+				if(ctrl.characters.length == 0) {
+					alert("You need to have at least 2 characters in your story.");
+				}
+				else {
+					$mdMenu.open(event);
+				}
+			};
 
-				var characterSubscene = StoryEditorService.createCharacterSubscene(selectedCharacter);
+			ctrl.addCharacter = function (character) {
+				var characterSubscene = StoryEditorService.createCharacterSubscene(character);
 				ctrl.scene.elements.push(characterSubscene);
 			};
 
@@ -64,6 +70,8 @@ angular
 				} else {
 					ctrl.label = "Scene";
 				}
+
+				ctrl.characters = StoryEditorService.getCharacters();
 			}
 		}]
 	});

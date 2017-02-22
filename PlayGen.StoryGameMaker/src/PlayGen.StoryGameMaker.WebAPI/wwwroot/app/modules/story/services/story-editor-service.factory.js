@@ -8,6 +8,10 @@ angular
 			service.story = story;
 		};		
 
+		service.getCharacters = function() {
+			return service.story.content.characters;
+		};
+
 		service.createNarratorSubscene = function () {
 			var subscene = new Subscene();
 			subscene.elements.push(new Narrator());
@@ -23,7 +27,7 @@ angular
 			addSubsceneCharacters(subscene);
 
 			speechCharacter.elements.push(new Speech());
-			
+
 			return subscene;			
 		};
 
@@ -41,7 +45,7 @@ angular
 
 		// private methods
 		function addSubsceneCharacters(subscene) {
-			service.story.content.characters.forEach(c => {
+			service.getCharacters().forEach(c => {
 
 				var emotion = null;
 				var character = Array.singleOrNull(subscene.elements, element => element._type == "Character" && element.name == c.name);

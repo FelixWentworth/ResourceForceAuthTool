@@ -1,17 +1,14 @@
 class StoryFromIdLoader {
-	constructor(storyService) {
+	constructor(storyStorageService) {
 		var self = this;
 
 		// public variables
 		this.isLoading = true;
 		this.story = {};
-
-		// private variables
-		storyService = storyService;
 		
 		// public methods
 		this.load = function(storyId) {
-			storyService.getById(storyId).then(onStoryLoaded);
+			storyStorageService.getById(storyId).then(onStoryLoaded);
 		};
 
 		// private methods

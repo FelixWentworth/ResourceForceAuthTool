@@ -1,5 +1,5 @@
 class StoriesMetadataLoader {
-	constructor(storyService) {
+	constructor(storyStorageService) {
 		var self = this;
 
 		// public variables
@@ -8,7 +8,7 @@ class StoriesMetadataLoader {
 
 		// public methods
 		self.load = function() {
-			storyService.getStoriesMetadata()
+			storyStorageService.getStoriesMetadata()
 				.then(onStoriesMetadataLoaded);
 		};
 

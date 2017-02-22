@@ -5,10 +5,10 @@ angular
 		bindings: {
 			storyId: "<"
 		},
-		controller: ["StoryService", function(StoryService) {
+		controller: ["StoryStorageService", function(StoryStorageService) {
 			var ctrl = this;
 
-			ctrl.loader = new StoryFromIdLoader(StoryService);
+			ctrl.loader = new StoryFromIdLoader(StoryStorageService);
 
 			ctrl.$onInit = function() {
 				ctrl.loader.load(ctrl.storyId);

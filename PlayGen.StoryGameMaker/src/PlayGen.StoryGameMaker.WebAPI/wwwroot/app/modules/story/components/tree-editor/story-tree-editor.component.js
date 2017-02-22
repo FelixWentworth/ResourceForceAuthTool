@@ -5,7 +5,7 @@ angular
 		bindings: {
 			story: "<"
 		},
-		controller: ["StoryEditorService", "StoryService", function (StoryEditorService, StoryService) {
+		controller: ["StoryEditorService", "StoryStorageService", function (StoryEditorService, StoryStorageService) {
 			var ctrl = this;
 
 			// public fields
@@ -24,7 +24,7 @@ angular
 			// public methods
 			ctrl.apply = function(isValid) {
 				if(isValid) {
-					StoryService.save(ctrl.story);
+					StoryStorageService.save(ctrl.story);
 				} else {
 					alert("There seems to be an invalid part of your story." + 
 						" \nYou must find it and fix it in order to save." +

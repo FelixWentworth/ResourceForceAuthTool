@@ -63,11 +63,17 @@
 					+ Narrator
 				</md-button>	
 
-				<md-button ng-show="$ctrl.doesntContain(['Choice'])" 
-							ng-click="$ctrl.addCharacter()"
-							class="md-raised">
-					+ Character
-				</md-button>		
+				<md-menu ng-show="$ctrl.doesntContain(['Choice'])">
+					<md-button ng-click="$ctrl.openAddCharacterMenu($mdMenu, $event)"
+								class="md-raised">
+						+ Character
+					</md-button>	
+					<md-menu-content>
+						<md-menu-item ng-repeat="character in $ctrl.characters">
+							<md-button ng-click="$ctrl.addCharacter(character)">{{character.name}}</md-button>
+						</md-menu-item>
+					</md-menu-content>
+				</md-menu>
 				
 				<md-button ng-click="$ctrl.addChoice()"
 							class="md-raised">
