@@ -1,23 +1,41 @@
 <ul>
+
 	<li ng-repeat="metadata in $ctrl.storiesMetadata">
-		<story-metadata metadata="metadata"></story-metadata>
 
-		<md-button class="md-fab md-mini" 
-					aria-label="Play"
-					ui-sref="play-story({ storyId: metadata.id })">
-            <md-icon>play_arrow</md-icon>
-        </md-button>
-<i class="mdi mdi-bell"></i>
-        <md-button class="md-fab md-mini mdi mdi-bell" 
-        			aria-label="View"
-        			ui-sref="view-story({ storyId: metadata.id })">
-            <md-icon>visibility</md-icon>
-        </md-button>
+        <md-card>
 
-        <md-button class="md-fab md-mini" 
-        			aria-label="Edit"
-        			ui-sref="edit-story({ storyId: metadata.id })">
-            <md-icon>mode_edit</md-icon>
-        </md-button>
+            <md-card-content>
+
+        		<story-metadata metadata="metadata"></story-metadata>
+
+        		<md-button class="md-fab md-mini" 
+        					aria-label="Play"
+        					ui-sref="play-story({ storyId: metadata.id })">
+
+                    <md-icon>play_arrow</md-icon>
+
+                </md-button>
+        
+                <md-button class="md-fab md-mini mdi mdi-bell" 
+                			aria-label="View"
+                			ui-sref="view-story({ storyId: metadata.id })">
+
+                    <md-icon>visibility</md-icon>
+
+                </md-button>
+
+                <md-button class="md-fab md-mini" 
+                			aria-label="Edit"
+                			ui-sref="edit-story({ storyId: metadata.id })">
+
+                    <md-icon>mode_edit</md-icon>
+
+                </md-button>
+
+            </md-card-content>
+
+        </md-card>
+
 	</li>
+    
 </ul>

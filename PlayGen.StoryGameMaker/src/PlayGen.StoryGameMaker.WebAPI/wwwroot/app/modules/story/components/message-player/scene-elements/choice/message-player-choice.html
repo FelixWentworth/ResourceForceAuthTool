@@ -1,8 +1,18 @@
-<span ng-show="$ctrl.choice.__isEnabled">
-	<subscene-choice-action choice-action="$ctrl.choiceAction"
-							ng-click="$ctrl.apply($ctrl.choice)"/>
-</span>
+<md-card ng-show="$ctrl.choice.__isEnabled || $ctrl.choice.__wasSelected">
 
-<story-subscene ng-show="$ctrl.choice.__wasSelected"
-				subscene="$ctrl.choice.action"
-				on-element-clicked="$ctrl.apply"/>
+	<md-card-content>
+
+		<span ng-show="$ctrl.choice.__isEnabled">
+
+			<subscene-choice-action choice-action="$ctrl.choiceAction"
+									ng-click="$ctrl.apply($ctrl.choice)"></subscene-choice-action>
+
+		</span>
+
+		<story-subscene ng-show="$ctrl.choice.__wasSelected"
+						subscene="$ctrl.choice.action"
+						on-element-clicked="$ctrl.apply"></story-subscene>
+						
+	</md-card-content>
+
+</md-card>
