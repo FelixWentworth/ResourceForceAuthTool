@@ -1,15 +1,17 @@
-<span ng-repeat="element in $ctrl.character.elements"
-		ng-switch="element._type">
+<div layout="row">
+	<span ng-repeat="element in $ctrl.character.elements"
+			ng-switch="element._type">
 
-	<character-emotion-editor ng-switch-when="Emotion" emotion="element">		
-	</character-emotion-editor>
+		<character-emotion-editor ng-switch-when="Emotion" emotion="element">		
+		</character-emotion-editor>
 
-	<validated-text-input ng-switch-when="Speech"
-							type="'area'" 
-							ng-model="element.value"
-							required="true"
-							minlength="3"
-							maxlength="500"></validated-text-input>
+		<validated-text-input ng-switch-when="Speech"
+								type="'area'" 
+								ng-model="element.value"
+								required="true"
+								minlength="3"
+								maxlength="500"></validated-text-input>
 
-</span>
+	</span>
+</div>
 <div>{{$ctrl.character.name}}</div>

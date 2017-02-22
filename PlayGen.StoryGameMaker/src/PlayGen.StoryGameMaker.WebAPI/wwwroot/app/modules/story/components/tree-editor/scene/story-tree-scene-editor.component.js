@@ -33,6 +33,11 @@ angular
 
 			ctrl.addCharacter = function () {
 
+				// todo sleetc character name
+				var selectedCharacter = new Character("Sue");
+
+				var characterSubscene = StoryEditorService.createCharacterSubscene(selectedCharacter);
+				ctrl.scene.elements.push(characterSubscene);
 			};
 
 			ctrl.addChoice = function () {
