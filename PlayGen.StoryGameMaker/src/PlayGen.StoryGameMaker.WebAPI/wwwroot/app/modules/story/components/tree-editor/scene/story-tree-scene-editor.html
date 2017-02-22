@@ -15,13 +15,16 @@
 								ng-model="$ctrl.scene.name"
 								minlength="1"
 								maxlength="10"
-								required="true"></validated-text-input>
+								required="true">
+		</validated-text-input>	
 
-		<div ng-if="$ctrl.choice != null">
-			<story-subscene-editor subscene="$ctrl.choice.action"></story-subscene-editor>
-		</div>
-	</story-subscene-editor>
-	
+	</md-card-content>
+</md-card>	
+
+<md-card ng-if="$ctrl.choice != null">
+	<md-card-content>
+		<story-subscene-editor subscene="$ctrl.choice.action"></story-subscene-editor>
+	</md-card-content>
 </md-card>	
 
 <ul>

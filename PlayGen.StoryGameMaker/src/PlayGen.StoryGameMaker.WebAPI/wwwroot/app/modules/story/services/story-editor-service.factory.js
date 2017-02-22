@@ -34,7 +34,6 @@ angular
 		service.createChoice = function (name) {
 			var choice = new Choice();
 			choice.scene.name = name;
-			choice.action = new Subscene();
 			addSubsceneCharacters(choice.action);			
 			return choice;
 		};

@@ -1,12 +1,19 @@
-<story-metadata metadata="$ctrl.story.metadata"/>
+<md-card>
+	<md-card-content>
+		<story-metadata metadata="$ctrl.story.metadata"></story-metadata>
+	</md-card-content>
+</md-card>
 
-<story-character ng-repeat="character in $ctrl.story.content.characters" character="character"/>
+<md-card>
+	<md-card-content layout="row">
+		<story-character ng-repeat="character in $ctrl.story.content.characters" character="character"></story-character>
+	</md-card-content>
+</md-card>
+
+<md-card>
+	<md-card-title>Scene: {{$ctrl.story.content.scene.name}}</md-card-title>
+</md-card>
 
 <ul>
-	<li>
-		Scene: {{$ctrl.story.content.scene.name}}
-		<ul>
-			<tree-view-scene-elements elements=$ctrl.story.content.scene.elements>
-		</ul>
-	</li>
+	<tree-view-scene-elements elements=$ctrl.story.content.scene.elements>
 </ul>

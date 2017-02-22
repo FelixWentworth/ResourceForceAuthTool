@@ -3,7 +3,9 @@ class Choice {
 		var self = this;
 
 		self._type = "Choice";
-		self.action = "";		
+		self.action = new Subscene();		
 		self.scene = new Scene();
+
+		self.action.elements.push(new ChoiceAction());
 	}
 }

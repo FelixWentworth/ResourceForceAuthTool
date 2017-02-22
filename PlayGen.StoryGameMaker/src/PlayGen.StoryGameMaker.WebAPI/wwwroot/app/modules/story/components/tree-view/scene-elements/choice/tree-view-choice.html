@@ -1,7 +1,10 @@
-Choice: {{$ctrl.choice.scene.name}}
+<md-card>
+	<md-card-title>Choice: {{$ctrl.choice.scene.name}}</md-card-title>
+	<md-card-content>
+		<story-subscene subscene="$ctrl.choice.action"></story-subscene>
+	</md-card-content>
+</md-card>
+
 <ul>
-	<li>
-		<story-subscene subscene="$ctrl.choice.action"/>
-	</li>
-	<tree-view-scene-elements elements="$ctrl.choice.scene.elements"/>
+	<tree-view-scene-elements elements="$ctrl.choice.scene.elements"></tree-view-scene-elements>
 </ul>

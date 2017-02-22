@@ -15,13 +15,9 @@
 												minimum-characters="$ctrl.config.characters.minimum"></story-character-selection-editor>
 		</md-card-content>		
 	</md-card>
+				
+	<story-tree-scene-editor scene="$ctrl.story.content.scene"></story-tree-scene-editor>				
 	
-	<md-card>
-		<md-card-title>Story</md-card-title>	
-		
-		<story-tree-scene-editor scene="$ctrl.story.content.scene"></story-tree-scene-editor>				
-	</md-card>
-
 	<md-button class="md-raised" 
 				ng-click="$ctrl.save()"
 				ng-disabled="storyTreeForm.$valid !== true">
