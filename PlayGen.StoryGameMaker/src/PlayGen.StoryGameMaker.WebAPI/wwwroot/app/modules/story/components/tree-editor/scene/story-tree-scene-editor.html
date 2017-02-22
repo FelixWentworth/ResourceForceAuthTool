@@ -50,7 +50,7 @@
 					<md-button ng-click="$ctrl.removeElement(element)"
 								class="md-raised">-</md-button>
 
-					<story-subscene-editor ng-if="element._type == 'Subscene'" subscene="element"></story-subscene-editor>		
+					<story-subscene-editor flex ng-if="element._type == 'Subscene'" subscene="element"></story-subscene-editor>		
 
 					<scene-element-end ng-if="element._type == 'End'"></scene-element-end>
 
