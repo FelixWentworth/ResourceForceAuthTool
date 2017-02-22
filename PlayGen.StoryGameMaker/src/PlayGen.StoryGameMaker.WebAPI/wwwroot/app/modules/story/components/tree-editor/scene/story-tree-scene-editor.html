@@ -1,100 +1,112 @@
-<!-- scene/choice name -->
-<md-card>
-	<md-card-content layout="row">
+<div ng-form="$ctrl.form">
 	
-			<md-button ng-if="$ctrl.choice != null"
-						class="md-raised" aria-label="remove choice"
-						ng-click="$ctrl.onClicked($ctrl.choice)">
-				-
-			</md-button>
-		</div>
+	<!-- scene/choice name -->
+	<md-card>
 		
-		<validated-text-input type="'field'" 
-								label="$ctrl.label"
-								placeholder="'add a short title to identify this choice'"
-								ng-model="$ctrl.scene.name"
-								minlength="1"
-								maxlength="10"
-								required="true">
-		</validated-text-input>	
+		<md-card-content>
 
-	</md-card-content>
-</md-card>	
-
-<md-card ng-if="$ctrl.choice != null">
-	<md-card-content>
-		<story-subscene-editor subscene="$ctrl.choice.action"></story-subscene-editor>
-	</md-card-content>
-</md-card>	
-
-<ul>
-	<!-- scene/choice elements -->
-	<li ng-repeat="element in $ctrl.scene.elements">
+			<div layout="row">
 		
-		<md-card ng-if="element._type != 'Choice'">
-
-    		<md-card-content layout="row">
-
-				<md-button ng-click="$ctrl.removeElement(element)"
-							class="md-raised">
-					-
-				</md-button>
-
-				<story-subscene-editor ng-if="element._type == 'Subscene'" subscene="element">					
-				</story-subscene-editor>		
-
-				<scene-element-end ng-if="element._type == 'End'">					
-				</scene-element-end>
-
-			</md-card-content>
-
-		</md-card>
-
-		<story-tree-scene-editor ng-if="element._type == 'Choice'" 
-									scene="element"
-									on-clicked="$ctrl.removeElement">
-		</story-tree-scene-editor>
-	</li>
-
-	<!-- add scene element buttons -->
-	<li ng-show="$ctrl.doesntContain(['End'])">
-
-		<md-card ng-if="element._type != 'Choice'">
-
-			<md-card-content layout="row">
-
-				<md-button ng-show="$ctrl.doesntContain(['Choice'])" 
-							ng-click="$ctrl.addNarrator()"
-							class="md-raised" >
-					+ Narrator
-				</md-button>	
-
-				<md-menu ng-show="$ctrl.doesntContain(['Choice'])">
-					<md-button ng-click="$ctrl.openAddCharacterMenu($mdMenu, $event)"
-								class="md-raised">
-						+ Character
-					</md-button>	
-					<md-menu-content>
-						<md-menu-item ng-repeat="character in $ctrl.characters">
-							<md-button ng-click="$ctrl.addCharacter(character)">{{character.name}}</md-button>
-						</md-menu-item>
-					</md-menu-content>
-				</md-menu>
+				<md-button ng-if="$ctrl.choice != null"
+							class="md-raised" aria-label="remove choice"
+							ng-click="$ctrl.onClicked($ctrl.choice)">-</md-button>
 				
-				<md-button ng-click="$ctrl.addChoice()"
-							class="md-raised">
-					+ Choice
-				</md-button>	
-				
-				<md-button ng-show="$ctrl.doesntContain(['Choice'])"
-							ng-click="$ctrl.addEnd()"
-							class="md-raised">
-					End
-				</md-button>
+				<validated-text-input type="'field'" 
+										label="$ctrl.label"
+										placeholder="'add a short title to identify this choice'"
+										ng-model="$ctrl.scene.name"
+										minlength="1"
+										maxlength="10"
+										required="true"></validated-text-input>	
+
+			</div>
+		
+			<!-- todo make this display the same as the rest of the error messages -->
+			<div ng-show="!$ctrl.form.$valid">One or more of the elements in this scene are incomplete.</div>
+
+		</md-card-content>
+	
+	</md-card>	
+
+	<!-- choice action -->
+	<md-card ng-if="$ctrl.choice != null">
+
+		<md-card-content>		
+
+			<story-subscene-editor subscene="$ctrl.choice.action"></story-subscene-editor>
+		
+		</md-card-content>
+
+	</md-card>	
+
+	<ul>
+		<!-- scene/choice elements -->
+		<li ng-repeat="element in $ctrl.scene.elements">
 			
-			</md-card-content>	
+			<md-card ng-if="element._type != 'Choice'">
 
-		</md-card>
+	    		<md-card-content layout="row">
 
-	</li>
-</ul>
+					<md-button ng-click="$ctrl.removeElement(element)"
+								class="md-raised">-</md-button>
+
+					<story-subscene-editor ng-if="element._type == 'Subscene'" subscene="element"></story-subscene-editor>		
+
+					<scene-element-end ng-if="element._type == 'End'"></scene-element-end>
+
+				</md-card-content>
+
+			</md-card>
+
+			<story-tree-scene-editor ng-if="element._type == 'Choice'" 
+										scene="element"
+										on-clicked="$ctrl.removeElement">
+			</story-tree-scene-editor>
+		</li>		
+
+		<!-- add scene element buttons -->
+		<li ng-show="$ctrl.doesntContain(['End'])">
+
+			<md-card ng-if="element._type != 'Choice'">
+
+				<md-card-content layout="row">
+
+					<md-button ng-show="$ctrl.doesntContain(['Choice'])" 
+								ng-click="$ctrl.addNarrator()"
+								class="md-raised">+ Narrator</md-button>	
+
+					<md-menu ng-show="$ctrl.doesntContain(['Choice'])">
+
+						<md-button ng-click="$ctrl.openAddCharacterMenu($mdMenu, $event)"
+									class="md-raised">+ Character</md-button>	
+					
+						<md-menu-content>
+					
+							<md-menu-item ng-repeat="character in $ctrl.characters">
+					
+								<md-button ng-click="$ctrl.addCharacter(character)">{{character.name}}</md-button>
+					
+							</md-menu-item>
+					
+						</md-menu-content>
+					
+					</md-menu>
+					
+					<md-button ng-click="$ctrl.addChoice()"
+								class="md-raised">+ Choice</md-button>	
+					
+					<md-button ng-show="$ctrl.doesntContain(['Choice'])"
+								ng-click="$ctrl.addEnd()"
+								class="md-raised">End</md-button>
+				
+				</md-card-content>	
+
+				<!-- todo make this display the same as the rest of the error messages -->
+				<div ng-show="!$ctrl.isThisSceneLevelComplete">This scene is incomplete. Add an "End" or "Choice" when you wish to complete it.</div>
+			</md-card>
+
+		</li>
+
+	</ul>
+
+</div>

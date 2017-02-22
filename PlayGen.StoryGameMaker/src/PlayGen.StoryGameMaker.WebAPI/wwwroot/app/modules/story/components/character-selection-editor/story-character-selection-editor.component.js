@@ -38,7 +38,7 @@ angular
 
 			// private methods
 			function updateValidity() {
-				ctrl.charactersForm.$setValidity("minimumCharacters", ctrl.selectedCharacters.length >= ctrl.minimumCharacters);
+				ctrl.form.$setValidity("minimumCharacters", ctrl.selectedCharacters.length >= ctrl.minimumCharacters);
 			}
 		}
 	});

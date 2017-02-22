@@ -9,9 +9,13 @@ angular
 		controller: ["StoryEditorService", function(StoryEditorService) {
 			var ctrl = this;
 
+			// public variables
+			ctrl.isThisSceneLevelComplete = false;
+
 			// public methods
 			ctrl.removeElement = function(element) {
 				Array.remove(ctrl.scene.elements, element);
+				checkValidity();
 			};
 
 			ctrl.doesntContain = function(types) {
@@ -29,6 +33,9 @@ angular
 			ctrl.addNarrator = function () {	
 				var narratorSubscene = StoryEditorService.createNarratorSubscene();
 				ctrl.scene.elements.push(narratorSubscene);
+
+				// todo remove
+				checkValidity();
 			};
 
 
@@ -54,11 +61,15 @@ angular
 
 				var choice = StoryEditorService.createChoice(choiceName);
 				ctrl.scene.elements.push(choice);
+
+				checkValidity();
 			};
 
 			ctrl.addEnd = function () {
 				var end = StoryEditorService.createEnd();
 				ctrl.scene.elements.push(end);
+
+				checkValidity();
 			};
 
 			ctrl.$onInit = function () {
@@ -72,6 +83,16 @@ angular
 				}
 
 				ctrl.characters = StoryEditorService.getCharacters();
+			};
+
+			ctrl.$postLink = function () {
+				checkValidity();
+			};
+
+			// private methods
+			function checkValidity() {				
+				ctrl.isThisSceneLevelComplete = Array.containsWhere(ctrl.scene.elements, e => e._type == "End" || e._type == "Choice" );
+				ctrl.form.$setValidity("incomplete", ctrl.isThisSceneLevelComplete);
 			}
 		}]
 	});
