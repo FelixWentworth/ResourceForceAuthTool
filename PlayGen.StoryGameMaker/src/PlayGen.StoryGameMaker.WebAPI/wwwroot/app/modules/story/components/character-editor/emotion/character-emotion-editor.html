@@ -1,0 +1,33 @@
+<md-button aria-label="select emotion"
+	ng-click="$ctrl.showMenu()"
+	ng-disabled="$ctrl.isMenuVisible">
+	
+	<character-emotion-value value="$ctrl.emotion.value"></character-emotion-value>
+	
+	<md-icon>arrow_drop_down</md-icon>
+
+</md-button>
+
+<div ng-form="$ctrl.form">
+	<div ng-show="$ctrl.isMenuVisible" 		
+			layout="column"
+			class="styled-select">
+	 	
+	 	<md-button ng-repeat="emotionValue in $ctrl.config.emotionValues"
+					ng-click="$ctrl.select(emotionValue)"
+					aria-label="emotionValue">
+
+			<character-emotion-value value="emotionValue">			
+			</character-emotion-value>
+
+		</md-button>	
+
+	</div>
+
+	<!-- todo this should match the rest of the angular form styling -->
+	<div ng-messages="$ctrl.form.$error">
+
+	    <div ng-message="emotion">You must select an emotion.</div>
+	
+	</div>
+</div>

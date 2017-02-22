@@ -1,4 +1,4 @@
-<span ng-form="mdForm">
+<span ng-form="$ctrl.form">
 	<md-input-container>
 		<label>{{$ctrl.label}}</label>
 
@@ -20,7 +20,7 @@
 		   		ng-maxlength="$ctrl.maxlength"
 		   		required="$ctrl.required"/>
 
-		<div ng-messages="mdForm.input.$error">
+		<div ng-messages="$ctrl.form.input.$error">
 		    <div ng-message="required">You cannot leave this empty</div>
 		    <div ng-message="minlength">This is too short. Minimum length is {{$ctrl.minlength}} characters</div>
 		    <div ng-message="maxlength">This is too long. Maximum length is {{$ctrl.maxlength}} characters.</div>

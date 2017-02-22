@@ -1,3 +1,5 @@
+// todo rename this to story-storage
+
 angular
 	.module("story")
 	.factory("StoryService", ["$http", "$q", function($http, $q) {

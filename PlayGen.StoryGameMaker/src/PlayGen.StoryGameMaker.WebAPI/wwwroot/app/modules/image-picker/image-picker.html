@@ -1,9 +1,0 @@
-<img ng-show="!$ctrl.selectMode"
-	ng-src="{{$ctrl.selectedPath}}"
-	ng-click="$ctrl.enterSelectMode()"/>
-
-<span ng-show="$ctrl.selectMode" 
-	ng-repeat="(id, path) in $ctrl.imageIdPaths">
-	<img ng-src="{{path}}"
-			ng-click="$ctrl.exitSelectMode(id)"/>
-</span>

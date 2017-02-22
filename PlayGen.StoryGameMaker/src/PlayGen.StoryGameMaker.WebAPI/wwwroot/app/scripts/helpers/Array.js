@@ -89,6 +89,20 @@ if(Array.single) {
 	};
 }
 
+if(Array.singleOrNull) {
+	throw "Array.singleOrNull is already defined somewhere else. This may lead to unexpected behaviour";
+} else {
+	Array.singleOrNull = function (array, predicate) {
+		 var index = array.findIndex(predicate);
+
+		if(0 <= index && index < array.length) {
+			return array[index];
+		} else {
+			return null;
+		}
+	};
+}
+
 if(Array.insert) {
 	throw "Array.insert is already defined somewhere else. This may lead to unexpected behaviour";
 } else {

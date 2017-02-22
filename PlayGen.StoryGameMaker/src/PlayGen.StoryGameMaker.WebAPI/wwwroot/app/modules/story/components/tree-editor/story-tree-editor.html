@@ -1,26 +1,27 @@
 <div ng-form="storyTreeForm" novalidate>
-	<story-metadata-editor metadata="$ctrl.story.metadata"/>
+	<md-card>
+		<md-card-title>Summary</md-card-title>
+		<md-card-content>
+			<story-metadata-editor metadata="$ctrl.story.metadata"></story-metadata-editor>
+		</md-card-content>
+	</md-card>
 
-	Story Characters:
-	<story-character-selection-editor selected-characters="$ctrl.story.content.characters" 
-										selectable-characters="$ctrl.config.characters.all"
-										minimum-characters="$ctrl.config.characters.minimum"/>
+	<md-card>
+		<md-card-title>Story Characters</md-card-title>
+		
+		<md-card-content>
+			<story-character-selection-editor selected-characters="$ctrl.story.content.characters" 
+												selectable-characters="$ctrl.config.characters.all"
+												minimum-characters="$ctrl.config.characters.minimum"></story-character-selection-editor>
+		</md-card-content>		
+	</md-card>
+	
+	<md-card>
+		<md-card-title>Story</md-card-title>	
+		
+		<story-tree-scene-editor scene="$ctrl.story.content.scene"></story-tree-scene-editor>				
+	</md-card>
 
-	<ul>		
-		<li>
-			<validated-text-input 
-				label="'Scene'"
-				type="'field'" 
-				ng-model="$ctrl.story.content.scene.name"
-				minlength="1"
-				maxlength="10"
-				required="true"/>
-			<ul>
-				<scene-tree-elements-editor elements="$ctrl.story.content.scene.elements"/>
-			</ul>				
-		</li>
-	</ul>
 	<md-button class="md-raised" ng-click="$ctrl.apply(storyTreeForm.$valid)">Save Story</md-button>
-
 	
 </div>

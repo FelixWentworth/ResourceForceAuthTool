@@ -23,7 +23,6 @@
 	<script src="app.route.js" type="text/javascript"></script>
 
 	<!-- MODULES -->
-	<script src="modules/image-picker/image-picker.component.js" type="text/javascript"></script>
 	<!-- validated inputs -->
 	<script src="modules/validated-inputs/validated-inputs.module.js" type="text/javascript"></script>
 	<script src="modules/validated-inputs/validated-text-input.component.js" type="text/javascript"></script>
@@ -53,6 +52,7 @@
 	<script src="modules/story/scripts/view/SubsceneElementSplitter.js" type="text/javascript"></script>	
 	<!-- SERVICES -->
 	<script src="modules/story/services/story-service.factory.js" type="text/javascript"></script>	
+	<script src="modules/story/services/story-editor-service.factory.js" type="text/javascript"></script>	
 	<!-- COMPONENTS -->
 	<!-- story metadata browser -->
 	<script src="modules/story/components/metadata-browser/story-metadata-browser.component.js" type="text/javascript"></script>	
@@ -73,21 +73,23 @@
 	<script src="modules/story/components/subscene-editor/narrator/subscene-narrator-editor.component.js" type="text/javascript"></script>
 	<!-- character -->
 	<script src="modules/story/components/character/story-character.component.js" type="text/javascript"></script>
+	<link href="modules/story/components/character/story-character.css" rel="stylesheet" type="text/css"></link>
+	<script src="modules/story/components/character/emotion/character-emotion-value.component.js" type="text/javascript"></script>
+	<!-- character editor -->
+	<script src="modules/story/components/character-editor/story-character-editor.component.js" type="text/javascript"></script>
+	<link href="modules/story/components/character-editor/story-character-editor.css" rel="stylesheet" type="text/css"></link>
+	<script src="modules/story/components/character-editor/emotion/character-emotion-editor.component.js" type="text/javascript"></script>
+	<link href="modules/story/components/character-editor/emotion/character-emotion-editor.css" rel="stylesheet" type="text/css"></link>
 	<!-- character selection editor -->
 	<script src="modules/story/components/character-selection-editor/story-character-selection-editor.component.js" type="text/javascript"></script>
 	<!-- scene elements -->
-	<link href="modules/story/components/character/story-character.css" rel="stylesheet" type="text/css"></link>
 	<script src="modules/story/components/scene-elements/end/scene-element-end.component.js" type="text/javascript"></script>
 	<link href="modules/story/components/scene-elements/end/scene-element-end.css" rel="stylesheet" type="text/css"></link>
 	<!-- metadata editor -->
 	<script src="modules/story/components/metadata-editor/story-metadata-editor.component.js" type="text/javascript"></script>
 	<!-- tree editor -->
 	<script src="modules/story/components/tree-editor/story-tree-editor.component.js" type="text/javascript"></script>
-	<script src="modules/story/components/tree-editor/scene-elements/scene-tree-elements-editor.component.js" type="text/javascript"></script>
-	<script src="modules/story/components/tree-editor/choice/story-tree-choice-editor.component.js" type="text/javascript"></script>
-	<!-- scene elements editors -->
-	<script src="modules/story/components/scene-elements-editors/narrator/scene-element-narrator-editor.component.js" type="text/javascript"></script>
-	<script src="modules/story/components/scene-elements-editors/character/scene-element-character-editor.component.js" type="text/javascript"></script>
+	<script src="modules/story/components/tree-editor/scene/story-tree-scene-editor.component.js" type="text/javascript"></script>
 	<!-- message player -->
 	<script src="modules/story/components/message-player/story-message-player.component.js" type="text/javascript"></script>
 	<script src="modules/story/components/message-player/scene-elements/message-player-scene-elements.component.js" type="text/javascript"></script>
