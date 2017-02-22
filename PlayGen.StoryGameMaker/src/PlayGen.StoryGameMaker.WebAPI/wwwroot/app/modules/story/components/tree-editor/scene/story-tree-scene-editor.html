@@ -1,3 +1,4 @@
+<!-- scene/choice name -->
 <md-card>
 	<md-card-content layout="row">
 	
@@ -24,6 +25,7 @@
 </md-card>	
 
 <ul>
+	<!-- scene/choice elements -->
 	<li ng-repeat="element in $ctrl.scene.elements">
 		
 		<md-card ng-if="element._type != 'Choice'">
@@ -51,6 +53,7 @@
 		</story-tree-scene-editor>
 	</li>
 
+	<!-- add scene element buttons -->
 	<li ng-show="$ctrl.doesntContain(['End'])">
 
 		<md-card ng-if="element._type != 'Choice'">

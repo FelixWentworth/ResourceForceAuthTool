@@ -20,16 +20,13 @@ angular
 				createCharacter("Hannah"),
 				createCharacter("Frank"),
 			];
+			ctrl.config.invalidMessage = "There seems to be an invalid part of your story." + 
+						" \nYou must find it and fix it in order to save." +
+						" \nThere should be a red error message to help you identify it.";
 
 			// public methods
-			ctrl.apply = function(isValid) {
-				if(isValid) {
-					StoryStorageService.save(ctrl.story);
-				} else {
-					alert("There seems to be an invalid part of your story." + 
-						" \nYou must find it and fix it in order to save." +
-						" \nIt should be hilighted to help you identify it.");
-				}
+			ctrl.save = function() {
+				StoryStorageService.save(ctrl.story);
 			};
 
 			ctrl.$onInit = function() {

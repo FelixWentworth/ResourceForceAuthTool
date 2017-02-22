@@ -14,6 +14,7 @@ angular
 
 				var storyId = uuid.v4();
 				ctrl.story = new Story(storyId);								
+				ctrl.story.content.scene.name = "1";
 			};
 		}]
 	});
