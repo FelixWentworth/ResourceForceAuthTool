@@ -9,7 +9,7 @@ angular
 			var ctrl = this;
 
 			ctrl.removeElement = function(element) {
-				Array.removeWhere(ctrl.elements, element);
+				Array.remove(ctrl.elements, element);
 			};
 
 			ctrl.doesntContain = function(types) {
