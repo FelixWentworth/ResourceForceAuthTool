@@ -1,0 +1,20 @@
+<li ng-repeat="element in $ctrl.elements">
+	<flex layout="row">
+
+		<md-button ng-click="$ctrl.removeElement(element)"
+				class="md-raised">-</md-button>
+
+		<span ng-switch="element._type">
+			<story-subscene-editor ng-switch-when="Subscene" subscene="element"/>		
+			<scene-element-end ng-switch-when="End"/>
+			<story-tree-choice-editor ng-switch-when="Choice" choice="element"/>
+		</span>
+	</flex>
+</li>
+
+<li ng-show="$ctrl.doesntContain(['End'])">
+	<md-button class="md-raised" ng-show="$ctrl.doesntContain(['Choice'])">+ Narrator</md-button>	
+	<md-button class="md-raised" ng-show="$ctrl.doesntContain(['Choice'])">+ Character</md-button>		
+	<md-button class="md-raised">+ Choice</md-button>	
+	<md-button class="md-raised" ng-show="$ctrl.doesntContain(['Choice'])">End</md-button>
+</li>
