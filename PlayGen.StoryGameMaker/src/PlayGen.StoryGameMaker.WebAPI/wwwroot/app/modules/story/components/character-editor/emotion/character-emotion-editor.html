@@ -8,20 +8,26 @@
 
 </md-button>
 
-<div ng-show="$ctrl.isMenuVisible" 
-		ng-form="$ctrl.form"
-		layout="column"
-		class="styled-select">
- 	
- 	<md-button ng-repeat="emotionValue in $ctrl.config.emotionValues"
-				ng-click="$ctrl.select(emotionValue)"
-				aria-label="emotionValue">
+<div ng-form="$ctrl.form">
+	<div ng-show="$ctrl.isMenuVisible" 		
+			layout="column"
+			class="styled-select">
+	 	
+	 	<md-button ng-repeat="emotionValue in $ctrl.config.emotionValues"
+					ng-click="$ctrl.select(emotionValue)"
+					aria-label="emotionValue">
 
-		<character-emotion-value value="emotionValue"></character-emotion-value>
+			<character-emotion-value value="emotionValue">			
+			</character-emotion-value>
 
-	</md-button>
+		</md-button>	
 
+	</div>
+
+	<!-- todo this should match the rest of the angular form styling -->
 	<div ng-messages="$ctrl.form.$error">
+
 	    <div ng-message="emotion">You must select an emotion.</div>
+	
 	</div>
 </div>

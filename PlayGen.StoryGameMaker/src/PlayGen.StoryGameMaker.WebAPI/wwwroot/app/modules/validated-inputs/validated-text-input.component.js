@@ -10,5 +10,15 @@ angular
 			minlength: "<",
 			maxlength: "<",
 	   		required: "<"
+	   	}, 
+	   	controller: function () {
+	   		var ctrl = this;
+
+	   		// public methods
+	   		ctrl.$postLink = function () {
+	   			// trigger validation
+	   			ctrl.form.$setSubmitted();	   			
+	   			// todo find a way to get the relevant messages to show in the html too	  
+	   		};
 	   	}
 	});

@@ -1,7 +1,8 @@
 <span ng-repeat="element in $ctrl.character.elements"
 		ng-switch="element._type">
 
-	<character-emotion-editor ng-switch-when="Emotion" emotion="element"></character-emotion-editor>
+	<character-emotion-editor ng-switch-when="Emotion" emotion="element">		
+	</character-emotion-editor>
 
 	<validated-text-input ng-switch-when="Speech"
 							type="'area'" 
