@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using PlayGen.StoryGameMaker.Data.EntityFramework;
 
@@ -49,6 +51,27 @@ namespace PlayGen.StoryGameMaker.WebAPI
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+			app.Use(async (context, next) =>
+			{
+				await next();
+
+				if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value))
+				{
+					context.Request.Path = "/app/index.html";
+					context.Response.StatusCode = 200;
+					await next();
+				}
+			});
+
+			app.UseFileServer();
+
+			app.UseFileServer(new FileServerOptions()
+			{
+				FileProvider = new PhysicalFileProvider(Path.Combine(env.WebRootPath, "node_modules")),
+				RequestPath = "/node_modules",
+				EnableDirectoryBrowsing = false
+			});
 
 			app.UseCors("AllowAll");
 			app.UseStaticFiles();
