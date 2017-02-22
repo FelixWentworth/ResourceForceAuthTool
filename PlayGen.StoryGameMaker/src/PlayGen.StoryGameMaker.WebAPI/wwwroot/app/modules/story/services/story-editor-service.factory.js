@@ -8,6 +8,9 @@ angular
 			service.story = story;
 		};		
 
+		service.pruneRemovedCharacters = function () {
+		};
+
 		service.getCharacters = function() {
 			return service.story.content.characters;
 		};

@@ -29,6 +29,10 @@ angular
 				StoryStorageService.save(ctrl.story);
 			};
 
+			ctrl.onCharacterSelectionChanged = function () {
+				StoryStorageService.pruneRemovedCharacters();	
+			};
+
 			ctrl.$onInit = function() {
 				StoryEditorService.setStory(ctrl.story);
 			};

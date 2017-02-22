@@ -1,19 +1,31 @@
-<div ng-form="storyTreeForm" novalidate>
+<div ng-form="storyTreeForm">
+
 	<md-card>
+
 		<md-card-title>Summary</md-card-title>
+
 		<md-card-content>
+
 			<story-metadata-editor metadata="$ctrl.story.metadata"></story-metadata-editor>
+		
 		</md-card-content>
+
 	</md-card>
 
 	<md-card>
+		
 		<md-card-title>Story Characters</md-card-title>
 		
 		<md-card-content>
+		
 			<story-character-selection-editor selected-characters="$ctrl.story.content.characters" 
 												selectable-characters="$ctrl.config.characters.all"
-												minimum-characters="$ctrl.config.characters.minimum"></story-character-selection-editor>
+												minimum-characters="$ctrl.config.characters.minimum"
+												on-selection-changed="$ctrl.onCharacterSelectionChanged()">
+			</story-character-selection-editor>
+			
 		</md-card-content>		
+	
 	</md-card>
 				
 	<story-tree-scene-editor scene="$ctrl.story.content.scene"></story-tree-scene-editor>				
@@ -27,4 +39,5 @@
 	<div ng-show="storyTreeForm.$valid !== true">
 		{{$ctrl.config.invalidMessage}}
 	</div>	
+
 </div>
