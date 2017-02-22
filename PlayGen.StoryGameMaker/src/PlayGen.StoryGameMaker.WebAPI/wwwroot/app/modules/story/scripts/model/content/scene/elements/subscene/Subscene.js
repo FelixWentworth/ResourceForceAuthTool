@@ -3,6 +3,7 @@ class Subscene {
 		var self = this;
 
 		self._type = "Subscene";
-		self.elements = [];
+		self.action = [];
+		self.responses = [];
 	}
 }

@@ -9,6 +9,26 @@ angular
 		};		
 
 		service.pruneRemovedCharacters = function () {
+			// prune characters
+/*
+			var checkScenes = service.story.content.scene;
+
+			while(checkScenes.length > 0) {
+				var checkScene = checkScenes.splice(0, 1);
+
+				checkScene.elements.forEach(element => {
+
+					if(element._type == "Subscene") {
+						if() {
+
+						}
+
+					} else if(element._type == "Choice") {
+						checkElements = checkElements.concat(element.action);
+					}
+
+				});
+			};*/
 		};
 
 		service.getCharacters = function() {
@@ -26,8 +46,9 @@ angular
 			var subscene = new Subscene();
 
 			var speechCharacter = new Character(character.name);
-			subscene.elements.push(speechCharacter);
-			addSubsceneCharacters(subscene);
+			subscene.action = speechCharacter;
+
+			addCharacterResponses(subscene);
 
 			speechCharacter.elements.push(new Speech());
 
@@ -46,16 +67,23 @@ angular
 		};
 
 		// private methods
-		function addSubsceneCharacters(subscene) {
+		function addCharacterResponses(subscene) {
 			service.getCharacters().forEach(c => {
 
 				var emotion = null;
-				var character = Array.singleOrNull(subscene.elements, element => element._type == "Character" && element.name == c.name);
+				var character = null;
+
+				if(subscene.action._type == "Character" && subscene.action.name == c.name) {
+					character = subscene.action;
+				} else {
+					character = Array.singleOrNull(subscene.responses, response => response._type == "Character" && response.name == c.name);
+				}
+
 				if(character != null) {
 					emotion = Array.singleOrNull(character.elements, element => element._type == "Emotion");
 				} else {
 					var character = new Character(c.name);					
-					subscene.elements.push(character);
+					subscene.responses.push(character);
 				}
 
 				if(emotion == null) {

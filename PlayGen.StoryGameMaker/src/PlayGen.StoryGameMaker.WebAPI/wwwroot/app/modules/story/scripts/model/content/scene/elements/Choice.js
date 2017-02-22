@@ -6,6 +6,6 @@ class Choice {
 		self.action = new Subscene();		
 		self.scene = new Scene();
 
-		self.action.elements.push(new ChoiceAction());
+		self.action.action = new ChoiceAction();
 	}
 }
