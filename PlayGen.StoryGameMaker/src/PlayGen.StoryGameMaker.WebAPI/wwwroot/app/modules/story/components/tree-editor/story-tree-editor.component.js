@@ -5,7 +5,7 @@ angular
 		bindings: {
 			story: "<"
 		},
-		controller: ["StoryService", function (StoryService) {
+		controller: ["StoryEditorService", "StoryService", function (StoryEditorService, StoryService) {
 			var ctrl = this;
 
 			// public fields
@@ -30,6 +30,10 @@ angular
 						" \nYou must find it and fix it in order to save." +
 						" \nIt should be hilighted to help you identify it.");
 				}
+			};
+
+			ctrl.$onInit = function() {
+				StoryEditorService.setStory(ctrl.story);
 			};
 
 			// private methods

@@ -5,9 +5,10 @@ angular
 		bindings: {
 			elements: "="
 		},
-		controller: function() {
+		controller: ["StoryEditorService", function(StoryEditorService) {
 			var ctrl = this;
 
+			// public methods
 			ctrl.removeElement = function(element) {
 				Array.remove(ctrl.elements, element);
 			};
@@ -23,5 +24,22 @@ angular
 
 				return !containsWhereType;
 			}
-		}
+
+			ctrl.addNarrator = function () {	
+				var narratorSubscene = StoryEditorService.createNarratorSubscene();
+				ctrl.elements.push(narratorSubscene);
+			};
+
+			ctrl.addCharacter = function () {
+
+			};
+
+			ctrl.addChoice = function () {
+
+			};
+
+			ctrl.addEnd = function () {
+
+			};
+		}]
 	});

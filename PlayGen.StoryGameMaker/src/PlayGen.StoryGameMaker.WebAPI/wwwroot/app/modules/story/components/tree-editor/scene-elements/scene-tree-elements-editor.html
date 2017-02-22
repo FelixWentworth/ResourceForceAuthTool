@@ -1,28 +1,61 @@
 <li ng-repeat="element in $ctrl.elements">
 	
 		<md-card ng-if="element._type != 'Choice'">
+
     		<md-card-content layout="row">
+
 				<md-button ng-click="$ctrl.removeElement(element)"
 							class="md-raised">
 					-
 				</md-button>
 
-				<story-subscene-editor ng-if="element._type == 'Subscene'" subscene="element"></story-subscene-editor>		
-				<scene-element-end ng-if="element._type == 'End'"></scene-element-end>
+				<story-subscene-editor ng-if="element._type == 'Subscene'" subscene="element">					
+				</story-subscene-editor>		
+
+				<scene-element-end ng-if="element._type == 'End'">					
+				</scene-element-end>
+
 			</md-card-content>
+
 		</md-card>
 
-		<story-tree-choice-editor ng-if="element._type == 'Choice'" choice="element"
-									on-clicked="$ctrl.removeElement"></story-tree-choice-editor>
+		<story-tree-choice-editor ng-if="element._type == 'Choice'" 
+									choice="element"
+									on-clicked="$ctrl.removeElement">
+		</story-tree-choice-editor>
 </li>
 
 <li ng-show="$ctrl.doesntContain(['End'])">
+
 	<md-card ng-if="element._type != 'Choice'">
+
 		<md-card-content layout="row">
-			<md-button class="md-raised" ng-show="$ctrl.doesntContain(['Choice'])">+ Narrator</md-button>	
-			<md-button class="md-raised" ng-show="$ctrl.doesntContain(['Choice'])">+ Character</md-button>		
-			<md-button class="md-raised">+ Choice</md-button>	
-			<md-button class="md-raised" ng-show="$ctrl.doesntContain(['Choice'])">End</md-button>
+
+			<md-button ng-show="$ctrl.doesntContain(['Choice'])" 
+						ng-click="$ctrl.addNarrator()"
+						class="md-raised" >
+				+ Narrator
+			</md-button>	
+
+			<md-button ng-show="$ctrl.doesntContain(['Choice'])" 
+						ng-click="$ctrl.addCharacter()"
+						class="md-raised">
+				+ Character
+			</md-button>		
+			
+			<md-button ng-click="$ctrl.addChoice()"
+						class="md-raised">
+				+ Choice
+			</md-button>	
+			
+			<md-button ng-show="$ctrl.doesntContain(['Choice'])"
+						ng-click="$ctrl.addEnd()"
+						class="md-raised">
+				End
+			</md-button>
+		
 		</md-card-content>	
+
 	</md-card>
+
 </li>
