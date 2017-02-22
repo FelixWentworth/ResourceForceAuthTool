@@ -8,11 +8,23 @@ angular
 			service.story = story;
 		};		
 
-		service.createNarratorSubscene= function () {
+		service.createNarratorSubscene = function () {
 			var subscene = new Subscene();
 			subscene.elements.push(new Narrator());
 			addSubsceneCharacters(subscene);
 			return subscene;
+		};
+
+		service.createChoice = function (name) {
+			var choice = new Choice();
+			choice.scene.name = name;
+			choice.action = new Subscene();
+			addSubsceneCharacters(choice.action);			
+			return choice;
+		};
+
+		service.createEnd = function () {
+			return new End();
 		};
 
 		// private methods

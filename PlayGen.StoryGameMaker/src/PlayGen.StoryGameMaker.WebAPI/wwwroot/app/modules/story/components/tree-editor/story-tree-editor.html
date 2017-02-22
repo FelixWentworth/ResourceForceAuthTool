@@ -19,25 +19,7 @@
 	<md-card>
 		<md-card-title>Story</md-card-title>	
 		
-		<ul>		
-			<li>
-				<md-card>
-					<md-card-content>
-						<validated-text-input 
-							label="'Scene'"
-							type="'field'" 
-							ng-model="$ctrl.story.content.scene.name"
-							minlength="1"
-							maxlength="10"
-							required="true"></validated-text-input>
-						</md-card-content>
-				</md-card>
-
-				<ul>
-					<scene-tree-elements-editor elements="$ctrl.story.content.scene.elements"></scene-tree-elements-editor>
-				</ul>				
-			</li>
-		</ul>	
+		<story-tree-scene-editor scene="$ctrl.story.content.scene"></story-tree-scene-editor>				
 	</md-card>
 
 	<md-button class="md-raised" ng-click="$ctrl.apply(storyTreeForm.$valid)">Save Story</md-button>

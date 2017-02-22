@@ -1,0 +1,88 @@
+<md-card>
+	<md-card-content layout="row">
+	
+			<md-button ng-if="$ctrl.choice != null"
+						class="md-raised" aria-label="remove choice"
+						ng-click="$ctrl.onClicked($ctrl.choice)">
+				-
+			</md-button>
+		</div>
+		
+		<validated-text-input type="'field'" 
+								label="$ctrl.label"
+								placeholder="'add a short title to identify this choice'"
+								ng-model="$ctrl.scene.name"
+								minlength="1"
+								maxlength="10"
+								required="true"></validated-text-input>
+
+		<div ng-if="$ctrl.choice != null">
+			<story-subscene-editor subscene="$ctrl.choice.action"></story-subscene-editor>
+		</div>
+	</story-subscene-editor>
+	
+</md-card>	
+
+<ul>
+	<li ng-repeat="element in $ctrl.scene.elements">
+		
+		<md-card ng-if="element._type != 'Choice'">
+
+    		<md-card-content layout="row">
+
+				<md-button ng-click="$ctrl.removeElement(element)"
+							class="md-raised">
+					-
+				</md-button>
+
+				<story-subscene-editor ng-if="element._type == 'Subscene'" subscene="element">					
+				</story-subscene-editor>		
+
+				<scene-element-end ng-if="element._type == 'End'">					
+				</scene-element-end>
+
+			</md-card-content>
+
+		</md-card>
+
+		<story-tree-scene-editor ng-if="element._type == 'Choice'" 
+									scene="element"
+									on-clicked="$ctrl.removeElement">
+		</story-tree-scene-editor>
+	</li>
+
+	<li ng-show="$ctrl.doesntContain(['End'])">
+
+		<md-card ng-if="element._type != 'Choice'">
+
+			<md-card-content layout="row">
+
+				<md-button ng-show="$ctrl.doesntContain(['Choice'])" 
+							ng-click="$ctrl.addNarrator()"
+							class="md-raised" >
+					+ Narrator
+				</md-button>	
+
+				<md-button ng-show="$ctrl.doesntContain(['Choice'])" 
+							ng-click="$ctrl.addCharacter()"
+							class="md-raised">
+					+ Character
+				</md-button>		
+				
+				<md-button ng-click="$ctrl.addChoice()"
+							class="md-raised">
+					+ Choice
+				</md-button>	
+				
+				<md-button ng-show="$ctrl.doesntContain(['Choice'])"
+							ng-click="$ctrl.addEnd()"
+							class="md-raised">
+					End
+				</md-button>
+			
+			</md-card-content>	
+
+		</md-card>
+
+	</li>
+</ul>
