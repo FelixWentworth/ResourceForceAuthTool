@@ -1,6 +1,6 @@
 FROM microsoft/dotnet
 
-RUN apt-get -qq update && apt-get -y install netcat
+RUN apt-get -qq update && apt-get -y install netcat nodejs npm
 
 COPY . app/
 WORKDIR app/
