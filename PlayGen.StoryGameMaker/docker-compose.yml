@@ -1,0 +1,23 @@
+version: '2'
+
+services: 
+    sgm-mariadb: 
+        network_mode: "bridge"
+        environment:
+            MYSQL_ROOT_PASSWORD: "t0pSECr3t"
+        image: mariadb
+        container_name: "sgm-mariadb"
+        expose:
+            - 3306
+    sgm:
+        network_mode: "bridge"
+        build:
+            context: ./
+        image: "storygamemaker"
+        container_name: "sgm"
+        links:
+            - sgm-mariadb
+        expose:
+            - 5000
+        environment:
+            ASPNETCORE_URLS: "http://0.0.0.0:5000"
