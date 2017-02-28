@@ -37,8 +37,10 @@ angular
 
 		service.createNarratorSubscene = function () {
 			var subscene = new Subscene();
-			subscene.elements.push(new Narrator());
-			addSubsceneCharacters(subscene);
+			subscene.action = new Narrator();
+			
+			addCharacterReactions(subscene);
+
 			return subscene;
 		};
 
@@ -48,7 +50,7 @@ angular
 			var speechCharacter = new Character(character.name);
 			subscene.action = speechCharacter;
 
-			addCharacterResponses(subscene);
+			addCharacterReactions(subscene);
 
 			speechCharacter.elements.push(new Speech());
 
@@ -58,7 +60,9 @@ angular
 		service.createChoice = function (name) {
 			var choice = new Choice();
 			choice.scene.name = name;
-			addSubsceneCharacters(choice.action);			
+
+			addCharacterReactions(choice.action);			
+			
 			return choice;
 		};
 
@@ -67,7 +71,7 @@ angular
 		};
 
 		// private methods
-		function addCharacterResponses(subscene) {
+		function addCharacterReactions(subscene) {
 			service.getCharacters().forEach(c => {
 
 				var emotion = null;
@@ -76,14 +80,14 @@ angular
 				if(subscene.action._type == "Character" && subscene.action.name == c.name) {
 					character = subscene.action;
 				} else {
-					character = Array.singleOrNull(subscene.responses, response => response._type == "Character" && response.name == c.name);
+					character = Array.singleOrNull(subscene.reactions, reaction => reaction._type == "Character" && reaction.name == c.name);
 				}
 
 				if(character != null) {
 					emotion = Array.singleOrNull(character.elements, element => element._type == "Emotion");
 				} else {
 					var character = new Character(c.name);					
-					subscene.responses.push(character);
+					subscene.reactions.push(character);
 				}
 
 				if(emotion == null) {

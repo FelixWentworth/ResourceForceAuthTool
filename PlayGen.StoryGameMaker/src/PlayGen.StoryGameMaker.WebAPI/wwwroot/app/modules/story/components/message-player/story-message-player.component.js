@@ -39,11 +39,17 @@ angular
 					e.__isEnabled = isEnabled;
 
 					if(e._type == "Subscene") {
-						setEnabled(e.elements, isEnabled);
+						setSubsceneEnabled(e, isEnabled);
 					} else if(e._type == "Choice") {
-						setEnabled(e.action.elements, isEnabled);
+						setSubsceneEnabled(e.action, isEnabled);
+						setEnabled(e.scene.elements, isEnabled);
 					}
 				});
+			};
+
+			function setSubsceneEnabled(subscene, isEnabled) {
+				subscene.action.__isEnabled = isEnabled;
+				setEnabled(subscene.reactions, isEnabled);
 			};
 		}
 	});

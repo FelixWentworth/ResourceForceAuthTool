@@ -4,6 +4,6 @@ class Subscene {
 
 		self._type = "Subscene";
 		self.action = [];
-		self.responses = [];
+		self.reactions = [];
 	}
 }
