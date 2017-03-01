@@ -1,0 +1,1 @@
+{"version":3,"sources":["modules/story/scripts/model/content/scene/elements/End.js"],"names":["End","self","_type"],"mappings":";;;;IAAMA,G,GACL,eAAc;AAAA;;AACb,KAAIC,OAAO,IAAX;;AAEAA,MAAKC,KAAL,GAAa,KAAb;AACA,C","file":"End.js","sourcesContent":["class End {\r\n\tconstructor() {\r\n\t\tvar self = this;\r\n\r\n\t\tself._type = \"End\";\r\n\t}\r\n}"]}

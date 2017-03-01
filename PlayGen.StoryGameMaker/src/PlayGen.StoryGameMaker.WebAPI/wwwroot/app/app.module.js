@@ -1,2 +1,2 @@
 angular
-	.module("storyGameMaker", ["ui.router", "story", "ngMaterial"]);
+	.module("storyGameMaker", ["templates", "ui.router", "story", "ngMaterial"]);
