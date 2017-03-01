@@ -38,4 +38,5 @@ _ReSharper*/
 # Universal Files
 *.log
 
-node_modules/
+**/node_modules/
+**/wwwroot/build/

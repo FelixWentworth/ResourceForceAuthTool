@@ -1,22 +1,20 @@
-var gulp = require("gulp"),
-	jshint = require("gulp-jshint"),
-	concat = require("gulp-concat"),
-	inject = require("gulp-inject"),
-	eventStream = require("event-stream"),
-	del = require("del"),
-	runSequence = require("run-sequence"),
-	angularTemplateCache = require("gulp-angular-templatecache"),
-	angularFileSort = require("gulp-angular-filesort"),
-	babel = require("gulp-babel"),
-	sourcemaps = require("gulp-sourcemaps"),
-	cssUseref = require("gulp-css-useref");
+var gulp = require("gulp");
+var jshint = require("gulp-jshint");
+var concat = require("gulp-concat");
+var inject = require("gulp-inject");
+var eventStream = require("event-stream");
+var del = require("del");
+var runSequence = require("run-sequence");
+var angularTemplateCache = require("gulp-angular-templatecache");
+var angularFileSort = require("gulp-angular-filesort");
+var babel = require("gulp-babel");
+var sourcemaps = require("gulp-sourcemaps");
+var cssUseref = require("gulp-css-useref");
 
+/*============================================
+PROJECT CONFIGURATION   
+============================================*/
 var config = {
-	dev: {
-		root: "build/dev",
-		srcRoot: "build/dev/app",
-		vendor: "build/dev/vendor",
-	},
 	src: {
 		scripts: "app/**/*.js",
 		styles: "app/**/*.css",
@@ -39,23 +37,34 @@ var config = {
 			"node_modules/angular-material/angular-material.css",
 			"node_modules/material-design-icons/iconfont/material-icons.css"
 		]
+	},
+	// Development build configuration
+	dev: {
+		root: "build",
+		srcRoot: "build/app",
+		vendor: "build/vendor",
 	}
 };
 
+// Active build configuration (development or production)
 var buildConfig = null;
 
+/*============================================
+TASKS
+============================================*/
 gulp.task("default", ["build", "watch"]);
 
+// do a development build
 gulp.task("build", function() {
 	runSequence("set-dev", "clean", "jshint", "src-scripts", "src-styles", 
 		"vendor-scripts", "vendor-styles", "index", "src-images");
 });
 
+// set build configuration to development
 gulp.task("set-dev", function() {
 	buildConfig = config.dev;
 });
 
-// configure which files to watch and what tasks to use on file changes
 gulp.task("watch", function() {
 	gulp.watch(config.src.index, ["set-dev", "index"]);
 	gulp.watch(config.src.scripts, ["set-dev", "jshint", "src-scripts", "index"]);
@@ -67,14 +76,16 @@ gulp.task("watch", function() {
 	gulp.watch(config.vendor.fonts, ["set-dev", "vendor-fonts"]);
 });
 
-gulp.task("clean", ["set-dev"], function() {
+gulp.task("clean", function() {
 	return del([buildConfig.root + "/*"]);
 })
 
+// Generate the index adding all .js and .css references.
 gulp.task("index", function() {
 	return gulp.src(config.src.index)
 		// scripts
 		.pipe(
+			// combine all .js streams and inject into index
 			inject(
 				eventStream.merge(
 					vendorScriptStream(),
@@ -86,7 +97,8 @@ gulp.task("index", function() {
 		)
 		// styles
 		.pipe(
-			inject(
+			// combine all css streams and inject into index
+			inject(				
 				eventStream.merge(
 					vendorStyleStream(),
 					srcStyleStream()
@@ -122,41 +134,31 @@ gulp.task("vendor-styles", function() {
 	return vendorStyleStream();
 });
 
-gulp.task("vendor-fonts", function() {
-	return gulp.src(config.vendor.fonts)
-		.pipe(gulp.dest(buildConfig.vendor));
-});
-
 gulp.task("jshint", function() {
 	return gulp.src(config.src.scripts)
 		.pipe(jshint())
 		.pipe(jshint.reporter("jshint-stylish"));
 });
 
-// look at gulp-inject
-function srcTemplateStream() {
-	return gulp.src(config.src.templates)
-		.pipe(angularTemplateCache({standalone: true}))
-		.pipe(gulp.dest(buildConfig.root));
-}
-
-// streams
+/*============================================
+STREAMS
+============================================*/
 function srcScriptStream() {
 	return gulp.src(config.src.scripts)
 		//.pipe(concat("all.js"))
 		.pipe(sourcemaps.init())
-		.pipe(babel({
+		.pipe(babel({					// compiles ecma6 code to a version compatable with browsers and the angularFileSort plugin
 			presets: ["es2015"]
 		}))		
-		.pipe(angularFileSort())
-		.pipe(sourcemaps.write('.'))
+		.pipe(angularFileSort())		// puts files in correct order to satisfy angular dependency injection
+		.pipe(sourcemaps.write('.'))	// write sourcemaps for processed files
 		.pipe(gulp.dest(buildConfig.srcRoot));
 }
 
 function srcStyleStream() {
 	return gulp.src(config.src.styles)
 		//.pipe(concat("all.css"))
-		.pipe(cssUseref({base: "assets"}))
+		.pipe(cssUseref({base: "assets"}))	// copies referenced files (fonts/images) within the css file
 		.pipe(gulp.dest(buildConfig.srcRoot));
 }
 
@@ -167,6 +169,13 @@ function vendorScriptStream() {
 
 function vendorStyleStream() {
 	return gulp.src(config.vendor.styles)
-		.pipe(cssUseref({base: "assets"}))
+		.pipe(cssUseref({base: "assets"}))	// copies referenced files (fonts/images) within the css file
 		.pipe(gulp.dest(buildConfig.vendor));
+}
+
+// combine the angular template html files into one javascript blob
+function srcTemplateStream() {
+	return gulp.src(config.src.templates)
+		.pipe(angularTemplateCache({standalone: true}))
+		.pipe(gulp.dest(buildConfig.root));
 }
