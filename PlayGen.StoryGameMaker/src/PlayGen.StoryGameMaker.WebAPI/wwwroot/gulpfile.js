@@ -14,6 +14,8 @@ var gulpif = require("gulp-if");
 var filter = require("gulp-filter");
 var uglify = require("gulp-uglify");
 var cleanCSS = require("gulp-clean-css");
+var hash = require("gulp-hash-filename");
+var rename = require("gulp-rename");
 
 /*============================================
 PROJECT CONFIGURATION   
@@ -44,9 +46,10 @@ var config = {
 			]
 		},
 		sourcemaps: true,
-		concat: false,
-		uglify: false,
-		cleancss: false,
+		bundle: false,
+		minifyScripts: false,
+		minifyCss: false,
+		hash: false,
 		output: {
 			app: "build/app",
 			vendor: "build/vendor",
@@ -70,9 +73,10 @@ var config = {
 			]
 		},
 		sourcemaps: false,
-		concat: true,
-		uglify: true,
-		cleancss: true,
+		bundle: true,
+		minifyScripts: true,
+		minifyCss: true,
+		hash: true,
 		output: {
 			app: "build",
 			vendor: "build",
@@ -80,7 +84,7 @@ var config = {
 	},
 	// Development build configuration
 	build: {
-		timestamp: new Date().toISOString().replace(":","-"),
+		hashFormat: "{name}.{hash}.{ext}",
 		output: "build",
 		babelPreset: "es2015"
 	}
@@ -120,21 +124,18 @@ function appScripts() {
 		.pipe(babel({					// compiles ecma6 code to a version compatable with browsers and the angularFileSort plugin
 			presets: [config.build.babelPreset]
 		}))				
-		.pipe(angularFileSort())		// puts files in correct order to satisfy angular dependency injection
-		.pipe(gulpif(activeConfig.uglify, uglify()))
+		.pipe(angularFileSort())		// puts files in correct order to satisfy angular dependency injection		
 };
 
 // combine the angular template html files into one javascript blob
 function templates() {
 	return gulp.src(config.app.templates)
 		.pipe(angularTemplateCache({standalone: true}))
-		.pipe(gulpif(activeConfig.uglify, uglify()))
 };
 
 /*============================================
 OUTPUT STREAMS
 ============================================*/
-
 function indexOutput() {
 	return gulp.src(config.index)
 		// combine all .js streams and inject into index
@@ -145,7 +146,7 @@ function indexOutput() {
 }
 
 function allScriptsOutput() {
-	if(activeConfig.concat) {
+	if(activeConfig.bundle) {
 		return eventStream.merge(
 			vendorScriptsOutput(),
 			srcScriptsOutput()
@@ -170,41 +171,59 @@ function srcScriptsOutput() {
 	return eventStream.merge(
 			appScripts(),
 			templates()
-		)
-		.pipe(gulpif(activeConfig.concat, concat("app.all." + config.build.timestamp + ".js")))		
+		)				
+		.pipe(gulpif(activeConfig.bundle, concat("app.js")))				
+		.pipe(gulpif(activeConfig.hash, hash({"format": config.build.hashFormat})))	
+		.pipe(gulpif(activeConfig.bundle, rename(path => path.basename += ".bundle")))	
+		.pipe(gulpif(activeConfig.minifyScripts, uglify()))
+		.pipe(gulpif(activeConfig.minifyScripts, rename(path => path.basename += ".min")))
 		.pipe(gulpif(activeConfig.sourcemaps, sourcemaps.write('.')))	// write sourcemaps for processed files
+		
 		.pipe(gulp.dest(activeConfig.output.app));
 }
 
 function appScriptsOutput() {
 	return appScripts()
+		.pipe(gulpif(activeConfig.hash, hash({"format": config.build.hashFormat})))	
+		.pipe(gulpif(activeConfig.bundle, rename(path => path.basename += ".bundle")))	
+		.pipe(gulpif(activeConfig.minifyScripts, uglify()))
+		.pipe(gulpif(activeConfig.minifyScripts, rename(path => path.basename += ".min")))	
 		.pipe(gulp.dest(activeConfig.output.app));
 }
 
 function templatesOutput() {
-	return templates()
+	return templates()		
+		.pipe(gulpif(activeConfig.hash, hash({"format": config.build.hashFormat})))	
+		.pipe(gulpif(activeConfig.minifyScripts, uglify()))
+		.pipe(gulpif(activeConfig.minifyScripts, rename(path => path.basename += ".min")))
 		.pipe(gulp.dest(config.build.output));
 };
 
 function appStylesOutput() {
 	var cssFilter = filter("**/*.css", {restore: true});
 
-	return gulp.src(config.app.styles)				
+	return gulp.src(config.app.styles)						
 		.pipe(cssUseref({base: "assets"}))	// copies referenced files (fonts/images) within the css file		
-
+		
 		// filter to apply transformations only to .css files
-		.pipe(cssFilter)	
-		.pipe(gulpif(activeConfig.cleancss, cleanCSS()))
-		.pipe(gulpif(activeConfig.concat, concat("app.all." + config.build.timestamp + ".css")))				
+		.pipe(cssFilter)
+		.pipe(gulpif(activeConfig.bundle, concat("app.css")))		
+		.pipe(gulpif(activeConfig.hash, hash({"format": config.build.hashFormat})))	
+		.pipe(gulpif(activeConfig.bundle, rename(path => path.basename += ".bundle")))	
+		.pipe(gulpif(activeConfig.minifyCss, cleanCSS()))
+		.pipe(gulpif(activeConfig.minifyCss, rename(path => path.basename += ".min")))
 		.pipe(cssFilter.restore)
 
 		.pipe(gulp.dest(activeConfig.output.app));
 };
 
 function vendorScriptsOutput() {
-	return gulp.src(activeConfig.vendor.scripts)
-		.pipe(gulpif(activeConfig.uglify, uglify()))
-		.pipe(gulpif(activeConfig.concat, concat("vendor.all." + config.build.timestamp + ".js")))
+	return gulp.src(activeConfig.vendor.scripts)				
+		.pipe(gulpif(activeConfig.bundle, concat("vendor.js")))
+		.pipe(gulpif(activeConfig.hash, hash({"format": config.build.hashFormat})))	
+		.pipe(gulpif(activeConfig.bundle, rename(path => path.basename += ".bundle")))	
+		.pipe(gulpif(activeConfig.minifyScripts, uglify()))
+		.pipe(gulpif(activeConfig.minifyScripts, rename(path => path.basename += ".min")))
 		.pipe(gulp.dest(activeConfig.output.vendor));
 }
 
@@ -215,13 +234,17 @@ function vendorStylesOutput() {
 		.pipe(cssUseref({base: "assets"}))	// copies referenced files (fonts/images) within the css file		
 
 		// filter to apply transformations only to .css files
-		.pipe(gulpif(activeConfig.concat, cssFilter))	
-		.pipe(gulpif(activeConfig.cleancss, cleanCSS()))
-		.pipe(gulpif(activeConfig.concat, concat("vendor.all." + config.build.timestamp+ ".css")))	
-		.pipe(gulpif(activeConfig.concat, cssFilter.restore))	
+		.pipe(cssFilter)	
+		.pipe(gulpif(activeConfig.bundle, concat("vendor.css")))	
+		.pipe(gulpif(activeConfig.hash, hash({"format": config.build.hashFormat})))			
+		.pipe(gulpif(activeConfig.bundle, rename(path => path.basename += ".bundle")))	
+		.pipe(gulpif(activeConfig.minifyCss, cleanCSS()))	
+		.pipe(gulpif(activeConfig.minifyCss, rename(path => path.basename += ".min")))	
+		.pipe(cssFilter.restore)	
 
 		.pipe(gulp.dest(activeConfig.output.vendor));
 };
+
 /*============================================
 TASKS
 ============================================*/
