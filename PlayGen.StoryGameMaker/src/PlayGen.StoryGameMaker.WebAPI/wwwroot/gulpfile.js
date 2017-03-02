@@ -13,6 +13,7 @@ var browsersync = require("browser-sync").create();
 var gulpif = require("gulp-if");
 var filter = require("gulp-filter");
 var uglify = require("gulp-uglify");
+var cleanCSS = require("gulp-clean-css");
 
 /*============================================
 PROJECT CONFIGURATION   
@@ -45,6 +46,7 @@ var config = {
 		sourcemaps: true,
 		concat: false,
 		uglify: false,
+		cleancss: false,
 		output: {
 			app: "build/app",
 			vendor: "build/vendor",
@@ -70,6 +72,7 @@ var config = {
 		sourcemaps: false,
 		concat: true,
 		uglify: true,
+		cleancss: true,
 		output: {
 			app: "build",
 			vendor: "build",
@@ -154,15 +157,17 @@ function appStyles() {
 		.pipe(cssUseref({base: "assets"}))	// copies referenced files (fonts/images) within the css file		
 
 		// filter to apply transformations only to .css files
-		.pipe(gulpif(activeConfig.concat, cssFilter))	
-		.pipe(gulpif(activeConfig.concat, concat("app.all.css")))		
-		.pipe(gulpif(activeConfig.concat, cssFilter.restore))	
+		.pipe(cssFilter)	
+		.pipe(gulpif(activeConfig.cleancss, cleanCSS()))
+		.pipe(gulpif(activeConfig.concat, concat("app.all.css")))				
+		.pipe(cssFilter.restore)
 
 		.pipe(gulp.dest(activeConfig.output.app));
 };
 
 function vendorScripts() {
 	return gulp.src(activeConfig.vendor.scripts)
+		.pipe(gulpif(activeConfig.uglify, uglify()))
 		.pipe(gulpif(activeConfig.concat, concat("vendor.all.js")))
 		.pipe(gulp.dest(activeConfig.output.vendor));
 }
@@ -175,6 +180,7 @@ function vendorStyles() {
 
 		// filter to apply transformations only to .css files
 		.pipe(gulpif(activeConfig.concat, cssFilter))	
+		.pipe(gulpif(activeConfig.cleancss, cleanCSS()))
 		.pipe(gulpif(activeConfig.concat, concat("vendor.all.css")))	
 		.pipe(gulpif(activeConfig.concat, cssFilter.restore))	
 
