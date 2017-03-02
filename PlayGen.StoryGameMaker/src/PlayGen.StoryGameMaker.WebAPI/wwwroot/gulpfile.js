@@ -11,6 +11,7 @@ var sourcemaps = require("gulp-sourcemaps");
 var cssUseref = require("gulp-css-useref");
 var browsersync = require("browser-sync").create();
 var gulpif = require("gulp-if");
+var filter = require("gulp-filter");
 
 /*============================================
 PROJECT CONFIGURATION   
@@ -41,6 +42,7 @@ var config = {
 			]
 		},
 		sourcemaps: true,
+		concat: false,
 		output: {
 			app: "build/app",
 			vendor: "build/vendor",
@@ -64,6 +66,7 @@ var config = {
 			]
 		},
 		sourcemaps: false,
+		concat: true,
 		output: {
 			app: "build",
 			vendor: "build",
@@ -83,6 +86,11 @@ var activeConfig = null
 
 function setDev(done) {
 	activeConfig = config.dev;
+	done();
+}
+
+function setProd(done) {
+	activeConfig = config.prod;
 	done();
 }
 
@@ -124,32 +132,48 @@ function allStyles() {
 }
 
 function appScripts() {
-	return gulp.src(config.app.scripts)
-		//.pipe(concat("all.js"))
+	return gulp.src(config.app.scripts)		
 		.pipe(gulpif(activeConfig.sourcemaps, sourcemaps.init()))
 		.pipe(babel({					// compiles ecma6 code to a version compatable with browsers and the angularFileSort plugin
 			presets: [config.build.babelPreset]
 		}))		
 		.pipe(angularFileSort())		// puts files in correct order to satisfy angular dependency injection
+		.pipe(gulpif(activeConfig.concat, concat("app.all.js")))
 		.pipe(gulpif(activeConfig.sourcemaps, sourcemaps.write('.')))	// write sourcemaps for processed files
 		.pipe(gulp.dest(activeConfig.output.app));
 };
 
 function appStyles() {
-	return gulp.src(config.app.styles)
-		//.pipe(concat("all.css"))
-		.pipe(cssUseref({base: "assets"}))	// copies referenced files (fonts/images) within the css file
+	var cssFilter = filter("**/*.css", {restore: true});
+
+	return gulp.src(config.app.styles)				
+		.pipe(cssUseref({base: "assets"}))	// copies referenced files (fonts/images) within the css file		
+
+		// filter to apply transformations only to .css files
+		.pipe(gulpif(activeConfig.concat, cssFilter))	
+		.pipe(gulpif(activeConfig.concat, concat("app.all.css")))		
+		.pipe(gulpif(activeConfig.concat, cssFilter.restore))	
+
 		.pipe(gulp.dest(activeConfig.output.app));
 };
 
 function vendorScripts() {
 	return gulp.src(activeConfig.vendor.scripts)
+		.pipe(gulpif(activeConfig.concat, concat("vendor.all.js")))
 		.pipe(gulp.dest(activeConfig.output.vendor));
 }
 
 function vendorStyles() {
-	return gulp.src(activeConfig.vendor.styles)
-		.pipe(cssUseref({base: "assets"}))	// copies referenced files (fonts/images) within the css file
+	var cssFilter = filter("**/*.css", {restore: true});
+
+	return gulp.src(activeConfig.vendor.styles)		
+		.pipe(cssUseref({base: "assets"}))	// copies referenced files (fonts/images) within the css file		
+
+		// filter to apply transformations only to .css files
+		.pipe(gulpif(activeConfig.concat, cssFilter))	
+		.pipe(gulpif(activeConfig.concat, concat("vendor.all.css")))	
+		.pipe(gulpif(activeConfig.concat, cssFilter.restore))	
+
 		.pipe(gulp.dest(activeConfig.output.vendor));
 };
 
@@ -174,6 +198,12 @@ gulp.task("serve", function(done){
 });
 
 gulp.task("build-dev", gulp.series(clean, setDev, validateJs, generateIndex));
+
+gulp.task("build-prod", gulp.series(clean, setProd, generateIndex));
+
+gulp.task("run-dev", gulp.series("build-dev", "serve"));
+
+gulp.task("run-prod", gulp.series("build-prod", "serve"));
 
 gulp.task("watch-dev", function() {
 	gulp.watch(config.index, gulp.series(setDev, generateIndex, browsersync.reload));
