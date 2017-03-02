@@ -24,7 +24,6 @@
     "browser-sync": "^2.18.8",
     "del": "^2.2.2",
     "event-stream": "^3.3.4",
-    "gulp": "^3.9.1",
     "gulp-4.0.build": "^4.0.0-build.a271520",
     "gulp-angular-filesort": "^1.1.1",
     "gulp-angular-templatecache": "^2.0.0",
