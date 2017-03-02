@@ -108,50 +108,85 @@ function clean() {
  	return del([config.build.output + "/*"]);
 }
 
-function generateIndex() {
-	return gulp.src(config.index)
-		// combine all .js streams and inject into index
-		.pipe(inject(allScripts(), {ignorePath: config.build.output}))
-		// combine all css streams and inject into index
-		.pipe(inject(allStyles(), {ignorePath: config.build.output}))		
-		.pipe(gulp.dest(config.build.output));
-}
-
 function validateJs() {
 	return gulp.src(config.app.scripts)
 		.pipe(jshint())
 		.pipe(jshint.reporter("jshint-stylish"));
 };
 
-function allScripts() {
-	return eventStream.merge(
-		vendorScripts(),
-		appScripts(),
-		templates()			
-	);
-}
-
-function allStyles() {
-	return eventStream.merge(
-		vendorStyles(),
-		appStyles()
-	);
-}
-
 function appScripts() {
 	return gulp.src(config.app.scripts)		
 		.pipe(gulpif(activeConfig.sourcemaps, sourcemaps.init()))
 		.pipe(babel({					// compiles ecma6 code to a version compatable with browsers and the angularFileSort plugin
 			presets: [config.build.babelPreset]
-		}))		
+		}))				
 		.pipe(angularFileSort())		// puts files in correct order to satisfy angular dependency injection
 		.pipe(gulpif(activeConfig.uglify, uglify()))
+};
+
+// combine the angular template html files into one javascript blob
+function templates() {
+	return gulp.src(config.app.templates)
+		.pipe(angularTemplateCache({standalone: true}))
+		.pipe(gulpif(activeConfig.uglify, uglify()))
+};
+
+/*============================================
+OUTPUT STREAMS
+============================================*/
+
+function indexOutput() {
+	return gulp.src(config.index)
+		// combine all .js streams and inject into index
+		.pipe(inject(allScriptsOutput(), {ignorePath: config.build.output}))
+		// combine all css streams and inject into index
+		.pipe(inject(allStylesOutput(), {ignorePath: config.build.output}))		
+		.pipe(gulp.dest(config.build.output));
+}
+
+function allScriptsOutput() {
+	if(activeConfig.concat) {
+		return eventStream.merge(
+			vendorScriptsOutput(),
+			srcScriptsOutput()
+		);
+	} else {
+		return eventStream.merge(
+			vendorScriptsOutput(),
+			appScriptsOutput(),
+			templatesOutput()			
+		);
+	}
+}
+
+function allStylesOutput() {
+	return eventStream.merge(
+		vendorStylesOutput(),
+		appStylesOutput()
+	);
+}
+
+function srcScriptsOutput() {
+	return eventStream.merge(
+			appScripts(),
+			templates()
+		)
 		.pipe(gulpif(activeConfig.concat, concat("app.all." + config.build.timestamp + ".js")))		
 		.pipe(gulpif(activeConfig.sourcemaps, sourcemaps.write('.')))	// write sourcemaps for processed files
 		.pipe(gulp.dest(activeConfig.output.app));
+}
+
+function appScriptsOutput() {
+	return appScripts()
+		.pipe(gulp.dest(activeConfig.output.app));
+}
+
+function templatesOutput() {
+	return templates()
+		.pipe(gulp.dest(config.build.output));
 };
 
-function appStyles() {
+function appStylesOutput() {
 	var cssFilter = filter("**/*.css", {restore: true});
 
 	return gulp.src(config.app.styles)				
@@ -166,14 +201,14 @@ function appStyles() {
 		.pipe(gulp.dest(activeConfig.output.app));
 };
 
-function vendorScripts() {
+function vendorScriptsOutput() {
 	return gulp.src(activeConfig.vendor.scripts)
 		.pipe(gulpif(activeConfig.uglify, uglify()))
 		.pipe(gulpif(activeConfig.concat, concat("vendor.all." + config.build.timestamp + ".js")))
 		.pipe(gulp.dest(activeConfig.output.vendor));
 }
 
-function vendorStyles() {
+function vendorStylesOutput() {
 	var cssFilter = filter("**/*.css", {restore: true});
 
 	return gulp.src(activeConfig.vendor.styles)		
@@ -186,14 +221,6 @@ function vendorStyles() {
 		.pipe(gulpif(activeConfig.concat, cssFilter.restore))	
 
 		.pipe(gulp.dest(activeConfig.output.vendor));
-};
-
-// combine the angular template html files into one javascript blob
-function templates() {
-	return gulp.src(config.app.templates)
-		.pipe(angularTemplateCache({standalone: true}))
-		.pipe(gulpif(activeConfig.uglify, uglify()))
-		.pipe(gulp.dest(config.build.output));
 };
 /*============================================
 TASKS
@@ -209,21 +236,21 @@ gulp.task("serve", function(done){
 	done();
 });
 
-gulp.task("build-dev", gulp.series(clean, setDev, validateJs, generateIndex));
+gulp.task("build-dev", gulp.series(clean, setDev, validateJs, indexOutput));
 
-gulp.task("build-prod", gulp.series(clean, setProd, generateIndex));
+gulp.task("build-prod", gulp.series(clean, setProd, indexOutput));
 
 gulp.task("run-dev", gulp.series("build-dev", "serve"));
 
 gulp.task("run-prod", gulp.series("build-prod", "serve"));
 
 gulp.task("watch-dev", function() {
-	gulp.watch(config.index, gulp.series(setDev, generateIndex, browsersync.reload));
-	gulp.watch(config.app.scripts, gulp.series(setDev, validateJs, generateIndex, browsersync.reload));
-	gulp.watch(config.app.styles, gulp.series(setDev, generateIndex, browsersync.reload));
-	gulp.watch(config.app.templates, gulp.series(setDev, generateIndex, browsersync.reload));
-	gulp.watch(config.dev.vendor.scripts, gulp.series(setDev, generateIndex, browsersync.reload));
-	gulp.watch(config.dev.vendor.styles, gulp.series(setDev, generateIndex, browsersync.reload));
+	gulp.watch(config.index, gulp.series(setDev, indexOutput, browsersync.reload));
+	gulp.watch(config.app.scripts, gulp.series(setDev, validateJs, indexOutput, browsersync.reload));
+	gulp.watch(config.app.styles, gulp.series(setDev, indexOutput, browsersync.reload));
+	gulp.watch(config.app.templates, gulp.series(setDev, indexOutput, browsersync.reload));
+	gulp.watch(config.dev.vendor.scripts, gulp.series(setDev, indexOutput, browsersync.reload));
+	gulp.watch(config.dev.vendor.styles, gulp.series(setDev, indexOutput, browsersync.reload));
 });
 
 gulp.task("default", gulp.series("build-dev", "serve", "watch-dev"));
