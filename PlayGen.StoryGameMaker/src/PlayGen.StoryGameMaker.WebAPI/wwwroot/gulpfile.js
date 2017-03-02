@@ -12,6 +12,7 @@ var cssUseref = require("gulp-css-useref");
 var browsersync = require("browser-sync").create();
 var gulpif = require("gulp-if");
 var filter = require("gulp-filter");
+var uglify = require("gulp-uglify");
 
 /*============================================
 PROJECT CONFIGURATION   
@@ -43,6 +44,7 @@ var config = {
 		},
 		sourcemaps: true,
 		concat: false,
+		uglify: false,
 		output: {
 			app: "build/app",
 			vendor: "build/vendor",
@@ -67,6 +69,7 @@ var config = {
 		},
 		sourcemaps: false,
 		concat: true,
+		uglify: true,
 		output: {
 			app: "build",
 			vendor: "build",
@@ -138,7 +141,8 @@ function appScripts() {
 			presets: [config.build.babelPreset]
 		}))		
 		.pipe(angularFileSort())		// puts files in correct order to satisfy angular dependency injection
-		.pipe(gulpif(activeConfig.concat, concat("app.all.js")))
+		.pipe(gulpif(activeConfig.uglify, uglify()))
+		.pipe(gulpif(activeConfig.concat, concat("app.all.js")))		
 		.pipe(gulpif(activeConfig.sourcemaps, sourcemaps.write('.')))	// write sourcemaps for processed files
 		.pipe(gulp.dest(activeConfig.output.app));
 };
@@ -181,6 +185,7 @@ function vendorStyles() {
 function templates() {
 	return gulp.src(config.app.templates)
 		.pipe(angularTemplateCache({standalone: true}))
+		.pipe(gulpif(activeConfig.uglify, uglify()))
 		.pipe(gulp.dest(config.build.output));
 };
 /*============================================
