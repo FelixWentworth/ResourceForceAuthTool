@@ -19,7 +19,7 @@ var cleanCSS = require("gulp-clean-css");
 PROJECT CONFIGURATION   
 ============================================*/
 var config = {
-	index: "index.html",
+	index: "index.html",	
 	app: {
 		root: "app",
 		scripts: "app/**/*.js",
@@ -80,6 +80,7 @@ var config = {
 	},
 	// Development build configuration
 	build: {
+		timestamp: new Date().toISOString().replace(":","-"),
 		output: "build",
 		babelPreset: "es2015"
 	}
@@ -145,7 +146,7 @@ function appScripts() {
 		}))		
 		.pipe(angularFileSort())		// puts files in correct order to satisfy angular dependency injection
 		.pipe(gulpif(activeConfig.uglify, uglify()))
-		.pipe(gulpif(activeConfig.concat, concat("app.all.js")))		
+		.pipe(gulpif(activeConfig.concat, concat("app.all." + config.build.timestamp + ".js")))		
 		.pipe(gulpif(activeConfig.sourcemaps, sourcemaps.write('.')))	// write sourcemaps for processed files
 		.pipe(gulp.dest(activeConfig.output.app));
 };
@@ -159,7 +160,7 @@ function appStyles() {
 		// filter to apply transformations only to .css files
 		.pipe(cssFilter)	
 		.pipe(gulpif(activeConfig.cleancss, cleanCSS()))
-		.pipe(gulpif(activeConfig.concat, concat("app.all.css")))				
+		.pipe(gulpif(activeConfig.concat, concat("app.all." + config.build.timestamp + ".css")))				
 		.pipe(cssFilter.restore)
 
 		.pipe(gulp.dest(activeConfig.output.app));
@@ -168,7 +169,7 @@ function appStyles() {
 function vendorScripts() {
 	return gulp.src(activeConfig.vendor.scripts)
 		.pipe(gulpif(activeConfig.uglify, uglify()))
-		.pipe(gulpif(activeConfig.concat, concat("vendor.all.js")))
+		.pipe(gulpif(activeConfig.concat, concat("vendor.all." + config.build.timestamp + ".js")))
 		.pipe(gulp.dest(activeConfig.output.vendor));
 }
 
@@ -181,7 +182,7 @@ function vendorStyles() {
 		// filter to apply transformations only to .css files
 		.pipe(gulpif(activeConfig.concat, cssFilter))	
 		.pipe(gulpif(activeConfig.cleancss, cleanCSS()))
-		.pipe(gulpif(activeConfig.concat, concat("vendor.all.css")))	
+		.pipe(gulpif(activeConfig.concat, concat("vendor.all." + config.build.timestamp+ ".css")))	
 		.pipe(gulpif(activeConfig.concat, cssFilter.restore))	
 
 		.pipe(gulp.dest(activeConfig.output.vendor));
