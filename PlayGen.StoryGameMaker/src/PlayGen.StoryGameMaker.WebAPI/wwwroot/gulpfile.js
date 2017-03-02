@@ -86,7 +86,7 @@ var config = {
 	build: {
 		hashFormat: "{name}.{hash}.{ext}",
 		output: "build",
-		babelPreset: "es2015"
+		babelPreset: "es2015",
 	}
 };
 
@@ -123,8 +123,7 @@ function appScripts() {
 		.pipe(gulpif(activeConfig.sourcemaps, sourcemaps.init()))
 		.pipe(babel({					// compiles ecma6 code to a version compatable with browsers and the angularFileSort plugin
 			presets: [config.build.babelPreset]
-		}))				
-		.pipe(angularFileSort())		// puts files in correct order to satisfy angular dependency injection		
+		}))		
 };
 
 // combine the angular template html files into one javascript blob
@@ -136,28 +135,23 @@ function templates() {
 /*============================================
 OUTPUT STREAMS
 ============================================*/
-function indexOutput() {
-	return gulp.src(config.index)
-		// combine all .js streams and inject into index
-		.pipe(inject(allScriptsOutput(), {ignorePath: config.build.output}))
-		// combine all css streams and inject into index
-		.pipe(inject(allStylesOutput(), {ignorePath: config.build.output}))		
-		.pipe(gulp.dest(config.build.output));
+function generateIndex() {
+	console.log("Generating index");
+	return modifyIndex(config.index, { all: true });
 }
 
-function allScriptsOutput() {
-	if(activeConfig.bundle) {
-		return eventStream.merge(
-			vendorScriptsOutput(),
-			srcScriptsOutput()
-		);
-	} else {
-		return eventStream.merge(
-			vendorScriptsOutput(),
-			appScriptsOutput(),
-			templatesOutput()			
-		);
-	}
+function updateIndex(sections) {
+	console.log("Updating index: ");
+	return modifyIndex(config.build.output + "/index.html", sections);
+}
+
+function modifyIndex(index, sections) {
+	return gulp.src(index)		
+		.pipe(gulpif(sections.all || sections.vendorStyles, inject(vendorStylesOutput(), {name: "vendor", ignorePath: config.build.output})))
+		.pipe(gulpif(sections.all || sections.vendorScripts, inject(vendorScriptsOutput(), {name: "vendor", ignorePath: config.build.output})))
+		.pipe(gulpif(sections.all || sections.srcStyles, inject(appStylesOutput(), {name: "src", ignorePath: config.build.output})))				
+		.pipe(gulpif(sections.all || sections.srcScripts, inject(srcScriptsOutput(), {name: "src", ignorePath: config.build.output})))
+		.pipe(gulp.dest(config.build.output));
 }
 
 function allStylesOutput() {
@@ -172,6 +166,7 @@ function srcScriptsOutput() {
 			appScripts(),
 			templates()
 		)				
+		.pipe(angularFileSort())		// puts files in correct order to satisfy angular dependency injection		
 		.pipe(gulpif(activeConfig.bundle, concat("app.js")))				
 		.pipe(gulpif(activeConfig.hash, hash({"format": config.build.hashFormat})))	
 		.pipe(gulpif(activeConfig.bundle, rename(path => path.basename += ".bundle")))	
@@ -181,23 +176,6 @@ function srcScriptsOutput() {
 		
 		.pipe(gulp.dest(activeConfig.output.app));
 }
-
-function appScriptsOutput() {
-	return appScripts()
-		.pipe(gulpif(activeConfig.hash, hash({"format": config.build.hashFormat})))	
-		.pipe(gulpif(activeConfig.bundle, rename(path => path.basename += ".bundle")))	
-		.pipe(gulpif(activeConfig.minifyScripts, uglify()))
-		.pipe(gulpif(activeConfig.minifyScripts, rename(path => path.basename += ".min")))	
-		.pipe(gulp.dest(activeConfig.output.app));
-}
-
-function templatesOutput() {
-	return templates()		
-		.pipe(gulpif(activeConfig.hash, hash({"format": config.build.hashFormat})))	
-		.pipe(gulpif(activeConfig.minifyScripts, uglify()))
-		.pipe(gulpif(activeConfig.minifyScripts, rename(path => path.basename += ".min")))
-		.pipe(gulp.dest(config.build.output));
-};
 
 function appStylesOutput() {
 	var cssFilter = filter("**/*.css", {restore: true});
@@ -259,21 +237,23 @@ gulp.task("serve", function(done){
 	done();
 });
 
-gulp.task("build-dev", gulp.series(clean, setDev, validateJs, indexOutput));
+gulp.task("build-dev", gulp.series(clean, setDev, validateJs, generateIndex));
 
-gulp.task("build-prod", gulp.series(clean, setProd, indexOutput));
+gulp.task("build-prod", gulp.series(clean, setProd, generateIndex));
 
 gulp.task("run-dev", gulp.series("build-dev", "serve"));
 
 gulp.task("run-prod", gulp.series("build-prod", "serve"));
 
 gulp.task("watch-dev", function() {
-	gulp.watch(config.index, gulp.series(setDev, indexOutput, browsersync.reload));
-	gulp.watch(config.app.scripts, gulp.series(setDev, validateJs, indexOutput, browsersync.reload));
-	gulp.watch(config.app.styles, gulp.series(setDev, indexOutput, browsersync.reload));
-	gulp.watch(config.app.templates, gulp.series(setDev, indexOutput, browsersync.reload));
-	gulp.watch(config.dev.vendor.scripts, gulp.series(setDev, indexOutput, browsersync.reload));
-	gulp.watch(config.dev.vendor.styles, gulp.series(setDev, indexOutput, browsersync.reload));
+	gulp.watch(config.index, gulp.series(setDev, generateIndex, browsersync.reload));
+	// Vendor
+	gulp.watch(config.dev.vendor.styles, gulp.series(setDev, () => {return updateIndex({vendorStyles: true})}, browsersync.reload));
+	gulp.watch(config.dev.vendor.scripts, gulp.series(setDev, () => {return updateIndex({vendorScripts: true})}, browsersync.reload));
+	// Src
+	gulp.watch(config.app.styles, gulp.series(setDev, () => {return updateIndex({srcStyles: true})}, browsersync.reload));
+	gulp.watch(config.app.scripts, gulp.series(setDev, validateJs, () => {return updateIndex({srcScripts: true})}, browsersync.reload));
+	gulp.watch(config.app.templates, gulp.series(setDev, () => {return updateIndex({srcScripts: true})}, browsersync.reload));	
 });
 
 gulp.task("default", gulp.series("build-dev", "serve", "watch-dev"));
