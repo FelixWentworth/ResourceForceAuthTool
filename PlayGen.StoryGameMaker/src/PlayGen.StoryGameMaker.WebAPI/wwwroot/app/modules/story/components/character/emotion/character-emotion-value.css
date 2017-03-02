@@ -1,0 +1,32 @@
+character-emotion-value img {
+	width: 40pt;
+	height: 40pt;
+}
+
+character-emotion-value img.angry {
+	content: url("images/angry.png");
+}
+
+character-emotion-value img.glee {
+	content: url("images/glee.png");
+}
+
+character-emotion-value img.happy {
+	content: url("images/happy.png");
+}
+
+character-emotion-value img.neutral {
+	content: url("images/neutral.png");
+}
+
+character-emotion-value img.none {
+	content: url("images/none.png");
+}
+
+character-emotion-value img.sad {
+	content: url("images/sad.png");
+}
+
+character-emotion-value img.upset {
+	content: url("images/upset.png");
+}
