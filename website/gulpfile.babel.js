@@ -1,4 +1,4 @@
-var gulp = require("gulp-4.0.build");
+var gulp = require("gulp");
 var jshint = require("gulp-jshint");
 var concat = require("gulp-concat");
 var inject = require("gulp-inject");
@@ -9,7 +9,6 @@ var angularFileSort = require("gulp-angular-filesort");
 var babel = require("gulp-babel");
 var sourcemaps = require("gulp-sourcemaps");
 var cssUseref = require("gulp-css-useref");
-var browsersync = require("browser-sync").create();
 var gulpif = require("gulp-if");
 var filter = require("gulp-filter");
 var uglify = require("gulp-uglify");
@@ -51,9 +50,9 @@ var config = {
 		minifyCss: false,
 		hash: false,
 		output: {
-			app: "build/app",
-			vendor: "build/vendor",
-		}
+			app: "../server/PlayGen.StoryGameMaker.WebAPI/wwwroot/app",
+			vendor: "../server/PlayGen.StoryGameMaker.WebAPI/wwwroot/vendor",
+		}		
 	},
 	prod: {
 		vendor: {
@@ -78,15 +77,17 @@ var config = {
 		minifyCss: true,
 		hash: true,
 		output: {
-			app: "build",
-			vendor: "build",
+			app: "../server/PlayGen.StoryGameMaker.WebAPI/wwwroot",
+			vendor: "../server/PlayGen.StoryGameMaker.WebAPI/wwwroot",
 		}	
 	},
-	// Development build configuration
 	build: {
 		hashFormat: "{name}.{hash}.{ext}",
-		output: "build",
-		babelPreset: "es2015",
+		output: "../server/PlayGen.StoryGameMaker.WebAPI/wwwroot",
+		babelPreset: "es2015"		
+	},
+	devTools: {
+		esversion: 6
 	}
 };
 
@@ -109,12 +110,12 @@ function setProd(done) {
 STREAMS
 ============================================*/
 function clean() {
- 	return del([config.build.output + "/*"]);
+ 	return del([config.build.output + "/*"], { force: true });
 }
 
 function validateJs() {
 	return gulp.src(config.app.scripts)
-		.pipe(jshint())
+		.pipe(jshint({esversion: config.devTools.esversion}))
 		.pipe(jshint.reporter("jshint-stylish"));
 };
 
@@ -136,12 +137,12 @@ function templates() {
 OUTPUT STREAMS
 ============================================*/
 function generateIndex() {
-	console.log("Generating index");
+	console.log("Generating index: " + config.index);
 	return modifyIndex(config.index, { all: true });
 }
 
 function updateIndex(sections) {
-	console.log("Updating index: ");
+	console.log("Updating index");
 	return modifyIndex(config.build.output + "/index.html", sections);
 }
 
@@ -230,30 +231,19 @@ gulp.task(clean);
 
 gulp.task(validateJs);
 
-gulp.task("serve", function(done){
-	browsersync.init({
-		server: config.build.output
-	});	
-	done();
-});
-
 gulp.task("build-dev", gulp.series(clean, setDev, validateJs, generateIndex));
 
 gulp.task("build-prod", gulp.series(clean, setProd, generateIndex));
 
-gulp.task("run-dev", gulp.series("build-dev", "serve"));
-
-gulp.task("run-prod", gulp.series("build-prod", "serve"));
-
 gulp.task("watch-dev", function() {
-	gulp.watch(config.index, gulp.series(setDev, generateIndex, browsersync.reload));
+	gulp.watch(config.index, gulp.series(setDev, generateIndex));
 	// Vendor
-	gulp.watch(config.dev.vendor.styles, gulp.series(setDev, () => {return updateIndex({vendorStyles: true})}, browsersync.reload));
-	gulp.watch(config.dev.vendor.scripts, gulp.series(setDev, () => {return updateIndex({vendorScripts: true})}, browsersync.reload));
+	gulp.watch(config.dev.vendor.styles, gulp.series(setDev, () => updateIndex({vendorStyles: true})));
+	gulp.watch(config.dev.vendor.scripts, gulp.series(setDev, () => updateIndex({vendorScripts: true})));
 	// Src
-	gulp.watch(config.app.styles, gulp.series(setDev, () => {return updateIndex({srcStyles: true})}, browsersync.reload));
-	gulp.watch(config.app.scripts, gulp.series(setDev, validateJs, () => {return updateIndex({srcScripts: true})}, browsersync.reload));
-	gulp.watch(config.app.templates, gulp.series(setDev, () => {return updateIndex({srcScripts: true})}, browsersync.reload));	
+	gulp.watch(config.app.styles, gulp.series(setDev, () => updateIndex({srcStyles: true})));
+	gulp.watch(config.app.scripts, gulp.series(setDev, validateJs, () => updateIndex({srcScripts: true})));
+	gulp.watch(config.app.templates, gulp.series(setDev, () => updateIndex({srcScripts: true})));	
 });
 
-gulp.task("default", gulp.series("build-dev", "serve", "watch-dev"));
+gulp.task("default", gulp.series("build-dev", "watch-dev"));

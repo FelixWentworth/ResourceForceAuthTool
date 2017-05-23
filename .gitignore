@@ -39,4 +39,4 @@ _ReSharper*/
 *.log
 
 **/node_modules/
-**/wwwroot/build/
+**/wwwroot

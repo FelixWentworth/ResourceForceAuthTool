@@ -1,24 +1,16 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D31F5234-88EE-4C11-BC62-956CD2E7D35B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayGen.StoryGameMaker.WebAPI", "PlayGen.StoryGameMaker.WebAPI\PlayGen.StoryGameMaker.WebAPI.csproj", "{F8772227-BFF2-4DF0-9211-28BB21BD1181}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F2C0370C-E061-4156-8B66-7B9539F15D92}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayGen.StoryGameMaker.Data.Model", "PlayGen.StoryGameMaker.Data.Model\PlayGen.StoryGameMaker.Data.Model.csproj", "{416F212B-5ACA-45D6-B241-0C6C536279F6}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PlayGen.StoryGameMaker.WebAPI", "src\PlayGen.StoryGameMaker.WebAPI\PlayGen.StoryGameMaker.WebAPI.xproj", "{F8772227-BFF2-4DF0-9211-28BB21BD1181}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayGen.StoryGameMaker.Data.EntityFramework", "PlayGen.StoryGameMaker.Data.EntityFramework\PlayGen.StoryGameMaker.Data.EntityFramework.csproj", "{A32268FF-B2CF-4F7B-8913-36AC2576ECCD}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PlayGen.StoryGameMaker.Data.Model", "src\PlayGen.StoryGameMaker.Data.Model\PlayGen.StoryGameMaker.Data.Model.xproj", "{416F212B-5ACA-45D6-B241-0C6C536279F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayGen.StoryGameMaker.Core", "PlayGen.StoryGameMaker.Core\PlayGen.StoryGameMaker.Core.csproj", "{8FA31106-9396-44FB-A2BA-4F57F138551B}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PlayGen.StoryGameMaker.Data.EntityFramework", "src\PlayGen.StoryGameMaker.Data.EntityFramework\PlayGen.StoryGameMaker.Data.EntityFramework.xproj", "{A32268FF-B2CF-4F7B-8913-36AC2576ECCD}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PlayGen.StoryGameMaker.Core", "src\PlayGen.StoryGameMaker.Core\PlayGen.StoryGameMaker.Core.xproj", "{8FA31106-9396-44FB-A2BA-4F57F138551B}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PlayGen.StoryGameMaker.Contracts", "src\PlayGen.StoryGameMaker.Contracts\PlayGen.StoryGameMaker.Contracts.xproj", "{FE4B981E-8E16-48B2-94C6-5A9B414AAAC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayGen.StoryGameMaker.Contracts", "PlayGen.StoryGameMaker.Contracts\PlayGen.StoryGameMaker.Contracts.csproj", "{FE4B981E-8E16-48B2-94C6-5A9B414AAAC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,12 +41,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{F8772227-BFF2-4DF0-9211-28BB21BD1181} = {D31F5234-88EE-4C11-BC62-956CD2E7D35B}
-		{416F212B-5ACA-45D6-B241-0C6C536279F6} = {D31F5234-88EE-4C11-BC62-956CD2E7D35B}
-		{A32268FF-B2CF-4F7B-8913-36AC2576ECCD} = {D31F5234-88EE-4C11-BC62-956CD2E7D35B}
-		{8FA31106-9396-44FB-A2BA-4F57F138551B} = {D31F5234-88EE-4C11-BC62-956CD2E7D35B}
-		{FE4B981E-8E16-48B2-94C6-5A9B414AAAC0} = {D31F5234-88EE-4C11-BC62-956CD2E7D35B}
 	EndGlobalSection
 EndGlobal

@@ -7,10 +7,10 @@ WORKDIR app/
 
 RUN ["dotnet", "restore"]
 
-WORKDIR src/PlayGen.StoryGameMaker.WebAPI/wwwroot/
+WORKDIR server/PlayGen.StoryGameMaker.WebAPI/wwwroot/
 RUN ["npm", "install"]
 
-WORKDIR /app/src/PlayGen.StoryGameMaker.WebAPI/
+WORKDIR /app/server/PlayGen.StoryGameMaker.WebAPI/
 RUN ["dotnet", "publish", "-c", "Release", "-o", "out"]
 RUN ["chmod", "+x", "delay-startup.sh"]
 

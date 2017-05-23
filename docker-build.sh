@@ -1,3 +1,3 @@
 #/bin/bash
 export CONTAINER="storygamemaker"
-docker build -t $CONTAINER .
+docker build ./server -t $CONTAINER .

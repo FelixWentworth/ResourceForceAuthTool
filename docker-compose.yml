@@ -3,6 +3,8 @@ version: '2'
 services: 
     sgm-mariadb: 
         network_mode: "bridge"
+        build:
+            context: ./server
         environment:
             MYSQL_ROOT_PASSWORD: "t0pSECr3t"
         image: mariadb
@@ -12,7 +14,7 @@ services:
     sgm:
         network_mode: "bridge"
         build:
-            context: ./
+            context: ./server
         image: "storygamemaker"
         container_name: "sgm"
         links:

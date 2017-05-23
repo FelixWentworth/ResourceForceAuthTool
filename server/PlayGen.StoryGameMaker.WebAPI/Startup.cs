@@ -51,30 +51,10 @@ namespace PlayGen.StoryGameMaker.WebAPI
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
-			app.Use(async (context, next) =>
-			{
-				await next();
-
-				if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value))
-				{
-					context.Request.Path = "/app/index.html";
-					context.Response.StatusCode = 200;
-					await next();
-				}
-			});
-
-			app.UseFileServer();
-
-			app.UseFileServer(new FileServerOptions()
-			{
-				FileProvider = new PhysicalFileProvider(Path.Combine(env.WebRootPath, "node_modules")),
-				RequestPath = "/node_modules",
-				EnableDirectoryBrowsing = false
-			});
-
+            
 			app.UseCors("AllowAll");
-			app.UseStaticFiles();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 			app.UseMvc();
 		}
     }

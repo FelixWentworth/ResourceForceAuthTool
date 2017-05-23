@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <AssemblyName>PlayGen.StoryGameMaker.Core</AssemblyName>
+    <PackageId>PlayGen.StoryGameMaker.Core</PackageId>
+    <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
+    <PackageTargetFallback>$(PackageTargetFallback);net451</PackageTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PlayGen.StoryGameMaker.Data.EntityFramework\PlayGen.StoryGameMaker.Data.EntityFramework.csproj" />
+    <ProjectReference Include="..\PlayGen.StoryGameMaker.Data.Model\PlayGen.StoryGameMaker.Data.Model.csproj" />
+  </ItemGroup>
+
+</Project>
