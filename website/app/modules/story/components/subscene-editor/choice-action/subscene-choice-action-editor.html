@@ -1,8 +1,17 @@
 <validated-text-input 
-					label="'Action'"
+					label="'TItle'"
 					type="'area'"
-					placeholder="'what action is taking place?'"
-					ng-model="$ctrl.choiceAction.value"
+					placeholder="'Title'"
+					ng-model="$ctrl.choiceAction.title"
 					minlength="20"
 					maxlength="300"
+					required="true"/>
+					<br/>
+<validated-text-input 
+					label="'Description'"
+					type="'area'"
+					placeholder="'Description'"
+					ng-model="$ctrl.choiceAction.description"
+					minlength="20"
+					maxlength="280"
 					required="true"/>

@@ -11,15 +11,6 @@ angular
 			// public fields
 			// todo make data driven
 			ctrl.config = {};
-			ctrl.config.characters = {};
-			ctrl.config.characters.minimum = 2;
-			ctrl.config.characters.all = [
-				createCharacter("Bob"), 
-				createCharacter("Sue"),
-				createCharacter("Mo"),
-				createCharacter("Hannah"),
-				createCharacter("Frank"),
-			];
 			ctrl.config.invalidMessage = "There seems to be an invalid part of your story." + 
 						" \nYou must find it and fix it in order to save." +
 						" \nThere should be a red error message to help you identify it.";

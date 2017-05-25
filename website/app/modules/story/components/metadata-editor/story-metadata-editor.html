@@ -3,42 +3,23 @@
 				label="'Title'"
 				ng-model="$ctrl.metadata.title"
 				placeholder="$ctrl.metadataHelp.title"
-				minlength="5"
+				minlength="1"
 	       		maxlength="50"
 	       		required/>
-</div>
-
-<span>		
-	{{$ctrl.outline.preCategory}}
-
-	<validated-select label="'Category'" 
-		ng-model="$ctrl.metadata.category" 
-		options="$ctrl.metadataOptions.category"
-		required="true"/>
-
-	{{$ctrl.outline.postCategory}}
-
-	<validated-select label="'Skill'" 
-		ng-model="$ctrl.metadata.skill" 
-		options="$ctrl.metadataOptions.skill"
-		required="true"/>
-
-	{{$ctrl.outline.postSkill}}
-
-	<validated-select label="'Location'" 
-		ng-model="$ctrl.metadata.location" 
-		options="$ctrl.metadataOptions.location"
-		required="true"/>
-
-	{{$ctrl.outline.postLocation}}
-</span>	
-
-<div>
+<br/>
 	<validated-text-input type="'field'"
-		label="'Author'"
-		ng-model="$ctrl.metadata.author"
-		placeholder="$ctrl.metadataHelp.author"
-		minlength="3"
-		maxlength="50"
-		required/>
+				label="'Location'"
+				ng-model="$ctrl.metadata.location"
+				placeholder="$ctrl.metadataHelp.location"
+				minlength="1"
+	       		maxlength="50"
+	       		required/>
+
+	<validated-text-input type="'field'"
+				label="'Language'"
+				ng-model="$ctrl.metadata.language"
+				placeholder="$ctrl.metadataHelp.language"
+				minlength="1"
+	       		maxlength="50"
+	       		required/>
 </div>
