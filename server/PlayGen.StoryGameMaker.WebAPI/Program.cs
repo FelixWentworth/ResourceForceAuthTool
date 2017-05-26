@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace PlayGen.StoryGameMaker.WebAPI
+namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 {
     public class Program
     {

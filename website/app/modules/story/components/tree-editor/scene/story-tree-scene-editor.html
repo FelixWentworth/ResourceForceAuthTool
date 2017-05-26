@@ -1,32 +1,70 @@
 <div ng-form="$ctrl.form">
 	
-	<!-- scene/choice name -->
-	<md-card>
+	<!-- scene info -->
+	<md-card ng-if="$ctrl.choice == null">
 		
 		<md-card-content>
-
-			<div layout="row">
-		
-				<md-button ng-if="$ctrl.choice != null"
-							class="md-raised" aria-label="remove choice"
-							ng-click="$ctrl.onClicked($ctrl.choice)">-</md-button>
-				
+			<div>
 				<validated-text-input type="'field'" 
 										label="$ctrl.label"
-										placeholder="'add a short title to identify this choice'"
+										placeholder="'Title'"
 										ng-model="$ctrl.scene.name"
 										minlength="1"
-										maxlength="10"
-										required="true"></validated-text-input>	
+										maxlength="100"
+										required="true"/>	
 
+				<validated-text-input type="'area'" 
+										label="'Description'"
+										placeholder="'Description'"
+										ng-model="$ctrl.scene.description"
+										minlength="1"
+										maxlength="200"
+										required="true"/>	
 			</div>
 		
 			<!-- todo make this display the same as the rest of the error messages -->
-			<div ng-show="!$ctrl.form.$valid">One or more of the elements in this scene are incomplete.</div>
+			<div ng-show="!$ctrl.form.$valid">One or more of the elements in this incident are incomplete.</div>
 
 		</md-card-content>
 	
 	</md-card>	
+
+
+	<!-- Choice Info -->
+	<md-card ng-if="$ctrl.choice != null">
+		
+		<md-card-content>
+
+			<div layout="row">
+				<md-button 	class="md-raised" aria-label="remove choice"
+							ng-click="$ctrl.onClicked($ctrl.choice)">Remove</md-button>
+				
+			</div>
+			<div>
+				<label>{{$ctrl.scene.name}}</label>
+			</div>
+			<div>	
+				<validated-select label="'Rating'"
+					ng-model="$ctrl.scene.feedbackRating"
+					options="$ctrl.feedbackOptions"
+					required="true"/>
+			</div>
+			<div>
+				<validated-text-input type="'area'" 
+										label="'Feedback'"
+										placeholder="'Feedback Description'"
+										ng-model="$ctrl.scene.feedback"
+										minlength="1"
+										maxlength="200"
+										required="true"/>	
+			</div>
+		
+			<!-- todo make this display the same as the rest of the error messages -->
+			<label ng-show="!$ctrl.form.$valid">One or more of the elements in this incident are incomplete.</label>
+
+		</md-card-content>
+	
+	</md-card>
 
 	<!-- choice action -->
 	<md-card ng-if="$ctrl.choice != null">
@@ -48,7 +86,7 @@
 	    		<md-card-content layout="row">
 
 					<md-button ng-click="$ctrl.removeElement(element)"
-								class="md-raised">-</md-button>
+								class="md-raised">Remove</md-button>
 
 					<story-subscene-editor flex ng-if="element._type == 'Subscene'" subscene="element"></story-subscene-editor>		
 
@@ -71,11 +109,11 @@
 
 				<md-card-content layout="row">
 
-					<md-button ng-show="$ctrl.doesntContain(['Choice'])" 
+<!-- 					<md-button ng-show="$ctrl.doesntContain(['Choice'])" 
 								ng-click="$ctrl.addNarrator()"
-								class="md-raised">+ Narrator</md-button>	
+								class="md-raised">+ Narrator</md-button>	 -->
 
-					<md-menu ng-show="$ctrl.doesntContain(['Choice'])">
+<!-- 					<md-menu ng-show="$ctrl.doesntContain(['Choice'])">
 
 						<md-button ng-click="$ctrl.openAddCharacterMenu($mdMenu, $event)"
 									class="md-raised">+ Character</md-button>	
@@ -90,19 +128,22 @@
 					
 						</md-menu-content>
 					
-					</md-menu>
+					</md-menu> -->
 					
-					<md-button ng-click="$ctrl.addChoice()"
-								class="md-raised">+ Choice</md-button>	
+					<md-button ng-click="$ctrl.addChoice('Ignore')"
+								class="md-raised">Ignore</md-button>	
+					<md-button ng-click="$ctrl.addChoice('Citizen')"
+								class="md-raised">Ask Citizen</md-button>	
+					<md-button ng-click="$ctrl.addChoice('Officer')"
+								class="md-raised">Send Officer</md-button>	
 					
-					<md-button ng-show="$ctrl.doesntContain(['Choice'])"
-								ng-click="$ctrl.addEnd()"
+					<md-button ng-click="$ctrl.addEnd()"
 								class="md-raised">End</md-button>
 				
 				</md-card-content>	
 
 				<!-- todo make this display the same as the rest of the error messages -->
-				<div ng-show="!$ctrl.isThisSceneLevelComplete">This scene is incomplete. Add an "End" or "Choice" when you wish to complete it.</div>
+				<div ng-show="!$ctrl.isThisSceneLevelComplete">This scenario is incomplete. Make sure all paths lead to an End.</div>
 			</md-card>
 
 		</li>

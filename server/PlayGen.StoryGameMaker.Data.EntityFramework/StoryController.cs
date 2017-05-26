@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-using PlayGen.StoryGameMaker.Data.Model;
+using PlayGen.ResourceForceAuthoringTool.Data.Model;
 using System.Linq;
 
-namespace PlayGen.StoryGameMaker.Data.EntityFramework
+namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 {
 	public class StoryController : DbController
 	{
@@ -59,11 +59,9 @@ namespace PlayGen.StoryGameMaker.Data.EntityFramework
 				if (existing != null)
 				{
 					context.Entry(existing).State = EntityState.Modified;
-					existing.Author = story.Author;
-					existing.Category = story.Category;
-					existing.Skill = story.Skill;
-					existing.Location = story.Location;
 					existing.Title = story.Title;
+					existing.Language = story.Language;
+					existing.Location = story.Location;
 					existing.Content = story.Content;
 					SaveChanges(context);
 					return existing;

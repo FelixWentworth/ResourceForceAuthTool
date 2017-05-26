@@ -10,10 +10,9 @@ angular
 			
 			ctrl.generateOutline = function () {
 				// todo make data driven
-				return String.format("A story about {0} and {1} at {2}", 
-					ctrl.metadata.category,
-					ctrl.metadata.skill,
-					ctrl.metadata.location);
+				return String.format("{0}, {1}", 
+					ctrl.metadata.location,
+					ctrl.metadata.language);
 			};
 		}
 	});

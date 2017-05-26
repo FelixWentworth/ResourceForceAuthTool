@@ -9,9 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
-using PlayGen.StoryGameMaker.Data.EntityFramework;
+using PlayGen.ResourceForceAuthoringTool.Data.EntityFramework;
 
-namespace PlayGen.StoryGameMaker.WebAPI
+namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 {
     public class Startup
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PlayGen.StoryGameMaker.Contracts
+namespace PlayGen.ResourceForceAuthoringTool.Contracts
 {
     public class StoryResponse
     {

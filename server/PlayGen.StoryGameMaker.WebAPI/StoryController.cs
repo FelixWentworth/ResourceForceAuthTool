@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
 
-using PlayGen.StoryGameMaker.Contracts;
+using PlayGen.ResourceForceAuthoringTool.Contracts;
 
-namespace PlayGen.StoryGameMaker.WebAPI
+namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 {
 	[Route("api/[controller]")]
 	public class StoryController : Controller

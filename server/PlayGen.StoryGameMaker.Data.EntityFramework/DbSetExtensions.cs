@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace PlayGen.StoryGameMaker.Data.EntityFramework
+namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 {
     public static class DbSetExtensions
     {

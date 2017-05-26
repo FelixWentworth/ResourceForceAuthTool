@@ -21,9 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PlayGen.StoryGameMaker.Data.EntityFramework\PlayGen.StoryGameMaker.Data.EntityFramework.csproj" />
-    <ProjectReference Include="..\PlayGen.StoryGameMaker.Contracts\PlayGen.StoryGameMaker.Contracts.csproj" />
-    <ProjectReference Include="..\PlayGen.StoryGameMaker.Core\PlayGen.StoryGameMaker.Core.csproj" />
+    <ProjectReference Include="..\PlayGen.StoryGameMaker.Contracts\PlayGen.ResourceForceAuthoringTool.Contracts.csproj" />
+    <ProjectReference Include="..\PlayGen.StoryGameMaker.Core\PlayGen.ResourceForceAuthoringTool.Core.csproj" />
+    <ProjectReference Include="..\PlayGen.StoryGameMaker.Data.EntityFramework\PlayGen.ResourceForceAuthoringTool.Data.EntityFramework.csproj" />
   </ItemGroup>
 
   <ItemGroup>

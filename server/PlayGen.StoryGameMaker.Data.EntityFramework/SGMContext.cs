@@ -1,10 +1,10 @@
 ﻿using System;
 
 using Microsoft.EntityFrameworkCore;
-using PlayGen.StoryGameMaker.Data.Model;
+using PlayGen.ResourceForceAuthoringTool.Data.Model;
 using System.Linq;
 
-namespace PlayGen.StoryGameMaker.Data.EntityFramework
+namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 {
     public class SGMContext : DbContext
     {

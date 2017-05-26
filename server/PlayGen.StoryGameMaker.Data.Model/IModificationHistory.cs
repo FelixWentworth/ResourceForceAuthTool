@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PlayGen.StoryGameMaker.Data.Model
+namespace PlayGen.ResourceForceAuthoringTool.Data.Model
 {
 	public interface IModificationHistory
 	{

@@ -4,10 +4,8 @@ class Metadata {
 
 		self._type = "Metadata";
 		self.id = id;
-		self.author = "";
-		self.category = "";
-		self.skill = "";
-		self.location = "";
 		self.title = "";
+		self.language = "";
+		self.location = "";
 	}
 }

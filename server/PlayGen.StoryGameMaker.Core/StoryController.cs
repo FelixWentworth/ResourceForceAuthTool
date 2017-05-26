@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using PlayGen.StoryGameMaker.Data.Model;
+using PlayGen.ResourceForceAuthoringTool.Data.Model;
 
-namespace PlayGen.StoryGameMaker.Core
+namespace PlayGen.ResourceForceAuthoringTool.Core
 {
 	public class StoryController
 	{

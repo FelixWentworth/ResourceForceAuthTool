@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 using Microsoft.EntityFrameworkCore;
 
-namespace PlayGen.StoryGameMaker.Data.EntityFramework
+namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 {
 	public class DbController
 	{

@@ -1,16 +1,17 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayGen.StoryGameMaker.WebAPI", "PlayGen.StoryGameMaker.WebAPI\PlayGen.StoryGameMaker.WebAPI.csproj", "{F8772227-BFF2-4DF0-9211-28BB21BD1181}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayGen.ResourceForceAuthoringTool.WebAPI", "PlayGen.StoryGameMaker.WebAPI\PlayGen.ResourceForceAuthoringTool.WebAPI.csproj", "{F8772227-BFF2-4DF0-9211-28BB21BD1181}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayGen.StoryGameMaker.Data.Model", "PlayGen.StoryGameMaker.Data.Model\PlayGen.StoryGameMaker.Data.Model.csproj", "{416F212B-5ACA-45D6-B241-0C6C536279F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayGen.ResourceForceAuthoringTool.Data.Model", "PlayGen.StoryGameMaker.Data.Model\PlayGen.ResourceForceAuthoringTool.Data.Model.csproj", "{416F212B-5ACA-45D6-B241-0C6C536279F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayGen.StoryGameMaker.Data.EntityFramework", "PlayGen.StoryGameMaker.Data.EntityFramework\PlayGen.StoryGameMaker.Data.EntityFramework.csproj", "{A32268FF-B2CF-4F7B-8913-36AC2576ECCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayGen.ResourceForceAuthoringTool.Data.EntityFramework", "PlayGen.StoryGameMaker.Data.EntityFramework\PlayGen.ResourceForceAuthoringTool.Data.EntityFramework.csproj", "{A32268FF-B2CF-4F7B-8913-36AC2576ECCD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayGen.StoryGameMaker.Core", "PlayGen.StoryGameMaker.Core\PlayGen.StoryGameMaker.Core.csproj", "{8FA31106-9396-44FB-A2BA-4F57F138551B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayGen.ResourceForceAuthoringTool.Core", "PlayGen.StoryGameMaker.Core\PlayGen.ResourceForceAuthoringTool.Core.csproj", "{8FA31106-9396-44FB-A2BA-4F57F138551B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayGen.StoryGameMaker.Contracts", "PlayGen.StoryGameMaker.Contracts\PlayGen.StoryGameMaker.Contracts.csproj", "{FE4B981E-8E16-48B2-94C6-5A9B414AAAC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayGen.ResourceForceAuthoringTool.Contracts", "PlayGen.StoryGameMaker.Contracts\PlayGen.ResourceForceAuthoringTool.Contracts.csproj", "{FE4B981E-8E16-48B2-94C6-5A9B414AAAC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

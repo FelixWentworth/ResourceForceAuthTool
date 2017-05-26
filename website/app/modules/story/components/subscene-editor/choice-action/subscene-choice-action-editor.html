@@ -1,17 +1,43 @@
+<div>
 <validated-text-input 
 					label="'TItle'"
 					type="'area'"
 					placeholder="'Title'"
 					ng-model="$ctrl.choiceAction.title"
-					minlength="20"
-					maxlength="300"
+					minlength="1"
+					maxlength="70"
 					required="true"/>
-					<br/>
+</div>
+<div>
 <validated-text-input 
-					label="'Description'"
+					label="'Descrtiption'"
 					type="'area'"
-					placeholder="'Description'"
+					placeholder="'Descrtiption'"
 					ng-model="$ctrl.choiceAction.description"
-					minlength="20"
-					maxlength="280"
+					minlength="10"
+					maxlength="200"
 					required="true"/>
+<div>
+<validated-select label="'Severity'"
+					ng-model="$ctrl.choiceAction.Severity"
+					options="$ctrl.severity"
+					required="true"/>
+</div>
+<div>
+<validated-select label="'Number Of Officers Required'"
+					ng-model="$ctrl.choiceAction.OfficerReq"
+					options="$ctrl.officerOptions"
+					required="true"/>
+</div>
+<div>
+<validated-select label="'Turns Officers Needed For'"
+					ng-model="$ctrl.choiceAction.TurnReq"
+					options="$ctrl.turnOptions"
+					required="true"/>
+</div>
+<div>
+<validated-select label="'End Impact'"
+					ng-model="$ctrl.choiceAction.SatisfactionImpact"
+					options="$ctrl.impactOptions"
+					required="true"/>
+</div>

@@ -12,6 +12,8 @@ angular
 			// public variables
 			ctrl.isThisSceneLevelComplete = false;
 
+			ctrl.feedbackOptions = [1,2,3,4,5];
+
 			// public methods
 			ctrl.removeElement = function(element) {
 				Array.remove(ctrl.scene.elements, element);
@@ -65,6 +67,20 @@ angular
 				checkValidity();
 			};
 
+			// TODO Add defined choices
+			ctrl.addChoice = function (type) {
+				var choiceCount = 0;
+				ctrl.scene.elements.forEach(e => choiceCount += e._type == "Choice" ? 1 : 0);
+
+				var choiceName = type;//ctrl.scene.name + "." + (choiceCount + 1);
+
+				var choice = StoryEditorService.createChoice(choiceName);
+				ctrl.scene.elements.push(choice);
+
+				checkValidity();
+			};
+
+
 			ctrl.addEnd = function () {
 				var end = StoryEditorService.createEnd();
 				ctrl.scene.elements.push(end);
@@ -79,10 +95,10 @@ angular
 					// todo make data driven
 					ctrl.label = "Choice";
 				} else {
-					ctrl.label = "Scene";
+					ctrl.label = "Incident Title";
 				}
 
-				ctrl.characters = StoryEditorService.getCharacters();
+				// ctrl.characters = StoryEditorService.getCharacters();
 			};
 
 			ctrl.$postLink = function () {

@@ -4,10 +4,10 @@ using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-using PlayGen.StoryGameMaker.Contracts;
-using PlayGen.StoryGameMaker.Data.Model;
+using PlayGen.ResourceForceAuthoringTool.Contracts;
+using PlayGen.ResourceForceAuthoringTool.Data.Model;
 
-namespace PlayGen.StoryGameMaker.WebAPI
+namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 {
     public static class StoryExtensions
     {
@@ -17,19 +17,15 @@ namespace PlayGen.StoryGameMaker.WebAPI
 			{
 				JObject jObject = JObject.Parse(json);
 				Id = (string)jObject["id"];
-				Author = (string)jObject["author"];
-				Category = (string)jObject["category"];
-				Skill = (string)jObject["skill"];
-				Location = (string)jObject["location"];
 				Title = (string)jObject["title"];
+				Language = (string)jObject["language"];
+				Location = (string)jObject["location"];
 			}
 
 			public string Id { get; set; }
-			public string Author { get; set; }
-			public string Category { get; set; }
-			public string Skill { get; set; }
-			public string Location { get; set; }
 			public string Title { get; set; }
+			public string Language { get; set; }
+			public string Location { get; set; }
 		}
 
 		public static MetadataResponse ToMetadata(this Story storyModel)
@@ -42,11 +38,9 @@ namespace PlayGen.StoryGameMaker.WebAPI
 			return new MetadataResponse
 			{
 				Id = storyModel.Id,
-				Author = storyModel.Author,
-				Category = storyModel.Category,
-				Skill = storyModel.Skill,
-				Location = storyModel.Location,
 				Title = storyModel.Title,
+				Language = storyModel.Language,
+				Location = storyModel.Location,
 			};
 		}
 
@@ -61,11 +55,9 @@ namespace PlayGen.StoryGameMaker.WebAPI
 			return new Story
 			{
 				Id = metadata.Id,
-				Author = metadata.Author,
-				Category = metadata.Category,
-				Skill = metadata.Skill,
-				Location = metadata.Location,
 				Title = metadata.Title,
+				Language = metadata.Language,
+				Location = metadata.Location,
 				Content = storyContract.Content.ToString()
 			};
 		}

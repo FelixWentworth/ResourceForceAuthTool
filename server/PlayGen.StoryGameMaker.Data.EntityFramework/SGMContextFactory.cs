@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MySQL.Data.EntityFrameworkCore.Extensions;
 using Microsoft.EntityFrameworkCore;
 
-namespace PlayGen.StoryGameMaker.Data.EntityFramework
+namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 {
     public class SGMContextFactory
     {
