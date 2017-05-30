@@ -34,7 +34,23 @@
 
 		<md-card-content>		
 
-			<story-subscene-editor subscene="$ctrl.choice.action"></story-subscene-editor>
+			<div>	
+				<validated-select label="'Rating'"
+					ng-model="$ctrl.choice.choice.feedbackRating"
+					options="$ctrl.feedbackOptions"
+					required="true"/>
+			</div>
+			<div>
+				<validated-text-input type="'area'" 
+					label="'Feedback'"
+					placeholder="'Feedback Description'"
+					ng-model="$ctrl.choice.choice.feedback"
+					minlength="1"
+					maxlength="200"
+					required="true"/>	
+			</div>
+
+			<!-- <story-subscene-editor subscene="$ctrl.choice.action"></story-subscene-editor> -->
 		
 		</md-card-content>
 

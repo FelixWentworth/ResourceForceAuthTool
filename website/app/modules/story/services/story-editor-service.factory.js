@@ -59,7 +59,7 @@ angular
 
 		service.createChoice = function (name) {
 			var choice = new Choice();
-			choice.scene.choiceType = name;
+			choice.Choice.choiceType = name;
 
 			//addCharacterReactions(choice.action);			
 			
