@@ -4,6 +4,6 @@ class Character {
 
 		self._type = "Character";
 		self.name = name;
-		self.elements = [];
+		self.choices = [];
 	}
 }

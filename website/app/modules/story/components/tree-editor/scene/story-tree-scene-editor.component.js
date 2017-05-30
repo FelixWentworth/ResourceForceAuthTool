@@ -12,18 +12,22 @@ angular
 			// public variables
 			ctrl.isThisSceneLevelComplete = false;
 
-			ctrl.feedbackOptions = [1,2,3,4,5];
+			ctrl.severity = [1, 2, 3];
+			
+			ctrl.officerOptions = [1,2,3,4];
+			ctrl.turnOptions = [1,2,3,4];
+			ctrl.impactOptions = [-3,-2,-1,0,1,2,3];
 
 			// public methods
 			ctrl.removeElement = function(element) {
-				Array.remove(ctrl.scene.elements, element);
+				Array.remove(ctrl.scene.choices, element);
 				checkValidity();
 			};
 
 			ctrl.doesntContain = function(types) {
 				var containsWhereType = false;
 				for(var i in types) {
-					if(Array.containsWhere(ctrl.scene.elements, e => e._type == types[i])) {
+					if(Array.containsWhere(ctrl.scene.choices, e => e._type == types[i])) {
 						containsWhereType = true;
 						break;
 					}
@@ -34,7 +38,7 @@ angular
 
 			ctrl.addNarrator = function () {	
 				var narratorSubscene = StoryEditorService.createNarratorSubscene();
-				ctrl.scene.elements.push(narratorSubscene);
+				ctrl.scene.choices.push(narratorSubscene);
 
 				// todo remove
 				checkValidity();
@@ -52,17 +56,17 @@ angular
 
 			ctrl.addCharacter = function (character) {
 				var characterSubscene = StoryEditorService.createCharacterSubscene(character);
-				ctrl.scene.elements.push(characterSubscene);
+				ctrl.scene.choices.push(characterSubscene);
 			};
 
 			ctrl.addChoice = function () {
 				var choiceCount = 0;
-				ctrl.scene.elements.forEach(e => choiceCount += e._type == "Choice" ? 1 : 0);
+				ctrl.scene.choices.forEach(e => choiceCount += e._type == "Choice" ? 1 : 0);
 
 				var choiceName = ctrl.scene.name + "." + (choiceCount + 1);
 
 				var choice = StoryEditorService.createChoice(choiceName);
-				ctrl.scene.elements.push(choice);
+				ctrl.scene.choices.push(choice);
 
 				checkValidity();
 			};
@@ -70,12 +74,12 @@ angular
 			// TODO Add defined choices
 			ctrl.addChoice = function (type) {
 				var choiceCount = 0;
-				ctrl.scene.elements.forEach(e => choiceCount += e._type == "Choice" ? 1 : 0);
+				ctrl.scene.choices.forEach(e => choiceCount += e._type == "Choice" ? 1 : 0);
 
 				var choiceName = type;//ctrl.scene.name + "." + (choiceCount + 1);
 
 				var choice = StoryEditorService.createChoice(choiceName);
-				ctrl.scene.elements.push(choice);
+				ctrl.scene.choices.push(choice);
 
 				checkValidity();
 			};
@@ -83,7 +87,7 @@ angular
 
 			ctrl.addEnd = function () {
 				var end = StoryEditorService.createEnd();
-				ctrl.scene.elements.push(end);
+				ctrl.scene.choices.push(end);
 
 				checkValidity();
 			};
@@ -107,7 +111,7 @@ angular
 
 			// private methods
 			function checkValidity() {				
-				ctrl.isThisSceneLevelComplete = Array.containsWhere(ctrl.scene.elements, e => e._type == "End" || e._type == "Choice" );
+				ctrl.isThisSceneLevelComplete = Array.containsWhere(ctrl.scene.choices, e => e._type == "End" || e._type == "Choice" );
 				ctrl.form.$setValidity("incomplete", ctrl.isThisSceneLevelComplete);
 			}
 		}]

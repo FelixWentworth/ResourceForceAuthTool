@@ -7,10 +7,7 @@ angular
 		},
 		controller: ["StoryEditorService", function(StoryEditorService){
 			var ctrl = this;
-			ctrl.severity = [1, 2, 3];
-			ctrl.officerOptions = [1,2,3,4];
-			ctrl.turnOptions = [1,2,3,4];
-			ctrl.impactOptions = [-3,-2,-1,0,1,2,3];
+			ctrl.feedbackOptions = [1,2,3,4,5];
 		}]
 
 

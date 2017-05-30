@@ -19,7 +19,7 @@ angular
 				setEnabled(ctrl.sceneElements, false);
 
 				ctrl.sceneElementsHistory = ctrl.sceneElementsHistory.concat(ctrl.sceneElements);
-				ctrl.sceneElements = choice.scene.elements;
+				ctrl.sceneElements = choice.scene.choices;
 
 				setEnabled(ctrl.sceneElements, true);				
 
@@ -27,22 +27,22 @@ angular
 			};
 			
 			ctrl.$onInit = function() {
-				ctrl.sceneElements = ctrl.story.content.scene.elements;
+				ctrl.sceneElements = ctrl.story.content.scene.choices;
 
 				setEnabled(ctrl.sceneElements, true);
 				ctrl.isComplete = false;
 			}
 
 			// private methods
-			function setEnabled(elements, isEnabled) {
-				elements.forEach(e => {
+			function setEnabled(choices, isEnabled) {
+				choices.forEach(e => {
 					e.__isEnabled = isEnabled;
 
 					if(e._type == "Subscene") {
 						setSubsceneEnabled(e, isEnabled);
 					} else if(e._type == "Choice") {
 						setSubsceneEnabled(e.action, isEnabled);
-						setEnabled(e.scene.elements, isEnabled);
+						setEnabled(e.scene.choices, isEnabled);
 					}
 				});
 			};

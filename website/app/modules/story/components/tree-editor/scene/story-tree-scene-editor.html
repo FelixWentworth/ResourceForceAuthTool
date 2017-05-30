@@ -8,7 +8,7 @@
 				<validated-text-input type="'field'" 
 										label="$ctrl.label"
 										placeholder="'Title'"
-										ng-model="$ctrl.scene.name"
+										ng-model="$ctrl.scene.title"
 										minlength="1"
 										maxlength="100"
 										required="true"/>	
@@ -29,6 +29,16 @@
 	
 	</md-card>	
 
+	<!-- choice action -->
+	<md-card ng-if="$ctrl.choice != null">
+
+		<md-card-content>		
+
+			<story-subscene-editor subscene="$ctrl.choice.action"></story-subscene-editor>
+		
+		</md-card-content>
+
+	</md-card>
 
 	<!-- Choice Info -->
 	<md-card ng-if="$ctrl.choice != null">
@@ -43,21 +53,53 @@
 			<div>
 				<label>{{$ctrl.scene.name}}</label>
 			</div>
-			<div>	
-				<validated-select label="'Rating'"
-					ng-model="$ctrl.scene.feedbackRating"
-					options="$ctrl.feedbackOptions"
-					required="true"/>
+
+			<div>
+			<validated-text-input 
+								label="'Title'"
+								type="'area'"
+								placeholder="'Title'"
+								ng-model="$ctrl.scene.title"
+								minlength="1"
+								maxlength="70"
+								required="true"/>
 			</div>
 			<div>
-				<validated-text-input type="'area'" 
-										label="'Feedback'"
-										placeholder="'Feedback Description'"
-										ng-model="$ctrl.scene.feedback"
-										minlength="1"
-										maxlength="200"
-										required="true"/>	
+			<validated-text-input 
+								label="'Descrtiption'"
+								type="'area'"
+								placeholder="'Descrtiption'"
+								ng-model="$ctrl.scene.description"
+								minlength="10"
+								maxlength="200"
+								required="true"/>
 			</div>
+			<div>
+			<validated-select label="'Severity'"
+								ng-model="$ctrl.scene.severity"
+								options="$ctrl.severity"
+								required="true"/>
+			</div>
+			<div>
+			<validated-select label="'Number Of Officers Required'"
+								ng-model="$ctrl.scene.officerReq"
+								options="$ctrl.officerOptions"
+								required="true"/>
+			</div>
+			<div>
+			<validated-select label="'Turns Officers Needed For'"
+								ng-model="$ctrl.scene.turnReq"
+								options="$ctrl.turnOptions"
+								required="true"/>
+			</div>
+			<div>
+			<validated-select label="'End Impact'"
+								ng-model="$ctrl.scene.satisfactionImpact"
+								options="$ctrl.impactOptions"
+								required="true"/>
+			</div>
+
+			
 		
 			<!-- todo make this display the same as the rest of the error messages -->
 			<label ng-show="!$ctrl.form.$valid">One or more of the elements in this incident are incomplete.</label>
@@ -66,20 +108,10 @@
 	
 	</md-card>
 
-	<!-- choice action -->
-	<md-card ng-if="$ctrl.choice != null">
-
-		<md-card-content>		
-
-			<story-subscene-editor subscene="$ctrl.choice.action"></story-subscene-editor>
-		
-		</md-card-content>
-
-	</md-card>
 
 	<ul>
 		<!-- scene/choice elements -->
-		<li ng-repeat="element in $ctrl.scene.elements">
+		<li ng-repeat="element in $ctrl.scene.choices">
 			
 			<md-card ng-if="element._type != 'Choice'">
 
@@ -136,7 +168,6 @@
 								class="md-raised">Ask Citizen</md-button>	
 					<md-button ng-click="$ctrl.addChoice('Officer')"
 								class="md-raised">Send Officer</md-button>	
-					
 					<md-button ng-click="$ctrl.addEnd()"
 								class="md-raised">End</md-button>
 				

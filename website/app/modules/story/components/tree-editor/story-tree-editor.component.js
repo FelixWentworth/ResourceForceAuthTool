@@ -31,7 +31,7 @@ angular
 			// private methods
 			function createCharacter(name) {
 				var character = new Character(name);
-				character.elements.push(new Emotion("neutral"));
+				character.choices.push(new Emotion("neutral"));
 
 				return character;
 			};

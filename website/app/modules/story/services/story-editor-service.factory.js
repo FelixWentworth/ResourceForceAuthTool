@@ -16,7 +16,7 @@ angular
 			while(checkScenes.length > 0) {
 				var checkScene = checkScenes.splice(0, 1);
 
-				checkScene.elements.forEach(element => {
+				checkScene.choices.forEach(element => {
 
 					if(element._type == "Subscene") {
 						if() {
@@ -35,33 +35,33 @@ angular
 			return service.story.content.characters;
 		};
 
-		service.createNarratorSubscene = function () {
-			var subscene = new Subscene();
-			subscene.action = new Narrator();
+		// service.createNarratorSubscene = function () {
+		// 	var subscene = new Subscene();
+		// 	subscene.action = new Narrator();
 			
-			addCharacterReactions(subscene);
+		// 	addCharacterReactions(subscene);
 
-			return subscene;
-		};
+		// 	return subscene;
+		// };
 
-		service.createCharacterSubscene = function (character) {
-			var subscene = new Subscene();
+		// service.createCharacterSubscene = function (character) {
+		// 	var subscene = new Subscene();
 
-			var speechCharacter = new Character(character.name);
-			subscene.action = speechCharacter;
+		// 	var speechCharacter = new Character(character.name);
+		// 	subscene.action = speechCharacter;
 
-			addCharacterReactions(subscene);
+		// 	addCharacterReactions(subscene);
 
-			speechCharacter.elements.push(new Speech());
+		// 	speechCharacter.choices.push(new Speech());
 
-			return subscene;			
-		};
+		// 	return subscene;			
+		// };
 
 		service.createChoice = function (name) {
 			var choice = new Choice();
-			choice.scene.name = name;
+			choice.scene.choiceType = name;
 
-			addCharacterReactions(choice.action);			
+			//addCharacterReactions(choice.action);			
 			
 			return choice;
 		};
@@ -71,33 +71,33 @@ angular
 		};
 
 		// private methods
-		function addCharacterReactions(subscene) {
-			service.getCharacters().forEach(c => {
+		// function addCharacterReactions(subscene) {
+		// 	service.getCharacters().forEach(c => {
 
-				var emotion = null;
-				var character = null;
+		// 		var emotion = null;
+		// 		var character = null;
 
-				if(subscene.action._type == "Character" && subscene.action.name == c.name) {
-					character = subscene.action;
-				} else {
-					character = Array.singleOrNull(subscene.reactions, reaction => reaction._type == "Character" && reaction.name == c.name);
-				}
+		// 		if(subscene.action._type == "Character" && subscene.action.name == c.name) {
+		// 			character = subscene.action;
+		// 		} else {
+		// 			character = Array.singleOrNull(subscene.reactions, reaction => reaction._type == "Character" && reaction.name == c.name);
+		// 		}
 
-				if(character != null) {
-					emotion = Array.singleOrNull(character.elements, element => element._type == "Emotion");
-				} else {
-					var character = new Character(c.name);					
-					subscene.reactions.push(character);
-				}
+		// 		if(character != null) {
+		// 			emotion = Array.singleOrNull(character.choices, element => element._type == "Emotion");
+		// 		} else {
+		// 			var character = new Character(c.name);					
+		// 			subscene.reactions.push(character);
+		// 		}
 
-				if(emotion == null) {
-					emotion = new Emotion();
-					character.elements.push(emotion)
-				}			
+		// 		if(emotion == null) {
+		// 			emotion = new Emotion();
+		// 			character.choices.push(emotion)
+		// 		}			
 
-				emotion.value = "none";
-			});
-		}
+		// 		emotion.value = "none";
+		// 	});
+		// }
 
 		return service;
 	});

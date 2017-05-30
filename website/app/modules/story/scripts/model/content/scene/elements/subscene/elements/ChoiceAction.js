@@ -1,8 +1,10 @@
 class ChoiceAction {
-	constructor () {
+	constructor (feedbackRating, feedback) {
 		var self = this;
 
 		self._type = "ChoiceAction";
-		self.value = "";
+		self.feedbackRating = feedbackRating;
+		self.feedback = feedback;
+		
 	}
 }

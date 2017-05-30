@@ -1,5 +1,5 @@
 <div layout="row">
-	<span ng-repeat="element in $ctrl.character.elements"
+	<span ng-repeat="element in $ctrl.character.choices"
 			ng-switch="element._type">
 
 		<character-emotion-editor ng-switch-when="Emotion" emotion="element">		
