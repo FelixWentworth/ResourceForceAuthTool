@@ -1,18 +1,16 @@
-<div ng-repeat="element in $ctrl.choices">
 
+<div ng-repeat="element in $ctrl.elements">
 	<div ng-switch="element._type">
-
-		<md-card ng-show="element._type != 'Choice'">
-
-			<md-card-content>
-		
-				<story-subscene ng-switch-when="Subscene" subscene="element"></story-subscene>
-		
-				<scene-element-end ng-switch-when="End"></scene-element-end>
-
-			</md-card-content>
-
+		<!-- Choices -->
+		<md-card ng-show="element._type == 'Choice'">
+			<story-subscene ng-switch-when="Subscene" subscene="element"></story-subscene>
 		</md-card>
+
+		<!--<md-card ng-show="element._type == 'End'">
+			<md-card-content>		
+				<scene-element-end ng-switch-when="End"></scene-element-end>
+			</md-card-content>
+		</md-card> -->
 
 		<message-player-choice ng-switch-when="Choice" choice="element" apply="$ctrl.applyChoice"></message-player-choice>
 

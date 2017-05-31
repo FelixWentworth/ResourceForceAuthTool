@@ -4,6 +4,36 @@
 	</md-card-content>
 </md-card>
 
+<md-card ng-if	="$ctrl.feedback._type == 'ChoiceAction'">
+	<md-card-title>
+		{{$ctrl.feedback.choiceType}}
+	</md-card-title>
+	<md-card-content>
+		{{$ctrl.feedback.feedbackRating}}
+		<br/>
+		{{$ctrl.feedback.feedback}}
+	</md-card-content>
+</md-card>
+
+<md-card>
+	<md-card-title>
+		{{$ctrl.sceneInformation.title}}
+	</md-card-title>
+	<md-card-content>
+		Description
+		<br/> 	
+		{{$ctrl.sceneInformation.description}}
+		<br/><br/>
+		Severity: {{$ctrl.sceneInformation.severity}}
+		<br/>
+		Officers Required: {{$ctrl.sceneInformation.officerReq}}
+		<br/>
+		Turns Required: {{$ctrl.sceneInformation.turnReq}}
+		<br/>
+		Satisfaction Impact: {{$ctrl.sceneInformation.satisfactionImpact}}
+
+	</md-card-content>
+</md-card>
 <message-player-scene-elements elements="$ctrl.sceneElementsHistory"/>
 
 <message-player-scene-elements apply-choice="$ctrl.applyChoice" 

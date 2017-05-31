@@ -9,8 +9,9 @@ angular
 		controller: function() {
 			var ctrl = this;
 
-			ctrl.sceneElementsHistory = [];
+			ctrl.sceneInformation = [];
 			ctrl.sceneElements = [];
+			ctrl.feedback = [];
 
 			// public methods
 			ctrl.applyChoice = function(choice) {
@@ -18,15 +19,18 @@ angular
 			
 				setEnabled(ctrl.sceneElements, false);
 
-				ctrl.sceneElementsHistory = ctrl.sceneElementsHistory.concat(ctrl.sceneElements);
+				ctrl.sceneInformation = choice.scene;
 				ctrl.sceneElements = choice.scene.choices;
-
+				ctrl.feedback = choice.choice;
+				
 				setEnabled(ctrl.sceneElements, true);				
 
 				ctrl.isComplete = Array.containsWhere(ctrl.sceneElements, e => e._type == "End");
 			};
 			
 			ctrl.$onInit = function() {
+				ctrl.sceneInformation = ctrl.story.content.scene;
+
 				ctrl.sceneElements = ctrl.story.content.scene.choices;
 
 				setEnabled(ctrl.sceneElements, true);
@@ -41,15 +45,14 @@ angular
 					if(e._type == "Subscene") {
 						setSubsceneEnabled(e, isEnabled);
 					} else if(e._type == "Choice") {
-						setSubsceneEnabled(e.action, isEnabled);
+						setSubsceneEnabled(e.choice, isEnabled);
 						setEnabled(e.scene.choices, isEnabled);
 					}
 				});
 			};
 
 			function setSubsceneEnabled(subscene, isEnabled) {
-				subscene.action.__isEnabled = isEnabled;
-				setEnabled(subscene.reactions, isEnabled);
+				subscene.__isEnabled = isEnabled;
 			};
 		}
 	});
