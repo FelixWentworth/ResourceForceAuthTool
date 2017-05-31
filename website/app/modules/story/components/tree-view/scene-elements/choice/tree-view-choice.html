@@ -1,7 +1,36 @@
+<!-- <md-card>
+	<subscene-choice-action choice-action="$ctrl.choice.choice"></subscene-choice-action>
+</md-card> -->
 <md-card>
-	<md-card-title>Choice: {{$ctrl.choice.scene.name}}</md-card-title>
 	<md-card-content>
-		<story-subscene subscene="$ctrl.choice.action"></story-subscene>
+
+		<!-- Choice Type -->
+		
+		<br/>Choice: {{$ctrl.choice.choice.choiceType}}
+		<br/>
+
+		<!-- Feedback -->
+		
+		<br/>Rating: {{$ctrl.choice.choice.feedbackRating}}
+		<br/>Feedback: {{$ctrl.choice.choice.feedback}}
+		<br/>
+
+		<!-- Incident Core information -->
+		
+		<br/>Title: {{$ctrl.choice.scene.title}}
+		<br/>Description: {{$ctrl.choice.scene.description}}
+		<br/>
+		
+		<!-- Incident Core information -->
+		
+		<br/>Severity: {{$ctrl.choice.scene.severity}}
+		<br/>Officers Required: {{$ctrl.choice.scene.officerReq}}
+		<br/>Turns Required: {{$ctrl.choice.scene.turnReq}}
+		<br/>Satisfaction Impact: {{$ctrl.choice.scene.satisfactionImpact}}
+
+	</md-card-content>
+	<md-card-content>
+		<story-subscene subscene="$ctrl.choice.choice"></story-subscene>
 	</md-card-content>
 </md-card>
 
