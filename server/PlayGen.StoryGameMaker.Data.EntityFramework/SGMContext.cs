@@ -15,11 +15,11 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 			_isSaveDisabled = disableSave;
 		}
 
-		public DbSet<Story> Stories { get; set; }
+		public DbSet<Scenario> Scenarios { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.Entity<Story>()
+			modelBuilder.Entity<Scenario>()
 				.Property(p => p.Content)
 				.HasColumnType("mediumtext");
 		}

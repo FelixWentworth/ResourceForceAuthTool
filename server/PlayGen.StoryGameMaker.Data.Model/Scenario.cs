@@ -2,7 +2,7 @@
 
 namespace PlayGen.ResourceForceAuthoringTool.Data.Model
 {
-	public class Story : IModificationHistory
+	public class Scenario : IModificationHistory
 	{
 		public string Id { get; set; }
 

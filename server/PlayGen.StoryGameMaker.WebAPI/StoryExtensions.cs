@@ -28,7 +28,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 			public string Location { get; set; }
 		}
 
-		public static MetadataResponse ToMetadata(this Story storyModel)
+		public static MetadataResponse ToMetadata(this Scenario storyModel)
 		{
 			if (storyModel == null)
 			{
@@ -44,36 +44,36 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 			};
 		}
 
-		public static IEnumerable<MetadataResponse> ToMetadataList(this IEnumerable<Story> storyModels)
+		public static IEnumerable<MetadataResponse> ToMetadataList(this IEnumerable<Scenario> storyModels)
 		{
 			return storyModels.Select(ToMetadata).ToList();
 		}
 
-		public static Story ToStoryModel(this StoryRequest storyContract)
+		public static Scenario ToScenarioModel(this ScenarioRequest scenarioContract)
 		{
-			var metadata = new Metadata(storyContract.Metadata.ToString());
-			return new Story
+			var metadata = new Metadata(scenarioContract.Metadata.ToString());
+			return new Scenario
 			{
 				Id = metadata.Id,
 				Title = metadata.Title,
 				Language = metadata.Language,
 				Location = metadata.Location,
-				Content = storyContract.Content.ToString()
+				Content = scenarioContract.Content.ToString()
 			};
 		}
 
-		public static StoryResponse ToStoryContract(this Story storyModel)
+		public static ScenarioResponse ToScenarioContract(this Scenario scenarioContract)
 		{
-			if (storyModel == null)
+			if (scenarioContract == null)
 			{
 				return null;
 			}
 
-			var content = JObject.Parse(storyModel.Content);
+			var content = JObject.Parse(scenarioContract.Content);
 
-			return new StoryResponse
+			return new ScenarioResponse
 			{
-				Metadata = storyModel.ToMetadata(),
+				Metadata = scenarioContract.ToMetadata(),
 				Content = content,
 			};
 		}

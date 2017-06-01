@@ -1,6 +1,6 @@
 ﻿namespace PlayGen.ResourceForceAuthoringTool.Contracts
 {
-    public class StoryRequest
+    public class ScenarioRequest
     {
 		public object Metadata { get; set; }
 

@@ -2,7 +2,7 @@
 
 namespace PlayGen.ResourceForceAuthoringTool.Contracts
 {
-    public class StoryResponse
+    public class ScenarioResponse
     {
 		public MetadataResponse Metadata { get; set; }
 
