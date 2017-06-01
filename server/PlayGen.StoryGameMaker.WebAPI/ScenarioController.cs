@@ -51,8 +51,8 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         [HttpGet("serialNumber/{id}")]
         public IActionResult GetBySerialNumber([FromRoute]long id)
         {
-            var scenario = _scenarioCoreController.Get(id);
-            var scenarioContract = scenario.ToScenarioContract();
+            var scenarios = _scenarioCoreController.Get(id);
+            var scenarioContract = scenarios.ToMetadataList();
             return new ObjectResult(scenarioContract);
         }
 

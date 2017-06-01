@@ -42,12 +42,12 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         /// </summary>
         /// <param name="number">Serial number</param>
         /// <returns></returns>
-        public Scenario Get(long number)
+        public List<Scenario> Get(long number)
         {
             using (var context = ContextFactory.Create())
             {
-                var scenario = context.Scenarios.Find(context, number);
-                return scenario;
+                var scenarios = context.Scenarios.Where(s => s.SerialNumber > number).ToList();
+                return scenarios;
             }
         }
 

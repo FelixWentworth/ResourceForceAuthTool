@@ -6,7 +6,7 @@ class Choice {
 		
 		self.choice = new ChoiceAction();
 
-		self.cene = new Scene();
+		self.scene = new Scene();
 
 		//self.action = new Subscene();		
 		//self.action.action = new ChoiceAction();

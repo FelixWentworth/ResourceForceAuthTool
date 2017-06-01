@@ -63,7 +63,7 @@ angular
 		};
 
 		service.save = function (story) {
-			return $http.post('../api' + '/get', story);
+			return $http.post('../api' + '/scenario', story);
 		};
 		
 		service.getNewStoryId = function() {

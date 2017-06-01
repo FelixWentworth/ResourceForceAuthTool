@@ -37,28 +37,28 @@ angular
 				return !containsWhereType;
 			}
 
-			ctrl.addNarrator = function () {	
-				var narratorSubscene = StoryEditorService.createNarratorSubscene();
-				ctrl.scene.choices.push(narratorSubscene);
+			// ctrl.addNarrator = function () {	
+			// 	var narratorSubscene = StoryEditorService.createNarratorSubscene();
+			// 	ctrl.scene.choices.push(narratorSubscene);
 
-				// todo remove
-				checkValidity();
-			};
+			// 	// todo remove
+			// 	checkValidity();
+			// };
 
 
-			ctrl.openAddCharacterMenu = function ($mdMenu, event) {
-				if(ctrl.characters.length == 0) {
-					alert("You need to have at least 2 characters in your story.");
-				}
-				else {
-					$mdMenu.open(event);
-				}
-			};
+			// ctrl.openAddCharacterMenu = function ($mdMenu, event) {
+			// 	if(ctrl.characters.length == 0) {
+			// 		alert("You need to have at least 2 characters in your story.");
+			// 	}
+			// 	else {
+			// 		$mdMenu.open(event);
+			// 	}
+			// };
 
-			ctrl.addCharacter = function (character) {
-				var characterSubscene = StoryEditorService.createCharacterSubscene(character);
-				ctrl.scene.choices.push(characterSubscene);
-			};
+			// ctrl.addCharacter = function (character) {
+			// 	var characterSubscene = StoryEditorService.createCharacterSubscene(character);
+			// 	ctrl.scene.choices.push(characterSubscene);
+			// };
 
 			ctrl.addChoice = function () {
 				var choiceCount = 0;
@@ -112,8 +112,8 @@ angular
 
 			// private methods
 			function checkValidity() {				
-				ctrl.isThisSceneLevelComplete = Array.containsWhere(ctrl.scene.choices, e => e._type == "End" || e._type == "Choice" );
-				ctrl.form.$setValidity("incomplete", ctrl.isThisSceneLevelComplete);
+				//ctrl.isThisSceneLevelComplete = Array.containsWhere(ctrl.scene.choices, e => e._type == "End" || e._type == "Choice" );
+				//ctrl.form.$setValidity("incomplete", ctrl.isThisSceneLevelComplete);
 			}
 		}]
 	});

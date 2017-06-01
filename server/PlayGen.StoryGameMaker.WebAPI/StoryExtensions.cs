@@ -44,9 +44,9 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 			};
 		}
 
-		public static IEnumerable<MetadataResponse> ToMetadataList(this IEnumerable<Scenario> storyModels)
+		public static IEnumerable<MetadataResponse> ToMetadataList(this IEnumerable<Scenario> scenarioModels)
 		{
-			return storyModels.Select(ToMetadata).ToList();
+			return scenarioModels.Select(ToMetadata).ToList();
 		}
 
 		public static Scenario ToScenarioModel(this ScenarioRequest scenarioContract)

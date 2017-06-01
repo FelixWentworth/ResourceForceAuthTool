@@ -3,6 +3,6 @@ class Content {
 		var self = this;
 
 		self._type = "Content";
-		self.Scene = new Scene();
+		self.scene = new Scene();
 	}
 }

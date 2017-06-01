@@ -3,13 +3,13 @@ class Scene {
 		var self = this;
 
 		self._type = "Scene";
-		self.Title = title;
-		self.Description = description;
-		self.Severity = severity;
-		self.OfficerReq = officerReq;
-		self.TurnReq = turnReq;
-		self.SatisfactionImpact = satisfactionImpact;
+		self.title = title;
+		self.description = description;
+		self.severity = severity;
+		self.officerReq = officerReq;
+		self.turnReq = turnReq;
+		self.satisfactionImpact = satisfactionImpact;
 
-		self.Choices = [];
+		self.choices = [];
 	}
 }
