@@ -15,5 +15,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Contracts
 
 		public string Location { get; set; }
 
+        public long SerialNumber { get; set; }
+
 	}
 }

@@ -26,6 +26,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 			public string Title { get; set; }
 			public string Language { get; set; }
 			public string Location { get; set; }
+            public long SerialNumber { get; set; }
 		}
 
 		public static MetadataResponse ToMetadata(this Scenario storyModel)
@@ -35,12 +36,13 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 				return null;
 			}
 
-			return new MetadataResponse
-			{
-				Id = storyModel.Id,
-				Title = storyModel.Title,
-				Language = storyModel.Language,
-				Location = storyModel.Location,
+            return new MetadataResponse
+            {
+                Id = storyModel.Id,
+                Title = storyModel.Title,
+                Language = storyModel.Language,
+                Location = storyModel.Location,
+                SerialNumber = storyModel.SerialNumber
 			};
 		}
 

@@ -17,6 +17,8 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
 		public DbSet<Scenario> Scenarios { get; set; }
 
+        public DbSet<SerialNumber> SerialNumbers { get; set; }
+
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<Scenario>()
@@ -49,5 +51,11 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 				}
 			}
 		}
+
+        public void Seed()
+        {
+            SerialNumbers.Add(new SerialNumber { Number = 0 });
+            SaveChanges();
+        }
 	}
 }

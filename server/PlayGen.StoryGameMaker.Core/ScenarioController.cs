@@ -45,5 +45,12 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
         {
             _scenarioDbController.Delete(id);
         }
+
+        //-------------------------------------------------------
+
+        public long GetNewSerialNumber()
+        {
+            return _scenarioDbController.GetNewSerialNumber();
+        }
 	}
 }

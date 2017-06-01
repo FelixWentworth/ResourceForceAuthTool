@@ -82,6 +82,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 					existing.Language = scenario.Language;
 					existing.Location = scenario.Location;
 					existing.Content = scenario.Content;
+                    existing.SerialNumber = scenario.SerialNumber;
 					SaveChanges(context);
 					return existing;
 				}
@@ -101,5 +102,26 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                 throw new Exception("The existing scenario could not be found"); ;
             }
         }
-	}
+
+        //--------------------------------------------------------------------------------
+
+        public long GetNewSerialNumber()
+        {
+            using (var context = ContextFactory.Create())
+            {
+                var id = 1;
+                var serialNumber = context.SerialNumbers.Find(context, id);
+                if (serialNumber != null)
+                {
+                    var num = ++serialNumber.Number;
+
+                    SaveChanges(context);
+
+                    return num;
+                }
+                throw new Exception("Unable to find Serial Number");
+            }
+        }
+
+    }
 }

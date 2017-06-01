@@ -27,7 +27,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
 			if (newlyCreated)
 			{
-				//context.Seed();
+				context.Seed();
 			}
 
 			return context;
