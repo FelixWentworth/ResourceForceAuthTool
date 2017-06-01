@@ -6,6 +6,8 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.Model
 	{
 		public string Id { get; set; }
 
+        public int CreatorId { get; set; }
+
 		public string Title { get; set; }
 
         public long SerialNumber { get; set; }
@@ -23,6 +25,8 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.Model
         public bool IsValid { get; set; }
 
         public bool Deleted { get; set; }
+
+        public bool Submitted { get; set; }
 
 	}
 }
