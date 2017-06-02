@@ -22,7 +22,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                     user = Update(user);
                     return user;
                 }
-                context.Users.Add(user);
+                context.Users.Add(user);    
                 SaveChanges(context);
 
                 return user;
@@ -33,9 +33,12 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         {
             using (var context = ContextFactory.Create())
             {
-                var user = context.Users.First(u => u.Username == username);
-
-                return user;
+                var user = context.Users.FirstOrDefault(u => u.Username == username);
+                if (user != null)
+                {
+                    return user;
+                }
+                throw new Exception($"Unable to find player with username {username}");
             }
         }
 

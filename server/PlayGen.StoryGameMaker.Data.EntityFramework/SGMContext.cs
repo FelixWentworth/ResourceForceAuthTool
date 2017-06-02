@@ -60,7 +60,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
             // TODO find better way to do this
             Users.Add(new User
             {
-                Id = "0",
+                Id = 0,
                 Username = "admin",
                 Password = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
                 MemberType = "admin",

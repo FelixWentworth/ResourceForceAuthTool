@@ -9,17 +9,51 @@ Resource Force is a officer management game where players take on the role of a 
 <br/>
 </md-label>
 
-<md-button class="md-raised" ui-sref="create-story">Create New Story</md-button>
+<div ng-if="!$ctrl.isLoggedIn">
+	<br/>
 
-<br>OR</br>
+	<span>
+		<md-label>Username: </md-label>
+		<input ng-model="$ctrl.user.Metadata.username"></input>
+	</span>
+	<br/>
+	<span>
+		<md-label>Password: </md-label>
+		<input ng-model="$ctrl.user.Metadata.password"></input>
+	</span>
+	<br/>
+	<span>
+		<md-button class="md-raised" ng-click="$ctrl.Create($ctrl.user)">Create Account</md-button>
+		<md-button class="md-raised" ng-click="$ctrl.Login($ctrl.user)">Log In</md-button>
+	</span>
+	<br/>
+		<md-button class="md-raised" ng-click="$ctrl.GuestLogin()">Continue as Guest</md-button>
+	<br/><br/>
+	<md-label>{{$ctrl.error}}</md-label>
+</div>
 
-Select a story to view or play
-<div ng-switch="$ctrl.loader.isLoading">
-	<div ng-switch-when="true">
-		Waiting for load
+<div ng-if="$ctrl.isLoggedIn">
+	<md-button class="md-raised" ui-sref="create-story">Create New Story</md-button>
+
+	<br>OR</br>
+
+	Select a story to view or play
+	<div ng-switch="$ctrl.loader.isLoading">
+		<div ng-switch-when="true">
+			Waiting for load
+		</div>
+
+		<ul ng-switch-when="false">
+			<story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata"/>
+		</ul>
 	</div>
 
-	<ul ng-switch-when="false">
-		<story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata"/>
-	</ul>
+	<div>
+		<br/>
+		<md-label>Logged in as: {{$ctrl.username}}</md-label>
+	</div>
+
+	<div>
+		<md-button class="md-raised" ng-click="$ctrl.Logout()">Log Out</md-button>
+	</div>
 </div>

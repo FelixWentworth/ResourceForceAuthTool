@@ -32,7 +32,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         [HttpPost("login")]
         public IActionResult Login([FromBody]UserRequest currentUser)
         {
-            var userModel = currentUser.ToLoginModel();
+            var userModel = currentUser.ToUserModel();
 
             // Get the current user
             var user = _userCoreController.Get(userModel.Username);

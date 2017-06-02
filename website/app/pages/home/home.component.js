@@ -2,10 +2,60 @@ angular
 	.module("storyGameMaker")
 	.component("home", {
 		templateUrl: "pages/home/home.html",
-		controller: ["StoryStorageService", function(StoryStorageService) {
+		controller: ["StoryStorageService", "$http", function(StoryStorageService, $http) {
 			var ctrl = this;
 
 			ctrl.loader = new StoriesMetadataLoader(StoryStorageService);
 			ctrl.loader.load();
+
+			ctrl.isLoggedIn = false;
+			ctrl.usernmae = "";
+
+			ctrl.error = "";
+
+			ctrl.Login = function(user) {
+				// TODO send login request
+
+				$http.post('../api' + '/user/login', user)
+					.then(function(response){
+						if (response.status === 200)
+						{
+							ctrl.isLoggedIn = true;
+							ctrl.username = response.data.username;
+						}	
+					})
+					.catch(function(error)
+					{
+						ctrl.error = error.statusText + ". " + error.Message;
+					});
+
+			};
+
+			ctrl.Create = function(user) {
+				// TODO send login request
+
+				$http.post('../api' + '/user', user)
+					.then(function(response){
+						if (response.status === 200)
+						{
+							ctrl.isLoggedIn = true;
+							ctrl.username = response.data.metadata.username;
+						}		
+					})
+					.catch(function(error)
+					{
+						ctrl.error = error.statusText + ". " + error.Message;
+					});
+			};
+
+			ctrl.GuestLogin = function() {
+				ctrl.isLoggedIn = true;
+				ctrl.username = "Guest";
+			}
+
+			ctrl.Logout = function() {
+				ctrl.isLoggedIn = false;
+				ctrl.username = "";
+			}
 		}]
 	});

@@ -16,7 +16,6 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             public Metadata(string json)
             {
                 JObject jObject = JObject.Parse(json);
-                Id = (string)jObject["id"];
                 Username = (string)jObject["username"];
                 Password = (string)jObject["password"];
                 MemberType = (string)jObject["memberType"];
@@ -24,7 +23,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 Locations = (string)jObject["locations"];
             }
 
-            public string Id { get; set; }
+            public int Id { get; set; }
             public string Username { get; set; }
             public string Password { get; set; }
             public string MemberType { get; set; }
@@ -54,27 +53,13 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             return userModels.Select(ToMetadata).ToList();
         }
 
-        public static User ToLoginModel(this UserRequest userContract)
+        public static User ToUserModel(this UserRequest userContract)
         {
             var metadata = new Metadata(userContract.Metadata.ToString());
             return new User
             {
                 Username = metadata.Username,
                 Password = metadata.Password
-            };
-        }
-
-        public static User ToUserModel(this UserRequest userContract)
-        {
-            var metadata = new Metadata(userContract.Metadata.ToString());
-            return new User
-            {
-                Id = metadata.Id,
-                Username = metadata.Username,
-                Password = metadata.Password,
-                MemberType = metadata.MemberType,
-                Languages = metadata.Languages.ToString(),
-                Locations = metadata.Locations.ToString(),
             };
         }
 

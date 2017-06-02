@@ -6,7 +6,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Contracts
 {
     public class UserMetadataResponse
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         
         public string Username { get; set; }
 
