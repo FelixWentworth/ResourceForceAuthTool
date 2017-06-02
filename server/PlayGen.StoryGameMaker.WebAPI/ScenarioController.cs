@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PlayGen.ResourceForceAuthoringTool.Contracts;
 
 namespace PlayGen.ResourceForceAuthoringTool.WebAPI
@@ -48,6 +44,19 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             var scenario = _scenarioCoreController.Get(id);
             var scenarioContract = scenario.ToScenarioContract();
             return new ObjectResult(scenarioContract);
+        }
+
+        /// <summary>
+        /// Get a list of scenarios that a player with a given Id has created
+        /// </summary>
+        /// <param name="id">Creator Id</param>
+        /// <returns></returns>
+        [HttpGet("createdby/{id}")]
+        public IActionResult Get(string id)
+        {
+            var scenario = _scenarioCoreController.GetByCreator(id);
+            var metadata = scenario.ToMetadataList();
+            return new ObjectResult(metadata);
         }
 
         [HttpGet("new/{id}")]

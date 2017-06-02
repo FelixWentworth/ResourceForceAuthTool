@@ -29,14 +29,14 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             public long SerialNumber { get; set; }
 		}
 
-		public static MetadataResponse ToMetadata(this Scenario storyModel)
+		public static ScenarioMetadataResponse ToMetadata(this Scenario storyModel)
 		{
 			if (storyModel == null)
 			{
 				return null;
 			}
 
-            return new MetadataResponse
+            return new ScenarioMetadataResponse
             {
                 Id = storyModel.Id,
                 Title = storyModel.Title,
@@ -46,7 +46,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 			};
 		}
 
-		public static IEnumerable<MetadataResponse> ToMetadataList(this IEnumerable<Scenario> scenarioModels)
+		public static IEnumerable<ScenarioMetadataResponse> ToMetadataList(this IEnumerable<Scenario> scenarioModels)
 		{
 			return scenarioModels.Select(ToMetadata).ToList();
 		}

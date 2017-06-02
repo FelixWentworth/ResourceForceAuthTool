@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PlayGen.ResourceForceAuthoringTool.Contracts
 {
-    public class MetadataResponse
+    public class ScenarioMetadataResponse
     {
 		public string Id { get; set; }
 

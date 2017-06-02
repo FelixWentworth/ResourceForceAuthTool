@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using PlayGen.ResourceForceAuthoringTool.Data.EntityFramework;
+using PlayGen.ResourceForceAuthoringTool.Core.Utilities;
 
 namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 {
@@ -33,10 +34,12 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             // Add framework services.
             services.AddMvc();
 
+            services.AddScoped((_) => new PasswordEncryption());
+
 			var connectionString = Configuration.GetConnectionString("DefaultConnection");
 			services.AddSingleton(new SGMContextFactory(connectionString));
-			services.AddScoped<Data.EntityFramework.ScenarioController>();
-			services.AddScoped<Core.ScenarioController>();
+			services.AddScoped<Data.EntityFramework.UserController>();
+			services.AddScoped<Core.UserController>();
 			services.AddCors(options => options.AddPolicy("AllowAll", p => p
 				// TODO: this should be specified in config at each deployment
 				.AllowAnyOrigin()

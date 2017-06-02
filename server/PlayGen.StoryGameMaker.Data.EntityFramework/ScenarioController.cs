@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
+using Newtonsoft;
 using PlayGen.ResourceForceAuthoringTool.Data.Model;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 {
@@ -36,6 +38,36 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 				return scenario;
 			}
 		}
+
+        /// <summary>
+        /// Get a list of scenarios by creator Id
+        /// </summary>
+        /// <param name="id">Creator Id</param>
+        /// <returns></returns>
+        public List<Scenario> GetByCreator(string id)
+        {
+            using (var context = ContextFactory.Create())
+            {
+                var user = context.Users.Find(context, id);
+                switch (user.MemberType)
+                {
+                    case "Member":
+                        return context.Scenarios.Where(s => s.CreatorId == id).ToList();
+                    case "Validator":
+                        // get all scenarios that this validator can validate by location and language
+                        var locations = JsonConvert.DeserializeObject<List<string>>(user.Locations);
+                        var languages = JsonConvert.DeserializeObject<List<string>>(user.Languages);
+
+                        var scenarios = context.Scenarios.Where(s => locations.Contains(s.Location) && languages.Contains(s.Language)).ToList();
+
+                        return scenarios;
+                    case "Admin":
+                        return context.Scenarios.ToList();
+                    default:
+                        return null;
+                }
+            }
+        }
 
         /// <summary>
         /// Get a scenario using the serial number
