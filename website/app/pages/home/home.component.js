@@ -4,10 +4,9 @@ angular
 		templateUrl: "pages/home/home.html",
 		controller: ["StoryStorageService", "$http", function(StoryStorageService, $http) {
 			var ctrl = this;
-
+			
 			ctrl.loader = new StoriesMetadataLoader(StoryStorageService);
-			ctrl.loader.load();
-
+			
 			ctrl.isLoggedIn = false;
 			ctrl.usernmae = "";
 
@@ -22,6 +21,8 @@ angular
 						{
 							ctrl.isLoggedIn = true;
 							ctrl.username = response.data.username;
+							
+							ctrl.loader.load(response.data.id);
 						}	
 					})
 					.catch(function(error)
@@ -40,6 +41,8 @@ angular
 						{
 							ctrl.isLoggedIn = true;
 							ctrl.username = response.data.metadata.username;
+						
+							ctrl.loader.load(response.data.id);
 						}		
 					})
 					.catch(function(error)

@@ -59,6 +59,19 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             return new ObjectResult(metadata);
         }
 
+        /// <summary>
+        /// Get a list of scenarios for a given location
+        /// </summary>
+        [HttpGet("validate")]
+        public IActionResult GetForValidation([FromBody] ValidationRequest request )
+        {
+            var validationModel = request.ToValidationModel();
+
+            var scenarios = _scenarioCoreController.GetForValidation(validationModel);
+            var metadata = scenarios.ToMetadataList();
+            return new ObjectResult(metadata);
+        }
+
         [HttpGet("new/{id}")]
         public IActionResult GetBySerialNumber([FromRoute]long id)
         {

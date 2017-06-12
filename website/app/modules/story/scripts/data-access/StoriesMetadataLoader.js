@@ -7,8 +7,8 @@ class StoriesMetadataLoader {
 		self.storiesMetadata = [];
 
 		// public methods
-		self.load = function() {
-			storyStorageService.getStoriesMetadata()
+		self.load = function(creatorId) {
+			storyStorageService.getStoriesMetadata(creatorId)
 				.then(onStoriesMetadataLoaded);
 		};
 

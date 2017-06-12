@@ -31,6 +31,11 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
             return _scenarioDbController.GetByCreator(id);
         }
 
+        public List<Scenario> GetForValidation(Scenario filter)
+        {
+            return _scenarioDbController.GetForValidation(filter);
+        }
+
         public List<Scenario> Get(long id)
         {
             return _scenarioDbController.Get(id);

@@ -6,13 +6,14 @@ angular
 		// private variables
 		var storiesPromise = null;
 		var storiesMetadataPromise = null;
+		var creatorId = null;
 
 		// private methods
-		function getStories() {
+		function getStories(id) {
 			// get new data every time
 			storiesPromise = $q.defer();		
 			
-			$http.get('../api' + '/scenario')
+			$http.get('../api' + '/scenario/createdby/' + id)
 				.then(function(story){
 					storiesPromise.resolve(story.data);		
 				});
@@ -44,11 +45,13 @@ angular
 				});
 		};		
 
-		service.getStoriesMetadata = function () {
+		service.getStoriesMetadata = function (id) {
 			// get new data every time
 			storiesMetadataPromise = $q.defer();
 
-			getStories()
+			creatorId = id;
+
+			getStories(id)
 				.then(function(stories) {
 					var metadatas = [];
 
@@ -63,7 +66,15 @@ angular
 		};
 
 		service.save = function (story) {
+			story.metadata.creatorId = creatorId;
+			story.metadata.isValid = false;
+			story.metadata.submitted = false;
+			story.metadata.deleted = false;
 			return $http.post('../api' + '/scenario', story);
+		};
+
+		service.update = function(story){
+			return $http.update('../api' + '/scenario', story);
 		};
 		
 		service.getNewStoryId = function() {

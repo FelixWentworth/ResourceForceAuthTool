@@ -64,7 +64,17 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 			};
 		}
 
-		public static ScenarioResponse ToScenarioContract(this Scenario scenarioContract)
+        public static Scenario ToValidationModel(this ValidationRequest validationContract)
+        {
+            var metadata = new Metadata(validationContract.Metadata.ToString());
+            return new Scenario
+            {
+                Language = metadata.Language,
+                Location = metadata.Location,
+            };
+        }
+
+        public static ScenarioResponse ToScenarioContract(this Scenario scenarioContract)
 		{
 			if (scenarioContract == null)
 			{

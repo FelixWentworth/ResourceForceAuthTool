@@ -70,6 +70,20 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         }
 
         /// <summary>
+        /// Get a list of scenarios that match the filter data for language and location
+        /// </summary>
+        /// <param name="filter">Language and location filter for scenarios</param>
+        /// <returns></returns>
+        public List<Scenario> GetForValidation (Scenario filter)
+        {
+            using (var context = ContextFactory.Create())
+            {
+                var scenarios = context.Scenarios.Where(s => (s.Language == filter.Language || filter.Language == "Any")  && (s.Location == filter.Location || filter.Location == "Any")).ToList();
+                return scenarios;
+            }
+        }
+
+        /// <summary>
         /// Get a scenario using the serial number
         /// </summary>
         /// <param name="number">Serial number</param>
