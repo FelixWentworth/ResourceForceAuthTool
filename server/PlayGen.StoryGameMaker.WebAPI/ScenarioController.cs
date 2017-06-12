@@ -52,7 +52,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         /// <param name="id">Creator Id</param>
         /// <returns></returns>
         [HttpGet("createdby/{id}")]
-        public IActionResult Get(string id)
+        public IActionResult Get(int id)
         {
             var scenario = _scenarioCoreController.GetByCreator(id);
             var metadata = scenario.ToMetadataList();

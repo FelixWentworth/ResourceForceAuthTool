@@ -44,16 +44,16 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         /// </summary>
         /// <param name="id">Creator Id</param>
         /// <returns></returns>
-        public List<Scenario> GetByCreator(string id)
+        public List<Scenario> GetByCreator(int id)
         {
             using (var context = ContextFactory.Create())
             {
                 var user = context.Users.Find(context, id);
                 switch (user.MemberType)
                 {
-                    case "Member":
+                    case "member":
                         return context.Scenarios.Where(s => s.CreatorId == id).ToList();
-                    case "Validator":
+                    case "validator":
                         // get all scenarios that this validator can validate by location and language
                         var locations = JsonConvert.DeserializeObject<List<string>>(user.Locations);
                         var languages = JsonConvert.DeserializeObject<List<string>>(user.Languages);
@@ -61,7 +61,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                         var scenarios = context.Scenarios.Where(s => locations.Contains(s.Location) && languages.Contains(s.Language)).ToList();
 
                         return scenarios;
-                    case "Admin":
+                    case "admin":
                         return context.Scenarios.ToList();
                     default:
                         return null;

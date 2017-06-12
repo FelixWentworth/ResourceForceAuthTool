@@ -17,12 +17,14 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 			{
 				JObject jObject = JObject.Parse(json);
 				Id = (string)jObject["id"];
+                CreatorId = (int)jObject["creatorId"]; 
 				Title = (string)jObject["title"];
 				Language = (string)jObject["language"];
 				Location = (string)jObject["location"];
 			}
 
 			public string Id { get; set; }
+            public int CreatorId { get; set; }
 			public string Title { get; set; }
 			public string Language { get; set; }
 			public string Location { get; set; }
@@ -54,9 +56,10 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 		public static Scenario ToScenarioModel(this ScenarioRequest scenarioContract)
 		{
 			var metadata = new Metadata(scenarioContract.Metadata.ToString());
-			return new Scenario
-			{
-				Id = metadata.Id,
+            return new Scenario
+            {
+                Id = metadata.Id,
+                CreatorId = metadata.CreatorId,
 				Title = metadata.Title,
 				Language = metadata.Language,
 				Location = metadata.Location,
