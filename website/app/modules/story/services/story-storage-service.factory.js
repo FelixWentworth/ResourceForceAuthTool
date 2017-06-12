@@ -65,12 +65,21 @@ angular
 			return storiesMetadataPromise.promise;
 		};
 
+		service.submitStory = function (story) {
+			story.metadata.submitted = true;
+			return $http.post('../api' + '/scenario', story);
+		};
+
 		service.save = function (story) {
 			story.metadata.creatorId = creatorId;
 			story.metadata.isValid = false;
 			story.metadata.submitted = false;
 			story.metadata.deleted = false;
 			return $http.post('../api' + '/scenario', story);
+		};
+
+		service.delete = function (story) {
+			return $http.delete('../api' + '/scenario/', story.metadata.id);
 		};
 
 		service.update = function(story){

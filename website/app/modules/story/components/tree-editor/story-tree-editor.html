@@ -30,12 +30,24 @@
 				
 	<story-tree-scene-editor scene="$ctrl.story.content.scene"></story-tree-scene-editor>				
 	
-	<md-button class="md-raised" 
-				ng-click="$ctrl.save()"
-				ng-disabled="storyTreeForm.$valid !== true">
-		Save Scenario
-	</md-button>
+	<span>
+		<md-button class="md-raised" 
+					ng-click="$ctrl.save()"
+					ng-disabled="storyTreeForm.$valid !== true">
+			Save Scenario
+		</md-button>
 
+		<md-button class="md-raised" 
+			ng-click="$ctrl.submit()"
+			ng-disabled="storyTreeForm.$valid !== true">
+			Submit For Validation
+		</md-button>
+
+		<md-button class="md-raised" 
+			ng-click="$ctrl.delete()">
+			Delete
+		</md-button>
+	</span>
 	<div ng-show="storyTreeForm.$valid !== true">
 		{{$ctrl.config.invalidMessage}}
 	</div>	

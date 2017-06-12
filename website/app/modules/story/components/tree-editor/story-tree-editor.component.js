@@ -20,6 +20,14 @@ angular
 				StoryStorageService.save(ctrl.story);
 			};
 
+			ctrl.delete = function(){
+				StoryStorageService.delete(ctrl.story);
+			};
+
+			ctrl.submit = function(){
+				StoryStorageService.submitStory(ctrl.story);
+			};
+
 			ctrl.onCharacterSelectionChanged = function () {
 				StoryStorageService.pruneRemovedCharacters();	
 			};
