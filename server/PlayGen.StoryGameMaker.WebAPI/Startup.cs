@@ -38,7 +38,9 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 
 			var connectionString = Configuration.GetConnectionString("DefaultConnection");
 			services.AddSingleton(new SGMContextFactory(connectionString));
-			services.AddScoped<Data.EntityFramework.UserController>();
+            services.AddScoped<Data.EntityFramework.ScenarioController>();
+            services.AddScoped<Core.ScenarioController>();
+            services.AddScoped<Data.EntityFramework.UserController>();
 			services.AddScoped<Core.UserController>();
 			services.AddCors(options => options.AddPolicy("AllowAll", p => p
 				// TODO: this should be specified in config at each deployment
