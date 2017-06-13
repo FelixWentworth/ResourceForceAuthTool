@@ -65,6 +65,11 @@ angular
 			return storiesMetadataPromise.promise;
 		};
 
+		service.submitStory = function (story) {
+			story.metadata.submitted = true;
+			return $http.post('../api' + '/scenario', story);
+		};
+
 		service.save = function (story) {
 			story.metadata.creatorId = creatorId;
 			story.metadata.isValid = false;
@@ -73,8 +78,19 @@ angular
 			return $http.post('../api' + '/scenario', story);
 		};
 
+		service.delete = function (story) {
+			return $http.delete('../api' + '/scenario/', story.metadata.id);
+		};
+
 		service.update = function(story){
-			return $http.update('../api' + '/scenario', story);
+			return $http.put('../api' + '/scenario', story);
+		};
+
+		service.updateMetadata = function(metadata){
+			var story = {};
+			story.metadata = metadata;
+			story.content = null;
+			return $http.put('../api' + '/scenario/metadata', story);
 		};
 		
 		service.getNewStoryId = function() {

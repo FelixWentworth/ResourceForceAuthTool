@@ -19,7 +19,7 @@ angular
 			ctrl.save = function() {
 				StoryStorageService.save(ctrl.story);
 			};
-
+			
 			ctrl.onCharacterSelectionChanged = function () {
 				StoryStorageService.pruneRemovedCharacters();	
 			};

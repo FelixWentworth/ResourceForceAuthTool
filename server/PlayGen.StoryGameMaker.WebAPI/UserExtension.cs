@@ -59,7 +59,8 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             return new User
             {
                 Username = metadata.Username,
-                Password = metadata.Password
+                Password = metadata.Password,
+                MemberType = "member"                
             };
         }
 

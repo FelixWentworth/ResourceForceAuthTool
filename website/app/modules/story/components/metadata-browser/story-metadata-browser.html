@@ -2,7 +2,7 @@
 
 	<li ng-repeat="metadata in $ctrl.storiesMetadata">
 
-        <md-card>
+        <md-card ng-if="!metadata.deleted">
 
             <md-card-content>
 
@@ -31,6 +31,29 @@
                     <md-icon>mode_edit</md-icon>
 
                 </md-button>
+                <div >
+                    <md-button class="md-raised" 
+                        ng-click="$ctrl.submit(metadata)"
+                        ng-if="metadata.creatorId == $ctrl.creatorId && !metadata.submitted">
+                        Submit For Validation
+                    </md-button>
+                    <md-button class="md-raised"
+                        ng-click="$ctrl.validate(metadata, true)"
+                        ng-if="($ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.submitted">
+                        Set Valid
+                    </md-button>
+                    <md-button class="md-raised"
+                        ng-click="$ctrl.validate(metadata, false)"
+                        ng-if="($ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.submitted">
+                        Set Invalid
+                    </md-button>
+                    <md-button class="md-raised" 
+                        ng-click="$ctrl.delete(metadata)"
+                        ng-if="metadata.creatorId == $ctrl.creatorId">
+                        Delete
+                    </md-button>
+                    
+                 </div>   
 
             </md-card-content>
 

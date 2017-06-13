@@ -6,7 +6,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.Model
 	{
 		public string Id { get; set; }
 
-        public string CreatorId { get; set; }
+        public int CreatorId { get; set; }
 
 		public string Title { get; set; }
 

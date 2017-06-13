@@ -26,7 +26,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
 			return _scenarioDbController.Get(id);
 		}
 
-        public List<Scenario> GetByCreator(string id)
+        public List<Scenario> GetByCreator(int id)
         {
             return _scenarioDbController.GetByCreator(id);
         }

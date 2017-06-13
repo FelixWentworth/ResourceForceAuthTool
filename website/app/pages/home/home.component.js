@@ -8,6 +8,8 @@ angular
 			ctrl.loader = new StoriesMetadataLoader(StoryStorageService);
 			
 			ctrl.isLoggedIn = false;
+			ctrl.creatorId = 0;
+			ctrl.memberType = "";
 			ctrl.usernmae = "";
 
 			ctrl.error = "";
@@ -21,8 +23,10 @@ angular
 						{
 							ctrl.isLoggedIn = true;
 							ctrl.username = response.data.username;
-							
-							ctrl.loader.load(response.data.id);
+							ctrl.creatorId = response.data.id;
+							ctrl.memberType = response.data.memberType;
+
+							ctrl.loader.load(ctrl.creatorId);
 						}	
 					})
 					.catch(function(error)
@@ -41,8 +45,10 @@ angular
 						{
 							ctrl.isLoggedIn = true;
 							ctrl.username = response.data.metadata.username;
-						
-							ctrl.loader.load(response.data.id);
+							ctrl.creatorId =  response.data.id;
+							ctrl.memberType = response.data.memberType;
+
+							ctrl.loader.load(ctrl.creatorId);
 						}		
 					})
 					.catch(function(error)
