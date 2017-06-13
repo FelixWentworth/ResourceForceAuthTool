@@ -36,17 +36,6 @@
 					ng-disabled="storyTreeForm.$valid !== true">
 			Save Scenario
 		</md-button>
-
-		<md-button class="md-raised" 
-			ng-click="$ctrl.submit()"
-			ng-disabled="storyTreeForm.$valid !== true">
-			Submit For Validation
-		</md-button>
-
-		<md-button class="md-raised" 
-			ng-click="$ctrl.delete()">
-			Delete
-		</md-button>
 	</span>
 	<div ng-show="storyTreeForm.$valid !== true">
 		{{$ctrl.config.invalidMessage}}

@@ -9,6 +9,8 @@ namespace PlayGen.ResourceForceAuthoringTool.Contracts
     {
 		public string Id { get; set; }
 
+        public int CreatorId { get; set; }
+
 		public string Title { get; set; }
 
 		public string Language { get; set; }
@@ -16,6 +18,12 @@ namespace PlayGen.ResourceForceAuthoringTool.Contracts
 		public string Location { get; set; }
 
         public long SerialNumber { get; set; }
+
+        public bool IsValid { get; set; }
+
+        public bool Submitted { get; set; }
+
+        public bool Deleted { get; set; }
 
 	}
 }

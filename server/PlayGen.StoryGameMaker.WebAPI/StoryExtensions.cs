@@ -11,24 +11,33 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 {
     public static class StoryExtensions
     {
-		class Metadata
+		public class Metadata
 		{
 			public Metadata(string json)
 			{
 				JObject jObject = JObject.Parse(json);
 				Id = (string)jObject["id"];
-                CreatorId = (int)jObject["creatorId"]; 
+                if (jObject["creatorId"] != null)
+                {
+                    CreatorId = (int)jObject["creatorId"];
+                }
 				Title = (string)jObject["title"];
 				Language = (string)jObject["language"];
 				Location = (string)jObject["location"];
-			}
+                IsValid = (bool)jObject["isValid"];
+                Submitted = (bool)jObject["submitted"];
+                Deleted = (bool)jObject["deleted"];
+            }
 
-			public string Id { get; set; }
+            public string Id { get; set; }
             public int CreatorId { get; set; }
 			public string Title { get; set; }
 			public string Language { get; set; }
 			public string Location { get; set; }
             public long SerialNumber { get; set; }
+            public bool IsValid { get; set; }
+            public bool Submitted { get; set; }
+            public bool Deleted { get; set; }
 		}
 
 		public static ScenarioMetadataResponse ToMetadata(this Scenario storyModel)
@@ -41,10 +50,14 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             return new ScenarioMetadataResponse
             {
                 Id = storyModel.Id,
+                CreatorId = storyModel.CreatorId,
                 Title = storyModel.Title,
                 Language = storyModel.Language,
                 Location = storyModel.Location,
-                SerialNumber = storyModel.SerialNumber
+                SerialNumber = storyModel.SerialNumber,
+                IsValid = storyModel.IsValid,
+                Submitted = storyModel.Submitted,
+                Deleted = storyModel.Deleted
 			};
 		}
 
@@ -66,6 +79,12 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 				Content = scenarioContract.Content.ToString()
 			};
 		}
+
+        public static Metadata ToScenarioMetadata(this ScenarioRequest scenarioContract)
+        {
+            var metadata = new Metadata(scenarioContract.Metadata.ToString());
+            return metadata;
+        }
 
         public static Scenario ToValidationModel(this ValidationRequest validationContract)
         {
@@ -92,5 +111,18 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 				Content = content,
 			};
 		}
+
+        public static Scenario UpdateMetadata(this Scenario scenarioContract, Metadata metadata)
+        {
+            scenarioContract.Title = metadata.Title;
+            scenarioContract.Language = metadata.Language;
+            scenarioContract.Location = metadata.Location;
+
+            scenarioContract.IsValid = metadata.IsValid;
+            scenarioContract.Submitted = metadata.Submitted;
+            scenarioContract.Deleted = metadata.Deleted;
+
+            return scenarioContract;
+        }
 	}
 }

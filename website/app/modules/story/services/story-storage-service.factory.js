@@ -83,7 +83,14 @@ angular
 		};
 
 		service.update = function(story){
-			return $http.update('../api' + '/scenario', story);
+			return $http.put('../api' + '/scenario', story);
+		};
+
+		service.updateMetadata = function(metadata){
+			var story = {};
+			story.metadata = metadata;
+			story.content = null;
+			return $http.put('../api' + '/scenario/metadata', story);
 		};
 		
 		service.getNewStoryId = function() {

@@ -95,6 +95,23 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             return new ObjectResult(scenarioContract);
         }
 
+        [HttpPut("metadata")]
+        public IActionResult UpdateMetadata([FromBody] ScenarioRequest metadata)
+        {
+            var metadataModel = metadata.ToScenarioMetadata();
+            
+            // Assign new serial number to indicate the scenario has changed to the player
+            metadataModel.SerialNumber = _scenarioCoreController.GetNewSerialNumber();
+
+            var scenario = _scenarioCoreController.Get(metadataModel.Id);
+            scenario.UpdateMetadata(metadataModel);
+
+            scenario = _scenarioCoreController.Update(scenario);
+
+            var scenarioContract = scenario.ToScenarioContract();
+            return new ObjectResult(scenarioContract);
+        }
+
         #endregion
 
         #region Delete
