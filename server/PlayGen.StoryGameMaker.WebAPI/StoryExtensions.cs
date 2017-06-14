@@ -124,7 +124,10 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 
             return new ContentResponse
             {
+                Id = scenarioContract.Id,
                 SerialNumber = scenarioContract.SerialNumber,
+                Location = scenarioContract.Location,
+                Language = scenarioContract.Language,
                 Content = content
             };
         }
