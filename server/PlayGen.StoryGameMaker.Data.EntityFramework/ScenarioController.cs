@@ -69,6 +69,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
             }
         }
 
+
         /// <summary>
         /// Get a list of scenarios that match the filter data for language and location
         /// </summary>
@@ -92,7 +93,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         {
             using (var context = ContextFactory.Create())
             {
-                var scenarios = context.Scenarios.Where(s => s.SerialNumber > number).ToList();
+                var scenarios = context.Scenarios.Where(s => s.SerialNumber > number && s.IsValid).ToList();
                 return scenarios;
             }
         }
@@ -171,6 +172,5 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                 throw new Exception("Unable to find Serial Number");
             }
         }
-
     }
 }

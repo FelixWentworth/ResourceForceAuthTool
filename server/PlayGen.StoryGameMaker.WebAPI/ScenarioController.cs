@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PlayGen.ResourceForceAuthoringTool.Contracts;
+using System.Collections.Generic;
 
 namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 {
@@ -76,8 +77,12 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         public IActionResult GetBySerialNumber([FromRoute]long id)
         {
             var scenarios = _scenarioCoreController.Get(id);
-            var scenarioContract = scenarios.ToMetadataList();
-            return new ObjectResult(scenarioContract);
+            var contentContract = new List<ContentResponse>();
+            foreach (var s in scenarios)
+            {
+                contentContract.Add(s.ToContentContract());
+            }
+            return new ObjectResult(contentContract);
         }
 
         #endregion

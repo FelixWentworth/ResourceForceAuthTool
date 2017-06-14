@@ -96,6 +96,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             };
         }
 
+
         public static ScenarioResponse ToScenarioContract(this Scenario scenarioContract)
 		{
 			if (scenarioContract == null)
@@ -111,6 +112,22 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 				Content = content,
 			};
 		}
+
+        public static ContentResponse ToContentContract(this Scenario scenarioContract)
+        {
+            if (scenarioContract == null)
+            {
+                return null;
+            }
+
+            var content = JObject.Parse(scenarioContract.Content);
+
+            return new ContentResponse
+            {
+                SerialNumber = scenarioContract.SerialNumber,
+                Content = content
+            };
+        }
 
         public static Scenario UpdateMetadata(this Scenario scenarioContract, Metadata metadata)
         {
