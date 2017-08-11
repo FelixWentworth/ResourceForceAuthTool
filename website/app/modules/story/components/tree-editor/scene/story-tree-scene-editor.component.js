@@ -39,6 +39,10 @@ angular
 
 			ctrl.doesntContainChoice = function(choice)
 			{
+				if (ctrl.scene.choices.length == 0)
+				{
+					return true;
+				}
 				var containsWhereChoice = false;
 				for(var i in choice) {
 					if(Array.containsWhere(ctrl.scene.choices, e => e.choice.choiceType == choice[i])) {
@@ -127,6 +131,14 @@ angular
 			function checkValidity() {				
 				//ctrl.isThisSceneLevelComplete = Array.containsWhere(ctrl.scene.choices, e => e._type == "End" || e._type == "Choice" );
 				//ctrl.form.$setValidity("incomplete", ctrl.isThisSceneLevelComplete);
+				checkEnd();
+			}
+
+			function checkEnd() {
+				if (ctrl.hasAllChoices)
+				{
+					ctrl.addEnd();
+				}
 			}
 		}]
 	});
