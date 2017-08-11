@@ -37,6 +37,19 @@ angular
 				return !containsWhereType;
 			}
 
+			ctrl.doesntContainChoice = function(choice)
+			{
+				var containsWhereChoice = false;
+				for(var i in choice) {
+					if(Array.containsWhere(ctrl.scene.choices, e => e.choice.choiceType == choice[i])) {
+						containsWhereChoice = true;
+						break;
+					}
+				}
+
+				return !containsWhereChoice;
+			}
+
 			// ctrl.addNarrator = function () {	
 			// 	var narratorSubscene = StoryEditorService.createNarratorSubscene();
 			// 	ctrl.scene.choices.push(narratorSubscene);

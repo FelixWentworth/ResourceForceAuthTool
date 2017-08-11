@@ -179,11 +179,11 @@
 					</md-menu> -->
 					
 					<md-button ng-click="$ctrl.addChoice('Ignore')"
-								class="md-raised">Ignore</md-button>	
+								class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>	
 					<md-button ng-click="$ctrl.addChoice('Citizen')"
-								class="md-raised">Ask Citizen</md-button>	
+								class="md-raised" ng-show="$ctrl.doesntContainChoice(['Citizen'])">Ask Citizen</md-button>	
 					<md-button ng-click="$ctrl.addChoice('Officer')"
-								class="md-raised">Send Officer</md-button>	
+								class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officer</md-button>	
 					<md-button ng-click="$ctrl.addEnd()"
 								class="md-raised">End</md-button>
 				
