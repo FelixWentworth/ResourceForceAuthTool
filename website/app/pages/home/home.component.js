@@ -2,17 +2,22 @@ angular
 	.module("storyGameMaker")
 	.component("home", {
 		templateUrl: "pages/home/home.html",
-		controller: ["StoryStorageService", "$http", function(StoryStorageService, $http) {
+		controller: ["StoryStorageService", "$http", "Auth", function(StoryStorageService, $http, Auth) {
 			var ctrl = this;
 			
 			ctrl.loader = new StoriesMetadataLoader(StoryStorageService);
 			
-			ctrl.isLoggedIn = false;
-			ctrl.creatorId = 0;
-			ctrl.memberType = "";
-			ctrl.usernmae = "";
+			ctrl.isLoggedIn = Auth.isLoggedIn();
+			ctrl.creatorId = ctrl.isLoggedIn ? Auth.getId() : 0;
+			ctrl.memberType = ctrl.isLoggedIn ? Auth.getType() : "";
+			ctrl.username = ctrl.isLoggedIn ? Auth.getName() : "";
 
 			ctrl.error = "";
+
+			if (ctrl.isLoggedIn)
+			{
+				ctrl.loader.load(ctrl.creatorId);
+			}
 
 			ctrl.Login = function(user) {
 				// TODO send login request
@@ -27,6 +32,7 @@ angular
 							ctrl.memberType = response.data.memberType;
 
 							ctrl.loader.load(ctrl.creatorId);
+							Auth.set(ctrl.creatorId, ctrl.username, ctrl.creatorId);
 						}	
 					})
 					.catch(function(error)
@@ -49,6 +55,7 @@ angular
 							ctrl.memberType = response.data.memberType;
 
 							ctrl.loader.load(ctrl.creatorId);
+							Auth.set(ctrl.creatorId, ctrl.username, ctrl.creatorId);
 						}		
 					})
 					.catch(function(error)
