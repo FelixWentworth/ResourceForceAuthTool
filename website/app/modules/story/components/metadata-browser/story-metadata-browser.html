@@ -1,6 +1,6 @@
 <ul>
 
-	<li ng-repeat="metadata in $ctrl.storiesMetadata">
+	<li ng-repeat="metadata in $ctrl.storiesMetadata | filter:{deleted:false}">
 
         <md-card ng-if="!metadata.deleted">
 
