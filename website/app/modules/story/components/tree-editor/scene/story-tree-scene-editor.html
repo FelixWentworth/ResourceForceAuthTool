@@ -46,7 +46,12 @@
 	<!-- choice action -->
 		
 	<md-card ng-if="$ctrl.choice != null">
-		<collapsible-card-content label="$ctrl.choice.choice.choiceType">
+		<md-card-content layout="row">
+			<h3>{{$ctrl.choice.choice.choiceType}}</h3>
+			<md-button class="md-raised" ng-click="$ctrl.onClicked($ctrl.choice)"><label>Remove Choice</label></md-button>
+		</md-card-content>
+		
+		<collapsible-card-content>
 			
 			<md-card-content>		
 				<div>
@@ -134,10 +139,6 @@
 
 			</md-card-content>
 		</collapsible-card-content>
-		<div layout="row">
-			<md-button class="md-raised" aria-label="remove choice"
-				ng-click="$ctrl.onClicked($ctrl.choice)">Remove Choice</md-button>
-		</div>
 	</md-card>
 
 
@@ -145,12 +146,12 @@
 		<!-- scene/choice elements -->
 		<li ng-repeat="element in $ctrl.scene.choices">
 			
-			<md-card ng-if="element._type != 'Choice'">
+			<md-card ng-if="element._type != 'Choice'" style="background: rgb(160, 160, 160);">
 
 	    		<md-card-content layout="row">
 
 					<md-button ng-click="$ctrl.removeElement(element)"
-								class="md-raised">Remove</md-button>
+								class= "md-raised">Remove</md-button>
 
 					<story-subscene-editor flex ng-if="element._type == 'Subscene'" subscene="element"></story-subscene-editor>		
 
@@ -171,38 +172,15 @@
 
 			<md-card ng-if="element._type != 'Choice'">
 
-				<md-card-content layout="row">
-
-<!-- 					<md-button ng-show="$ctrl.doesntContain(['Choice'])" 
-								ng-click="$ctrl.addNarrator()"
-								class="md-raised">+ Narrator</md-button>	 -->
-
-<!-- 					<md-menu ng-show="$ctrl.doesntContain(['Choice'])">
-
-						<md-button ng-click="$ctrl.openAddCharacterMenu($mdMenu, $event)"
-									class="md-raised">+ Character</md-button>	
-					
-						<md-menu-content>
-					
-							<md-menu-item ng-repeat="character in $ctrl.characters">
-					
-								<md-button ng-click="$ctrl.addCharacter(character)">{{character.name}}</md-button>
-					
-							</md-menu-item>
-					
-						</md-menu-content>
-					
-					</md-menu> -->
-					
+				<md-card-content layout="row">		
 					<md-button ng-click="$ctrl.addChoice('Ignore')"
 								class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>	
 					<md-button ng-click="$ctrl.addChoice('Citizen')"
 								class="md-raised" ng-show="$ctrl.doesntContainChoice(['Citizen'])">Ask Citizen</md-button>	
 					<md-button ng-click="$ctrl.addChoice('Officer')"
 								class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officer</md-button>	
-					<md-button ng-click="$ctrl.addEnd()"
+					<md-button ng-click="$ctrl.addEnd()" 
 								class="md-raised">End</md-button>
-				
 				</md-card-content>	
 
 				<!-- todo make this display the same as the rest of the error messages -->

@@ -3,9 +3,6 @@ angular
 .component("collapsibleCardContent", {
     templateUrl: "modules/collapsible-content/collapsible-card-content.html",
     transclude: true,
-    bindings: {
-        label: "<",
-    }, 
     controller: function () {
         var ctrl = this;
         ctrl.isSelected = false;
