@@ -45,7 +45,7 @@ angular
 				}
 				var containsWhereChoice = false;
 				for(var i in choice) {
-					if(Array.containsWhere(ctrl.scene.choices, e => e.choice.choiceType == choice[i])) {
+					if(Array.containsWhere(ctrl.scene.choices, e => e._type == "Choice" && e.choice.choiceType == choice[i])) {
 						containsWhereChoice = true;
 						break;
 					}

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 using PlayGen.ResourceForceAuthoringTool.Data.Model;
 
 namespace PlayGen.ResourceForceAuthoringTool.Core
