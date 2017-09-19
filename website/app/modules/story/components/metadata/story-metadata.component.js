@@ -10,7 +10,7 @@ angular
 			
 			ctrl.generateOutline = function () {
 				// todo make data driven
-				return String.format("{0}, {1}", 
+				return String.format("Location: {0}, Language: {1}", 
 					ctrl.metadata.location,
 					ctrl.metadata.language);
 			};

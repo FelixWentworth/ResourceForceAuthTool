@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 using Newtonsoft.Json;
@@ -17,7 +18,8 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 			{
 				JObject jObject = JObject.Parse(json);
 				Id = (string)jObject["id"];
-                if (jObject["creatorId"] != null)
+
+                if ((string)jObject["creatorId"] != null )
                 {
                     CreatorId = (int)jObject["creatorId"];
                 }

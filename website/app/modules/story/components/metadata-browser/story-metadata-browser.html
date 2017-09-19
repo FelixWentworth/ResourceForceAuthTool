@@ -31,10 +31,17 @@
                     <md-icon>mode_edit</md-icon>
 
                 </md-button>
+                <div>
+                    <label>Status</label>
+                    <label ng-if="metadata.submitted"><br/>Awaiting Validation</label>
+                    <label ng-if="!metadata.submitted"><br/>Ready For Submission</label>
+                    <label ng-if="metadata.isValid"><br/>Approved</label>
+                    <label ng-if="!metadata.isValid"><br/>Not Approved</label>
+                </div>
                 <div >
                     <md-button class="md-raised" 
                         ng-click="$ctrl.submit(metadata)"
-                        ng-if="metadata.creatorId == $ctrl.creatorId && !metadata.submitted">
+                        ng-if="($ctrl.memberType == 'admin' || metadata.creatorId == $ctrl.creatorId) && !metadata.submitted">
                         Submit For Validation
                     </md-button>
                     <md-button class="md-raised"
@@ -49,7 +56,7 @@
                     </md-button>
                     <md-button class="md-raised" 
                         ng-click="$ctrl.delete(metadata)"
-                        ng-if="metadata.creatorId == $ctrl.creatorId">
+                        ng-if="($ctrl.memberType == 'admin' || metadata.creatorId == $ctrl.creatorId)">
                         Delete
                     </md-button>
                     

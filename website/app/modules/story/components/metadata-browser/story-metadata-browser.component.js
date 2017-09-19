@@ -12,6 +12,7 @@ angular
 
 			ctrl.submit = function(metadata){
 				metadata.submitted = true;
+				metadata.isValid = false; // has been changed, so needs validating again
 				StoryStorageService.updateMetadata(metadata);
 			};
 			
