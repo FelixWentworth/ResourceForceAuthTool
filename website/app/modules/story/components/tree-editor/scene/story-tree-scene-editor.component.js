@@ -86,6 +86,7 @@ angular
 				var choice = StoryEditorService.createChoice(choiceName);
 				ctrl.scene.choices.push(choice);
 
+				checkEnd();
 				checkValidity();
 			};
 
@@ -99,6 +100,8 @@ angular
 				var choice = StoryEditorService.createChoice(choiceName);
 				ctrl.scene.choices.push(choice);
 
+
+				checkEnd();
 				checkValidity();
 			};
 
@@ -135,7 +138,10 @@ angular
 			}
 
 			function checkEnd() {
-				if (ctrl.hasAllChoices)
+				// add an end if one does not already exist
+				var ends = 0;
+				ctrl.scene.choices.forEach(e => ends += e._type == "End" ? 1 : 0);
+				if (ends == 0)
 				{
 					ctrl.addEnd();
 				}

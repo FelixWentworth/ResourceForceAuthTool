@@ -37,8 +37,16 @@
 			</div>
 		
 			<!-- todo make this display the same as the rest of the error messages -->
-			<div ng-show="!$ctrl.form.$valid">One or more of the elements in this incident are incomplete.</div>
+			<div ng-show="!$ctrl.form.$valid">One or more of the elements in this incident are incomplete.</div>	
 
+			<md-card-content layout="row">		
+				<md-button ng-click="$ctrl.addChoice('Ignore')"
+							class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>	
+				<md-button ng-click="$ctrl.addChoice('Citizen')"
+							class="md-raised" ng-show="$ctrl.doesntContainChoice(['Citizen'])">Ask Citizen</md-button>	
+				<md-button ng-click="$ctrl.addChoice('Officer')"
+							class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officer</md-button>	
+			</md-card-content>	
 		</md-card-content>
 	
 	</md-card>	
@@ -46,10 +54,9 @@
 	<!-- choice action -->
 		
 	<md-card ng-if="$ctrl.choice != null">
+		<md-button class="md-raised" ng-click="$ctrl.onClicked($ctrl.choice)"><label>Remove Choice</label></md-button>			
 		<md-card-content layout="row">
 			<h3>{{$ctrl.choice.choice.choiceType}}</h3>
-			<md-button class="md-raised" ng-click="$ctrl.onClicked($ctrl.choice)"><label>Remove Choice</label></md-button>
-		</md-card-content>
 		
 		<collapsible-card-content>
 			
@@ -136,42 +143,6 @@
 
 				<!-- todo make this display the same as the rest of the error messages -->
 				<label ng-show="!$ctrl.form.$valid">One or more of the elements in this incident are incomplete.</label>
-
-			</md-card-content>
-		</collapsible-card-content>
-	</md-card>
-
-
-	<ul>
-		<!-- scene/choice elements -->
-		<li ng-repeat="element in $ctrl.scene.choices">
-			
-			<md-card ng-if="element._type != 'Choice'" style="background: rgb(160, 160, 160);">
-
-	    		<md-card-content layout="row">
-
-					<md-button ng-click="$ctrl.removeElement(element)"
-								class= "md-raised">Remove</md-button>
-
-					<story-subscene-editor flex ng-if="element._type == 'Subscene'" subscene="element"></story-subscene-editor>		
-
-					<scene-element-end ng-if="element._type == 'End'"></scene-element-end>
-
-				</md-card-content>
-
-			</md-card>
-
-			<story-tree-scene-editor ng-if="element._type == 'Choice'" 
-										scene="element"
-										on-clicked="$ctrl.removeElement">
-			</story-tree-scene-editor>
-		</li>		
-
-		<!-- add scene element buttons -->
-		<li ng-show="$ctrl.doesntContain(['End'])">
-
-			<md-card ng-if="element._type != 'Choice'">
-
 				<md-card-content layout="row">		
 					<md-button ng-click="$ctrl.addChoice('Ignore')"
 								class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>	
@@ -179,16 +150,23 @@
 								class="md-raised" ng-show="$ctrl.doesntContainChoice(['Citizen'])">Ask Citizen</md-button>	
 					<md-button ng-click="$ctrl.addChoice('Officer')"
 								class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officer</md-button>	
-					<md-button ng-click="$ctrl.addEnd()" 
-								class="md-raised">End</md-button>
 				</md-card-content>	
+			</md-card-content>
+		</collapsible-card-content>
+	</md-card-content>
+	
+	</md-card>
 
-				<!-- todo make this display the same as the rest of the error messages -->
-				<div ng-show="!$ctrl.isThisSceneLevelComplete">This scenario is incomplete. Make sure all paths lead to an End.</div>
-			</md-card>
 
-		</li>
-
+	<ul>
+		<!-- scene/choice elements -->
+		<li ng-repeat="element in $ctrl.scene.choices  | filter:{_type:'Choice'}">
+			
+			<story-tree-scene-editor ng-if="element._type == 'Choice'" 
+										scene="element"
+										on-clicked="$ctrl.removeElement">
+			</story-tree-scene-editor>
+		</li>		
 	</ul>
 
 </div>
