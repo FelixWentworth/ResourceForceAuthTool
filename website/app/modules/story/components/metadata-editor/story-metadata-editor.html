@@ -1,25 +1,15 @@
-<div>
-	<validated-text-input type="'field'"
-				label="'Title'"
-				ng-model="$ctrl.metadata.title"
-				placeholder="$ctrl.metadataHelp.title"
-				minlength="1"
-	       		maxlength="50"
-	       		required/>
-<br/>
-	<validated-text-input type="'field'"
-				label="'Location'"
-				ng-model="$ctrl.metadata.location"
-				placeholder="$ctrl.metadataHelp.location"
-				minlength="1"
-	       		maxlength="50"
-	       		required/>
-
-	<validated-text-input type="'field'"
-				label="'Language'"
-				ng-model="$ctrl.metadata.language"
-				placeholder="$ctrl.metadataHelp.language"
-				minlength="1"
-	       		maxlength="50"
-	       		required/>
-</div>
+<validated-text-input type="'field'"
+			label="'Scenario Title'"
+			ng-model="$ctrl.metadata.title"
+			placeholder="$ctrl.metadataHelp.title"
+			minlength="1"
+			maxlength="50"
+			required/>
+<validated-select label="'Location'"
+			ng-model="$ctrl.metadata.location"
+			options="$ctrl.location"
+			required="true"/>
+<validated-select label="'Language'"
+			ng-model="$ctrl.metadata.language"
+			options="$ctrl.language"
+			required="true"/>

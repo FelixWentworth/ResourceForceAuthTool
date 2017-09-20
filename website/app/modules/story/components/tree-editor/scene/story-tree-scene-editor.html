@@ -5,7 +5,6 @@
 		
 		<md-card-content>
 			<h3>Start</h3>
-			<div>
 				<validated-text-input type="'field'" 
 										label="$ctrl.label"
 										placeholder="'Title'"
@@ -21,7 +20,6 @@
 										minlength="1"
 										maxlength="200"
 										required="true"/>	
-			<br/>
 				<validated-select label="'Severity'"
 									ng-model="$ctrl.scene.severity"
 									options="$ctrl.severity"
@@ -34,7 +32,6 @@
 									ng-model="$ctrl.scene.turnReq"
 									options="$ctrl.turnOptions"
 									required="true"/>
-			</div>
 		
 			<!-- todo make this display the same as the rest of the error messages -->
 			<div ng-show="!$ctrl.form.$valid">One or more of the elements in this incident are incomplete.</div>	
@@ -53,110 +50,106 @@
 
 	<!-- choice action -->
 		
-	<md-card ng-if="$ctrl.choice != null">
-		<md-button class="md-raised" ng-click="$ctrl.onClicked($ctrl.choice)"><label>Remove Choice</label></md-button>			
+	<md-card ng-if="$ctrl.choice != null">	
 		<md-card-content layout="row">
 			<h3>{{$ctrl.choice.choice.choiceType}}</h3>
-		
-		<collapsible-card-content>
-			
-			<md-card-content>		
-				<div>
-						<br/>
-						<h3>Feedback from choice</h3>
-				</div>
-				<div>	
-					<validated-select label="'Rating'"
-						ng-model="$ctrl.choice.choice.feedbackRating"
-						options="$ctrl.feedbackOptions"
-						required="true"/>
-				</div>
-				<div>
-					<validated-text-input type="'area'" 
-						label="'Feedback'"
-						placeholder="'Feedback Description'"
-						ng-model="$ctrl.choice.choice.feedback"
-						minlength="1"
-						maxlength="200"
-						required="true"/>	
-				</div>
+			<collapsible-card-content>
+				<md-button class="md-raised" ng-click="$ctrl.onClicked($ctrl.choice)"><label>Remove Choice</label></md-button>				
+				<md-card-content>		
+					<div>
+							<br/>
+							<h3>Feedback from choice</h3>
+					</div>
+					<div>	
+						<validated-select label="'Rating'"
+							ng-model="$ctrl.choice.choice.feedbackRating"
+							options="$ctrl.feedbackOptions"
+							required="true"/>
+					</div>
+					<div>
+						<validated-text-input type="'area'" 
+							label="'Feedback'"
+							placeholder="'Feedback Description'"
+							ng-model="$ctrl.choice.choice.feedback"
+							minlength="1"
+							maxlength="200"
+							required="true"/>	
+					</div>
 
-				<!-- <story-subscene-editor subscene="$ctrl.choice.action"></story-subscene-editor> -->
-			
-			</md-card-content>
-			<md-card-content>
-				<div>
-						<br/>
-						<h3>Next Incident Information</h3>
-				</div>
+					<!-- <story-subscene-editor subscene="$ctrl.choice.action"></story-subscene-editor> -->
+				
+				</md-card-content>
+				<md-card-content>
+					<div>
+							<br/>
+							<h3>Next Incident Information</h3>
+					</div>
 
-				<div>
-				<validated-text-input 
-									label="'Title'"
-									type="'area'"
-									placeholder="'Title'"
-									ng-model="$ctrl.scene.title"
-									minlength="1"
-									maxlength="70"
-									required="true"/>
-				</div>
-				<div>
-				<validated-text-input 
-									label="'Descrtiption'"
-									type="'area'"
-									placeholder="'Descrtiption'"
-									ng-model="$ctrl.scene.description"
-									minlength="10"
-									maxlength="200"
-									required="true"/>
-				</div>
-				<div>
-				<validated-select label="'Severity'"
-									ng-model="$ctrl.scene.severity"
-									options="$ctrl.severity"
-									required="true"/>
-				</div>
-				<div>
-				<validated-select label="'Number Of Officers Required'"
-									ng-model="$ctrl.scene.officerReq"
-									options="$ctrl.officerOptions"
-									required="true"/>
-				</div>
-				<div>
-				<validated-select label="'Turns Officers Needed For'"
-									ng-model="$ctrl.scene.turnReq"
-									options="$ctrl.turnOptions"
-									required="true"/>
-				</div>
+					<div>
+					<validated-text-input 
+										label="'Title'"
+										type="'area'"
+										placeholder="'Title'"
+										ng-model="$ctrl.scene.title"
+										minlength="1"
+										maxlength="70"
+										required="true"/>
+					</div>
+					<div>
+					<validated-text-input 
+										label="'Descrtiption'"
+										type="'area'"
+										placeholder="'Descrtiption'"
+										ng-model="$ctrl.scene.description"
+										minlength="10"
+										maxlength="200"
+										required="true"/>
+					</div>
+					<div>
+					<validated-select label="'Severity'"
+										ng-model="$ctrl.scene.severity"
+										options="$ctrl.severity"
+										required="true"/>
+					</div>
+					<div>
+					<validated-select label="'Number Of Officers Required'"
+										ng-model="$ctrl.scene.officerReq"
+										options="$ctrl.officerOptions"
+										required="true"/>
+					</div>
+					<div>
+					<validated-select label="'Turns Officers Needed For'"
+										ng-model="$ctrl.scene.turnReq"
+										options="$ctrl.turnOptions"
+										required="true"/>
+					</div>
 
-				<div>
-						<br/>
-						<h5>Impact Used at end of path</h5>
-				</div>
+					<div>
+							<br/>
+							<h5>Impact Used at end of path</h5>
+					</div>
 
-				<div>
-				<validated-select label="'End Impact'"
-									ng-model="$ctrl.scene.satisfactionImpact"
-									options="$ctrl.impactOptions"
-									required="true"/>
-				</div>
+					<div>
+					<validated-select label="'End Impact'"
+										ng-model="$ctrl.scene.satisfactionImpact"
+										options="$ctrl.impactOptions"
+										required="true"/>
+					</div>
 
-				<!-- todo make this display the same as the rest of the error messages -->
-				<label ng-show="!$ctrl.form.$valid">One or more of the elements in this incident are incomplete.</label>
-				<md-card-content layout="row">		
-					<md-button ng-click="$ctrl.addChoice('Ignore')"
-								class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>	
-					<md-button ng-click="$ctrl.addChoice('Citizen')"
-								class="md-raised" ng-show="$ctrl.doesntContainChoice(['Citizen'])">Ask Citizen</md-button>	
-					<md-button ng-click="$ctrl.addChoice('Officer')"
-								class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officer</md-button>	
-				</md-card-content>	
-			</md-card-content>
-		</collapsible-card-content>
-	</md-card-content>
-	
+					<!-- todo make this display the same as the rest of the error messages -->
+					<label ng-show="!$ctrl.form.$valid">One or more of the elements in this incident are incomplete.</label>
+					<md-card-content layout="row">		
+						<md-button ng-click="$ctrl.addChoice('Ignore')"
+									class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>	
+						<md-button ng-click="$ctrl.addChoice('Citizen')"
+									class="md-raised" ng-show="$ctrl.doesntContainChoice(['Citizen'])">Ask Citizen</md-button>	
+						<md-button ng-click="$ctrl.addChoice('Officer')"
+									class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officer</md-button>	
+					</md-card-content>	
+				</md-card-content>
+			</collapsible-card-content>
+		</md-card-content>
 	</md-card>
-
 
 	<ul>
 		<!-- scene/choice elements -->
