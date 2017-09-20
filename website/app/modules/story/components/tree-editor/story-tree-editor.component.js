@@ -11,13 +11,22 @@ angular
 			// public fields
 			// todo make data driven
 			ctrl.config = {};
-			ctrl.config.invalidMessage = "There seems to be an invalid part of your story." + 
+			ctrl.config.invalidMessage = "There seems to be an invalid part of your scenario." + 
 						" \nYou must find it and fix it in order to save." +
 						" \nThere should be a red error message to help you identify it.";
 
+			ctrl.saveStatus = "";
+
 			// public methods
 			ctrl.save = function() {
-				StoryStorageService.save(ctrl.story);
+				ctrl.saveStatus = "Saving...";
+				StoryStorageService.save(ctrl.story)
+				.success(function(data){
+					ctrl.saveStatus = "Saved Successfully";
+				})
+				.error(function(data){
+					ctrl.saveStatus = "Save Attempt Failed, please try again";
+				})
 			};
 			
 			ctrl.onCharacterSelectionChanged = function () {

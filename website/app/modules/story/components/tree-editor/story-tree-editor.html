@@ -37,6 +37,9 @@
 			Save Scenario
 		</md-button>
 	</span>
+	<div>
+		<label>{{$ctrl.saveStatus}}</label>
+	</div>
 	<div ng-show="storyTreeForm.$valid !== true">
 		{{$ctrl.config.invalidMessage}}
 	</div>	

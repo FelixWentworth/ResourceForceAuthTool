@@ -41,7 +41,7 @@ angular
 						return story;
 					} 
 
-					throw "Couldn't find story for id: " + id;
+					throw "Couldn't find scenario for id: " + id;
 				});
 		};		
 
