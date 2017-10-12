@@ -7,10 +7,10 @@ WORKDIR app/
 
 RUN dotnet restore
 
-WORKDIR server/PlayGen.ResourceForceAuthoringTool.WebAPI/wwwroot/
+WORKDIR server/PlayGen.StoryGameMaker.WebAPI/wwwroot/
 RUN npm install
 
-WORKDIR /app/server/PlayGen.StoryGameMaker.WebAPI/
+WORKDIR /app/server/PlayGen.ResourceForceAuthoringTool.WebAPI/
 RUN dotnet publish -c Release -o out
 RUN chmod +x delay-startup.sh
 

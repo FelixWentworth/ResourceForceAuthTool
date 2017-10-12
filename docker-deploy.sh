@@ -1,6 +1,6 @@
 #/bin/bash
-export DB_CONTAINER="sgm-mariadb"
-export CONTAINER="sgm"
+export DB_CONTAINER="resourceforceauthoringtool-mariadb"
+export CONTAINER="resourceforceauthoringtool"
 docker stop $CONTAINER
 docker stop $DB_CONTAINER
 docker rm $CONTAINER

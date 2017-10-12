@@ -1,3 +1,3 @@
 #/bin/bash
-export CONTAINER="storygamemaker"
+export CONTAINER="resourceforceauthoringtool"
 docker build ./server -t $CONTAINER .
