@@ -1,7 +1,7 @@
 version: '2'
 
 services: 
-    sgm-mariadb: 
+    resourceforceauthoringtool-mariadb: 
         network_mode: "bridge"
         build:
             context: ./server
@@ -11,7 +11,7 @@ services:
         container_name: "resourceforceauthoringtool-mariadb"
         expose:
             - 3306
-    sgm:
+    resourceforceauthoringtool:
         network_mode: "bridge"
         build:
             context: ./server
