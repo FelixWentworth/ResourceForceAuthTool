@@ -13,7 +13,7 @@ angular
 			ctrl.config = {};
 			ctrl.config.invalidMessage = "There seems to be an invalid part of your scenario." + 
 						" \nYou must find it and fix it in order to save." +
-						" \nThere should be a red error message to help you identify it.";
+						" \nMake sure each field is filled in for each section. You must have at least 2 decisions available for each incident that is not an end";
 
 			ctrl.saveStatus = "";
 

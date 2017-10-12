@@ -131,9 +131,30 @@ angular
 			};
 
 			// private methods
-			function checkValidity() {				
-				//ctrl.isThisSceneLevelComplete = Array.containsWhere(ctrl.scene.choices, e => e._type == "End" || e._type == "Choice" );
-				//ctrl.form.$setValidity("incomplete", ctrl.isThisSceneLevelComplete);
+			function checkValidity() {			
+
+				var choices = 0;
+				ctrl.scene.choices.forEach(e => choices += e._type == "Choice" ? 1 : 0);
+				if (choices == 1)
+				{
+					// Player must have either no choices (an end) or more than 2 (a choice with 1 free choice, citizen or ignore)
+					ctrl.isThisSceneLevelComplete = false;
+				}
+				else
+				{
+					ctrl.isThisSceneLevelComplete = true;
+				}
+				
+				ctrl.form.$setValidity("incomplete", ctrl.isThisSceneLevelComplete);
+				console.log(ctrl.scene._type + " : " + choices);	
+
+				
+
+				// if (ctrl.scene.choices.length > 1)
+				// {
+				// 	ctrl.isThisSceneLevelComplete = Array.containsWhere(ctrl.scene.choices, e => e._type == "Choice" && (e.choiceType == "Ignore" || e.choiceType == "Citizen") );
+				// 	ctrl.form.$setValidity("incomplete", ctrl.isThisSceneLevelComplete);
+				// }
 				checkEnd();
 			}
 

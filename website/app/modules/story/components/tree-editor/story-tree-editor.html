@@ -29,11 +29,11 @@
 	</md-card> -->
 				
 	<story-tree-scene-editor scene="$ctrl.story.content.scene"></story-tree-scene-editor>				
-	
 	<span>
+		
 		<md-button class="md-raised" 
 					ng-click="$ctrl.save()"
-					ng-disabled="storyTreeForm.$valid !== true">
+					ng-disabled="storyTreeForm.$valid !== true || $ctrl.story.content.scene.choices.length <= 1"> <!-- already contains end choice, not shown in web page -->
 			Save Scenario
 		</md-button>
 	</span>

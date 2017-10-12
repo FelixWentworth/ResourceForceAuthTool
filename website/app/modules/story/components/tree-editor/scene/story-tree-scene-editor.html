@@ -51,11 +51,14 @@
 	<!-- choice action -->
 		
 	<md-card ng-if="$ctrl.choice != null">	
+		
 		<md-card-content layout="row">
 			<h3>{{$ctrl.choice.choice.choiceType}}</h3>
+			
 			<collapsible-card-content>
 				<md-button class="md-raised" ng-click="$ctrl.onClicked($ctrl.choice)"><label>Remove Choice</label></md-button>				
 				<md-card-content>		
+					<label ng-show="!$ctrl.form.$valid">One or more of the elements in this incident are incomplete.</label>
 					<div>
 							<br/>
 							<h3>Feedback from choice</h3>
@@ -76,8 +79,6 @@
 							required="true"/>	
 					</div>
 
-					<!-- <story-subscene-editor subscene="$ctrl.choice.action"></story-subscene-editor> -->
-				
 				</md-card-content>
 				<md-card-content>
 					<div>
@@ -125,8 +126,8 @@
 					</div>
 
 					<div>
-							<br/>
-							<h5>Impact Used at end of path</h5>
+						<br/>
+						<h5>Impact Used at end of path</h5>
 					</div>
 
 					<div>
@@ -136,8 +137,6 @@
 										required="true"/>
 					</div>
 
-					<!-- todo make this display the same as the rest of the error messages -->
-					<label ng-show="!$ctrl.form.$valid">One or more of the elements in this incident are incomplete.</label>
 					<md-card-content layout="row">		
 						<md-button ng-click="$ctrl.addChoice('Ignore')"
 									class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>	
