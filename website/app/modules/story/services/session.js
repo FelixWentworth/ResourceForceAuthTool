@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('storyGameMaker')
+angular.module('resourceForceAuthoringTool')
 .service('Session', function () {
   this.create = function (userId, userName, type) {
     this.userId = userId;

@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PlayGen.StoryGameMaker.Core")]
+[assembly: AssemblyProduct("PlayGen.ResourceForceAuthoringTool.Data.EntityFramework")]
 [assembly: AssemblyTrademark("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
@@ -16,4 +16,4 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8fa31106-9396-44fb-a2ba-4f57f138551b")]
+[assembly: Guid("a32268ff-b2cf-4f7b-8913-36ac2576eccd")]

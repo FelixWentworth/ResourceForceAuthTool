@@ -8,7 +8,7 @@
  * # Auth
  * Service in the ResourceForceAuthoringTool.
  */
-angular.module('storyGameMaker')
+angular.module('resourceForceAuthoringTool')
 	.factory('Auth', [
 		'$rootScope',
 		'AuthService',

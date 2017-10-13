@@ -50,8 +50,8 @@ var config = {
 		minifyCss: false,
 		hash: false,
 		output: {
-			app: "../server/PlayGen.StoryGameMaker.WebAPI/wwwroot/app",
-			vendor: "../server/PlayGen.StoryGameMaker.WebAPI/wwwroot/vendor",
+			app: "../server/PlayGen.ResourceForceAuthoringTool.WebAPI/wwwroot/app",
+			vendor: "../server/PlayGen.ResourceForceAuthoringTool.WebAPI/wwwroot/vendor",
 		}		
 	},
 	prod: {
@@ -77,13 +77,13 @@ var config = {
 		minifyCss: true,
 		hash: true,
 		output: {
-			app: "../server/PlayGen.StoryGameMaker.WebAPI/wwwroot",
-			vendor: "../server/PlayGen.StoryGameMaker.WebAPI/wwwroot",
+			app: "../server/PlayGen.ResourceForceAuthoringTool.WebAPI/wwwroot",
+			vendor: "../server/PlayGen.ResourceForceAuthoringTool.WebAPI/wwwroot",
 		}	
 	},
 	build: {
 		hashFormat: "{name}.{hash}.{ext}",
-		output: "../server/PlayGen.StoryGameMaker.WebAPI/wwwroot",
+		output: "../server/PlayGen.ResourceForceAuthoringTool.WebAPI/wwwroot",
 		babelPreset: "es2015"		
 	},
 	devTools: {

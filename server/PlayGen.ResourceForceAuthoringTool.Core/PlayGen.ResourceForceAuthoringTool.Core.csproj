@@ -2,13 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.6</TargetFramework>
-    <AssemblyName>PlayGen.StoryGameMaker.Contracts</AssemblyName>
-    <PackageId>PlayGen.StoryGameMaker.Contracts</PackageId>
+    <AssemblyName>PlayGen.ResourceForceAuthoringTool.Core</AssemblyName>
+    <PackageId>PlayGen.ResourceForceAuthoringTool.Core</PackageId>
     <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
     <PackageTargetFallback>$(PackageTargetFallback);net451</PackageTargetFallback>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PlayGen.ResourceForceAuthoringTool.Data.EntityFramework\PlayGen.ResourceForceAuthoringTool.Data.EntityFramework.csproj" />
+    <ProjectReference Include="..\PlayGen.ResourceForceAuthoringTool.Data.Model\PlayGen.ResourceForceAuthoringTool.Data.Model.csproj" />
+  </ItemGroup>
 
 </Project>

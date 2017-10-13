@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.6</TargetFramework>
-    <AssemblyName>PlayGen.StoryGameMaker.Data.Model</AssemblyName>
-    <PackageId>PlayGen.StoryGameMaker.Data.Model</PackageId>
+    <AssemblyName>PlayGen.ResourceForceAuthoringTool.Contracts</AssemblyName>
+    <PackageId>PlayGen.ResourceForceAuthoringTool.Contracts</PackageId>
     <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
     <PackageTargetFallback>$(PackageTargetFallback);net451</PackageTargetFallback>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>

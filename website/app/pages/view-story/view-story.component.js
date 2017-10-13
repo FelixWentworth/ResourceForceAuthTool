@@ -1,5 +1,5 @@
 angular
-	.module("storyGameMaker")
+	.module("resourceForceAuthoringTool")
 	.component("viewStory", {
 		templateUrl: "pages/view-story/view-story.html",
 		bindings: {

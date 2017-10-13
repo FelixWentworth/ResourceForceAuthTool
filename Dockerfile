@@ -7,7 +7,7 @@ WORKDIR app/
 
 RUN dotnet restore
 
-WORKDIR server/PlayGen.StoryGameMaker.WebAPI/wwwroot/
+WORKDIR server/PlayGen.ResourceForceAuthoringTool.WebAPI/wwwroot/
 RUN npm install
 
 WORKDIR /app/server/PlayGen.ResourceForceAuthoringTool.WebAPI/

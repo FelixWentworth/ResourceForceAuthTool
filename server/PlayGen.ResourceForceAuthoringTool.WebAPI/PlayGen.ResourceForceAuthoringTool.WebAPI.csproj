@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <Copyright>PlayGen Ltd 2017</Copyright>
-    <AssemblyTitle>Story Game Maker</AssemblyTitle>
+    <AssemblyTitle>Reosurce Force Authoring Tool</AssemblyTitle>
     <VersionPrefix>1.1.0-rc1</VersionPrefix>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PreserveCompilationContext>true</PreserveCompilationContext>
-    <AssemblyName>PlayGen.StoryGameMaker.WebAPI</AssemblyName>
+    <AssemblyName>PlayGen.ResourceForceAuthoringTool.WebAPI</AssemblyName>
     <OutputType>Exe</OutputType>
-    <PackageId>PlayGen.StoryGameMaker.WebAPI</PackageId>
+    <PackageId>PlayGen.ResourceForceAuthoringTool.WebAPI</PackageId>
     <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
     <RuntimeFrameworkVersion>1.1.1</RuntimeFrameworkVersion>
   </PropertyGroup>
@@ -21,9 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PlayGen.StoryGameMaker.Contracts\PlayGen.ResourceForceAuthoringTool.Contracts.csproj" />
-    <ProjectReference Include="..\PlayGen.StoryGameMaker.Core\PlayGen.ResourceForceAuthoringTool.Core.csproj" />
-    <ProjectReference Include="..\PlayGen.StoryGameMaker.Data.EntityFramework\PlayGen.ResourceForceAuthoringTool.Data.EntityFramework.csproj" />
+    <ProjectReference Include="..\PlayGen.ResourceForceAuthoringTool.Contracts\PlayGen.ResourceForceAuthoringTool.Contracts.csproj" />
+    <ProjectReference Include="..\PlayGen.ResourceForceAuthoringTool.Core\PlayGen.ResourceForceAuthoringTool.Core.csproj" />
+    <ProjectReference Include="..\PlayGen.ResourceForceAuthoringTool.Data.EntityFramework\PlayGen.ResourceForceAuthoringTool.Data.EntityFramework.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,5 @@
 angular
-	.module("storyGameMaker")
+	.module("resourceForceAuthoringTool")
 	.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
 		$stateProvider
 			.state("home", {

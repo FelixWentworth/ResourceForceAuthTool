@@ -1,5 +1,5 @@
 angular
-	.module("storyGameMaker")
+	.module("resourceForceAuthoringTool")
 	.component("home", {
 		templateUrl: "pages/home/home.html",
 		controller: ["StoryStorageService", "$http", "Auth", function(StoryStorageService, $http, Auth) {
