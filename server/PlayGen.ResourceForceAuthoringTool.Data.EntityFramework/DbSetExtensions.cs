@@ -18,7 +18,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 		/// <param name="context"></param>
 		/// <param name="keyValues"></param>
 		/// <returns></returns>
-		public static TEntity Find<TEntity>(this IQueryable<TEntity> set, SGMContext context, params object[] keyValues) where TEntity : class
+		public static TEntity Find<TEntity>(this IQueryable<TEntity> set, RFContext context, params object[] keyValues) where TEntity : class
 		{
 			var entityType = context.Model.FindEntityType(typeof(TEntity));
 			var key = entityType.FindPrimaryKey();

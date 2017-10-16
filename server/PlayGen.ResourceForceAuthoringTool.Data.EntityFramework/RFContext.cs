@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 {
-    public class SGMContext : DbContext
+    public class RFContext : DbContext
     {
 		private readonly bool _isSaveDisabled;
 
-		internal SGMContext(DbContextOptions<SGMContext> options, bool disableSave = false) : base(options)
+		internal RFContext(DbContextOptions<RFContext> options, bool disableSave = false) : base(options)
 		{
 			_isSaveDisabled = disableSave;
 		}

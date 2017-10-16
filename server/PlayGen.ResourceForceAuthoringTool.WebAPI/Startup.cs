@@ -37,7 +37,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             services.AddScoped((_) => new PasswordEncryption());
 
 			var connectionString = Configuration.GetConnectionString("DefaultConnection");
-			services.AddSingleton(new SGMContextFactory(connectionString));
+			services.AddSingleton(new RFContextFactory(connectionString));
             services.AddScoped<Data.EntityFramework.ScenarioController>();
             services.AddScoped<Core.ScenarioController>();
             services.AddScoped<Data.EntityFramework.UserController>();

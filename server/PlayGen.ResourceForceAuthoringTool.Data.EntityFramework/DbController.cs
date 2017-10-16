@@ -9,9 +9,9 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 {
 	public class DbController
 	{
-		protected readonly SGMContextFactory ContextFactory;
+		protected readonly RFContextFactory ContextFactory;
 
-		protected DbController(SGMContextFactory contextFactory)
+		protected DbController(RFContextFactory contextFactory)
 		{
 			ContextFactory = contextFactory;
 		}

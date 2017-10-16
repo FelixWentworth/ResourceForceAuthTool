@@ -6,7 +6,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 {
     public class UserController : DbController
     {
-        public UserController(SGMContextFactory contextFactory)
+        public UserController(RFContextFactory contextFactory)
 			: base(contextFactory)
 		{
         }

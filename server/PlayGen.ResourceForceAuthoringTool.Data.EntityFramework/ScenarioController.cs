@@ -11,7 +11,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 {
 	public class ScenarioController : DbController
 	{
-		public ScenarioController(SGMContextFactory contextFactory)
+		public ScenarioController(RFContextFactory contextFactory)
 			: base(contextFactory)
 		{
 		}

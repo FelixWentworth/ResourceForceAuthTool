@@ -10,7 +10,7 @@ RUN npm update -g npm@3.x
 RUN npm install -g gulpjs/gulp#4.0
 
 WORKDIR /app/website/
-RUN nom install
+RUN npm install
 RUN gulp
 
 WORKDIR /app/server/
@@ -20,4 +20,4 @@ WORKDIR PlayGen.ResourceForceAuthoringTool.WebAPI/
 RUN chmod +x delay-startup.sh
 RUN dotnet publish -c Release -o out
 
-ENTRYPOINT ./delay-startup.sh dotnet out/PlayGen.ResourceForceAuthoringTool.WebAPI.dll
+ENTRYPOINT dotnet out/PlayGen.ResourceForceAuthoringTool.WebAPI.dll

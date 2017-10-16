@@ -8,21 +8,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 {
-    public class SGMContextFactory
+    public class RFContextFactory
     {
 		private readonly string _connectionString;
 
-		public SGMContextFactory(string connectionString = null)
+		public RFContextFactory(string connectionString = null)
 		{
 			_connectionString = connectionString;
 		}
 
-		public SGMContext Create()
+		public RFContext Create()
 		{
-			var optionsBuilder = new DbContextOptionsBuilder<SGMContext>();
+			var optionsBuilder = new DbContextOptionsBuilder<RFContext>();
 			optionsBuilder.UseMySQL(_connectionString);
 
-			var context = new SGMContext(optionsBuilder.Options);
+			var context = new RFContext(optionsBuilder.Options);
 			var newlyCreated = context.Database.EnsureCreated();
 
 			if (newlyCreated)

@@ -3,8 +3,6 @@ version: '2'
 services: 
     resourceforceauthoringtool-mariadb: 
         network_mode: "bridge"
-        build:
-            context: ./server
         environment:
             MYSQL_ROOT_PASSWORD: "t0pSECr3t"
         image: mariadb
@@ -14,9 +12,9 @@ services:
     resourceforceauthoringtool:
         network_mode: "bridge"
         build:
-            context: ./server
+            context: .
         image: "resourceforceauthoringtool"
-        container_name: "sgm"
+        container_name: "resourceforceauthoringtool"
         links:
             - resourceforceauthoringtool-mariadb
         expose:
