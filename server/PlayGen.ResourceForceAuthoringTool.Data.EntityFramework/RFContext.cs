@@ -62,7 +62,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
             {
                 Id = 0,
                 Username = "admin",
-                Password = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+                Password = "073535bb18679f54cc7b64ce3dc1d3d047659731b90c0d44b37a58a5f7c3f015",
                 MemberType = "admin",
                 Locations = "[ \"All\" ]",
                 Languages = "[ \"All\" ]"

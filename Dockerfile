@@ -3,15 +3,17 @@ FROM microsoft/aspnetcore-build:lts
 COPY . app/
 WORKDIR app/
 
-RUN apt-get update && apt-get -y install netcat nodejs npm
+#RUN apt-get update && apt-get -y install netcat nodejs npm
 
 # NPM
 RUN npm update -g npm@3.x
 RUN npm install -g gulpjs/gulp#4.0
+RUN npm install -g gulp-cli --f
 
-WORKDIR /app/website/
+WORKDIR /app/website/
 RUN npm install
-RUN gulp
+RUN npm install gulp
+RUN gulp build-dev
 
 WORKDIR /app/server/
 RUN dotnet restore
