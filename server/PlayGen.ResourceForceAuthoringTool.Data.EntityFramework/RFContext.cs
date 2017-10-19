@@ -21,6 +21,8 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
         public DbSet<User> Users { get; set; }
 
+        public DbSet<AccountRequest> AccountRequests { get; set; }
+
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<Scenario>()

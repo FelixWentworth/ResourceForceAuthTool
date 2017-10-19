@@ -32,7 +32,7 @@ angular
 							ctrl.memberType = response.data.memberType;
 
 							ctrl.loader.load(ctrl.creatorId);
-							Auth.set(ctrl.creatorId, ctrl.username, ctrl.creatorId);
+							Auth.set(ctrl.creatorId, ctrl.username, ctrl.memberType);
 						}	
 					})
 					.catch(function(error)
@@ -44,7 +44,7 @@ angular
 
 			ctrl.Create = function(user) {
 				// TODO send login request
-
+				user.memberType = 'member'
 				$http.post('../api' + '/user', user)
 					.then(function(response){
 						if (response.status === 200)
@@ -55,7 +55,7 @@ angular
 							ctrl.memberType = response.data.memberType;
 
 							ctrl.loader.load(ctrl.creatorId);
-							Auth.set(ctrl.creatorId, ctrl.username, ctrl.creatorId);
+							Auth.set(ctrl.creatorId, ctrl.username, ctrl.memberType);
 						}		
 					})
 					.catch(function(error)

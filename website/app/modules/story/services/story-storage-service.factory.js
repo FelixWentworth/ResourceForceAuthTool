@@ -6,6 +6,7 @@ angular
 		// private variables
 		var storiesPromise = null;
 		var storiesMetadataPromise = null;
+		var requestsPromise = null;
 		var creatorId = null;
 
 		// private methods
@@ -96,6 +97,30 @@ angular
 		service.getNewStoryId = function() {
 			return "temp-new-story-id";
 		};
+
+		service.getValidatorRequests = function() {
+            // get new data every time
+			requestsPromise = $q.defer();		
+			
+			$http.get('../api' + '/accountrequest/validator')
+				.then(function(request){	
+					requestsPromise.resolve(request.data);		
+				});
+
+			return requestsPromise.promise;
+		}
+		
+		service.submitValidatorRequest = function(request) {
+			return $http.post('../api' + '/accountrequest/validator', request);
+		}
+
+		service.approveRequest = function(request){
+			return $http.post('../api' + '/accountrequest/validator/true', request);			
+		}
+
+		service.rejectRequest = function(request){
+			return $http.post('../api' + '/accountrequest/validator/false', request);			
+		}
 
 		return service;
 	}]);

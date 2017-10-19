@@ -24,5 +24,10 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
         {
             return _userDbController.Get(username);
         }
+
+        public User Get(int id)
+        {
+            return _userDbController.Get(id);
+        }
     }
 }

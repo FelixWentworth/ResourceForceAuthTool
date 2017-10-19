@@ -15,7 +15,12 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         {
             using (var context = ContextFactory.Create())
             {
-                var existing = context.Users.Find(context, user.Id);
+                var taken = context.Users.Any(u => u.Username == user.Username);
+                if (taken)
+                {
+                    throw new Exception("Username already taken");
+                }
+                var existing = context.Users.FirstOrDefault(u => u.Id == user.Id);
 
                 if (existing != null)
                 {
@@ -41,7 +46,18 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                 throw new Exception($"Unable to find player with username {username}");
             }
         }
-
+        public User Get(int id)
+        {
+            using (var context = ContextFactory.Create())
+            {
+                var user = context.Users.FirstOrDefault(u => u.Id == id);
+                if (user != null)
+                {
+                    return user;
+                }
+                throw new Exception($"Unable to find player with id {id}");
+            }
+        }
         public User Update(User user)
         {
             using (var context = ContextFactory.Create())

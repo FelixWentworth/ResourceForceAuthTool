@@ -60,7 +60,9 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             {
                 Username = metadata.Username,
                 Password = metadata.Password,
-                MemberType = "member"                
+                MemberType = "member",
+                Locations = "[\"All\"]",
+                Languages = "[\"All\"]"
             };
         }
 
@@ -76,5 +78,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 Metadata = userContract.ToMetadata(),
             };
         }
+
+        
     }
 }

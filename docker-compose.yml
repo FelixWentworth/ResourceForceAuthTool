@@ -9,6 +9,8 @@ services:
         container_name: "resourceforceauthoringtool-mariadb"
         expose:
             - 3306
+        ports:
+            - "6604:3306"
     resourceforceauthoringtool:
         network_mode: "bridge"
         build:

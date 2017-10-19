@@ -2,6 +2,9 @@
 using PlayGen.ResourceForceAuthoringTool.Contracts;
 using PlayGen.ResourceForceAuthoringTool.Core.Utilities;
 using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 {
@@ -14,6 +17,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         {
             _userCoreController = userCoreController;
         }
+
 
         #region Create
 
@@ -43,7 +47,6 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 return new ObjectResult(metadata);
             }
             throw new Exception("Unable to log in, username or password is incrrect");
-            
         }
 
         #endregion
@@ -52,7 +55,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 
         #endregion
 
-        #region Updated
+        #region Update
 
         #endregion
 

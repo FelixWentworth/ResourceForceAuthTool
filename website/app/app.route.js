@@ -30,6 +30,10 @@ angular
 			.state("create-story", {
 				url: "/create-story",
 				component: "createStory"
+			})
+			.state("manage-member", {
+				url: "/manage-member",
+				component: "manageMember"
 			});			
 
 			$urlRouterProvider.otherwise("/home");
