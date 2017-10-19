@@ -115,8 +115,14 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                     var languages = JsonConvert.DeserializeObject<List<string>>(user.Languages);
                     var locations = JsonConvert.DeserializeObject<List<string>>(user.Locations);
 
-                    languages.Add(language);
-                    locations.Add(location);
+                    if (!languages.Contains(language))
+                    {
+                        languages.Add(language);
+                    }
+                    if (!locations.Contains(location))
+                    {
+                        locations.Add(location);
+                    }
 
                     user.Languages = JsonConvert.SerializeObject(languages);
                     user.Locations = JsonConvert.SerializeObject(locations);
