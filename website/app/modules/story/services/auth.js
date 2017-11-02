@@ -21,7 +21,7 @@ angular.module('resourceForceAuthoringTool')
 				},
 				preApproved: false,
 				isLoggedIn: function() {
-					console.log(CookieService.test());
+					//console.log(CookieService.test());
 					// first see if there are cookies set
 					// if (Cookies.get("userId") != null && Cookies.get("name") != null && Cookies.get("type") != null)
 					// {

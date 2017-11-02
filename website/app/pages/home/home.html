@@ -54,7 +54,7 @@ Resource Force is a officer management game where players take on the role of a 
 	</div>
 
 	<div>
-		<md-button class="md-raised" ui-sref="manage-member()">My Account</md-button>
+		<md-button class="md-raised" ui-sref="manage-member()" ng-if="$ctrl.memberType != 'Guest'">My Account</md-button>
 		<md-button class="md-raised" ng-click="$ctrl.Logout()">Log Out</md-button>
 	</div>
 </div>

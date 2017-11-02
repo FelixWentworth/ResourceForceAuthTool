@@ -80,6 +80,7 @@ angular
 			ctrl.GuestLogin = function() {
 				ctrl.isLoggedIn = true;
 				ctrl.username = "Guest";
+				ctrl.memberType = "Guest";
 			}
 
 			ctrl.Logout = function() {

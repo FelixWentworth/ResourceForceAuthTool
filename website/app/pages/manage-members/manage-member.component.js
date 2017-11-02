@@ -20,7 +20,7 @@ angular
         var requestsPromise = null;
 
         ctrl.$onInit = function() {
-            refresh();
+            this.refresh();
         }
 
         ctrl.submit = function(request)
