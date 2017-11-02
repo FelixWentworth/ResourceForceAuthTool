@@ -61,8 +61,8 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 Username = metadata.Username,
                 Password = metadata.Password,
                 MemberType = "member",
-                Locations = "[\"All\"]",
-                Languages = "[\"All\"]"
+                Locations = "[]",
+                Languages = "[]"
             };
         }
 
