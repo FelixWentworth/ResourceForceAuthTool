@@ -10,6 +10,10 @@ angular
         ctrl.memberType = ctrl.isLoggedIn ? Auth.getType() : "";
         ctrl.username = ctrl.isLoggedIn ? Auth.getName() : "";
 
+        ctrl.userLanguages = ctrl.isLoggedIn ? Auth.getLanguages() : "";
+        ctrl.userLocations = ctrl.isLoggedIn ? Auth.getLocations() : "";
+        
+
         ctrl.isAdmin = ctrl.memberType == 'admin';
         ctrl.isValidator = ctrl.memberType == 'validator';
         ctrl.isMember = ctrl.memberType == 'member';
@@ -35,7 +39,7 @@ angular
             if (ctrl.isAdmin)
             {
                 // Load all requests made
-                StoryStorageService.getValidatorRequests()
+                StoryStorageService.getValidatorRequestsForAdmin()
                 .then(function(response){
                 {
                     ctrl.requests = response;
@@ -48,6 +52,15 @@ angular
             else if (ctrl.isValidator)
             {
                 // Load all requests made for language and location current validator has access to   
+                StoryStorageService.getValidatorRequests(ctrl.userLocations, ctrl.userLanguages)
+                .then(function(response){
+                {
+                    ctrl.requests = response;
+                }	
+                }).catch(function(error)
+                {
+                    ctrl.error = error.statusText + ". " + error.Message;
+                });
             }
         }
 

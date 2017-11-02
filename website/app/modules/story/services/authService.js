@@ -10,8 +10,8 @@
 angular.module('resourceForceAuthoringTool').factory('AuthService', function ($http, Session) {
   var authService = {};
  
-  authService.login = function (id, name, type) {
-    Session.create( id, name, type);
+  authService.login = function (id, name, type, languages, locations) {
+    Session.create( id, name, type, languages, locations);
 
     // return $http
     //   .post('/login', credentials)
@@ -36,6 +36,14 @@ angular.module('resourceForceAuthoringTool').factory('AuthService', function ($h
 
   authService.getType = function () {
     return Session.userType;
+  };
+
+  authService.getLocations = function () {
+    return Session.userLocations;
+  };
+
+  authService.getLanguages = function () {
+    return Session.userLanguages;
   };
 
   return authService;

@@ -45,7 +45,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             {
                 if (accept)
                 {
-                    _accountRequestController.Update(requestModel.Languages, requestModel.Locations, requestModel);
+                    _accountRequestController.Update(requestModel.Locations, requestModel.Languages, requestModel);
                 }
                 _accountRequestController.Delete(accountRequest.Id);
                 return;
@@ -81,12 +81,25 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         [HttpGet("validator/{location}/{language}")]
         public IActionResult GetValidatorRequests([FromRoute]string location, [FromRoute]string language)
         {
-            var accountResponse = _accountRequestController.Get(location, language);
+            var locations = JsonConvert.DeserializeObject<string[]>(location);
+            var languages = JsonConvert.DeserializeObject<string[]>(language);
             var requestContract = new List<AccountChangeResponse>();
-            foreach (var accountRequest in accountResponse)
+
+            foreach (var loc in locations)
             {
-                requestContract.Add(accountRequest.ToAccountResponse());
+                foreach (var lang in languages)
+                {
+                    var accountResponse = _accountRequestController.Get(loc, lang);
+                    if (accountResponse != null)
+                    {
+                        foreach (var accountRequest in accountResponse)
+                        {
+                            requestContract.Add(accountRequest.ToAccountResponse());
+                        }
+                    }
+                }
             }
+            
             return new ObjectResult(requestContract);
         }
 

@@ -49,6 +49,10 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
             using (var context = ContextFactory.Create())
             {
                 var user = context.Users.Find(context, id);
+                if (user == null)
+                {
+                    return null;
+                }
                 switch (user.MemberType)
                 {
                     case "member":

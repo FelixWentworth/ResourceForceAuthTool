@@ -98,7 +98,7 @@ angular
 			return "temp-new-story-id";
 		};
 
-		service.getValidatorRequests = function() {
+		service.getValidatorRequestsForAdmin = function() {
             // get new data every time
 			requestsPromise = $q.defer();		
 			
@@ -110,6 +110,18 @@ angular
 			return requestsPromise.promise;
 		}
 		
+		service.getValidatorRequests = function(location, language) {
+            // get new data every time
+			requestsPromise = $q.defer();		
+			
+			$http.get('../api' + '/accountrequest/validator/' + location + "/" + language)
+				.then(function(request){	
+					requestsPromise.resolve(request.data);		
+				});
+
+			return requestsPromise.promise;
+		}
+
 		service.submitValidatorRequest = function(request) {
 			return $http.post('../api' + '/accountrequest/validator', request);
 		}

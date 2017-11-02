@@ -43,9 +43,11 @@ angular
 							ctrl.username = response.data.username;
 							ctrl.creatorId = response.data.id;
 							ctrl.memberType = response.data.memberType;
+							ctrl.languages = response.data.languages;
+							ctrl.locations = response.data.locations;
 
 							ctrl.loader.load(ctrl.creatorId);
-							Auth.set(ctrl.creatorId, ctrl.username, ctrl.memberType);
+							Auth.set(ctrl.creatorId, ctrl.username, ctrl.memberType, ctrl.languages, ctrl.locations);
 						}	
 					})
 					.catch(function(error)
@@ -62,13 +64,7 @@ angular
 					.then(function(response){
 						if (response.status === 200)
 						{
-							ctrl.isLoggedIn = true;
-							ctrl.username = response.data.metadata.username;
-							ctrl.creatorId =  response.data.id;
-							ctrl.memberType = response.data.memberType;
-
-							ctrl.loader.load(ctrl.creatorId);
-							Auth.set(ctrl.creatorId, ctrl.username, ctrl.memberType);
+							ctrl.Login(user);
 						}		
 					})
 					.catch(function(error)

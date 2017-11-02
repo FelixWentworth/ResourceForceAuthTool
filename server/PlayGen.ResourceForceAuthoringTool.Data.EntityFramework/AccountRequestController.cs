@@ -69,7 +69,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                 {
                     return requests;
                 }
-                throw new Exception($"Unable to find any requests in {location} with language {language}");
+                return null;
             }
         }
 
