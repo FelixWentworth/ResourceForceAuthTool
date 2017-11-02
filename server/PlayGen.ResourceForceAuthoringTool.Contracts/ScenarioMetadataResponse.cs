@@ -25,5 +25,6 @@ namespace PlayGen.ResourceForceAuthoringTool.Contracts
 
         public bool Deleted { get; set; }
 
+        public string Comment { get; set; }
 	}
 }

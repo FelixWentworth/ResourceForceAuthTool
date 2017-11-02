@@ -1,5 +1,18 @@
 angular
 	.module("resourceForceAuthoringTool")
+	.directive('ngEnter', function () {
+		return function (scope, element, attrs) {
+			element.bind("keydown keypress", function (event) {
+				if(event.which === 13) {
+					scope.$apply(function (){
+						scope.$eval(attrs.ngEnter);
+					});
+	 
+					event.preventDefault();
+				}
+			});
+		};
+	})
 	.component("home", {
 		templateUrl: "pages/home/home.html",
 		controller: ["StoryStorageService", "$http", "Auth", function(StoryStorageService, $http, Auth) {
@@ -72,6 +85,7 @@ angular
 			ctrl.Logout = function() {
 				ctrl.isLoggedIn = false;
 				ctrl.username = "";
+				Auth.logout();
 			}
 		}]
 	});

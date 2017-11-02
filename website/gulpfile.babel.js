@@ -37,6 +37,7 @@ var config = {
 				"node_modules/angular-aria/angular-aria.js",
 				"node_modules/angular-material/angular-material.js",
 				"node_modules/angular-messages/angular-messages.js",
+				"node_modules/angular-cookies/src/angular-cookies.js",
 				"node_modules/angular-uuid/angular-uuid.js"
 			],
 			styles: [
@@ -64,6 +65,7 @@ var config = {
 				"node_modules/angular-aria/angular-aria.min.js",
 				"node_modules/angular-material/angular-material.min.js",
 				"node_modules/angular-messages/angular-messages.min.js",
+				"node_modules/angular-cookies/src/angular-cookies.js",
 				"node_modules/angular-uuid/angular-uuid.js"
 			],
 			styles: [

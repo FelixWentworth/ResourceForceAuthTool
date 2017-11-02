@@ -10,18 +10,27 @@
  */
 angular.module('resourceForceAuthoringTool')
 	.factory('Auth', [
-		'$rootScope',
-		'AuthService',
-		function($rootScope, AuthService) {
+				'$rootScope','AuthService', 'CookieService',
+		function($rootScope, AuthService, CookieService) {
 			var Auth;
 			Auth = {
 				set: function(userId, name, type) {
 
 					AuthService.login(userId, name, type);
+				//	Cookies.set(userId, name, type);
 				},
 				preApproved: false,
 				isLoggedIn: function() {
-					return AuthService.isAuthenticated();
+					console.log(CookieService.test());
+					// first see if there are cookies set
+					// if (Cookies.get("userId") != null && Cookies.get("name") != null && Cookies.get("type") != null)
+					// {
+					// 	set(Cookies.get("userId"),Cookies.get("name"), Cookies.get("type"));
+					// }
+					// else
+					// {
+						return AuthService.isAuthenticated();
+					//}
 				},
 				getName: function(){
 					return AuthService.getUsername();
@@ -31,6 +40,9 @@ angular.module('resourceForceAuthoringTool')
 				},
 				getType: function(){
 					return AuthService.getType();
+				},
+				logout: function() {
+				//	Cookies.remove();					
 				}
 			};
 			return Auth;

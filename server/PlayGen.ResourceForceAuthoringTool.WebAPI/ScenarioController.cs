@@ -22,6 +22,10 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             var scenario = newStory.ToScenarioModel();
             // Assign new serial number to indicate the scenario has changed to the player
             scenario.SerialNumber = _scenarioCoreController.GetNewSerialNumber();
+            if (scenario.Comment == null)
+            {
+                scenario.Comment = "";
+            }
             _scenarioCoreController.Create(scenario);
             var scenarioContract = scenario.ToScenarioContract();
             return new ObjectResult(scenarioContract);
@@ -53,7 +57,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         /// <param name="id">Creator Id</param>
         /// <returns></returns>
         [HttpGet("createdby/{id}")]
-        public IActionResult Get(int id)
+        public IActionResult Get([FromRoute] int id)
         {
             var scenario = _scenarioCoreController.GetByCreator(id);
             var metadata = scenario.ToMetadataList();

@@ -133,6 +133,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                     existing.Submitted = scenario.Submitted;
                     existing.Deleted = scenario.Deleted;
                     existing.SerialNumber = scenario.SerialNumber;
+				    existing.Comment = scenario.Comment;
 					SaveChanges(context);
 					return existing;
 				}

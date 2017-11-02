@@ -8,6 +8,12 @@
 
         		<story-metadata metadata="metadata"></story-metadata>
 
+                <div>
+                    <label>Location: {{metadata.location}}</label>
+                    <br/>
+                    <label>Language: {{metadata.language}}</label>
+                </div>
+
         		<md-button class="md-fab md-mini" 
         					aria-label="Play"
         					ui-sref="play-story({ storyId: metadata.id })">
@@ -32,12 +38,27 @@
 
                 </md-button>
                 <div>
-                    <label>Status</label>
+                    <label><b>Status</b></label>
                     <label ng-if="metadata.submitted"><br/>Awaiting Validation</label>
                     <label ng-if="!metadata.submitted"><br/>Ready For Submission</label>
-                    <label ng-if="metadata.isValid"><br/>Approved</label>
-                    <label ng-if="!metadata.isValid"><br/>Not Approved</label>
+                    <label ng-if="metadata.isValid && !metadata.submitted"><br/>Approved</label>
+                    <label ng-if="!metadata.isValid && !metadata.submitted" ><br/>Not Approved</label>
+                    <label ng-if="metadata.comment != '' && !metadata.submitted"><br/>Comment: {{metadata.comment}}</label>                    
                 </div>
+
+                <div>
+                    <br/>
+                    <validated-text-input
+                        label="'Comment To Creator'"
+                        type="'field'" 
+                        placeholder="'Comment'"
+                        ng-model="$ctrl.comment"
+                        minlength="1"
+                        required="true"
+                        maxlength="200"
+                        ng-if="($ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.submitted"/>
+                </div>
+
                 <div >
                     <md-button class="md-raised" 
                         ng-click="$ctrl.submit(metadata)"
@@ -59,7 +80,7 @@
                         ng-if="($ctrl.memberType == 'admin' || metadata.creatorId == $ctrl.creatorId)">
                         Delete
                     </md-button>
-                    
+	
                  </div>   
 
             </md-card-content>

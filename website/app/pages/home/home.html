@@ -14,12 +14,12 @@ Resource Force is a officer management game where players take on the role of a 
 
 	<span>
 		<md-label>Username: </md-label>
-		<input ng-model="$ctrl.user.Metadata.username"></input>
+		<input ng-model="$ctrl.user.Metadata.username" ng-enter="$ctrl.Login($ctrl.user)"></input>
 	</span>
 	<br/>
 	<span>
 		<md-label>Password: </md-label>
-		<input type="password" ng-model="$ctrl.user.Metadata.password"></input>
+		<input type="password" ng-model="$ctrl.user.Metadata.password" ng-enter="$ctrl.Login($ctrl.user)"></input>
 	</span>
 	<br/>
 	<span>
