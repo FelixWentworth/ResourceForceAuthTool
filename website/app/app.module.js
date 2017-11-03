@@ -1,2 +1,2 @@
 angular
-	.module("resourceForceAuthoringTool", ["templates", "ui.router", "story", "ngMaterial"]);
+	.module("resourceForceAuthoringTool", ["templates", "ui.router", "story", "ngMaterial", "ngCookies"]);

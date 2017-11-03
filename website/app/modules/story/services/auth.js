@@ -17,38 +17,45 @@ angular.module('resourceForceAuthoringTool')
 				set: function(userId, name, type, languages, locations) {
 
 					AuthService.login(userId, name, type, languages, locations);
-				//	Cookies.set(userId, name, type);
+					CookieService.set(userId, name, type, languages, locations);
 				},
 				preApproved: false,
+
 				isLoggedIn: function() {
-					//console.log(CookieService.test());
 					// first see if there are cookies set
-					// if (Cookies.get("userId") != null && Cookies.get("name") != null && Cookies.get("type") != null)
-					// {
-					// 	set(Cookies.get("userId"),Cookies.get("name"), Cookies.get("type"));
-					// }
-					// else
-					// {
+					if (CookieService.exists())
+					{
+						AuthService.loginWithCookies(CookieService.get());
+						return true; 
+					}
+					else
+					{
 						return AuthService.isAuthenticated();
-					//}
+					}
 				},
+
 				getName: function(){
 					return AuthService.getUsername();
 				},
+				
 				getId: function(){
 					return AuthService.getId();
 				},
+				
 				getType: function(){
 					return AuthService.getType();
 				},
+				
 				getLanguages: function(){
 					return AuthService.getLanguages();
 				},
+				
 				getLocations: function(){
 					return AuthService.getLocations();
 				},
+				
 				logout: function() {
-				//	Cookies.remove();					
+					CookieService.remove();					
 				}
 			};
 			return Auth;

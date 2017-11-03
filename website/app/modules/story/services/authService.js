@@ -12,16 +12,12 @@ angular.module('resourceForceAuthoringTool').factory('AuthService', function ($h
  
   authService.login = function (id, name, type, languages, locations) {
     Session.create( id, name, type, languages, locations);
-
-    // return $http
-    //   .post('/login', credentials)
-    //   .then(function (res) {
-    //     Session.create(res.data.id, res.data.user.id,
-    //                    res.data.user.role);
-    //     return res.data.user;
-    //   });
   };
  
+  authService.loginWithCookies = function (cookies){
+    Session.create(cookies["id"], cookies["name"], cookies["type"], cookies["languages"], cookies["location"])
+  };    
+
   authService.isAuthenticated = function () {
     return !!Session.userId;
   };
