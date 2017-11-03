@@ -2,7 +2,7 @@ angular
 .module("resourceForceAuthoringTool")
 .component("manageMember", {
     templateUrl: "pages/manage-members/manage-member.html",
-    controller: ["StoryStorageService", "$http", "Auth", "$q", function(StoryStorageService, $http, Auth, $q) {
+    controller: ["StoryStorageService", "$http", "Auth", "$q", "$state", function(StoryStorageService, $http, Auth, $q, $state) {
         var ctrl = this;
 
         ctrl.isLoggedIn = Auth.isLoggedIn();
@@ -24,6 +24,10 @@ angular
         var requestsPromise = null;
 
         ctrl.$onInit = function() {
+            if (!ctrl.isLoggedIn)
+            {
+                $state.go('home');
+            }
             this.refresh();
         }
 

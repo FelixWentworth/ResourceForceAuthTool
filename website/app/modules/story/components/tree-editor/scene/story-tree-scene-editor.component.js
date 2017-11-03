@@ -146,9 +146,6 @@ angular
 				}
 				
 				ctrl.form.$setValidity("incomplete", ctrl.isThisSceneLevelComplete);
-				console.log(ctrl.scene._type + " : " + choices);	
-
-				
 
 				// if (ctrl.scene.choices.length > 1)
 				// {

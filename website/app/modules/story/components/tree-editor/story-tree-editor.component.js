@@ -5,7 +5,7 @@ angular
 		bindings: {
 			story: "<"
 		},
-		controller: ["StoryEditorService", "StoryStorageService", function (StoryEditorService, StoryStorageService) {
+		controller: ["StoryEditorService", "StoryStorageService", "$state", function (StoryEditorService, StoryStorageService, $state) {
 			var ctrl = this;
 
 			// public fields
@@ -23,6 +23,7 @@ angular
 				StoryStorageService.save(ctrl.story)
 				.success(function(data){
 					ctrl.saveStatus = "Saved Successfully";
+					$state.go('home');
 				})
 				.error(function(data){
 					ctrl.saveStatus = "Save Attempt Failed, please try again";

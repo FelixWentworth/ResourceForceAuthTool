@@ -30,3 +30,8 @@ character-emotion-value img.sad {
 character-emotion-value img.upset {
 	content: url("images/upset.png");
 }
+
+ul
+{
+	list-style-type: none;
+}
