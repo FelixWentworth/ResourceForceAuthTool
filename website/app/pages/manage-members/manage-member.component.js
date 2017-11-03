@@ -67,13 +67,19 @@ angular
         ctrl.approve = function(request)
         {
             StoryStorageService.approveRequest(request).then(function(){
-                refresh();
+                ctrl.refresh();
+            }).catch(function (){
+                console.log("[Error] Failed to send request");
+                ctrl.refresh();
             });
         }
         ctrl.reject = function(request)
         {
             StoryStorageService.rejectRequest(request).then(function(){
-                refresh();
+                ctrl.refresh();
+            }).catch(function (){
+                console.log("[Error] Failed to send request");
+                ctrl.refresh();
             });
         }
     }]
