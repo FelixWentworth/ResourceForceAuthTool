@@ -84,7 +84,10 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             var locations = JsonConvert.DeserializeObject<string[]>(location);
             var languages = JsonConvert.DeserializeObject<string[]>(language);
             var requestContract = new List<AccountChangeResponse>();
-
+            if (locations == null || languages == null)
+            {
+                return null;
+            }
             foreach (var loc in locations)
             {
                 foreach (var lang in languages)

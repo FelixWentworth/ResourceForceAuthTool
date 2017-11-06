@@ -3,7 +3,6 @@
 	<li ng-repeat="metadata in $ctrl.storiesMetadata | filter:{deleted:false}">
 
         <md-card ng-if="!metadata.deleted">
-
             <md-card-content>
 
         		<story-metadata metadata="metadata"></story-metadata>
@@ -14,29 +13,6 @@
                     <label>Language: {{metadata.language}}</label>
                 </div>
 
-        		<md-button class="md-fab md-mini" 
-        					aria-label="Play"
-        					ui-sref="play-story({ storyId: metadata.id })">
-
-                    <md-icon>play_arrow</md-icon>
-
-                </md-button>
-        
-                <md-button class="md-fab md-mini mdi mdi-bell" 
-                			aria-label="View"
-                			ui-sref="view-story({ storyId: metadata.id })">
-
-                    <md-icon>visibility</md-icon>
-
-                </md-button>
-
-                <md-button class="md-fab md-mini" 
-                			aria-label="Edit"
-                			ui-sref="edit-story({ storyId: metadata.id })">
-
-                    <md-icon>mode_edit</md-icon>
-
-                </md-button>
                 <div>
                     <label><b>Status</b></label>
                     <label ng-if="metadata.submitted"><br/>Awaiting Validation</label>
@@ -46,8 +22,42 @@
                     <label ng-if="metadata.comment != '' && !metadata.submitted"><br/>Comment: {{metadata.comment}}</label>                    
                 </div>
 
-                <div>
+        		<md-button class="md-fab md-mini" 
+        					aria-label="Play"
+        					ui-sref="play-story({ storyId: metadata.id })">
+                    <md-icon>play_arrow</md-icon>
+                </md-button>
+        
+                <md-button class="md-fab md-mini mdi mdi-bell" 
+                			aria-label="View"
+                			ui-sref="view-story({ storyId: metadata.id })">
+                    <md-icon>visibility</md-icon>
+                </md-button>
+
+                <md-button class="md-fab md-mini" 
+                			aria-label="Edit"
+                			ui-sref="edit-story({ storyId: metadata.id })">
+                    <md-icon>mode_edit</md-icon>
+                </md-button>
+
+                <md-button class="md-fab md-mini"
+                            aria-label="Submit"
+                            ng-click="$ctrl.submit(metadata)"
+                            ng-if="($ctrl.memberType == 'admin' || metadata.creatorId == $ctrl.creatorId) && !metadata.submitted && !$ctrl.reviewing">    
+                    <md-icon>file_upload</md-icon>
+                </md-button>
+                
+                <md-button class="md-fab md-mini"
+                            aria-label="Delete"
+                            ng-click="$ctrl.delete(metadata)"
+                            ng-if="metadata.creatorId == $ctrl.creatorId && !$ctrl.reviewing">
+                    <md-icon>delete_forever</md-icon>
+                </md-button>
+
+                                
+                <div ng-if="$ctrl.reviewing">
                     <br/>
+                    <span>
                     <validated-text-input
                         label="'Comment To Creator'"
                         type="'field'" 
@@ -57,31 +67,21 @@
                         required="true"
                         maxlength="200"
                         ng-if="($ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.submitted"/>
+                        
+                        <md-button class="md-fab md-mini"
+                                    aria-label="Approve"
+                                    ng-click="$ctrl.validate(metadata, true)"
+                                    ng-if="($ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.submitted">
+                            <md-icon>thumb_up</md-icon>
+                        </md-button>
+                        <md-button class="md-fab md-mini"
+                                    aria-label="Reject"
+                                    ng-click="$ctrl.validate(metadata, false)"
+                                    ng-if="($ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.submitted">
+                            <md-icon>thumb_down</md-icon>
+                        </md-button>    
+                    </span>
                 </div>
-
-                <div >
-                    <md-button class="md-raised" 
-                        ng-click="$ctrl.submit(metadata)"
-                        ng-if="($ctrl.memberType == 'admin' || metadata.creatorId == $ctrl.creatorId) && !metadata.submitted">
-                        Submit For Validation
-                    </md-button>
-                    <md-button class="md-raised"
-                        ng-click="$ctrl.validate(metadata, true)"
-                        ng-if="($ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.submitted">
-                        Set Valid
-                    </md-button>
-                    <md-button class="md-raised"
-                        ng-click="$ctrl.validate(metadata, false)"
-                        ng-if="($ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.submitted">
-                        Set Invalid
-                    </md-button>
-                    <md-button class="md-raised" 
-                        ng-click="$ctrl.delete(metadata)"
-                        ng-if="($ctrl.memberType == 'admin' || metadata.creatorId == $ctrl.creatorId)">
-                        Delete
-                    </md-button>
-	
-                 </div>   
 
             </md-card-content>
 

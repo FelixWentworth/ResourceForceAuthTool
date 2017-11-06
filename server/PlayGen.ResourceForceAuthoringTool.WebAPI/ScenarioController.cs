@@ -17,7 +17,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         #region Create
 
         [HttpPost]
-        public IActionResult Create([FromBody]ScenarioRequest newStory)
+        public IActionResult Create([FromBody] ScenarioRequest newStory)
         {
             var scenario = newStory.ToScenarioModel();
             // Assign new serial number to indicate the scenario has changed to the player
@@ -44,7 +44,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById([FromRoute]string id)
+        public IActionResult GetById([FromRoute] string id)
         {
             var scenario = _scenarioCoreController.Get(id);
             var scenarioContract = scenario.ToScenarioContract();
@@ -65,6 +65,19 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         }
 
         /// <summary>
+        /// Get a list of scenarios that a user with a given Id must validate
+        /// </summary>
+        /// <param name="id">User Id</param>
+        /// <returns></returns>
+        [HttpGet("toValidate/{id}")]
+        public IActionResult GetForPlayerToValidate([FromRoute] int id)
+        {
+            var scenarios = _scenarioCoreController.GetForUserValidation(id);
+            var metadata = scenarios.ToMetadataList();
+            return new ObjectResult(metadata);
+        }
+
+    /// <summary>
         /// Get a list of scenarios for a given location
         /// </summary>
         [HttpGet("validate")]

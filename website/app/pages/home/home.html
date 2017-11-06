@@ -1,60 +1,58 @@
-<md-toolbar>
-	<h2>Resource Force Authoring Tool</h2>
-</md-toolbar>
+<div Id="window">
+	<md-toolbar>
+		<h2>Resource Force Authoring Tool</h2>
+	</md-toolbar>
 
-<md-label>
-Welcome to the Resource Force Authoring Tool.
-<br/>
-Resource Force is a officer management game where players take on the role of a dispatch officer and must decide how to handle incoming incidents. Players have to decide wisely to avoid incidents escalating and make good choices to maintain resources and keep the citizens happy.
-<br/>
-</md-label>
+	<div Id="content">
+		<md-label>Welcome to the Resource Force Authoring Tool.</md-label>
+		<br/>
+		<md-label>Resource Force is a officer management game where players take on the role of a dispatch officer and must decide how to handle incoming incidents. Players have to decide wisely to avoid incidents escalating and make good choices to maintain resources and keep the citizens happy.</md-label>
 
-<div ng-if="!$ctrl.isLoggedIn">
-	<br/>
+		<div ng-if="!$ctrl.isLoggedIn">
+			<br/>
 
-	<span>
-		<md-label>Username: </md-label>
-		<input ng-model="$ctrl.user.Metadata.username" ng-enter="$ctrl.Login($ctrl.user)"></input>
-	</span>
-	<br/>
-	<span>
-		<md-label>Password: </md-label>
-		<input type="password" ng-model="$ctrl.user.Metadata.password" ng-enter="$ctrl.Login($ctrl.user)"></input>
-	</span>
-	<br/>
-	<span>
-		<md-button class="md-raised" ng-click="$ctrl.Create($ctrl.user)">Create Account</md-button>
-		<md-button class="md-raised" ng-click="$ctrl.Login($ctrl.user)">Log In</md-button>
-	</span>
-	<br/>
-		<md-button class="md-raised" ng-click="$ctrl.GuestLogin()">Continue as Guest</md-button>
-	<br/><br/>
-	<md-label>{{$ctrl.error}}</md-label>
-</div>
-
-<div ng-if="$ctrl.isLoggedIn">
-	<md-button class="md-raised" ui-sref="create-story">Create New Scenario</md-button>
-
-	<br>OR</br>
-
-	Select a scenario to view or play
-	<div ng-switch="$ctrl.loader.isLoading">
-		<div ng-switch-when="true">
-			Waiting for load
+			<span>
+				<md-label>Username: </md-label>
+				<input ng-model="$ctrl.user.Metadata.username" ng-enter="$ctrl.Login($ctrl.user)"></input>
+			</span>
+			<br/>
+			<span>
+				<md-label>Password: </md-label>
+				<input type="password" ng-model="$ctrl.user.Metadata.password" ng-enter="$ctrl.Login($ctrl.user)"></input>
+			</span>
+			<br/>
+			<span>
+				<md-button class="md-raised" ng-click="$ctrl.GuestLogin()">Continue as Guest</md-button>
+				<md-button class="md-raised" ng-click="$ctrl.Create($ctrl.user)">Create Account</md-button>
+				<md-button class="md-raised" ng-click="$ctrl.Login($ctrl.user)">Log In</md-button>
+			</span>
+			<br/><br/>
+			<md-label>{{$ctrl.error}}</md-label>
 		</div>
 
-		<ul ng-switch-when="false">
-			<story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType"/>
-		</ul>
-	</div>
+		<div ng-if="$ctrl.isLoggedIn">
+			<md-button class="md-raised" ui-sref="create-story">Create New Scenario</md-button>
+			<md-button class="md-raised" ui-sref="review-story" ng-if="$ctrl.memberType == 'validator' || $ctrl.memberType == 'admin'">Review Submitted Content ({{$ctrl.loader.validationStoriesMetadata.length}})</md-button>
 
-	<div>
-		<br/>
-		<md-label>Logged in as: {{$ctrl.username}}</md-label>
-	</div>
+			<br />
 
-	<div>
-		<md-button class="md-raised" ui-sref="manage-member()" ng-if="$ctrl.memberType != 'Guest'">Manage Account</md-button>
-		<md-button class="md-raised" ng-click="$ctrl.Logout()">Log Out</md-button>
+			<h3>My Scenarios</h3>
+			<div ng-switch="$ctrl.loader.isLoading">
+				<div ng-switch-when="true">
+					Waiting for load
+				</div>
+
+				<ul ng-switch-when="false">
+					<story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false"/>
+				</ul>
+			</div>
+		</div>
 	</div>
+	<footer ng-if="$ctrl.isLoggedIn">
+		<span>
+			<label style="color:white">Logged in as: {{$ctrl.username}}</label>
+			<md-button class="md-raised" ui-sref="manage-member()" ng-if="$ctrl.memberType != 'Guest'">Manage Account</md-button>
+			<md-button class="md-raised" ng-click="$ctrl.Logout()">Log Out</md-button>
+		</span>
+	</footer>
 </div>

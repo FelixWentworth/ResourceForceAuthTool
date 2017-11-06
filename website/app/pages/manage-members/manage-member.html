@@ -1,64 +1,77 @@
-<div ng-if="!$ctrl.isLoggedIn">
+<div Id="window">
     <md-toolbar>
-        <md-button class="md-raised" ui-sref="home()">home</md-button>            
+            <h2>Manage Account</h2>
     </md-toolbar>
-</div>
-<div ng-if="$ctrl.isLoggedIn">
-    <md-toolbar>
-        <h2>My Account ({{$ctrl.username}})</h2>
-    </md-toolbar>
+    <md-button class="md-raised" ui-sref="home()">home</md-button>       
+    <md-button class="md-raised" ngif="$ctrl.isLoggedIn" ng-click="$ctrl.refresh()">Refresh</md-button>     
 
-    <md-button class="md-raised" ui-sref="home()">home</md-button>   
+    <div Id="content">     
 
-    <div ng-if="$ctrl.isAdmin || $ctrl.isValidator">
-        <md-button class="md-raised" ng-click="$ctrl.refresh()">Refresh</md-button>            
-        <h2>Manage Validator Requests</h2>    
-        <div ng-repeat="request in $ctrl.requests">
-            <div>
-                    <label>Location: {{request.metadata.locations}}</label>
+        <div ng-if="$ctrl.isLoggedIn">
+            <h2>Account</h2>
+            <label>Username: <b>{{$ctrl.username}}</b></label>
+            <br/>
+            <label>Accpount Type: <b>{{$ctrl.memberType}}</b></label>
+            <div ng-if="$ctrl.isAdmin || $ctrl.isValidator">
+                            
+                <h2>Manage Validator Requests</h2>    
+                <label ng-if="$ctrl.requests.length == 0">No Validator Requests Found</label>
+                <div ng-repeat="request in $ctrl.requests">
+                    <div>
+                            <label>Location: {{request.metadata.locations}}</label>
+                    </div>
+                    <div>
+                            <label>Language: {{request.metadata.languages}}</label>
+                    </div>
+                    <div>
+                            <label>Reason: {{request.metadata.reason}}</label>
+                    </div>
+                    <div>
+                        <span>
+                            <md-button class="md-raised" ng-click="$ctrl.approve(request)">Approve</md-button>
+                            <md-button class="md-raised" ng-click="$ctrl.reject(request)">Reject</md-button>
+                        </span>
+                    </div>
+                </div>
             </div>
-            <div>
-                    <label>Language: {{request.metadata.languages}}</label>
+            <div ng-if="$ctrl.isMember">
+                <!-- Form to become a validator -->
+                <h2>Become a validator</h2>
+                <h3>To become a validator, select a language and location below and select submit. Your application will then be reviewed</h3>
+                <div>
+                    <validated-select label="'Location'"
+                        ng-model="$ctrl.request.metadata.locations"
+                        options="$ctrl.locations"
+                        required="true"/>
+                </div>
+                <div>
+                    <validated-select label="'Language'"
+                        ng-model="$ctrl.request.metadata.languages"
+                        options="$ctrl.languages"
+                        required="true"/>
+                </div>
+                <div>
+                    <validated-text-input type="'area'" 
+                        label="'Why do you want to be a validator?'"
+                        placeholder="'Reason'"
+                        ng-model="$ctrl.request.metadata.reason"
+                        minlength="1"
+                        maxlength="200"
+                        required="true"/>	
+                </div>
+                <div>
+                    <md-button class="md-raised" ng-click="$ctrl.submit($ctrl.request)">Submit</md-button>
+                </div>
             </div>
-            <div>
-                    <label>Reason: {{request.metadata.reason}}</label>
-            </div>
-            <div>
-                <span>
-                    <md-button class="md-raised" ng-click="$ctrl.approve(request)">Approve</md-button>
-                    <md-button class="md-raised" ng-click="$ctrl.reject(request)">Reject</md-button>
-                </span>
-            </div>
+            <label>{{$ctrl.response}}</label>
         </div>
+
     </div>
-    <div ng-if="$ctrl.isMember">
-        <!-- Form to become a validator -->
-        <h2>Become a validator</h2>
-        <h3>To become a validator, select a language and location below and select submit. Your application will then be reviewed</h3>
-        <div>
-            <validated-select label="'Location'"
-                ng-model="$ctrl.request.metadata.locations"
-                options="$ctrl.locations"
-                required="true"/>
-        </div>
-        <div>
-            <validated-select label="'Language'"
-                ng-model="$ctrl.request.metadata.languages"
-                options="$ctrl.languages"
-                required="true"/>
-        </div>
-        <div>
-            <validated-text-input type="'area'" 
-                label="'Why do you want to be a validator?'"
-                placeholder="'Reason'"
-                ng-model="$ctrl.request.metadata.reason"
-                minlength="1"
-                maxlength="200"
-                required="true"/>	
-        </div>
-        <div>
-            <md-button class="md-raised" ng-click="$ctrl.submit($ctrl.request)">Submit</md-button>
-        </div>
-    </div>
-    <label>{{$ctrl.error}}</label>
+    <footer ng-if="$ctrl.isLoggedIn">
+            <span>
+                <label style="color:white">Logged in as: {{$ctrl.username}}</label>
+                <md-button class="md-raised" ui-sref="manage-member()" ng-if="$ctrl.memberType != 'Guest'">Manage Account</md-button>
+                <md-button class="md-raised" ng-click="$ctrl.Logout()">Log Out</md-button>
+            </span>
+        </footer>
 </div>

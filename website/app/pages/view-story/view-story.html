@@ -1,16 +1,25 @@
-<md-toolbar layout="row">
+<div Id="window">
 	
-	<h2>Resource Force Authoring Tool</h2>
-	
-	<md-button class="md-fab" aria-label="Close">
-		<md-icon ui-sref="home">highlight_off</md-icon>
-	</md-button>
+	<md-toolbar>
+		<h2>Resource Force Authoring Tool</h2>
+	</md-toolbar>
 
-</md-toolbar>
+	<div Id="content">
 
-<div ng-switch="$ctrl.loader.isLoading">
-	<div ng-switch-when="true">
-		Waiting for load
+		<md-button class="md-raised" ui-sref="home">Home</md-button>
+		<div ng-switch="$ctrl.loader.isLoading">
+			<div ng-switch-when="true">
+				Waiting for load
+			</div>
+			<story-tree-view ng-switch-when="false" story="$ctrl.loader.story"></story-tree-view>
+		</div>
+
 	</div>
-	<story-tree-view ng-switch-when="false" story="$ctrl.loader.story"></story-tree-view>
+	<footer ng-if="$ctrl.isLoggedIn">
+			<span>
+				<label style="color:white">Logged in as: {{$ctrl.username}}</label>
+				<md-button class="md-raised" ui-sref="manage-member()" ng-if="$ctrl.memberType != 'Guest'">Manage Account</md-button>
+				<md-button class="md-raised" ng-click="$ctrl.Logout()">Log Out</md-button>
+			</span>
+		</footer>
 </div>

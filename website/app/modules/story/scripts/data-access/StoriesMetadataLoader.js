@@ -5,6 +5,7 @@ class StoriesMetadataLoader {
 		// public variables
 		self.isLoading = true;
 		self.storiesMetadata = [];
+		self.validationStoriesMetadata = [];
 
 		// public methods
 		self.load = function(creatorId) {
@@ -12,10 +13,20 @@ class StoriesMetadataLoader {
 				.then(onStoriesMetadataLoaded);
 		};
 
+		self.loadForValidation = function(creatorId) {
+			storyStorageService.GetStoriesForValidation(creatorId)
+				.then(onStoriesForValidationLoaded);
+		}
+		
 		// private methods
 		function onStoriesMetadataLoaded(storiesMetadata) {
 			self.isLoading = false;
 			self.storiesMetadata = storiesMetadata;
 		};
+
+		function onStoriesForValidationLoaded(metadata) {
+			self.isLoading = false;
+			self.validationStoriesMetadata = metadata;
+		}
 	}
 }

@@ -53,25 +53,47 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                 {
                     return null;
                 }
-                switch (user.MemberType)
-                {
-                    case "member":
-                        return context.Scenarios.Where(s => s.CreatorId == id).ToList();
+                return context.Scenarios.Where(s => s.CreatorId == id).ToList();
+           }
+        }
+
+        /// <summary>
+        /// Get a list of scenarios that a user must validate
+        /// </summary>
+        /// <param name="id">User is</param>
+        /// <returns></returns>
+	    public List<Scenario> GetForUserValidation(int id)
+	    {
+	        using (var context = ContextFactory.Create())
+	        {
+                var user = context.Users.Find(context, id);
+	            if (user == null || user.MemberType == "member")
+	            {
+                    // invalid user
+	                return null;
+	            }
+	            switch (user.MemberType)
+	            {
+                    case "admin":
+                        // return all scenarios which have been submitted
+                        return context.Scenarios.Where(s => s.Submitted).ToList();
                     case "validator":
-                        // get all scenarios that this validator can validate by location and language
+                        // return all scenarios the user has access to by language and location
                         var locations = JsonConvert.DeserializeObject<List<string>>(user.Locations);
                         var languages = JsonConvert.DeserializeObject<List<string>>(user.Languages);
 
-                        var scenarios = context.Scenarios.Where(s => locations.Contains(s.Location) && languages.Contains(s.Language)).ToList();
+                        var scenarios = context.Scenarios.Where(s => s.Submitted && locations.Contains(s.Location) && languages.Contains(s.Language)).ToList();
 
                         return scenarios;
-                    case "admin":
-                        return context.Scenarios.ToList();
                     default:
                         return null;
-                }
-            }
-        }
+	            }
+
+	            {
+	                    
+	            }
+	        }
+	    }
 
 
         /// <summary>

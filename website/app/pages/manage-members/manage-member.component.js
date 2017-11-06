@@ -20,6 +20,8 @@ angular
 
         ctrl.locations = ["Belfast", "Groningen", "Preston", "Nicosia", "Valencia"];
         ctrl.languages = ["Dutch", "English", "Greek", "Spanish"];
+        
+        ctrl.response = "";
 
         var requestsPromise = null;
 
@@ -33,9 +35,14 @@ angular
 
         ctrl.submit = function(request)
         {
+            ctrl.response = "Sending";
             request.metadata.playerId = ctrl.creatorId;
             request.metadata.memberType = 'validator';
-            StoryStorageService.submitValidatorRequest(request);
+            StoryStorageService.submitValidatorRequest(request).then(function(){
+                ctrl.response = "Application Sent";
+            }).catch(function(){
+                ctrl.response = "Application failed to send";
+            });
         }
 
         ctrl.refresh = function()
@@ -50,7 +57,7 @@ angular
                 }	
                 }).catch(function(error)
                 {
-                    ctrl.error = error.statusText + ". " + error.Message;
+                    ctrl.response = error.statusText + ". " + error.Message;
                 });
             }
             else if (ctrl.isValidator)
@@ -63,7 +70,7 @@ angular
                 }	
                 }).catch(function(error)
                 {
-                    ctrl.error = error.statusText + ". " + error.Message;
+                    ctrl.response = error.statusText + ". " + error.Message;
                 });
             }
         }
@@ -85,6 +92,12 @@ angular
                 console.log("[Error] Failed to send request");
                 ctrl.refresh();
             });
+        }
+        ctrl.Logout = function() {
+            ctrl.isLoggedIn = false;
+            ctrl.username = "";
+            Auth.logout();
+            $state.go("home");
         }
     }]
 });

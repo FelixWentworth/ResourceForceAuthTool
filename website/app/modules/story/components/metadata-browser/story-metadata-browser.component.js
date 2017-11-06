@@ -6,6 +6,7 @@ angular
 			storiesMetadata: "=",
 			creatorId: "=",
 			memberType: "=",
+			reviewing: "<",
 		},
 		controller: ["StoryStorageService", function (StoryStorageService) {
 			var ctrl = this;

@@ -30,6 +30,7 @@ angular
 			if (ctrl.isLoggedIn)
 			{
 				ctrl.loader.load(ctrl.creatorId);
+				ctrl.loader.loadForValidation(ctrl.creatorId);
 			}
 
 			ctrl.Login = function(user) {
@@ -83,6 +84,7 @@ angular
 				ctrl.isLoggedIn = false;
 				ctrl.username = "";
 				Auth.logout();
+				$state.go("home");
 			}
 		}]
 	});

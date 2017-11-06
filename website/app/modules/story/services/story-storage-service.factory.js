@@ -6,6 +6,8 @@ angular
 		// private variables
 		var storiesPromise = null;
 		var storiesMetadataPromise = null;
+		var storiesValidatePromise = null;
+		var storiesValidateMetadataPromise = null;
 		var requestsPromise = null;
 		var creatorId = null;
 
@@ -32,6 +34,18 @@ angular
 				});
 
 			return storiesPromise.promise;
+		}
+
+		function getStoriesToValidate(id)
+		{
+			storiesValidatePromise = $q.defer();
+
+			$http.get('../api' + '/scenario/tovalidate/' + id)
+				.then(function(story){
+					storiesValidatePromise.resolve(story.data);
+				});
+
+			return storiesValidatePromise.promise;
 		}
 
 		// public methods
@@ -65,6 +79,23 @@ angular
 
 			return storiesMetadataPromise.promise;
 		};
+
+		service.GetStoriesForValidation = function (id) {
+			storiesValidateMetadataPromise = $q.defer();
+
+			creatorId = id;
+			getStoriesToValidate(id)
+				.then(function(scenarios){
+					var metadatas = [];
+
+					scenarios.forEach(s => {
+						metadatas.push(s);
+					});
+
+					storiesValidateMetadataPromise.resolve(metadatas);
+				});
+			return storiesValidateMetadataPromise.promise;
+		}
 
 		service.submitStory = function (story) {
 			story.metadata.submitted = true;
