@@ -18,6 +18,8 @@ angular
 		controller: ["StoryStorageService", "$http", "Auth", function(StoryStorageService, $http, Auth) {
 			var ctrl = this;
 			
+			ctrl.title = "Resource Force Authoring Tool";
+
 			ctrl.loader = new StoriesMetadataLoader(StoryStorageService);
 			
 			ctrl.isLoggedIn = Auth.isLoggedIn();

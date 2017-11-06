@@ -7,6 +7,8 @@ angular
 		},
 		controller: ["StoryStorageService", "$state", "Auth", function(StoryStorageService, $state, Auth) {
 			var ctrl = this;
+			
+			ctrl.title = "Play Scenario";
 
 			ctrl.loader = new StoryFromIdLoader(StoryStorageService);
 			ctrl.isPlayerComplete = false;

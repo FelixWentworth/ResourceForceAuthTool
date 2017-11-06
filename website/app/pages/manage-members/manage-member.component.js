@@ -5,6 +5,8 @@ angular
     controller: ["StoryStorageService", "$http", "Auth", "$q", "$state", function(StoryStorageService, $http, Auth, $q, $state) {
         var ctrl = this;
 
+        ctrl.title = "Manage Account";
+
         ctrl.isLoggedIn = Auth.isLoggedIn();
         ctrl.creatorId = ctrl.isLoggedIn ? Auth.getId() : 0;
         ctrl.memberType = ctrl.isLoggedIn ? Auth.getType() : "";

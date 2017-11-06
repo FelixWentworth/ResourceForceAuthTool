@@ -1,7 +1,5 @@
 <div Id="window">
-    <md-toolbar>
-            <h2>Manage Account</h2>
-    </md-toolbar>
+    <custom-header title="$ctrl.title"></custom-header>        
     <md-button class="md-raised" ui-sref="home()">home</md-button>       
     <md-button class="md-raised" ngif="$ctrl.isLoggedIn" ng-click="$ctrl.refresh()">Refresh</md-button>     
 
@@ -67,11 +65,5 @@
         </div>
 
     </div>
-    <footer ng-if="$ctrl.isLoggedIn">
-            <span>
-                <label style="color:white">Logged in as: {{$ctrl.username}}</label>
-                <md-button class="md-raised" ui-sref="manage-member()" ng-if="$ctrl.memberType != 'Guest'">Manage Account</md-button>
-                <md-button class="md-raised" ng-click="$ctrl.Logout()">Log Out</md-button>
-            </span>
-        </footer>
+    <custom-footer is-logged-in="$ctrl.isLoggedIn" username="$ctrl.username"></custom-footer>
 </div>

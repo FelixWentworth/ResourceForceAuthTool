@@ -1,2 +1,2 @@
 angular
-	.module("story", ["validatedInputs", "collapsibleContent", "angular-uuid"]);
+	.module("story", ["validatedInputs", "collapsibleContent", "customFooter", "customHeader", "angular-uuid"]);

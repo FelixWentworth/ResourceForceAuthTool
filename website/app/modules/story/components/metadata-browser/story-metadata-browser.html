@@ -19,7 +19,6 @@
                     <label ng-if="!metadata.submitted"><br/>Ready For Submission</label>
                     <label ng-if="metadata.isValid && !metadata.submitted"><br/>Approved</label>
                     <label ng-if="!metadata.isValid && !metadata.submitted" ><br/>Not Approved</label>
-                    <label ng-if="metadata.comment != '' && !metadata.submitted"><br/>Comment: {{metadata.comment}}</label>                    
                 </div>
 
         		<md-button class="md-fab md-mini" 
@@ -53,6 +52,10 @@
                             ng-if="metadata.creatorId == $ctrl.creatorId && !$ctrl.reviewing">
                     <md-icon>delete_forever</md-icon>
                 </md-button>
+
+                <div>
+                    <label ng-if="metadata.comment != '' && !metadata.submitted"><br/>Comment: {{metadata.comment}}</label>                                            
+                </div>
 
                                 
                 <div ng-if="$ctrl.reviewing">

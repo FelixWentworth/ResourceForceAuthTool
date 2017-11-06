@@ -5,6 +5,8 @@ angular
     controller: ["StoryStorageService", "$state", "Auth", function(StoryStorageService, $state, Auth) {
         var ctrl = this;
 
+        ctrl.title = "Review Submitted Content";
+
         ctrl.loader = new StoriesMetadataLoader(StoryStorageService);
 
         ctrl.isLoggedIn = Auth.isLoggedIn();
