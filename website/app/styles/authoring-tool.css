@@ -18,13 +18,16 @@ body
     margin-left: 30px;
     margin-right: 30px;
     background-color: rgb(255, 255, 255);
+    border: 5px;
+    border-style:solid;
+    border-color:rgb(63, 81, 181);
 }
 #content
 {
     padding-left: 15px;
     padding-bottom: 15px;
     padding-right: 15px;
-    
+    padding-top: 5px
 }
 md-toolbar
 {
@@ -32,6 +35,11 @@ md-toolbar
     background-color: rgb(63, 81, 181);
     padding-left:15px;
     padding-right: 15px;    
+}
+md-card{
+    border: 1px;
+    border-style:solid;
+    border-color:rgb(63, 81, 181);
 }
 footer
 {

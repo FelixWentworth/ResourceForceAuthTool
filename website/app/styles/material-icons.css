@@ -39,3 +39,10 @@ button.md-button.md-fab md-icon.material-icons {
 	width: 50%;
 	height: 50%;
 }
+
+.md-button.md-fab{
+	background-color: rgb(63, 81, 181);
+}
+.md-button.md-raised{
+	background-color: rgb(255, 255, 255);
+}

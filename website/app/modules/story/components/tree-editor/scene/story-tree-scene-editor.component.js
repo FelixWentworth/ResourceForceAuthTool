@@ -11,7 +11,7 @@ angular
 
 			// public variables
 			ctrl.isThisSceneLevelComplete = false;
-
+			
 			ctrl.severity = [1, 2, 3];
 
 			ctrl.officerOptions = [0,1,2,3,4];
@@ -98,6 +98,7 @@ angular
 				var choiceName = type;//ctrl.scene.name + "." + (choiceCount + 1);
 
 				var choice = StoryEditorService.createChoice(choiceName);
+				 
 				ctrl.scene.choices.push(choice);
 
 
