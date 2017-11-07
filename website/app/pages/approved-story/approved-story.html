@@ -1,0 +1,31 @@
+<div Id="window">
+<custom-header title="$ctrl.title"></custom-header>
+    <div Id="content">
+		<md-button class="md-raised" ui-sref="home">Home</md-button>
+    </div>
+    <div>
+        <md-label>To see content currently in the game, select a language and locations below and select "Load"</md-label>
+        <br/>
+        <validated-select label="'Location'"
+                ng-model="$ctrl.selected.location"
+                options="$ctrl.locations"
+                required="true"
+                style="width:50%"/>
+        <validated-select label="'Language'"
+                ng-model="$ctrl.selected.language"
+                options="$ctrl.languages"
+                required="true"
+                style="width:50%"/>
+        <md-button class="md-raised" ng-click="$ctrl.load($ctrl.selected)">Load</md-button>
+    </div>
+    <div>
+        <div>
+            <ul>
+                <story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false"/>
+            </ul>
+            <br/>
+            <md-label ng-if="$ctrl.loader.storiesMetadata.length == 0">No content loaded</md-label>            
+        </div>
+    </div>
+<custom-footer is-logged-in="$ctrl.isLoggedIn" username="$ctrl.username"></custom-footer>
+</div>

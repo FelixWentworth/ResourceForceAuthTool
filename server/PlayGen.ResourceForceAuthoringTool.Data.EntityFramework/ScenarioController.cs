@@ -124,6 +124,21 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
             }
         }
 
+        /// <summary>
+        /// Get all scenarios that have been approved for a specific language and location
+        /// </summary>
+        /// <param name="language"></param>
+        /// <param name="location"></param>
+        /// <returns></returns>
+	    public List<Scenario> GetApproved(string language, string location)
+	    {
+	        using (var context = ContextFactory.Create())
+	        {
+	            var scenarios = context.Scenarios.Where(s => s.Language == language && s.Location == location && s.IsValid).ToList();
+	            return scenarios;
+	        }
+	    }
+
 		public Scenario Create(Scenario scenario)
 		{
 			using (var context = ContextFactory.Create())

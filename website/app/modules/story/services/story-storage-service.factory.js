@@ -48,6 +48,17 @@ angular
 			return storiesValidatePromise.promise;
 		}
 
+		function getExistingStories(language, location){
+			storiesPromise = $q.defer();
+
+			$http.get('../api' + '/scenario/approved/' + language +'/' + location)
+			.then(function(story){
+				storiesPromise.resolve(story.data);
+			});
+
+			return storiesPromise.promise;
+		}
+
 		// public methods
 		service.getById = function(id) {
 			return getStory(id)
@@ -95,6 +106,22 @@ angular
 					storiesValidateMetadataPromise.resolve(metadatas);
 				});
 			return storiesValidateMetadataPromise.promise;
+		}
+
+		service.loadExisting = function(language, location){
+			storiesMetadataPromise = $q.defer();
+
+			getExistingStories(language, location)
+				.then(function(scenarios){
+					var metadatas = [];
+
+					scenarios.forEach(s => {
+						metadatas.push(s);
+					});
+
+					storiesMetadataPromise.resolve(metadatas);
+				});
+			return storiesMetadataPromise.promise;
 		}
 
 		service.submitStory = function (story) {

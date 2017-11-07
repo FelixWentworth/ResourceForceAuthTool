@@ -1,7 +1,7 @@
 <div Id="window">
     <custom-header title="$ctrl.title"></custom-header>        
     <md-button class="md-raised" ui-sref="home()">home</md-button>       
-    <md-button class="md-raised" ngif="$ctrl.isLoggedIn" ng-click="$ctrl.refresh()">Refresh</md-button>     
+    <md-button class="md-raised" ng-if="$ctrl.isLoggedIn && ($ctrl.isValidator || $ctrl.isAdmin)" ng-click="$ctrl.refresh()">Refresh</md-button>     
 
     <div Id="content">     
 

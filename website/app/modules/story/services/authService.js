@@ -15,7 +15,7 @@ angular.module('resourceForceAuthoringTool').factory('AuthService', function ($h
   };
  
   authService.loginWithCookies = function (cookies){
-    Session.create(cookies["id"], cookies["name"], cookies["type"], cookies["languages"], cookies["location"])
+    Session.create(cookies["id"], cookies["name"], cookies["type"], cookies["languages"], cookies["locations"])
   };    
 
   authService.isAuthenticated = function () {

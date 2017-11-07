@@ -38,6 +38,10 @@ angular
 			.state("review-story", {
 				url: "/review-story",
 				component: "reviewStory"
+			})
+			.state("approved-story", {
+				url: "/approved-story",
+				component: "approvedStory"
 			});			
 
 			$urlRouterProvider.otherwise("/home");

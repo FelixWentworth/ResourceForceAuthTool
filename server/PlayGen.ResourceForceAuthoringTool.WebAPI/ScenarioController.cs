@@ -77,7 +77,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             return new ObjectResult(metadata);
         }
 
-    /// <summary>
+        /// <summary>
         /// Get a list of scenarios for a given location
         /// </summary>
         [HttpGet("validate")]
@@ -90,6 +90,11 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             return new ObjectResult(metadata);
         }
 
+        /// <summary>
+        /// Get a list of all scenarios newer than the serial number provided
+        /// </summary>
+        /// <param name="id">serial number</param>
+        /// <returns></returns>
         [HttpGet("new/{id}")]
         public IActionResult GetBySerialNumber([FromRoute]long id)
         {
@@ -100,6 +105,20 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 contentContract.Add(s.ToContentContract());
             }
             return new ObjectResult(contentContract);
+        }
+
+        /// <summary>
+        /// Get a list of all scenarios that have been approved for a location and language
+        /// </summary>
+        /// <param name="language"></param>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        [HttpGet("approved/{language}/{location}")]
+        public IActionResult GetApprovedByFilter([FromRoute]string language, [FromRoute]string location)
+        {
+            var scenarios = _scenarioCoreController.GetApproved(language, location);
+            var metadata = scenarios.ToMetadataList();
+            return new ObjectResult(metadata);
         }
 
         #endregion

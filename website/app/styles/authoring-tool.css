@@ -29,6 +29,12 @@ body
     padding-right: 15px;
     padding-top: 5px
 }
+#centered
+{
+    text-align: center;
+    vertical-align: middle;
+    width: auto;
+}
 md-toolbar
 {
     vertical-align: middle;
@@ -40,6 +46,9 @@ md-card{
     border: 1px;
     border-style:solid;
     border-color:rgb(63, 81, 181);
+}
+md-input-container{
+    margin: 12px;
 }
 footer
 {

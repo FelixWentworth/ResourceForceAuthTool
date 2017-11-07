@@ -45,6 +45,11 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
             return _scenarioDbController.Get(id);
         }
 
+	    public List<Scenario> GetApproved(string language, string location)
+	    {
+	        return _scenarioDbController.GetApproved(language, location);
+	    }
+
         public Scenario Create(Scenario newStory)
 		{
 			return _scenarioDbController.Create(newStory);
