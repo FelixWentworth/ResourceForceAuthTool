@@ -78,8 +78,9 @@ angular
 
 			ctrl.GuestLogin = function() {
 				ctrl.isLoggedIn = true;
-				ctrl.username = "Guest";
-				ctrl.memberType = "Guest";
+				ctrl.username = "guest";
+				ctrl.memberType = "guest";
+				Auth.set("0", "Guest", "guest", "[]", "[]");
 			}
 		}]
 	});

@@ -79,6 +79,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 Id = metadata.Id,
                 CreatorId = metadata.CreatorId,
 				Title = metadata.Title,
+                Submitted = metadata.Submitted,
 				Language = metadata.Language,
 				Location = metadata.Location,
 				Content = scenarioContract.Content.ToString()

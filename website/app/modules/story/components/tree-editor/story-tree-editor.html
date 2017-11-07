@@ -17,8 +17,15 @@
 		
 		<md-button class="md-raised" 
 					ng-click="$ctrl.save()"
+					ng-if="$ctrl.memberType != 'guest'"
 					ng-disabled="storyTreeForm.$valid !== true || $ctrl.story.content.scene.choices.length <= 1"> <!-- already contains end choice, not shown in web page -->
 			Save Scenario
+		</md-button>
+		<md-button class="md-raised" 
+				ng-click="$ctrl.submit()"
+					ng-if="$ctrl.memberType == 'guest'"
+					ng-disabled="storyTreeForm.$valid !== true || $ctrl.story.content.scene.choices.length <= 1"> <!-- already contains end choice, not shown in web page -->
+			Submit Scenario
 		</md-button>
 	</span>
 	<div>

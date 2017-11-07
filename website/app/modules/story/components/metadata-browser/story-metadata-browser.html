@@ -49,7 +49,7 @@
                 <md-button class="md-fab md-mini"
                             aria-label="Delete"
                             ng-click="$ctrl.delete(metadata)"
-                            ng-if="(metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'validator' || $ctrl.memberType == 'admin') && !$ctrl.reviewing">
+                            ng-if="(metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && !$ctrl.reviewing">
                     <md-icon>delete_forever</md-icon>
                 </md-button>
 

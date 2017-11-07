@@ -14,7 +14,7 @@ angular
 				"language": "",				
 			};
 
-			ctrl.location = ["Any", "Belfast", "Groningen", "Preston", "Nicosia", "Valencia"];
+			ctrl.location = ["Belfast", "Groningen", "Preston", "Nicosia", "Valencia"];
 			ctrl.language = ["English", "Spanish", "Dutch", "Greek"];
 			
 		}

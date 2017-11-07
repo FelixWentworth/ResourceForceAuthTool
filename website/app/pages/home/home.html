@@ -33,9 +33,8 @@
 				<md-button class="md-raised" ui-sref="review-story" ng-if="$ctrl.memberType == 'validator' || $ctrl.memberType == 'admin'">Review Submitted Content ({{$ctrl.loader.validationStoriesMetadata.length}})</md-button>
 				<md-button class="md-raised" ui-sref="approved-story" ng-if="$ctrl.memberType == 'validator' || $ctrl.memberType == 'admin'">Review Approved Content</md-button>
 			</div>
-
-			<h3>My Scenarios</h3>
-			<div ng-switch="$ctrl.loader.isLoading">
+			<h3 ng-if="$ctrl.memberType != 'guest'">My Scenarios</h3>
+			<div  ng-if="$ctrl.memberType != 'guest'" ng-switch="$ctrl.loader.isLoading">
 				<div ng-switch-when="true">
 					Waiting for load
 				</div>
