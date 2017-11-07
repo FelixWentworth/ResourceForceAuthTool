@@ -45,21 +45,31 @@
                 <h2>Manage Validator Requests</h2>    
                 <label ng-if="$ctrl.requests.length == 0">No Validator Requests Found</label>
                 <div ng-repeat="request in $ctrl.requests">
-                    <div>
-                            <label>Location: {{request.metadata.locations}}</label>
-                    </div>
-                    <div>
-                            <label>Language: {{request.metadata.languages}}</label>
-                    </div>
-                    <div>
-                            <label>Reason: {{request.metadata.reason}}</label>
-                    </div>
-                    <div>
-                        <span>
-                            <md-button class="md-raised" ng-click="$ctrl.approve(request)">Approve</md-button>
-                            <md-button class="md-raised" ng-click="$ctrl.reject(request)">Reject</md-button>
-                        </span>
-                    </div>
+                    <md-card style="padding:5px">
+                        <div>
+                                <label>Location: {{request.metadata.locations}}</label>
+                        </div>
+                        <div>
+                                <label>Language: {{request.metadata.languages}}</label>
+                        </div>
+                        <div>
+                                <label>Reason: {{request.metadata.reason}}</label>
+                        </div>
+                        <div>
+                            <span>
+                                <md-button class="md-fab md-mini"
+                                            aria-label="Approve"
+                                            ng-click="$ctrl.approve(request)">
+                                    <md-icon>thumb_up</md-icon>
+                                </md-button>
+                                <md-button class="md-fab md-mini"
+                                            aria-label="Reject"
+                                            ng-click="$ctrl.reject(request)">
+                                    <md-icon>thumb_down</md-icon>
+                                </md-button>    
+                            </span>
+                        </div>
+                    </md-card>
                 </div>
             </div>
             
