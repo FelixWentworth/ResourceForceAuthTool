@@ -15,7 +15,7 @@ angular
 	})
 	.component("home", {
 		templateUrl: "pages/home/home.html",
-		controller: ["StoryStorageService", "$http", "Auth", function(StoryStorageService, $http, Auth) {
+		controller: ["StoryStorageService", "$http", "$state", "Auth", function(StoryStorageService, $http, $state, Auth) {
 			var ctrl = this;
 			
 			ctrl.title = "Resource Force Authoring Tool";
@@ -80,13 +80,6 @@ angular
 				ctrl.isLoggedIn = true;
 				ctrl.username = "Guest";
 				ctrl.memberType = "Guest";
-			}
-
-			ctrl.Logout = function() {
-				ctrl.isLoggedIn = false;
-				ctrl.username = "";
-				Auth.logout();
-				$state.go("home");
 			}
 		}]
 	});

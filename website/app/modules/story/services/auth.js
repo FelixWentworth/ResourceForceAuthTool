@@ -55,6 +55,7 @@ angular.module('resourceForceAuthoringTool')
 				},
 				
 				logout: function() {
+					AuthService.logout();
 					CookieService.remove();					
 				}
 			};

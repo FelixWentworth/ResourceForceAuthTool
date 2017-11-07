@@ -15,11 +15,5 @@ angular
 					$state.go('home');
 				}
 			}
-			ctrl.Logout = function() {
-				ctrl.isLoggedIn = false;
-				ctrl.username = "";
-				Auth.logout();
-				$state.go("home");
-			}
 		}]
 	});

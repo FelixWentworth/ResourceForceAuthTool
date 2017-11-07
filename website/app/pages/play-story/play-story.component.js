@@ -21,11 +21,5 @@ angular
 				}
 				ctrl.loader.load(ctrl.storyId);
 			}
-			ctrl.Logout = function() {
-				ctrl.isLoggedIn = false;
-				ctrl.username = "";
-				Auth.logout();
-				$state.go("home");
-			}
 		}]
 	});

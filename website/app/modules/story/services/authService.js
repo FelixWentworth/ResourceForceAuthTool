@@ -42,5 +42,9 @@ angular.module('resourceForceAuthoringTool').factory('AuthService', function ($h
     return Session.userLanguages;
   };
 
+  authService.logout = function() {
+    Session.destroy();
+  };
+
   return authService;
 })

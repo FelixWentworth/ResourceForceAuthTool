@@ -12,7 +12,7 @@ angular.module('resourceForceAuthoringTool')
   this.destroy = function () {
     this.userId = null;
     this.userName = null;
-    this.userType = type;
+    this.userType = null;
     this.userLanguages = null;
     this.userLocations = null;    
   };

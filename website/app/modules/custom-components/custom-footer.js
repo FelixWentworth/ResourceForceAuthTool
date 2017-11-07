@@ -13,7 +13,7 @@ angular
             ctrl.isLoggedIn = false;
             ctrl.username = "";
             Auth.logout();
-            $state.go("home");
+            $state.reload();
         }
     }]
 });
