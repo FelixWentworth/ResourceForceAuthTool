@@ -134,6 +134,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 Location = scenarioContract.Location,
                 Language = scenarioContract.Language,
                 Comment = scenarioContract.Comment,
+                Deleted = scenarioContract.Deleted,
                 Content = content
             };
         }
@@ -148,6 +149,8 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             scenarioContract.Submitted = metadata.Submitted;
             scenarioContract.Deleted = metadata.Deleted;
             scenarioContract.Comment = metadata.Comment;
+
+            scenarioContract.SerialNumber = metadata.SerialNumber;
 
             return scenarioContract;
         }

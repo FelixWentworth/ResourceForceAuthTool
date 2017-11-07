@@ -10,29 +10,7 @@
             <label>Username: <b>{{$ctrl.username}}</b></label>
             <br/>
             <label>Accpount Type: <b>{{$ctrl.memberType}}</b></label>
-            <div ng-if="$ctrl.isAdmin || $ctrl.isValidator">
-                            
-                <h2>Manage Validator Requests</h2>    
-                <label ng-if="$ctrl.requests.length == 0">No Validator Requests Found</label>
-                <div ng-repeat="request in $ctrl.requests">
-                    <div>
-                            <label>Location: {{request.metadata.locations}}</label>
-                    </div>
-                    <div>
-                            <label>Language: {{request.metadata.languages}}</label>
-                    </div>
-                    <div>
-                            <label>Reason: {{request.metadata.reason}}</label>
-                    </div>
-                    <div>
-                        <span>
-                            <md-button class="md-raised" ng-click="$ctrl.approve(request)">Approve</md-button>
-                            <md-button class="md-raised" ng-click="$ctrl.reject(request)">Reject</md-button>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div ng-if="$ctrl.isMember">
+            <div ng-if="$ctrl.isMember || $ctrl.isValidator">
                 <!-- Form to become a validator -->
                 <h2>Become a validator</h2>
                 <h3>To become a validator, select a language and location below and select submit. Your application will then be reviewed</h3>
@@ -61,6 +39,30 @@
                     <md-button class="md-raised" ng-click="$ctrl.submit($ctrl.request)">Submit</md-button>
                 </div>
             </div>
+
+            <div ng-if="$ctrl.isAdmin || $ctrl.isValidator">
+                            
+                <h2>Manage Validator Requests</h2>    
+                <label ng-if="$ctrl.requests.length == 0">No Validator Requests Found</label>
+                <div ng-repeat="request in $ctrl.requests">
+                    <div>
+                            <label>Location: {{request.metadata.locations}}</label>
+                    </div>
+                    <div>
+                            <label>Language: {{request.metadata.languages}}</label>
+                    </div>
+                    <div>
+                            <label>Reason: {{request.metadata.reason}}</label>
+                    </div>
+                    <div>
+                        <span>
+                            <md-button class="md-raised" ng-click="$ctrl.approve(request)">Approve</md-button>
+                            <md-button class="md-raised" ng-click="$ctrl.reject(request)">Reject</md-button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
             <label>{{$ctrl.response}}</label>
         </div>
 
