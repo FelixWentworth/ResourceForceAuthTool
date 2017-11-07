@@ -16,9 +16,9 @@
                 <div>
                     <label><b>Status</b></label>
                     <label ng-if="metadata.submitted"><br/>Awaiting Validation</label>
-                    <label ng-if="!metadata.submitted"><br/>Ready For Submission</label>
+                    <label ng-if="!metadata.submitted && !metadata.isValid"><br/>Ready For Submission</label>
                     <label ng-if="metadata.isValid && !metadata.submitted"><br/>Approved</label>
-                    <label ng-if="!metadata.isValid && !metadata.submitted" ><br/>Not Approved</label>
+                    <label ng-if="!metadata.isValid && !metadata.submitted"><br/>Not Approved</label>
                 </div>
 
         		<md-button class="md-fab md-mini" 
@@ -42,7 +42,7 @@
                 <md-button class="md-fab md-mini"
                             aria-label="Submit"
                             ng-click="$ctrl.submit(metadata)"
-                            ng-if="($ctrl.memberType == 'admin' || metadata.creatorId == $ctrl.creatorId) && !metadata.submitted && !$ctrl.reviewing">    
+                            ng-if="($ctrl.memberType == 'admin' || metadata.creatorId == $ctrl.creatorId) && !metadata.submitted && !$ctrl.reviewing && !metadata.isValid">    
                     <md-icon>file_upload</md-icon>
                 </md-button>
                 
