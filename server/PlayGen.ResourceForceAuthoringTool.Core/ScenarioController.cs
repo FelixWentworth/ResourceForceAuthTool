@@ -55,9 +55,9 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
 			return _scenarioDbController.Create(newStory);
 		}
 
-		public Scenario Update(Scenario story)
+		public Scenario Update(Scenario story, bool contentChanged)
 		{
-			return _scenarioDbController.Update(story);
+			return _scenarioDbController.Update(story, contentChanged);
 		}
 
         public void Delete(string id)

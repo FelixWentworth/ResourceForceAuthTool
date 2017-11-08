@@ -147,7 +147,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
 				if (existing != null)
 				{
-					scenario = Update(scenario);
+					scenario = Update(scenario, true);
 					return scenario;
 				}
 				context.Scenarios.Add(scenario);
@@ -157,11 +157,18 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 			}
 		}
 
-		public Scenario Update(Scenario scenario)
+		public Scenario Update(Scenario scenario, bool contentChanged)
 		{
 			using (var context = ContextFactory.Create())
 			{
 				var existing = context.Scenarios.Find(context, scenario.Id);
+
+                // Updating valid content will set it ready for review immediately
+			    if ((existing.IsValid || existing.Submitted) && contentChanged)
+			    {
+			        scenario.Submitted = true;
+			        scenario.IsValid = false; // content changed so cant assume it is valid
+			    }
 
 				if (existing != null)
 				{

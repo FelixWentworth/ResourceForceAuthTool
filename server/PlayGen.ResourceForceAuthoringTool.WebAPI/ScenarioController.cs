@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using PlayGen.ResourceForceAuthoringTool.Contracts;
 using System.Collections.Generic;
 
@@ -131,7 +132,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             var scenarioModel = scenario.ToScenarioModel();
             // Assign new serial number to indicate the scenario has changed to the player
             scenarioModel.SerialNumber = _scenarioCoreController.GetNewSerialNumber();
-            scenarioModel = _scenarioCoreController.Update(scenarioModel);
+            scenarioModel = _scenarioCoreController.Update(scenarioModel, true);
             var scenarioContract = scenarioModel.ToScenarioContract();
             return new ObjectResult(scenarioContract);
         }
@@ -147,7 +148,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             var scenario = _scenarioCoreController.Get(metadataModel.Id);
             scenario.UpdateMetadata(metadataModel);
 
-            scenario = _scenarioCoreController.Update(scenario);
+            scenario = _scenarioCoreController.Update(scenario, false);
 
             var scenarioContract = scenario.ToScenarioContract();
             return new ObjectResult(scenarioContract);
