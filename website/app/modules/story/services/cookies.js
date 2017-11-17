@@ -24,7 +24,7 @@ angular
     cookies.exists = function()
     {
         var allCookies = $cookies.getAll();
-        return Object.keys(allCookies).length > 0;
+        return Object.keys(allCookies).length > 0 && $cookies.get("id") != null;
     }
 
     cookies.get = function()
