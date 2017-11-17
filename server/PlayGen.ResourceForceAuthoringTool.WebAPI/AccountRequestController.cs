@@ -66,6 +66,10 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         public IActionResult GetValidatorRequests()
         {
             var accountResponse = _accountRequestController.Get();
+            if (accountResponse == null)
+            {
+                return new ObjectResult(null);
+            }
             var requestContract = new List<AccountChangeResponse>();
             foreach (var accountRequest in accountResponse)
             {

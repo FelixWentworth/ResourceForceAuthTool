@@ -40,6 +40,10 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         public IActionResult Get()
         {
             var scenarios = _scenarioCoreController.Get();
+            if (scenarios == null)
+            {
+                return new ObjectResult(null);
+            }
             var metadata = scenarios.ToMetadataList();
             return new ObjectResult(metadata);
         }
@@ -48,6 +52,10 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         public IActionResult GetById([FromRoute] string id)
         {
             var scenario = _scenarioCoreController.Get(id);
+            if (scenario == null)
+            {
+                return new ObjectResult(null);
+            }
             var scenarioContract = scenario.ToScenarioContract();
             return new ObjectResult(scenarioContract);
         }
@@ -61,6 +69,10 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         public IActionResult Get([FromRoute] int id)
         {
             var scenario = _scenarioCoreController.GetByCreator(id);
+            if (scenario == null)
+            {
+                return new ObjectResult(null);
+            }
             var metadata = scenario.ToMetadataList();
             return new ObjectResult(metadata);
         }
@@ -74,6 +86,10 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         public IActionResult GetForPlayerToValidate([FromRoute] int id)
         {
             var scenarios = _scenarioCoreController.GetForUserValidation(id);
+            if (scenarios == null)
+            {
+                return new ObjectResult(null);
+            }
             var metadata = scenarios.ToMetadataList();
             return new ObjectResult(metadata);
         }
@@ -87,6 +103,10 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             var validationModel = request.ToValidationModel();
 
             var scenarios = _scenarioCoreController.GetForValidation(validationModel);
+            if (scenarios == null)
+            {
+                return new ObjectResult(null);
+            }
             var metadata = scenarios.ToMetadataList();
             return new ObjectResult(metadata);
         }
@@ -100,6 +120,10 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         public IActionResult GetBySerialNumber([FromRoute]long id)
         {
             var scenarios = _scenarioCoreController.Get(id);
+            if (scenarios == null)
+            {
+                return new ObjectResult(null);
+            }
             var contentContract = new List<ContentResponse>();
             foreach (var s in scenarios)
             {
@@ -118,6 +142,10 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         public IActionResult GetApprovedByFilter([FromRoute]string language, [FromRoute]string location)
         {
             var scenarios = _scenarioCoreController.GetApproved(language, location);
+            if (scenarios == null)
+            {
+                return new ObjectResult(null);
+            }
             var metadata = scenarios.ToMetadataList();
             return new ObjectResult(metadata);
         }
