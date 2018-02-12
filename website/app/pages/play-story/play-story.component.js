@@ -1,7 +1,7 @@
 angular
 	.module("resourceForceAuthoringTool")
 	.component("playStory", {
-		templateUrl: "pages/play-story/play-story.html",
+		templateUrl: "/pages/play-story/play-story.html",
 		bindings: {
 			storyId: "<"
 		},
