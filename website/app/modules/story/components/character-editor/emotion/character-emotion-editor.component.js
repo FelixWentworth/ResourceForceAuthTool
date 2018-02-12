@@ -1,7 +1,7 @@
 angular
 	.module("story")
 	.component("characterEmotionEditor", {		
-		templateUrl: "modules/story/components/character-editor/emotion/character-emotion-editor.html",
+		templateUrl: "/modules/story/components/character-editor/emotion/character-emotion-editor.html",
 		bindings: {
 			emotion: "="
 		}, 

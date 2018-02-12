@@ -1,7 +1,7 @@
 angular
 .module("customFooter")
 .component("customFooter", {
-    templateUrl: "modules/custom-components/custom-footer.html",
+    templateUrl: "/modules/custom-components/custom-footer.html",
     bindings: {
         isLoggedIn: "<",
         username: "<"
