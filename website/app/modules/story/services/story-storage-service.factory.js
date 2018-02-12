@@ -1,6 +1,6 @@
 angular
 	.module("story")
-	.factory("StoryStorageService", ["$http", "$q", function($http, $q) {
+	.factory("StoryStorageService", ["$http", "$q", "uuid", function($http, $q, uuid) {
 		var service = {};
 
 		// private variables
@@ -190,6 +190,25 @@ angular
 
 		service.rejectRequest = function(request){
 			return $http.post('../api' + '/accountrequest/validator/false', request);			
+		}
+
+		service.duplicateStory = function(id){
+			requestsPromise = $q.defer();	
+
+			var story = {};
+			getStory(id)
+				.then(function(content){
+					story = content;
+					// set Id to null to add as another row in table
+					story.metadata.id = uuid.v4();
+					story.metadata.title = story.metadata.title + "_copy"
+					service.save(story)
+						.then(function(story){
+							requestsPromise.resolve(story.data);
+						}
+					);
+			});
+			return requestsPromise.promise;
 		}
 
 		return service;

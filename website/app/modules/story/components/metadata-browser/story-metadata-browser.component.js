@@ -17,6 +17,14 @@ angular
 				metadata.isValid = false; // has been changed, so needs validating again
 				StoryStorageService.updateMetadata(metadata);
 			};
+
+			ctrl.duplicate = function(id){
+				StoryStorageService.duplicateStory(id)
+					.then(function(newStory){
+						ctrl.storiesMetadata.push(newStory.metadata);
+					}
+				);
+			};
 			
 			ctrl.validate = function(metadata, valid){
 				if (ctrl.comment == null || ctrl.comment.length == 0 || ctrl.comment.length > 200)
