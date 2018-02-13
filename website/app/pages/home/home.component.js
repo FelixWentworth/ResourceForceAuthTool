@@ -28,6 +28,8 @@ angular
 			ctrl.username = ctrl.isLoggedIn ? Auth.getName() : "";
 
 			ctrl.error = "";
+			ctrl.viewDeleted = "View Deleted Content";
+			ctrl.showDeleted = false;
 
 			if (ctrl.isLoggedIn)
 			{
@@ -81,6 +83,19 @@ angular
 				ctrl.username = "guest";
 				ctrl.memberType = "guest";
 				Auth.set("0", "Guest", "guest", "[]", "[]");
+			}
+
+			ctrl.ToggleDeleted = function(){
+				ctrl.showDeleted = !ctrl.showDeleted;
+				if (ctrl.showDeleted)
+				{
+					ctrl.viewDeleted = "Hide Deleted Content";
+				}
+				else
+				{
+					ctrl.viewDeleted = "View Deleted Content";
+				}
+				
 			}
 		}]
 	});

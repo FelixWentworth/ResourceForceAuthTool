@@ -7,6 +7,7 @@ angular
 			creatorId: "=",
 			memberType: "=",
 			reviewing: "<",
+			viewDeleted: "<"
 		},
 		controller: ["StoryStorageService", function (StoryStorageService) {
 			var ctrl = this;
@@ -39,6 +40,13 @@ angular
 
 			ctrl.delete = function(metadata){
 				metadata.deleted = true;
+				metadata.isValid = false;
+				metadata.submitted = true;
+				metadata.comment = ctrl.comment;				
+				StoryStorageService.updateMetadata(metadata);
+			};
+			ctrl.restore = function(metadata){
+				metadata.deleted = false;
 				metadata.comment = ctrl.comment;				
 				StoryStorageService.updateMetadata(metadata);
 			};

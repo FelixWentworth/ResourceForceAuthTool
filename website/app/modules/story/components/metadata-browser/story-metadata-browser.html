@@ -1,10 +1,9 @@
 <ul>
 
-	<li ng-repeat="metadata in $ctrl.storiesMetadata | filter:{deleted:false}">
-
-        <md-card ng-if="!metadata.deleted">
+	<li ng-repeat="metadata in $ctrl.storiesMetadata | filter: (!$ctrl.viewDeleted || '') && {deleted:false}">
+        <md-card>
             <md-card-content>
-
+                <h3 ng-if="metadata.deleted" style="color: red">DELETED</h3>
         		<story-metadata metadata="metadata"></story-metadata>
 
                 <div>
@@ -56,14 +55,23 @@
                 <md-button class="md-fab md-mini"
                             aria-label="Delete"
                             ng-click="$ctrl.delete(metadata)"
-                            ng-if="(metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && !$ctrl.reviewing">
+                            ng-if="(metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && !$ctrl.reviewing && !metadata.deleted">
                     <md-icon>delete_forever</md-icon>
                 </md-button>
-
+                <md-button class="md-fab md-mini"
+                    aria-label="Restore"
+                    ng-click="$ctrl.restore(metadata)"
+                    ng-if="$ctrl.memberType == 'admin' && !$ctrl.reviewing && metadata.deleted">
+                    <md-icon>restore</md-icon>
+                </md-button>
+                
+                </div>
+                
                 <div>
                     <label ng-if="metadata.comment != '' && !metadata.submitted"><br/>Comment: {{metadata.comment}}</label>                                            
                 </div>
-
+                <h3 ng-if="metadata.deleted" style="color: red">DELETED</h3>
+                
                 <div ng-if="$ctrl.reviewing">
                     <br/>
                     <span>
