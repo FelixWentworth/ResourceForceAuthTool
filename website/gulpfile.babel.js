@@ -15,6 +15,7 @@ var uglify = require("gulp-uglify");
 var cleanCSS = require("gulp-clean-css");
 var hash = require("gulp-hash-filename");
 var rename = require("gulp-rename");
+var replace = require("gulp-replace");
 
 /*============================================
 PROJECT CONFIGURATION   
@@ -164,8 +165,8 @@ function allStylesOutput() {
 	);
 }
 
-function setTemplateUrl(startChar) {
-	Console.log("Setting template url to start with " + startChar);
+function setTemplateUrl() {
+	console.log("Setting template url to start with slash");
 	return gulp.src(config.app.scripts)
 		.pipe(replace('templateUrl: "', 'templateUrl: "/'))
 		.pipe(gulp.dest(activeConfig.output.app));
