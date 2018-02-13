@@ -42,7 +42,12 @@ angular
 			.state("approved-story", {
 				url: "/approved-story",
 				component: "approvedStory"
-			});			
+			})
+			.state("how-to-use", {
+				url: "/how-to-use",
+				component: "howToUse"
+			})
+			;					
 
 			$urlRouterProvider.otherwise("/home");
 	}]);

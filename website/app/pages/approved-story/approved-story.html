@@ -1,7 +1,6 @@
 <div Id="window">
 <custom-header title="$ctrl.title"></custom-header>
     <div Id="content">
-		<md-button class="md-raised" ui-sref="home">Home</md-button>
     </div>
     <div>
         <md-label>To see content currently in the game, select a language and locations below and select "Load"</md-label>
@@ -27,5 +26,5 @@
             <md-label ng-if="$ctrl.loader.storiesMetadata.length == 0">No content loaded</md-label>            
         </div>
     </div>
-<custom-footer is-logged-in="$ctrl.isLoggedIn" username="$ctrl.username"></custom-footer>
+<custom-footer is-logged-in="$ctrl.isLoggedIn" show-guide="true" show-home="true" username="$ctrl.username"></custom-footer>
 </div>

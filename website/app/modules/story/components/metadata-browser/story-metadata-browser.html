@@ -42,7 +42,7 @@
                 <md-button class="md-fab md-mini" 
                             aria-label="Duplicate"
                             ng-click="$ctrl.duplicate(metadata.id)"
-                            ng-if="(metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator')">
+                            ng-if="(metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && !metadata.submitted && !$ctrl.reviewing">
                     <md-icon>content_copy</md-icon>
                 </md-button>
 

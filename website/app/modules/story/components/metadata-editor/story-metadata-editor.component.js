@@ -1,7 +1,7 @@
 angular
 	.module("story")
 	.component("storyMetadataEditor", {		
-		templateUrl: "/modules/story/components/metadata-editor/story-metadata-editor.html",
+		templateUrl: "modules/story/components/metadata-editor/story-metadata-editor.html",
 		bindings: {
 			metadata: "="
 		},

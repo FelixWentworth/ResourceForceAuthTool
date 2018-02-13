@@ -164,6 +164,13 @@ function allStylesOutput() {
 	);
 }
 
+function setTemplateUrl(startChar) {
+	Console.log("Setting template url to start with " + startChar);
+	return gulp.src(config.app.scripts)
+		.pipe(replace('templateUrl: "', 'templateUrl: "/'))
+		.pipe(gulp.dest(activeConfig.output.app));
+}
+
 function srcScriptsOutput() {
 	return eventStream.merge(
 			appScripts(),
@@ -233,7 +240,9 @@ gulp.task(clean);
 
 gulp.task(validateJs);
 
-gulp.task("build-dev", gulp.series(clean, setDev, validateJs, generateIndex));
+gulp.task("build-dev", gulp.series(clean, setDev, validateJs, generateIndex, setTemplateUrl));
+
+gulp.task("build-local", gulp.series(clean, setDev, validateJs, generateIndex));
 
 gulp.task("build-prod", gulp.series(clean, setProd, generateIndex));
 
@@ -248,4 +257,4 @@ gulp.task("watch-dev", function() {
 	gulp.watch(config.app.templates, gulp.series(setDev, () => updateIndex({srcScripts: true})));	
 });
 
-gulp.task("default", gulp.series("build-dev", "watch-dev"));
+gulp.task("default", gulp.series("build-local", "watch-dev"));

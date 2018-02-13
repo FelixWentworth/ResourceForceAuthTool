@@ -1,7 +1,7 @@
 angular
 	.module("story")
 	.component("storyTreeEditor", {		
-		templateUrl: "/modules/story/components/tree-editor/story-tree-editor.html",
+		templateUrl: "modules/story/components/tree-editor/story-tree-editor.html",
 		bindings: {
 			story: "<"
 		},

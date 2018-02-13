@@ -1,0 +1,121 @@
+<div Id="window">
+	<custom-header title="$ctrl.title"></custom-header>
+	<div Id="content">
+        <!-- Introduction -->
+        <div>
+            <h3>The Authoring Tool</h3>
+            <label>Welcome to the authoring tool for Resource Force<br/>Use this tool to create new content for the game and manage existing content</label>    
+        </div>
+        <!-- Create New Content -->
+        <div>
+            <h3>Creating New Content</h3>
+            <label>
+                To start creating new content for Resource Force, click on the "Create New Scenario" button on the <a ui-sref="home()">home</a> once logged in. Logging in as a member will allow you to track all of your content you have created, logging in as a guest will allow you to create and submit content only
+                <br/>
+                When creating a scenario, you must select a location and a language, this is where the content will be available to players in Resource Force. If you want your content to be available in multiple locations or languages, you can make a copy of the scenario and change the settings as required
+                <br/>
+                There are 3 key sections to creating a new scenario: Summary, Start and Options.
+                <br/>
+                <br/>
+                <b>Summary</b>
+                <br/>
+                Provide information which defines the scenario and where it will be available
+                <br/><b>Title</b>: Name for the scenario
+                <br/><b>Location</b>: The location that the scenario will be available at
+                <br/><b>Language</b>: Defines the language the scenario is written in
+                <br/>
+                <br/>                
+                <b>Start</b>
+                <br/>
+                The beginning of the crime that has been committed, the initial report that a decision needs to be made for.
+                <br/><b>Incident Title</b>: Short name for current report eg. Vandalism
+                <br/><b>Description</b>: More details about the report eg. 2 Youths spotted vandalising a public bus
+                <br/><b>Severity</b>: How severe the incident is: 1 = low, 2 = medium, 3 = high 
+                <br/><b>Number of Officers Required</b>: How many officers would be required to solve the crime 
+                <br/><b>Turns Officers Needed For</b>: How many turns officers would need to solve the crime
+                <br/>
+                Once the information has been provided, there must be at least 2 options available to the player, choose from "Ignore", "Ask Citizen" and "Send Officer"
+                <br/>
+                <br/>
+                <b>Options</b>
+                <br/>
+                Each option gives feedback on the decision made and a development in the report, either solved or developed further 
+                <br/><b>Feedback Rating</b>: Rating for the decision, 1=worst, 2=bad, 3=neutral, 4=good, 5=best
+                <br/><b>Feedback Description</b>: A short description for the reason for the rating eg. sending officers is not necessary for this type of crime 
+                <br/>
+                The "Next Incident Information" should be filled in the same style as the 'Start' section, with the addition of the <b>End Impact</b> which is the rating that is awarded to the player when the case no longer develops and is completed: -5=worst, 0=neutral, 5=best
+                <br/>
+                <br/>
+                Each option can develop further or end, depending on the number of options available. If no options are available, this indicates the end of the current branch.
+                <br/>
+                Once all fields are filled in, the "Save Scenario" button at the bottom of the page will become available. If signed in as a guest, this will be a submit scenario button instead.
+            </label>    
+        </div>
+        <br/>
+        <!-- Managing Your Content -->
+        <div>
+            <h3>Manage Your Content</h3>
+            <label>
+                If you are logged in a as a member to the authoring tool, the home page will display all the content that you have added and its status:
+                <br/>
+                <br/><b>Ready For Submission</b>: Can be submitted for validation to be used in the game
+                <br/><b>Submitted</b>: Has been submitted and is waiting for response from a validator
+                <br/><b>Not Approved</b>: Content has not been approved by a validator 
+                <br/><b>Approved</b>: Content has been approved by a validator and is available in game 
+                <br/><b>Comment</b>: A comment left by a validator after reviewing content 
+                <br/>
+                <br/>
+                There are 6 options for each scenario you have created:
+                <br/>
+                <br/><b>Play</b>: Play through the scenario as it would be played in the game
+                <br/><b>View</b>: View all the content for the scenario
+                <br/><b>Edit</b>: Edit the content for the scenario
+                <br/><b>Copy</b>: Create a copy of the scenario
+                <br/><b>Submit</b>: Submit the scenario for validation
+                <br/><b>Delete</b>: Remove the scenario
+            </label>    
+        </div>
+        <br/>
+        <!-- Becoming a Validator -->
+        <div>
+            <h3>Becoming A Validator</h3>
+            <label>
+                Validators are required to approve content for the game and manage which scenarios are available for each location and language.
+                <br/>
+                To become a validator go to the <a ui-sref="manage-member()">Manage Account</a> page when logged in, select a location and language you wish to be a validator for, and provide a short reason why.
+                <br/>
+                After submitting, your application will be reviewed by other validators who have authority over the desired location and language. If approved, you will gain access to reviewing content that has been submitted and seeing all content that is currently in the game
+            </label>    
+        </div>
+        <br/>
+        <!-- Approving Content -->
+        <div>
+            <h3>Approving Content</h3>
+            <label>
+                <b>Only validators can approve content</b>
+                <br/>
+                <br/>
+                From the home screen, click the <a ui-sref="review-story()">Review Submitted Content</a> button, this will show all the content that has been submitted for validation and provide 3 options to help make a decision:
+                <br/><b>Play</b>: Play through the scenario as it would be played in the game
+                <br/><b>View</b>: View all the content for the scenario
+                <br/><b>Edit</b>: Edit the scenario, making changes here should be minor to keep content similar to how it was designed by the creator
+                Once you have decided whether the content is appropriate/made the changes required and should be accepted/rejected, you must provide some feedback to the creator, then select either approve or reject
+            </label>    
+        </div>
+        <br/>
+        <!-- Managing Content in Game -->
+        <div>
+            <h3>Manage Content In Resource Force</h3>
+            <label>
+                <b>Only validators can Manage Content</b>
+                <br/>
+                <br/>
+                From the home screen, click the <a ui-sref="approved-story()">Review Approved Content</a> button to start managing content. Select a location and language and select "Load", this will then show all the content currently approved.
+                <br/> 
+                Use the manage content page to make changes to content and decide which content should be available in the game. This page allows for the removal of content that has previousely been available in game.
+            </label>    
+        </div>
+        <br/>
+	</div>
+	<custom-footer is-logged-in="$ctrl.isLoggedIn" show-guide="false" show-home="true" username="$ctrl.username"></custom-footer>
+</div>

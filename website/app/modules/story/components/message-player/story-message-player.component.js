@@ -1,7 +1,7 @@
 angular
 	.module("story")
 	.component("storyMessagePlayer", {
-		templateUrl: "/modules/story/components/message-player/story-message-player.html",
+		templateUrl: "modules/story/components/message-player/story-message-player.html",
 		bindings: {
 			story: "<",
 			isComplete: "="

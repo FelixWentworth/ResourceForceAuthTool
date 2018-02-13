@@ -1,7 +1,7 @@
 angular
 	.module("story")
 	.component("storyCharacterSelectionEditor", {
-		templateUrl: "/modules/story/components/character-selection-editor/story-character-selection-editor.html",
+		templateUrl: "modules/story/components/character-selection-editor/story-character-selection-editor.html",
 		bindings: {
 			selectedCharacters: "=",
 			selectableCharacters: "<",

@@ -1,7 +1,7 @@
 angular
 	.module("story")
 	.component("storyTreeCreator", {		
-		templateUrl: "/modules/story/components/tree-creator/story-tree-creator.html",
+		templateUrl: "modules/story/components/tree-creator/story-tree-creator.html",
 		controller: ["StoryStorageService", "uuid", function (StoryStorageService, uuid) {
 			var ctrl = this;
 

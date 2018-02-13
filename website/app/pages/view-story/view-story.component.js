@@ -1,7 +1,7 @@
 angular
 	.module("resourceForceAuthoringTool")
 	.component("viewStory", {
-		templateUrl: "/pages/view-story/view-story.html",
+		templateUrl: "pages/view-story/view-story.html",
 		bindings: {
 			storyId: "<"
 		},
