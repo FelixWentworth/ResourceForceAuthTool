@@ -98,11 +98,12 @@ angular
 			getStoriesToValidate(id)
 				.then(function(scenarios){
 					var metadatas = [];
-
-					scenarios.forEach(s => {
-						metadatas.push(s);
-					});
-
+					if (scenarios.length > 0)
+					{
+						scenarios.forEach(s => {
+							metadatas.push(s);
+						});
+					}
 					storiesValidateMetadataPromise.resolve(metadatas);
 				});
 			return storiesValidateMetadataPromise.promise;
@@ -114,11 +115,12 @@ angular
 			getExistingStories(language, location)
 				.then(function(scenarios){
 					var metadatas = [];
-
-					scenarios.forEach(s => {
-						metadatas.push(s);
-					});
-
+					if (scenarios.length > 0)
+					{
+						scenarios.forEach(s => {
+							metadatas.push(s);
+						});
+					}
 					storiesMetadataPromise.resolve(metadatas);
 				});
 			return storiesMetadataPromise.promise;
