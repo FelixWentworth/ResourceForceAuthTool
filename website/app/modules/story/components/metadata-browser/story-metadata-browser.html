@@ -68,7 +68,7 @@
                     aria-label="Restore"
                     title="Restore"
                     ng-click="$ctrl.restore(metadata)"
-                    ng-if="$ctrl.memberType == 'admin' && !$ctrl.reviewing && metadata.deleted">
+                    ng-if="!$ctrl.reviewing && metadata.deleted">
                     <md-icon>restore</md-icon>
                 </md-button>
                 

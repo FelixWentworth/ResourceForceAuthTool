@@ -39,7 +39,7 @@
 				</div>
 
 				<ul ng-switch-when="false">
-					<md-button class="md-raised" ng-click="$ctrl.ToggleDeleted()" ng-if="$ctrl.memberType == 'admin'">{{$ctrl.viewDeleted}}</md-button>
+					<md-button class="md-raised" ng-click="$ctrl.ToggleDeleted()">{{$ctrl.viewDeleted}}</md-button>
 					<story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" view-deleted="$ctrl.showDeleted"/>
 				</ul>
 			</div>

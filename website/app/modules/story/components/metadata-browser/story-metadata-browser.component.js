@@ -47,6 +47,8 @@ angular
 			};
 			ctrl.restore = function(metadata){
 				metadata.deleted = false;
+				metadata.isValid = false;
+				metadata.submitted = false;
 				metadata.comment = ctrl.comment;				
 				StoryStorageService.updateMetadata(metadata);
 			};
