@@ -14,8 +14,8 @@ angular
 			
 			ctrl.severity = [1, 2, 3];
 
-			ctrl.officerOptions = [0,1,2,3,4];
-			ctrl.turnOptions = [0,1,2,3,4];
+			ctrl.officerOptions = [1,2,3,4];
+			ctrl.turnOptions = [1,2,3,4];
 			ctrl.impactOptions = [-5,-4,-3,-2,-1,0,1,2,3,4,5];
 			ctrl.feedbackOptions = [1,2,3,4,5];
 

@@ -1,7 +1,7 @@
 <div ng-form="$ctrl.form">
 	
 	<!-- scene info -->
-	<md-card ng-if="$ctrl.choice == null">
+	<md-card ng-if="$ctrl.choice == null"  ng-style="{'background-color' : ($ctrl.form.$valid) ? 'white' : '#ffeeee'}">
 		
 		<md-card-content>
 			<h3>Start</h3>
@@ -17,7 +17,7 @@
 										label="'Description'"
 										placeholder="'Description'"
 										ng-model="$ctrl.scene.description"
-										minlength="1"
+										minlength="10"
 										maxlength="200"
 										required="true"/>	
 				<validated-select label="'Severity'"
@@ -34,10 +34,10 @@
 									required="true"/>
 		
 			<!-- todo make this display the same as the rest of the error messages -->
-			<div ng-show="!$ctrl.form.$valid">One or more of the elements in this incident are incomplete.</div>	
+			<div ng-show="!$ctrl.form.$valid">One or more of the elements in this incident/branch are incomplete.</div>	
 
 			<div layout="column" style="margin:auto">
-				<h3>Add options if the case is developing (min 2)</h3>
+				<h3>If Developing Further, Add options (at least 2)</h3>
 				<div >
 					<md-button ng-click="$ctrl.addChoice('Ignore')"
 								class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>	
@@ -53,7 +53,7 @@
 
 	<!-- choice action -->
 		
-	<md-card ng-if="$ctrl.choice != null">	
+	<md-card ng-if="$ctrl.choice != null" ng-style="{'background-color' : ($ctrl.form.$valid) ? 'white' : '#ffeeee'}">	
 		
 		<div style="padding-left:15px">
 		<span >
@@ -62,7 +62,7 @@
 		</span>
 		</div>
 		<md-card-content>
-			<label ng-show="!$ctrl.form.$valid">One or more of the elements in this incident are incomplete.</label>
+			<label ng-show="!$ctrl.form.$valid">One or more of the elements in this incident/branch are incomplete.</label>
 			<collapsible-card-content >
 				<md-card-content layout="row">	
 					<div layout="column" style="width:47.5%">	
@@ -147,7 +147,7 @@
 				</md-card-content>
 				<md-card-content layout="row">
 					<div layout="column" style="margin:auto">
-						<h3>Add options if the case is developing (min 2)</h3>
+						<h3>If Developing Further, Add options (at least 2)</h3>
 						<div >
 							<md-button ng-click="$ctrl.addChoice('Ignore')"
 										class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>	
