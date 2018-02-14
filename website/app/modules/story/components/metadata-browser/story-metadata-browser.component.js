@@ -41,7 +41,7 @@ angular
 			ctrl.delete = function(metadata){
 				metadata.deleted = true;
 				metadata.isValid = false;
-				metadata.submitted = true;
+				metadata.submitted = false;
 				metadata.comment = ctrl.comment;				
 				StoryStorageService.updateMetadata(metadata);
 			};
