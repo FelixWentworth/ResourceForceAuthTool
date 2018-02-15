@@ -11,7 +11,6 @@ angular
 		},
 		controller: ["StoryStorageService", function (StoryStorageService) {
 			var ctrl = this;
-			ctrl.comment = "";
 
 			ctrl.submit = function(metadata){
 				metadata.submitted = true;
@@ -28,13 +27,12 @@ angular
 			};
 			
 			ctrl.validate = function(metadata, valid){
-				if (ctrl.comment == null || ctrl.comment.length == 0 || ctrl.comment.length > 200)
+				if (metadata.comment == null || metadata.comment.length == 0 || metadata.comment.length > 200)
 				{
 					return;
 				}
 				metadata.isValid = valid;
 				metadata.submitted = false;
-				metadata.comment = ctrl.comment;
 				StoryStorageService.updateMetadata(metadata);
 			};
 
@@ -42,14 +40,12 @@ angular
 				metadata.deleted = true;
 				metadata.isValid = false;
 				metadata.submitted = false;
-				metadata.comment = ctrl.comment;				
 				StoryStorageService.updateMetadata(metadata);
 			};
 			ctrl.restore = function(metadata){
 				metadata.deleted = false;
 				metadata.isValid = false;
 				metadata.submitted = false;
-				metadata.comment = ctrl.comment;				
 				StoryStorageService.updateMetadata(metadata);
 			};
 		}]
