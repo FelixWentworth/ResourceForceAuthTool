@@ -1,8 +1,8 @@
 ﻿using System;
-
 using Microsoft.EntityFrameworkCore;
 using PlayGen.ResourceForceAuthoringTool.Data.Model;
 using System.Linq;
+using MySql.Data.EntityFrameworkCore.Extensions;
 
 namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 {
@@ -27,7 +27,11 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 		{
 			modelBuilder.Entity<Scenario>()
 				.Property(p => p.Content)
-				.HasColumnType("mediumtext");
+				.HasColumnType("mediumtext")
+				.ForMySQLHasCharset("utf8_bin");
+			//modelBuilder.Entity<Scenario>()
+			//	.Property(p => p.Title)
+			//	.HasColumnType("varchar");
 		}
 
 		public override int SaveChanges()
