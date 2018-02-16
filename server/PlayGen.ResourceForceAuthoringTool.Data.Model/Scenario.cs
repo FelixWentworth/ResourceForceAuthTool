@@ -1,4 +1,5 @@
-﻿using System; 
+﻿using System;
+using MySql.Data.EntityFrameworkCore.DataAnnotations;
 
 namespace PlayGen.ResourceForceAuthoringTool.Data.Model
 {

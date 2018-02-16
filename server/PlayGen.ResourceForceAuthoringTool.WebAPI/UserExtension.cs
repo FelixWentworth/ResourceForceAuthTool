@@ -38,7 +38,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 return null;
             }
 
-            return new UserMetadataResponse
+			return new UserMetadataResponse
             {
                 Id = userModel.Id,
                 Username = userModel.Username,

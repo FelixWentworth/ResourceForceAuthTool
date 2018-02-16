@@ -34,7 +34,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 		{
 			using (var context = ContextFactory.Create())
 			{
-				var scenario = context.Scenarios.Find(context, id);
+				var scenario = context.Scenarios.Find(id);
 				return scenario;
 			}
 		}
@@ -48,7 +48,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         {
             using (var context = ContextFactory.Create())
             {
-                var user = context.Users.Find(context, id);
+                var user = context.Users.Find(id);
                 if (user == null)
                 {
                     return null;
@@ -66,7 +66,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 	    {
 	        using (var context = ContextFactory.Create())
 	        {
-                var user = context.Users.Find(context, id);
+                var user = context.Users.Find(id);
 	            if (user == null || user.MemberType == "member")
 	            {
                     // invalid user
@@ -143,7 +143,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 		{
 			using (var context = ContextFactory.Create())
 			{
-				var existing = context.Scenarios.Find(context, scenario.Id);
+				var existing = context.Scenarios.Find(scenario.Id);
 
 				if (existing != null)
 				{
@@ -161,7 +161,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 		{
 			using (var context = ContextFactory.Create())
 			{
-				var existing = context.Scenarios.Find(context, scenario.Id);
+				var existing = context.Scenarios.Find(scenario.Id);
 
                 // Updating valid content will set it ready for review immediately
 			    if ((existing.IsValid || existing.Submitted) && contentChanged)
@@ -193,7 +193,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         {
             using (var context = ContextFactory.Create())
             {
-                var scenario = context.Scenarios.Find(context, id);
+                var scenario = context.Scenarios.Find(id);
                 if (scenario != null)
                 {
                     context.Scenarios.Remove(scenario);
@@ -209,7 +209,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
             using (var context = ContextFactory.Create())
             {
                 var id = 1;
-                var serialNumber = context.SerialNumbers.Find(context, id);
+                var serialNumber = context.SerialNumbers.Find(id);
                 if (serialNumber != null)
                 {
                     var num = ++serialNumber.Number;
