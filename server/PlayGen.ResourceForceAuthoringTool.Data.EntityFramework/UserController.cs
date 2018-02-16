@@ -62,7 +62,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         {
             using (var context = ContextFactory.Create())
             {
-                var existing = context.Users.Find(context, user.Id);
+                var existing = context.Users.Find(user.Id);
 
                 if (existing != null)
                 {

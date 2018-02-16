@@ -90,7 +90,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         {
             using (var context = ContextFactory.Create())
             {
-                var existing = context.AccountRequests.Find(context, request.Id);
+                var existing = context.AccountRequests.Find(request.Id);
 
                 if (existing != null)
                 {
@@ -139,7 +139,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         {
             using (var context = ContextFactory.Create())
             {
-                var request = context.AccountRequests.Find(context, id);
+                var request = context.AccountRequests.Find(id);
                 if (request != null)
                 {
                     context.Remove(request);
