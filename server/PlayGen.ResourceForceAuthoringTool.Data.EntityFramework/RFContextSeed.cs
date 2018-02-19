@@ -11,10 +11,9 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 {
     public static class RFContextSeed
     {
-	    public static void Seed(this RFContext context)
+	    public static void Seed(this RFContext context, bool skipMigrationCheck = true)
 	    {
-			Console.WriteLine("Starting Seed");
-		    if (context.AllMigrationsApplied())
+		    if (skipMigrationCheck || context.AllMigrationsApplied())
 		    {
 			    context.SerialNumbers.Add(new SerialNumber {Number = 0});
 			    // TODO find better way to do this
@@ -28,20 +27,12 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 				    Languages = "[ \"Dutch\", \"English\", \"Greek\", \"Spanish\"  ]"
 			    });
 			    context.SaveChanges();
-			    Console.WriteLine("Seed Done");
 
 			}
-		    else
-		    {
-			    Console.WriteLine("DId not seed");
-		    }
-		    Console.WriteLine("Finished");
-
 		}
 
 		public static bool AllMigrationsApplied(this Microsoft.EntityFrameworkCore.DbContext context)
 		{
-			return true;
 		    var applied = context.GetService<IHistoryRepository>()
 			    .GetAppliedMigrations()
 			    .Select(m => m.MigrationId);
