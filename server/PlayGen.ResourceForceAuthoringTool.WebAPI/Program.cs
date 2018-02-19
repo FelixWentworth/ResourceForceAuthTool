@@ -14,18 +14,23 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 	    public static void Main(string[] args)
 	    {
 		    var host = BuildWebHost(args);
-
-		    using (var scope = host.Services.CreateScope())
-		    {
-			    var dbContext = scope.ServiceProvider.GetService<RFContext>();
-				dbContext.Database.Migrate();
-				dbContext.Seed();
-		    }
-
+		    SetupDatabase(host);
 			host.Run();
+			
+	    }
+	    public static void SetupDatabase(IWebHost host)
+	    {
+		    using (var scope = host.Services.CreateScope())
+		    using (var context = scope.ServiceProvider.GetService<RFContext>())
+		    {
+			    //context.Database.Migrate();
+			    //context.Seed();
+		    }
 	    }
 
-	    public static IWebHost BuildWebHost(string[] args) =>
+
+
+		public static IWebHost BuildWebHost(string[] args) =>
 		    WebHost.CreateDefaultBuilder(args)
 			    .UseStartup<Startup>()
 				.Build();

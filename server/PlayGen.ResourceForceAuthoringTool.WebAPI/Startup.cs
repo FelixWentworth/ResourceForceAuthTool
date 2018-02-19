@@ -43,16 +43,16 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 			// Add framework services.
 			services.AddMvc();
 
-			services.AddScoped((_) => new PasswordEncryption());
+			services.AddSingleton((_) => new PasswordEncryption());
 
-			services.AddScoped<Data.EntityFramework.ScenarioController>();
-			services.AddScoped<Core.ScenarioController>();
+			services.AddSingleton<Data.EntityFramework.ScenarioController>();
+			services.AddSingleton<Core.ScenarioController>();
 
-			services.AddScoped<Data.EntityFramework.UserController>();
-			services.AddScoped<Core.UserController>();
+			services.AddSingleton<Data.EntityFramework.UserController>();
+			services.AddSingleton<Core.UserController>();
 
-			services.AddScoped<Data.EntityFramework.AccountRequestController>();
-			services.AddScoped<Core.AccountRequestController>();
+			services.AddSingleton<Data.EntityFramework.AccountRequestController>();
+			services.AddSingleton<Core.AccountRequestController>();
 
 			services.AddCors(options => options.AddPolicy("AllowAll", p => p
 				// TODO: this should be specified in config at each deployment
@@ -63,7 +63,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 				.WithExposedHeaders("Authorization ")));
 
 			var connectionString = Configuration.GetConnectionString("DefaultConnection");
-	        services.AddScoped(serviceProvider => new RFContextFactory(connectionString));
+	        services.AddSingleton(serviceProvider => new RFContextFactory(connectionString));
 	        services.AddDbContext<RFContext>((serviceProvider, options) =>
 		        serviceProvider.GetService<RFContextFactory>().ApplyOptions(options));
 

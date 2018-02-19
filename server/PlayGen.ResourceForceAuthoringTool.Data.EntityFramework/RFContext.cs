@@ -49,10 +49,10 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 		{
 			UpdateModificationHistory();
 
-			return 0;
-			//return _isSaveDisabled
-			//	? 0
-			//	: base.SaveChanges();
+			//return 0;
+			return _isSaveDisabled
+				? 0
+				: base.SaveChanges();
 		}
 
 		private void UpdateModificationHistory()
@@ -71,21 +71,5 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 				}
 			}
 		}
-
-        public void Seed()
-        {
-            SerialNumbers.Add(new SerialNumber { Number = 0 });
-            // TODO find better way to do this
-            Users.Add(new User
-            {
-                Id = 0,
-                Username = "admin",
-                Password = "073535bb18679f54cc7b64ce3dc1d3d047659731b90c0d44b37a58a5f7c3f015",
-                MemberType = "admin",
-                Locations = "[ \"Belfast\", \"Groningen\", \"Nicosia\", \"Preston\", \"Valencia\"  ]",
-                Languages = "[ \"Dutch\", \"English\", \"Greek\", \"Spanish\"  ]"
-            });
-            SaveChanges();
-        }
 	}
 }

@@ -20,7 +20,19 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
 		public RFContext Create()
 		{
-			return new RFContext(_options);
+			//return new RFContext(_options);			
+
+			var context = new RFContext(_options);
+			var newlyCreated = context.Database.EnsureCreated();
+
+			if (newlyCreated)
+			{
+				Console.WriteLine("Seeding new DB");
+				context.Seed();
+			}
+
+			return context;
+
 			//var optionsBuilder = new DbContextOptionsBuilder<RFContext>();
 			//optionsBuilder.UseMySQL(_connectionString);
 
@@ -33,12 +45,12 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 			//}
 
 			//return context;
+
 		}
 
 	    public DbContextOptionsBuilder ApplyOptions(DbContextOptionsBuilder options)
 		{
 		    options.UseMySQL(_connectionString);
-		    options.EnableSensitiveDataLogging();
 		    return options;
 	    }
 
