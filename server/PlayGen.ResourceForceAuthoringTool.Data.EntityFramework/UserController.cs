@@ -6,14 +6,17 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 {
     public class UserController : DbController
     {
+	    private readonly RFContextFactory _rfContextFactory;
+
         public UserController(RFContextFactory contextFactory)
 			: base(contextFactory)
-		{
+        {
+	        _rfContextFactory = contextFactory;
         }
 
         public User Create(User user)
         {
-            using (var context = ContextFactory.Create())
+            using (var context = _rfContextFactory.Create())
             {
                 var taken = context.Users.Any(u => u.Username == user.Username);
                 if (taken)
@@ -36,7 +39,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
         public User Get(string username)
         {
-            using (var context = ContextFactory.Create())
+            using (var context = _rfContextFactory.Create())
             {
                 var user = context.Users.FirstOrDefault(u => u.Username == username);
                 if (user != null)
@@ -48,7 +51,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         }
         public User Get(int id)
         {
-            using (var context = ContextFactory.Create())
+            using (var context = _rfContextFactory.Create())
             {
                 var user = context.Users.FirstOrDefault(u => u.Id == id);
                 if (user != null)
@@ -60,7 +63,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         }
         public User Update(User user)
         {
-            using (var context = ContextFactory.Create())
+            using (var context = _rfContextFactory.Create())
             {
                 var existing = context.Users.Find(user.Id);
 

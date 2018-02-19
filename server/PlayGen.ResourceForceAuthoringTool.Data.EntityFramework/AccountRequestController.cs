@@ -8,14 +8,17 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 {
     public class AccountRequestController : DbController
     {
-        public AccountRequestController(RFContextFactory contextFactory)
+	    private readonly RFContextFactory _rfContextFactory;
+
+		public AccountRequestController(RFContextFactory contextFactory)
             : base(contextFactory)
         {
+	        _rfContextFactory = contextFactory;
         }
 
         public AccountRequest Create(AccountRequest request)
         {
-            using (var context = ContextFactory.Create())
+            using (var context = _rfContextFactory.Create())
             {
                 var existing =
                     context.AccountRequests.FirstOrDefault(
@@ -38,7 +41,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
         public List<AccountRequest> Get()
         {
-            using (var context = ContextFactory.Create())
+            using (var context = _rfContextFactory.Create())
             {
                 return context.AccountRequests.ToList();
             }
@@ -46,7 +49,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
         public AccountRequest Get(int id)
         {
-            using (var context = ContextFactory.Create())
+            using (var context = _rfContextFactory.Create())
             {
                 return context.AccountRequests.FirstOrDefault(r => r.Id == id);
             }
@@ -54,7 +57,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
         public AccountRequest Get(int playerId, string location, string language)
         {
-            using (var context = ContextFactory.Create())
+            using (var context = _rfContextFactory.Create())
             {
                 return context.AccountRequests.FirstOrDefault(r => r.PlayerId == playerId && r.Locations == location && r.Languages == language);
             }
@@ -62,7 +65,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
         public List<AccountRequest> Get(string location, string language)
         {
-            using (var context = ContextFactory.Create())
+            using (var context = _rfContextFactory.Create())
             {
                 var requests = context.AccountRequests.Where(r => r.Languages == language && r.Locations == location).ToList();
                 if (requests.Count > 0)
@@ -75,7 +78,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
         public List<AccountRequest> GetForPlayer(int playerId)
         {
-            using (var context = ContextFactory.Create())
+            using (var context = _rfContextFactory.Create())
             {
                 var requests = context.AccountRequests.Where(u => u.PlayerId == playerId).ToList();
                 if (requests.Count > 0)
@@ -88,7 +91,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
         public AccountRequest Update(AccountRequest request)
         {
-            using (var context = ContextFactory.Create())
+            using (var context = _rfContextFactory.Create())
             {
                 var existing = context.AccountRequests.Find(request.Id);
 
@@ -107,7 +110,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
         public void Update(string location, string language, AccountRequest request)
         {
-            using (var context = ContextFactory.Create())
+            using (var context = _rfContextFactory.Create())
             {
                 var user = context.Users.FirstOrDefault(u => u.Id == request.PlayerId);
                 if (user != null)
@@ -137,7 +140,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
         public void Delete(int id)
         {
-            using (var context = ContextFactory.Create())
+            using (var context = _rfContextFactory.Create())
             {
                 var request = context.AccountRequests.Find(id);
                 if (request != null)

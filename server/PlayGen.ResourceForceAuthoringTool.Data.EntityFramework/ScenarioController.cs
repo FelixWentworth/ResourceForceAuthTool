@@ -11,14 +11,17 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 {
 	public class ScenarioController : DbController
 	{
+		private readonly RFContextFactory _rfContextFactory;
+
 		public ScenarioController(RFContextFactory contextFactory)
 			: base(contextFactory)
 		{
+			_rfContextFactory = contextFactory;
 		}
 
 		public List<Scenario> Get()
 		{
-			using (var context = ContextFactory.Create())
+			using (var context = _rfContextFactory.Create())
 			{
 				var scenario = context.Scenarios.ToList();
 				return scenario;
@@ -32,7 +35,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         /// <returns></returns>
 		public Scenario Get(string id)
 		{
-			using (var context = ContextFactory.Create())
+			using (var context = _rfContextFactory.Create())
 			{
 				var scenario = context.Scenarios.Find(id);
 				return scenario;
@@ -46,7 +49,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         /// <returns></returns>
         public List<Scenario> GetByCreator(int id)
         {
-            using (var context = ContextFactory.Create())
+            using (var context = _rfContextFactory.Create())
             {
                 var user = context.Users.Find(id);
                 if (user == null)
@@ -64,7 +67,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         /// <returns></returns>
 	    public List<Scenario> GetForUserValidation(int id)
 	    {
-	        using (var context = ContextFactory.Create())
+	        using (var context = _rfContextFactory.Create())
 	        {
                 var user = context.Users.Find(id);
 	            if (user == null || user.MemberType == "member")
@@ -103,7 +106,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         /// <returns></returns>
         public List<Scenario> GetForValidation (Scenario filter)
         {
-            using (var context = ContextFactory.Create())
+            using (var context = _rfContextFactory.Create())
             {
                 var scenarios = context.Scenarios.Where(s => (s.Language == filter.Language || filter.Language == "Any")  && (s.Location == filter.Location || filter.Location == "Any")).ToList();
                 return scenarios;
@@ -117,7 +120,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         /// <returns></returns>
         public List<Scenario> Get(long number)
         {
-            using (var context = ContextFactory.Create())
+            using (var context = _rfContextFactory.Create())
             {
                 var scenarios = context.Scenarios.Where(s => s.SerialNumber > number && s.IsValid).ToList();
                 return scenarios;
@@ -132,7 +135,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         /// <returns></returns>
 	    public List<Scenario> GetApproved(string language, string location)
 	    {
-	        using (var context = ContextFactory.Create())
+	        using (var context = _rfContextFactory.Create())
 	        {
 	            var scenarios = context.Scenarios.Where(s => s.Language == language && s.Location == location && s.IsValid).ToList();
 	            return scenarios;
@@ -141,7 +144,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
 		public Scenario Create(Scenario scenario)
 		{
-			using (var context = ContextFactory.Create())
+			using (var context = _rfContextFactory.Create())
 			{
 				var existing = context.Scenarios.Find(scenario.Id);
 
@@ -159,7 +162,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
 		public Scenario Update(Scenario scenario, bool contentChanged)
 		{
-			using (var context = ContextFactory.Create())
+			using (var context = _rfContextFactory.Create())
 			{
 				var existing = context.Scenarios.Find(scenario.Id);
 
@@ -191,7 +194,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
         public void Delete(string id)
         {
-            using (var context = ContextFactory.Create())
+            using (var context = _rfContextFactory.Create())
             {
                 var scenario = context.Scenarios.Find(id);
                 if (scenario != null)
@@ -206,7 +209,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
         public long GetNewSerialNumber()
         {
-            using (var context = ContextFactory.Create())
+            using (var context = _rfContextFactory.Create())
             {
                 var id = 1;
                 var serialNumber = context.SerialNumbers.Find(id);

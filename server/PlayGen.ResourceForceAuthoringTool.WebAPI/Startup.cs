@@ -68,7 +68,5 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 		        serviceProvider.GetService<RFContextFactory>().ApplyOptions(options));
 
 		}
-
-
 	}
 }
