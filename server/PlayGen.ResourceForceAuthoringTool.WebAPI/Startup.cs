@@ -23,49 +23,52 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 	    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 	    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
 	    {
-		    loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+		    app.UseMvc();
+			app.UseDefaultFiles();
+		    app.UseStaticFiles();
+		    app.UseCors("AllowAll");
+
+			loggerFactory.AddConsole(Configuration.GetSection("Logging"));
 		    loggerFactory.AddDebug();
 
 		    if (env.IsDevelopment())
 		    {
 			    app.UseDeveloperExceptionPage();
 		    }
-
-		    app.UseCors("AllowAll");
-			app.UseDefaultFiles();
-		    app.UseStaticFiles();
-		    app.UseMvc();
 	    }
 
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
-            services.AddMvc();
+			// Add framework services.
+			services.AddMvc();
 
-            services.AddScoped((_) => new PasswordEncryption());
+			services.AddScoped((_) => new PasswordEncryption());
 
-			var connectionString = Configuration.GetConnectionString("DefaultConnection");
-			services.AddSingleton(new RFContextFactory(connectionString));
+			services.AddScoped<Data.EntityFramework.ScenarioController>();
+			services.AddScoped<Core.ScenarioController>();
 
-            services.AddScoped<Data.EntityFramework.ScenarioController>();
-            services.AddScoped<Core.ScenarioController>();
+			services.AddScoped<Data.EntityFramework.UserController>();
+			services.AddScoped<Core.UserController>();
 
-            services.AddScoped<Data.EntityFramework.UserController>();
-            services.AddScoped<Core.UserController>();
+			services.AddScoped<Data.EntityFramework.AccountRequestController>();
+			services.AddScoped<Core.AccountRequestController>();
 
-            services.AddScoped<Data.EntityFramework.AccountRequestController>();
-            services.AddScoped<Core.AccountRequestController>();
-
-            services.AddCors(options => options.AddPolicy("AllowAll", p => p
+			services.AddCors(options => options.AddPolicy("AllowAll", p => p
 				// TODO: this should be specified in config at each deployment
 				.AllowAnyOrigin()
 				.AllowAnyMethod()
 				.AllowAnyHeader()
 				.AllowCredentials()
 				.WithExposedHeaders("Authorization ")));
+
+			var connectionString = Configuration.GetConnectionString("DefaultConnection");
+	        services.AddScoped(serviceProvider => new RFContextFactory(connectionString));
+	        services.AddDbContext<RFContext>((serviceProvider, options) =>
+		        serviceProvider.GetService<RFContextFactory>().ApplyOptions(options));
+
 		}
 
-       
-    }
+
+	}
 }

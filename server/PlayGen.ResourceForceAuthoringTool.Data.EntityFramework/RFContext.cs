@@ -10,7 +10,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
     {
 		private readonly bool _isSaveDisabled;
 
-		internal RFContext(DbContextOptions<RFContext> options, bool disableSave = false) : base(options)
+		public RFContext(DbContextOptions options, bool disableSave = false) : base(options)
 		{
 			_isSaveDisabled = disableSave;
 		}
@@ -49,9 +49,10 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 		{
 			UpdateModificationHistory();
 
-			return _isSaveDisabled
-				? 0
-				: base.SaveChanges();
+			return 0;
+			//return _isSaveDisabled
+			//	? 0
+			//	: base.SaveChanges();
 		}
 
 		private void UpdateModificationHistory()
