@@ -18,7 +18,7 @@ WORKDIR /app/server/
 RUN dotnet restore
 
 WORKDIR PlayGen.ResourceForceAuthoringTool.WebAPI/
-#RUN chmod +x delay-startup.sh
+RUN chmod +x delay-startup.sh
 RUN dotnet publish -f netcoreapp2.0 -c Release -o out
 
 ENTRYPOINT dotnet out/PlayGen.ResourceForceAuthoringTool.WebAPI.dll
