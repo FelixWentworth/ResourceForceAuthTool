@@ -25,7 +25,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 			var context = new RFContext(_options);
 			var newlyCreated = context.Database.EnsureCreated();
 
-			if (newlyCreated || !context.Users.Any())
+			if (newlyCreated)
 			{
 				context.Seed();
 			}

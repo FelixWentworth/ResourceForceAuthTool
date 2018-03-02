@@ -11,9 +11,9 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 {
     public static class RFContextSeed
     {
-	    public static void Seed(this RFContext context, bool skipMigrationCheck = true)
+	    public static void Seed(this RFContext context)
 	    {
-		    if (skipMigrationCheck || context.AllMigrationsApplied())
+		    if (context.AllMigrationsApplied())
 		    {
 			    context.SerialNumbers.Add(new SerialNumber {Number = 0});
 			    // TODO find better way to do this
