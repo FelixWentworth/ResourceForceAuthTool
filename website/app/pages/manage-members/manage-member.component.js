@@ -2,7 +2,7 @@ angular
 .module("resourceForceAuthoringTool")
 .component("manageMember", {
     templateUrl: "pages/manage-members/manage-member.html",
-    controller: ["StoryStorageService", "$http", "Auth", "$q", "$state", function(StoryStorageService, $http, Auth, $q, $state) {
+    controller: ["StoryStorageService", "$http", "Auth", "$q", "$state", "config", function(StoryStorageService, $http, Auth, $q, $state, config) {
         var ctrl = this;
 
         ctrl.title = "Manage Account";
@@ -14,14 +14,16 @@ angular
 
         ctrl.userLanguages = ctrl.isLoggedIn ? Auth.getLanguages() : "";
         ctrl.userLocations = ctrl.isLoggedIn ? Auth.getLocations() : "";
-        
 
         ctrl.isAdmin = ctrl.memberType == 'admin';
         ctrl.isValidator = ctrl.memberType == 'validator';
         ctrl.isMember = ctrl.memberType == 'member';
 
-        ctrl.locations = ["Belfast", "Groningen", "Preston", "Nicosia", "Valencia"];
-        ctrl.languages = ["Dutch", "English", "Greek", "Spanish"];
+        ctrl.locations = config.content.locations;
+        ctrl.languages = config.content.languages;
+
+        ctrl.reasonMin = config.constraints.reason.min;
+        ctrl.reasonMax = config.constraints.reason.max;
         
         ctrl.response = "";
 

@@ -87,9 +87,9 @@
                         type="'field'" 
                         placeholder="'Comment'"
                         ng-model="metadata.comment"
-                        minlength="1"
+                        minlength="$ctrl.commentMin"
                         required="true"
-                        maxlength="200"
+                        maxlength="$ctrl.commentMax"
                         ng-if="($ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.submitted"/>
                         
                         <md-button class="md-fab md-mini"

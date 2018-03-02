@@ -2,8 +2,8 @@
 			label="'Scenario Title'"
 			ng-model="$ctrl.metadata.title"
 			placeholder="$ctrl.metadataHelp.title"
-			minlength="1"
-			maxlength="50"
+			minlength="$ctrl.titleMin"
+			maxlength="$ctrl.titleMax"
 			required/>
 <validated-select label="'Location'"
 			ng-model="$ctrl.metadata.location"

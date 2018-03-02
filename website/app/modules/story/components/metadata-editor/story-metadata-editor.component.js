@@ -5,7 +5,7 @@ angular
 		bindings: {
 			metadata: "="
 		},
-		controller: function() {
+		controller: [ "config", function(config) {
 			var ctrl = this;
 
 			ctrl.metadataHelp = {
@@ -14,8 +14,10 @@ angular
 				"language": "",				
 			};
 
-			ctrl.location = ["Belfast", "Groningen", "Preston", "Nicosia", "Valencia"];
-			ctrl.language = ["English", "Spanish", "Dutch", "Greek"];
+			ctrl.location = config.content.locations;
+			ctrl.language = config.content.languages;
 			
-		}
+			ctrl.titleMin = config.constraints.title.min;
+			ctrl.titleMax = config.constraints.title.max;
+		}]
 	});

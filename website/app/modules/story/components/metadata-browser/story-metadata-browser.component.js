@@ -9,8 +9,10 @@ angular
 			reviewing: "<",
 			viewDeleted: "<"
 		},
-		controller: ["StoryStorageService", function (StoryStorageService) {
+		controller: ["StoryStorageService", "config", function (StoryStorageService, config) {
 			var ctrl = this;
+			ctrl.commentMin = config.constraints.comment.min;
+			ctrl.commentMax = config.constraints.comment.max;
 
 			ctrl.submit = function(metadata){
 				metadata.submitted = true;

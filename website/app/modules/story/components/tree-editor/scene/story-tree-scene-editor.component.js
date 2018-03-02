@@ -6,18 +6,27 @@ angular
 			scene: "=",
 			onClicked: "="
 		},
-		controller: ["StoryEditorService", function(StoryEditorService) {
+		controller: ["StoryEditorService", "config", function(StoryEditorService, config) {
 			var ctrl = this;
 
 			// public variables
 			ctrl.isThisSceneLevelComplete = false;
 			
-			ctrl.severity = [1, 2, 3];
+			ctrl.severity = config.content.severity;
 
-			ctrl.officerOptions = [1,2,3,4];
-			ctrl.turnOptions = [1,2,3,4];
-			ctrl.impactOptions = [-5,-4,-3,-2,-1,0,1,2,3,4,5];
-			ctrl.feedbackOptions = [1,2,3,4,5];
+			ctrl.officerOptions = config.content.officers;
+			ctrl.turnOptions = config.content.turns;
+			ctrl.impactOptions = config.content.impact;
+			ctrl.feedbackOptions = config.content.feedback;
+
+			ctrl.descriptionMin = config.constraints.description.min;
+			ctrl.descriptionMax = config.constraints.description.max;
+
+			ctrl.titleMin = config.constraints.title.min;
+			ctrl.titleMax = config.constraints.title.max;
+
+			ctrl.feedbackMin = config.constraints.feedback.min;
+			ctrl.feedbackMax = config.constraints.feedback.max;
 
 			// public methods
 			ctrl.removeElement = function(element) {

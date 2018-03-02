@@ -5,9 +5,11 @@ angular
 		bindings: {
 			choiceAction: "="
 		},
-		controller: ["StoryEditorService", function(StoryEditorService){
+		controller: ["StoryEditorService", "config", function(StoryEditorService, config){
 			var ctrl = this;
-			ctrl.feedbackOptions = [1,2,3,4,5];
+			ctrl.feedbackOptions = config.content.feedback;
+			ctrl.feedbackMin = config.constraints.feedback.min;
+			ctrl.feedbackMax = config.constraints.feedback.max
 		}]
 
 

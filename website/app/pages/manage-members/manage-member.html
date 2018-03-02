@@ -30,8 +30,8 @@
                         label="'Why do you want to be a validator?'"
                         placeholder="'Reason'"
                         ng-model="$ctrl.request.metadata.reason"
-                        minlength="1"
-                        maxlength="200"
+                        minlength="$ctrl.reasonMin"
+                        maxlength="$ctrl.reasonMax"
                         required="true"/>	
                 </div>
                 <div>

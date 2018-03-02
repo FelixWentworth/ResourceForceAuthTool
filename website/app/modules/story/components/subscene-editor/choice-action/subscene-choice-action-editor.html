@@ -9,7 +9,7 @@
 		label="'Feedback'"
 		placeholder="'Feedback Description'"
 		ng-model="$ctrl.choiceAction.feedback"
-		minlength="1"
-		maxlength="200"
+		minlength="$ctrl.feedbackMin"
+		maxlength="$ctrl.feedbackMax"
 		required="true"/>	
 </div>

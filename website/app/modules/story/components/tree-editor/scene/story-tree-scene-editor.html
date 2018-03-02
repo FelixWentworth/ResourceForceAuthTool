@@ -9,16 +9,16 @@
 										label="$ctrl.label"
 										placeholder="'Title'"
 										ng-model="$ctrl.scene.title"
-										minlength="1"
-										maxlength="100"
+										minlength="$ctrl.titleMin"
+										maxlength="$ctrl.titleMax"
 										required="true"/>	
 
 				<validated-text-input type="'area'" 
 										label="'Description'"
 										placeholder="'Description'"
 										ng-model="$ctrl.scene.description"
-										minlength="10"
-										maxlength="200"
+										minlength="$ctrl.descriptionMin"
+										maxlength="$ctrl.descriptionMax"
 										required="true"/>	
 				<validated-select label="'Severity'"
 									ng-model="$ctrl.scene.severity"
@@ -80,8 +80,8 @@
 								label="'Feedback'"
 								placeholder="'Feedback Description'"
 								ng-model="$ctrl.choice.choice.feedback"
-								minlength="1"
-								maxlength="200"
+								minlength="$ctrl.feedbackMin"
+								maxlength="$ctrl.feedbackMax"
 								required="true"/>	
 						</div>
 					</div>
@@ -99,8 +99,8 @@
 											type="'area'"
 											placeholder="'Title'"
 											ng-model="$ctrl.scene.title"
-											minlength="1"
-											maxlength="70"
+											minlength="$ctrl.titleMin"
+											maxlength="$ctrl.titleMax"
 											required="true"/>
 						</div>
 						<div>
@@ -109,8 +109,8 @@
 											type="'area'"
 											placeholder="'Descrtiption'"
 											ng-model="$ctrl.scene.description"
-											minlength="10"
-											maxlength="200"
+											minlength="$ctrl.descriptionMin"
+											maxlength="$ctrl.descriptionMax"
 											required="true"/>
 						</div>
 						<div>
