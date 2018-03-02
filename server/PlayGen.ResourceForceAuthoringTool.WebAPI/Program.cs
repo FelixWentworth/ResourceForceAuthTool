@@ -23,7 +23,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 		    using (var scope = host.Services.CreateScope())
 		    using (var context = scope.ServiceProvider.GetService<RFContext>())
 		    {
-			    context.Database.Migrate();
+			    //context.Database.Migrate();
 			    //context.Seed();
 		    }
 	    }

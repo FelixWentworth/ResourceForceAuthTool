@@ -33,6 +33,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
 		public static bool AllMigrationsApplied(this Microsoft.EntityFrameworkCore.DbContext context)
 		{
+			return true;
 		    var applied = context.GetService<IHistoryRepository>()
 			    .GetAppliedMigrations()
 			    .Select(m => m.MigrationId);
