@@ -10,12 +10,12 @@
 angular.module('resourceForceAuthoringTool').factory('AuthService', function ($http, Session) {
   var authService = {};
  
-  authService.login = function (id, name, type, languages, locations) {
-    Session.create( id, name, type, languages, locations);
+  authService.login = function (id, name, type, allowedLocations) {
+    Session.create( id, name, type, allowedLocations);
   };
  
   authService.loginWithCookies = function (cookies){
-    Session.create(cookies["id"], cookies["name"], cookies["type"], cookies["languages"], cookies["locations"])
+    Session.create(cookies["id"], cookies["name"], cookies["type"], cookies["allowedLocations"])
   };    
 
   authService.isAuthenticated = function () {
@@ -34,12 +34,8 @@ angular.module('resourceForceAuthoringTool').factory('AuthService', function ($h
     return Session.userType;
   };
 
-  authService.getLocations = function () {
-    return Session.userLocations;
-  };
-
-  authService.getLanguages = function () {
-    return Session.userLanguages;
+  authService.getAllowedLocations = function () {
+    return Session.userAllowedLocations;
   };
 
   authService.logout = function() {

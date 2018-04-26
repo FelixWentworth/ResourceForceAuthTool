@@ -22,12 +22,12 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
             {
                 var existing =
                     context.AccountRequests.FirstOrDefault(
-                        r => r.PlayerId == request.PlayerId && r.Languages == request.Languages &&
-                             r.Locations == request.Locations);
+                        r => r.PlayerId == request.PlayerId && r.Language == request.Language &&
+                             r.Location == request.Location);
 
                 if (existing != null)
                 {
-                    request = Update(request);
+                    request = Update(existing);
                     return request;
                 }
                 context.AccountRequests.Add(request);
@@ -59,7 +59,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         {
             using (var context = _rfContextFactory.Create())
             {
-                return context.AccountRequests.FirstOrDefault(r => r.PlayerId == playerId && r.Locations == location && r.Languages == language);
+                return context.AccountRequests.FirstOrDefault(r => r.PlayerId == playerId && r.Location == location && r.Language == language);
             }
         }
 
@@ -67,7 +67,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         {
             using (var context = _rfContextFactory.Create())
             {
-                var requests = context.AccountRequests.Where(r => r.Languages == language && r.Locations == location).ToList();
+                var requests = context.AccountRequests.Where(r => r.Language == language && r.Location == location).ToList();
                 if (requests.Count > 0)
                 {
                     return requests;
@@ -99,8 +99,8 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                 {
                     existing.PlayerId = request.PlayerId;
                     existing.MemberType = request.MemberType;
-                    existing.Languages = request.Languages;
-                    existing.Locations = request.Locations;
+                    existing.Language = request.Language;
+                    existing.Location = request.Location;
                     SaveChanges(context);
                     return existing;
                 }
@@ -115,21 +115,28 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                 var user = context.Users.FirstOrDefault(u => u.Id == request.PlayerId);
                 if (user != null)
                 {
-                    var languages = JsonConvert.DeserializeObject<List<string>>(user.Languages);
-                    var locations = JsonConvert.DeserializeObject<List<string>>(user.Locations);
+					var locations = new Dictionary<string, List<string>>();
+					if (!string.IsNullOrEmpty(user.AllowedLocations))
+					{
+						locations = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(user.AllowedLocations);
+					}
+					if (!locations.ContainsKey(location))
+					{
+						locations.Add(location, new List<string> { language });
+					}
+					else
+					{
+						if (!locations[location].Contains(language))
+						{
+							locations[location].Add(language);
+						}
+					}
 
-                    if (!languages.Contains(language))
-                    {
-                        languages.Add(language);
-                    }
-                    if (!locations.Contains(location))
-                    {
-                        locations.Add(location);
-                    }
-
-                    user.Languages = JsonConvert.SerializeObject(languages);
-                    user.Locations = JsonConvert.SerializeObject(locations);
-                    user.MemberType = request.MemberType;
+					user.AllowedLocations = JsonConvert.SerializeObject(locations);
+					if (user.MemberType != "admin")
+					{
+						user.MemberType = request.MemberType;
+					}
 
                     SaveChanges(context);
                     return;

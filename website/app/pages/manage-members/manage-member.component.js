@@ -12,8 +12,7 @@ angular
         ctrl.memberType = ctrl.isLoggedIn ? Auth.getType() : "";
         ctrl.username = ctrl.isLoggedIn ? Auth.getName() : "";
 
-        ctrl.userLanguages = ctrl.isLoggedIn ? Auth.getLanguages() : "";
-        ctrl.userLocations = ctrl.isLoggedIn ? Auth.getLocations() : "";
+        ctrl.userAllowedLocations = ctrl.isLoggedIn ? Auth.getAllowedLocations() : "";
 
         ctrl.isAdmin = ctrl.memberType == 'admin';
         ctrl.isValidator = ctrl.memberType == 'validator';
@@ -67,7 +66,7 @@ angular
             else if (ctrl.isValidator)
             {
                 // Load all requests made for language and location current validator has access to   
-                StoryStorageService.getValidatorRequests(ctrl.userLocations, ctrl.userLanguages)
+                StoryStorageService.getValidatorRequests(ctrl.userAllowedLocations)
                 .then(function(response){
                 {
                     ctrl.requests = response;

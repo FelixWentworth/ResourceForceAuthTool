@@ -12,8 +12,6 @@ namespace PlayGen.ResourceForceAuthoringTool.Contracts
 
         public string MemberType { get; set; }
 
-        public string Locations { get; set; }
-
-        public string Languages { get; set; }
+        public string AllowedLocations { get; set; }
     }
 }

@@ -10,6 +10,10 @@ namespace PlayGen.ResourceForceAuthoringTool.Core.Utilities
 
         public static string Encrypt(string password)
         {
+			if (password.Length < 5)
+			{
+				throw new Exception("Password is too short");
+			}
             using (var sha256 = SHA256.Create())
             {
                 var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));

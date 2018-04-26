@@ -12,13 +12,12 @@ angular
     .service('CookieService', [ "$cookies", function ($cookies) {
     var cookies = {};
         
-    cookies.set = function(id, name, type, languages, locations)
+    cookies.set = function(id, name, type, allowedLocations)
     {
          $cookies.put("id", id);
          $cookies.put("name", name);
-         $cookies.put("type", type);    
-         $cookies.put("languages", languages);    
-         $cookies.put("locations", locations);    
+         $cookies.put("type", type);      
+         $cookies.put("allowedLocations", allowedLocations);    
     };
 
     cookies.exists = function()
@@ -36,8 +35,7 @@ angular
          $cookies.remove("id");
          $cookies.remove("name");
          $cookies.remove("type");
-         $cookies.remove("languages");
-         $cookies.remove("locations");
+         $cookies.remove("allowedLocations");
     };
 
     return cookies;

@@ -10,9 +10,10 @@ using System;
 namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework.Migrations
 {
     [DbContext(typeof(RFContext))]
-    partial class RFContextModelSnapshot : ModelSnapshot
+    [Migration("20180424155210_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -18,7 +18,11 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         {
             using (var context = _rfContextFactory.Create())
             {
-                var taken = context.Users.Any(u => u.Username == user.Username);
+				if (user.Username.Length < 5)
+				{
+					throw new Exception("Username is too short");
+				}
+				var taken = context.Users.Any(u => u.Username == user.Username);
                 if (taken)
                 {
                     throw new Exception("Username already taken");
@@ -70,8 +74,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                 if (existing != null)
                 {
                     existing.MemberType = user.MemberType;
-                    existing.Languages = user.Languages;
-                    existing.Locations = user.Locations;
+                    existing.AllowedLocations = user.AllowedLocations;
                     SaveChanges(context);
                     return existing;
                 }
