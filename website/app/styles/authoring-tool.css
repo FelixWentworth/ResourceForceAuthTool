@@ -48,7 +48,19 @@ md-card{
     border-color:rgb(63, 81, 181);
 }
 md-input-container{
-    margin: 12px;
+    margin:0px;
+    -webkit-margin-before: 0.75em;
+    padding-right: 1em;
+}
+md-card-content{
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+}
+h3{
+    -webkit-margin-after: 0.25em;
+    -webkit-margin-before: 0.25em;
 }
 .flex-row-container{
     display: flex;

@@ -36,10 +36,8 @@
 
 	<md-card ng-if="$ctrl.choice != null" ng-style="{'background-color' : ($ctrl.form.$valid) ? 'white' : '#ffeeee'}">
 		<md-card-content>
-			<div style="padding-left:15px">
-				<span>
-					<h3></h3>
-				</span>
+			<div>
+
 				<collapsible-card-content title="$ctrl.choice.choice.choiceType">
 					<div>
 						<h3>Feedback from choice</h3>
@@ -80,13 +78,12 @@
 					</div>
 					<div class="flex-row-container" style="justify-content:space-between">
 						<div>
-							<div>
-								<h3>Impact Used at end of path</h3>
-							</div>
-							<div class="flex-row-container">
+							<div layout="column" style="margin:auto">
+								<h3>If Developing Further, Add at least 2 options</h3>
 								<div>
-									<validated-select label="'End Impact'" ng-model="$ctrl.scene.satisfactionImpact" options="$ctrl.impactOptions" required="true"
-									/>
+									<md-button ng-click="$ctrl.addChoice('Ignore')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>
+									<md-button ng-click="$ctrl.addChoice('Citizen')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Citizen'])">Ask Citizen</md-button>
+									<md-button ng-click="$ctrl.addChoice('Officer')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officer</md-button>
 								</div>
 							</div>
 						</div>
@@ -94,12 +91,13 @@
 							<h3 style="color:red">OR</h3>
 						</div>
 						<div>
-							<div layout="column" style="margin:auto">
-								<h3>If Developing Further, Add at least 2 options</h3>
+							<div>
+								<h3>Impact Used at end of path</h3>
+							</div>
+							<div class="flex-row-container">
 								<div>
-									<md-button ng-click="$ctrl.addChoice('Ignore')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>
-									<md-button ng-click="$ctrl.addChoice('Citizen')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Citizen'])">Ask Citizen</md-button>
-									<md-button ng-click="$ctrl.addChoice('Officer')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officer</md-button>
+									<validated-select label="'End Impact'" ng-model="$ctrl.scene.satisfactionImpact" options="$ctrl.impactOptions" required="true"
+									/>
 								</div>
 							</div>
 						</div>
