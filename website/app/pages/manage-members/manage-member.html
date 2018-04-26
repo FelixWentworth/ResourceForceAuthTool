@@ -15,13 +15,13 @@
                 <h3>To become a validator, select a language and location below and select submit. Your application will then be reviewed</h3>
                 <div>
                     <validated-select label="'Location'"
-                        ng-model="$ctrl.request.metadata.locations"
+                        ng-model="$ctrl.request.metadata.location"
                         options="$ctrl.locations"
                         required="true"/>
                 </div>
                 <div>
                     <validated-select label="'Language'"
-                        ng-model="$ctrl.request.metadata.languages"
+                        ng-model="$ctrl.request.metadata.language"
                         options="$ctrl.languages"
                         required="true"/>
                 </div>
@@ -46,10 +46,10 @@
                 <div ng-repeat="request in $ctrl.requests">
                     <md-card style="padding:5px">
                         <div>
-                                <label>Location: {{request.metadata.locations}}</label>
+                                <label>Location: {{request.metadata.location}}</label>
                         </div>
                         <div>
-                                <label>Language: {{request.metadata.languages}}</label>
+                                <label>Language: {{request.metadata.language}}</label>
                         </div>
                         <div>
                                 <label>Reason: {{request.metadata.reason}}</label>

@@ -19,16 +19,14 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 Username = (string)jObject["username"];
                 Password = (string)jObject["password"];
                 MemberType = (string)jObject["memberType"];
-                Languages = (string)jObject["languages"];
-                Locations = (string)jObject["locations"];
+				AllowedLocations = (string)jObject["allowedLocations"];
             }
 
             public int Id { get; set; }
             public string Username { get; set; }
             public string Password { get; set; }
             public string MemberType { get; set; }
-            public string Languages { get; set; }
-            public string Locations { get; set; }
+            public string AllowedLocations { get; set; }
         }
 
         public static UserMetadataResponse ToMetadata(this User userModel)
@@ -43,8 +41,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 Id = userModel.Id,
                 Username = userModel.Username,
                 MemberType = userModel.MemberType,
-                Languages = userModel.Languages,
-                Locations = userModel.Locations,
+				AllowedLocations = userModel.AllowedLocations,
             };
         }
 
@@ -61,8 +58,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 Username = metadata.Username,
                 Password = metadata.Password,
                 MemberType = "member",
-                Locations = "[]",
-                Languages = "[]"
+				AllowedLocations = ""
             };
         }
 

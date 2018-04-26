@@ -48,11 +48,10 @@ angular
 							ctrl.username = response.data.username;
 							ctrl.creatorId = response.data.id;
 							ctrl.memberType = response.data.memberType;
-							ctrl.languages = response.data.languages;
-							ctrl.locations = response.data.locations;
+							ctrl.allowedLocations = response.data.allowedLocations;
 
 							ctrl.loader.load(ctrl.creatorId);
-							Auth.set(ctrl.creatorId, ctrl.username, ctrl.memberType, ctrl.languages, ctrl.locations);
+							Auth.set(ctrl.creatorId, ctrl.username, ctrl.memberType, ctrl.allowedLocations);
 						}	
 					})
 					.catch(function(error)
@@ -64,18 +63,29 @@ angular
 
 			ctrl.Create = function(user) {
 				// TODO send login request
-				user.memberType = 'member'
-				$http.post('../api' + '/user', user)
-					.then(function(response){
-						if (response.status === 200)
+				if (user == null || user.Metadata == null || user.Metadata.username == null || user.Metadata.username.length < 5)
+				{
+					ctrl.error = "Username must be at least five characters";	
+				}
+				else if (user.Metadata.password == null || user.Metadata.password.length < 5)
+				{
+					ctrl.error = "Password must be at least five characters";	
+				}
+				else
+				{
+					user.memberType = 'member';
+					$http.post('../api' + '/user', user)
+						.then(function(response){
+							if (response.status === 200)
+							{
+								ctrl.Login(user);
+							}		
+						})
+						.catch(function(error)
 						{
-							ctrl.Login(user);
-						}		
-					})
-					.catch(function(error)
-					{
-						ctrl.error = error.statusText + ". " + error.Message;
-					});
+							ctrl.error = error.statusText + ". " + error.Message;
+						});
+				}
 			};
 
 			ctrl.GuestLogin = function() {

@@ -82,18 +82,12 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                         return context.Scenarios.Where(s => s.Submitted).ToList();
                     case "validator":
                         // return all scenarios the user has access to by language and location
-                        var locations = JsonConvert.DeserializeObject<List<string>>(user.Locations);
-                        var languages = JsonConvert.DeserializeObject<List<string>>(user.Languages);
+                        var allowedLocations = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(user.AllowedLocations);
 
-                        var scenarios = context.Scenarios.Where(s => s.Submitted && locations.Contains(s.Location) && languages.Contains(s.Language)).ToList();
-
-                        return scenarios;
-                    default:
+						var scenarios = context.Scenarios.Where(s => s.Submitted && allowedLocations.ContainsKey(s.Location) && allowedLocations.First(a => a.Key == s.Location).Value.Any(v => v == s.Language)).ToList();
+						return scenarios;
+					default:
                         return null;
-	            }
-
-	            {
-	                    
 	            }
 	        }
 	    }

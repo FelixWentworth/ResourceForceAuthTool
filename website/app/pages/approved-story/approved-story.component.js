@@ -14,8 +14,7 @@ angular
         ctrl.memberType = ctrl.isLoggedIn ? Auth.getType() : "";
         ctrl.username = ctrl.isLoggedIn ? Auth.getName() : "";
 
-        ctrl.userLanguages = ctrl.isLoggedIn ? Auth.getLanguages() : "";
-        ctrl.userLocations = ctrl.isLoggedIn ? Auth.getLocations() : "";
+        ctrl.userAllowedLocations = ctrl.isLoggedIn ? Auth.getAllowedLocations() : "";
         
         ctrl.isAdmin = ctrl.memberType == 'admin';
         ctrl.isValidator = ctrl.memberType == 'validator';
@@ -24,8 +23,7 @@ angular
         var requestsPromise = null;
         ctrl.status = "";
 
-        ctrl.locations = ["Loading"];
-        ctrl.languages = ["Loading"];
+        ctrl.allowedLocations = {Loading : ["Loading"]};
 
         ctrl.$onInit = function() {
             if (!ctrl.isLoggedIn)
@@ -34,21 +32,13 @@ angular
             }
             this.refresh();
 
-            if (ctrl.userLanguages != null && ctrl.userLanguages != "")
+            if (ctrl.userAllowedLocations != null && ctrl.userAllowedLocations != "")
             {
-                ctrl.languages = JSON.parse(ctrl.userLanguages);   
+                ctrl.allowedLocations = JSON.parse(ctrl.userAllowedLocations);   
             }
             else
             {
-                ctrl.languages = ["None Available"];   
-            }
-            if (ctrl.userLocations != null && ctrl.userLocations != "")
-            {
-                ctrl.locations = JSON.parse(ctrl.userLocations);   
-            }
-            else
-            {
-                ctrl.locations = ["None Available"];                   
+                ctrl.allowedLocations = {None : ["None"]};   
             }
         }
 
