@@ -1,0 +1,10 @@
+.git
+
+# Visual Studio
+.vs
+.vscode
+bin
+obj
+
+# NPM
+node_modules
