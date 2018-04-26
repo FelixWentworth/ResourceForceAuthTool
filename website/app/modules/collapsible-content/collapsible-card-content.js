@@ -2,6 +2,9 @@ angular
 .module("collapsibleContent")
 .component("collapsibleCardContent", {
     templateUrl: "modules/collapsible-content/collapsible-card-content.html",
+    bindings: {
+        title: "="
+    },
     transclude: true,
     controller: function () {
         var ctrl = this;

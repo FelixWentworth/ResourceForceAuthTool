@@ -50,6 +50,10 @@ md-card{
 md-input-container{
     margin: 12px;
 }
+.flex-row-container{
+    display: flex;
+    flex-wrap: wrap;
+}
 footer
 {
     text-align: right;

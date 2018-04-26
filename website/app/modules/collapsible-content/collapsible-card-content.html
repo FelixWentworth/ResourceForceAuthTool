@@ -1,8 +1,13 @@
-<md-button 	class="md-raised" ng-click="$ctrl.select()">
-    <label ng-show="$ctrl.isSelected">Hide Details</label>
-    <label ng-show="!$ctrl.isSelected">Show Details</label>
-</md-button>
-<div ng-show="$ctrl.isSelected" ng-transclude>
-    
+<div class="flex-row-container">
+    <h3>{{$ctrl.title}}</h3>
+    <div class="flex-row-container" style="justify-content:space-between">
+        <md-button class="md-raised" ng-click="$ctrl.select()">
+            <label ng-show="$ctrl.isSelected">Hide Details</label>
+            <label ng-show="!$ctrl.isSelected">Show Details</label>
+        </md-button>
+        <md-button class="md-raised" style="margin-left:auto" ng-click="$ctrl.onClicked($ctrl.choice)">Remove Choice</md-button>
+    </div>
 </div>
-  
+<div ng-show="$ctrl.isSelected" ng-transclude>
+
+</div>

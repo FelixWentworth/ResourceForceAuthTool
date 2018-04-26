@@ -1,162 +1,111 @@
 <div ng-form="$ctrl.form">
-	
+
 	<!-- scene info -->
-	<md-card ng-if="$ctrl.choice == null"  ng-style="{'background-color' : ($ctrl.form.$valid) ? 'white' : '#ffeeee'}">
-		
+	<md-card ng-if="$ctrl.choice == null" ng-style="{'background-color' : ($ctrl.form.$valid) ? 'white' : '#ffeeee'}">
+
 		<md-card-content>
 			<h3>Start</h3>
-				<validated-text-input type="'field'" 
-										label="$ctrl.label"
-										placeholder="'Title'"
-										ng-model="$ctrl.scene.title"
-										minlength="$ctrl.titleMin"
-										maxlength="$ctrl.titleMax"
-										required="true"/>	
+			<div class="flex-row-container">
+				<validated-text-input type="'field'" label="$ctrl.label" placeholder="'Title'" ng-model="$ctrl.scene.title" minlength="$ctrl.titleMin"
+				 maxlength="$ctrl.titleMax" required="true" />
 
-				<validated-text-input type="'area'" 
-										label="'Description'"
-										placeholder="'Description'"
-										ng-model="$ctrl.scene.description"
-										minlength="$ctrl.descriptionMin"
-										maxlength="$ctrl.descriptionMax"
-										required="true"/>	
-				<validated-select label="'Severity'"
-									ng-model="$ctrl.scene.severity"
-									options="$ctrl.severity"
-									required="true"/>
-				<validated-select label="'Number Of Officers Required'"
-									ng-model="$ctrl.scene.officerReq"
-									options="$ctrl.officerOptions"
-									required="true"/>
-				<validated-select label="'Turns Officers Needed For'"
-									ng-model="$ctrl.scene.turnReq"
-									options="$ctrl.turnOptions"
-									required="true"/>
-		
+				<validated-text-input type="'area'" label="'Description'" placeholder="'Description'" ng-model="$ctrl.scene.description"
+				 minlength="$ctrl.descriptionMin" maxlength="$ctrl.descriptionMax" required="true" />
+				<validated-select label="'Severity'" ng-model="$ctrl.scene.severity" options="$ctrl.severity" required="true" />
+				<validated-select label="'Officers Required'" ng-model="$ctrl.scene.officerReq" options="$ctrl.officerOptions" required="true"
+				/>
+				<validated-select label="'Turns Needed'" ng-model="$ctrl.scene.turnReq" options="$ctrl.turnOptions" required="true" />
+			</div>
+
 			<!-- todo make this display the same as the rest of the error messages -->
-			<div ng-show="!$ctrl.form.$valid">One or more of the elements in this incident/branch are incomplete.</div>	
+			<div ng-show="!$ctrl.form.$valid">One or more of the elements in this incident/branch are incomplete.</div>
 
 			<div layout="column" style="margin:auto">
 				<h3>Add at least 2 options</h3>
-				<div >
-					<md-button ng-click="$ctrl.addChoice('Ignore')"
-								class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>	
-					<md-button ng-click="$ctrl.addChoice('Citizen')"
-								class="md-raised" ng-show="$ctrl.doesntContainChoice(['Citizen'])">Ask Citizen</md-button>	
-					<md-button ng-click="$ctrl.addChoice('Officer')"
-								class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officer</md-button>	
+				<div>
+					<md-button ng-click="$ctrl.addChoice('Ignore')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>
+					<md-button ng-click="$ctrl.addChoice('Citizen')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Citizen'])">Ask Citizen</md-button>
+					<md-button ng-click="$ctrl.addChoice('Officer')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officer</md-button>
 				</div>
 			</div>
 		</md-card-content>
-	
-	</md-card>	
+
+	</md-card>
 
 	<!-- choice action -->
-		
-	<md-card ng-if="$ctrl.choice != null" ng-style="{'background-color' : ($ctrl.form.$valid) ? 'white' : '#ffeeee'}">	
+
+	<md-card ng-if="$ctrl.choice != null" ng-style="{'background-color' : ($ctrl.form.$valid) ? 'white' : '#ffeeee'}">
 		<md-card-content>
 			<div style="padding-left:15px">
-				<span >
-					<b>{{$ctrl.choice.choice.choiceType}}</b>
+				<span>
+					<h3></h3>
 				</span>
-				<collapsible-card-content>
-					<md-card-content layout="row">	
-						<div layout="column" style="width:47.5%">	
+				<collapsible-card-content title="$ctrl.choice.choice.choiceType">
+					<div>
+						<h3>Feedback from choice</h3>
+					</div>
+					<div class="flex-row-container">
+
+						<div>
+							<validated-select label="'Rating'" ng-model="$ctrl.choice.choice.feedbackRating" options="$ctrl.feedbackOptions" required="true"
+							/>
+						</div>
+						<div>
+							<validated-text-input type="'area'" label="'Feedback'" placeholder="'Feedback Description'" ng-model="$ctrl.choice.choice.feedback"
+							 minlength="$ctrl.feedbackMin" maxlength="$ctrl.feedbackMax" required="true" />
+						</div>
+					</div>
+					<div>
+						<h3>Next Incident Information</h3>
+					</div>
+					<div class="flex-row-container">
+						<div>
+							<validated-text-input label="'Title'" type="'area'" placeholder="'Title'" ng-model="$ctrl.scene.title" minlength="$ctrl.titleMin"
+							 maxlength="$ctrl.titleMax" required="true" />
+						</div>
+						<div>
+							<validated-text-input label="'Descrtiption'" type="'area'" placeholder="'Descrtiption'" ng-model="$ctrl.scene.description"
+							 minlength="$ctrl.descriptionMin" maxlength="$ctrl.descriptionMax" required="true" />
+						</div>
+						<div>
+							<validated-select label="'Severity'" ng-model="$ctrl.scene.severity" options="$ctrl.severity" required="true" />
+						</div>
+						<div>
+							<validated-select label="'Officers Required'" ng-model="$ctrl.scene.officerReq" options="$ctrl.officerOptions" required="true"
+							/>
+						</div>
+						<div>
+							<validated-select label="'Turns Needed'" ng-model="$ctrl.scene.turnReq" options="$ctrl.turnOptions" required="true" />
+						</div>
+					</div>
+					<div class="flex-row-container" style="justify-content:space-between">
+						<div>
 							<div>
-									<h3>Feedback from choice</h3>
+								<h3>Impact Used at end of path</h3>
 							</div>
-							<div>	
-								<validated-select label="'Rating'"
-									ng-model="$ctrl.choice.choice.feedbackRating"
-									options="$ctrl.feedbackOptions"
-									required="true"/>
-							</div>
-							<div>
-								<validated-text-input type="'area'" 
-									label="'Feedback'"
-									placeholder="'Feedback Description'"
-									ng-model="$ctrl.choice.choice.feedback"
-									minlength="$ctrl.feedbackMin"
-									maxlength="$ctrl.feedbackMax"
-									required="true"/>	
+							<div class="flex-row-container">
+								<div>
+									<validated-select label="'End Impact'" ng-model="$ctrl.scene.satisfactionImpact" options="$ctrl.impactOptions" required="true"
+									/>
+								</div>
 							</div>
 						</div>
-						<div layour="column" style="width:5%">
-
+						<div>
+							<h3 style="color:red">OR</h3>
 						</div>
-						<div layout="column" style="width:47.5%">
-							<div>
-									<h3>Next Incident Information</h3>
-							</div>
-
-							<div>
-							<validated-text-input 
-												label="'Title'"
-												type="'area'"
-												placeholder="'Title'"
-												ng-model="$ctrl.scene.title"
-												minlength="$ctrl.titleMin"
-												maxlength="$ctrl.titleMax"
-												required="true"/>
-							</div>
-							<div>
-							<validated-text-input 
-												label="'Descrtiption'"
-												type="'area'"
-												placeholder="'Descrtiption'"
-												ng-model="$ctrl.scene.description"
-												minlength="$ctrl.descriptionMin"
-												maxlength="$ctrl.descriptionMax"
-												required="true"/>
-							</div>
-							<div>
-							<validated-select label="'Severity'"
-												ng-model="$ctrl.scene.severity"
-												options="$ctrl.severity"
-												required="true"/>
-							</div>
-							<div>
-							<validated-select label="'Number Of Officers Required'"
-												ng-model="$ctrl.scene.officerReq"
-												options="$ctrl.officerOptions"
-												required="true"/>
-							</div>
-							<div>
-							<validated-select label="'Turns Officers Needed For'"
-												ng-model="$ctrl.scene.turnReq"
-												options="$ctrl.turnOptions"
-												required="true"/>
-							</div>
-
-							<div>
-								<br/>
-								<h5>Impact Used at end of path</h5>
-							</div>
-
-							<div>
-							<validated-select label="'End Impact'"
-												ng-model="$ctrl.scene.satisfactionImpact"
-												options="$ctrl.impactOptions"
-												required="true"/>
+						<div>
+							<div layout="column" style="margin:auto">
+								<h3>If Developing Further, Add at least 2 options</h3>
+								<div>
+									<md-button ng-click="$ctrl.addChoice('Ignore')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>
+									<md-button ng-click="$ctrl.addChoice('Citizen')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Citizen'])">Ask Citizen</md-button>
+									<md-button ng-click="$ctrl.addChoice('Officer')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officer</md-button>
+								</div>
 							</div>
 						</div>
-					</md-card-content>
-					<md-card-content layout="row">
-						<div layout="column" style="margin:auto">
-							<h3>If Developing Further, Add at least 2 options</h3>
-							<div >
-								<md-button ng-click="$ctrl.addChoice('Ignore')"
-											class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>	
-								<md-button ng-click="$ctrl.addChoice('Citizen')"
-											class="md-raised" ng-show="$ctrl.doesntContainChoice(['Citizen'])">Ask Citizen</md-button>	
-								<md-button ng-click="$ctrl.addChoice('Officer')"
-											class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officer</md-button>	
-							</div>
-						</div>
-					</md-card-content>	
-					<md-button class="md-raised" ng-click="$ctrl.onClicked($ctrl.choice)">Remove Choice</md-button>	
+					</div>
 				</collapsible-card-content>
-				<label ng-show="!$ctrl.form.$valid" style="color:red">One or more of the elements in this incident/branch are incomplete.</label>				
+				<label ng-show="!$ctrl.form.$valid" style="color:red">One or more of the elements in this incident/branch are incomplete.</label>
 			</div>
 		</md-card-content>
 	</md-card>
@@ -164,12 +113,10 @@
 	<ul>
 		<!-- scene/choice elements -->
 		<li ng-repeat="element in $ctrl.scene.choices  | filter:{_type:'Choice'}">
-			
-			<story-tree-scene-editor ng-if="element._type == 'Choice'" 
-										scene="element"
-										on-clicked="$ctrl.removeElement">
+
+			<story-tree-scene-editor ng-if="element._type == 'Choice'" scene="element" on-clicked="$ctrl.removeElement">
 			</story-tree-scene-editor>
-		</li>		
+		</li>
 	</ul>
 
 </div>
