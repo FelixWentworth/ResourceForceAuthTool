@@ -1,25 +1,25 @@
 version: '2'
 
 services: 
-    resourceforceauthoringtool-mariadb: 
+    resourceforceauthoringtool-v0-mariadb: 
         network_mode: "bridge"
         environment:
             MYSQL_ROOT_PASSWORD: "t0pSECr3t"
         image: mariadb
-        container_name: "resourceforceauthoringtool-mariadb"
+        container_name: "resourceforceauthoringtool-v0-mariadb"
         expose:
             - 3306
         ports:
             - "6604:3306"
-    resourceforceauthoringtool:
+    resourceforceauthoringtool-v0:
         network_mode: "bridge"
         build:
             context: .
-        image: "resourceforceauthoringtool"
-        container_name: "resourceforceauthoringtool"
+        image: "resourceforceauthoringtool-v0"
+        container_name: "resourceforceauthoringtool-v0"
         links:
-            - resourceforceauthoringtool-mariadb
+            - resourceforceauthoringtool-v0-mariadb
         expose:
             - 5000
         environment:
-            ASPNETCORE_URLS: "http://0.0.0.0:5000"
+            ASPNETCORE_URLS: "http://0.0.0.0:5000/v0"

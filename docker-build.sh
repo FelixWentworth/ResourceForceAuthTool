@@ -1,3 +1,3 @@
 #/bin/bash
-export CONTAINER="resourceforceauthoringtool"
+export CONTAINER="resourceforceauthoringtool-v0"
 docker build ./server -t $CONTAINER .
