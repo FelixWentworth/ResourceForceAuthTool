@@ -10,7 +10,7 @@ services:
         expose:
             - 3306
         ports:
-            - "6604:3306"
+            - "45300:3306"
     resourceforceauthoringtool-v0:
         network_mode: "bridge"
         build:
@@ -22,4 +22,4 @@ services:
         expose:
             - 5000
         environment:
-            ASPNETCORE_URLS: "http://0.0.0.0:5000/v0"
+            ASPNETCORE_URLS: "http://0.0.0.0:5000"
