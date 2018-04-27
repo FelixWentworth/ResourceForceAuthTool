@@ -39,7 +39,12 @@ angular
 
 			ctrl.Login = function(user) {
 				// TODO send login request
-
+				if (user == null || user.Metadata == null || user.Metadata.username == null || user.Metadata.password == null)
+				{
+					ctrl.error = "Please provide a username and password.";	
+				}
+				else
+				{
 				$http.post('../api' + '/user/login', user)
 					.then(function(response){
 						if (response.status === 200)
@@ -56,9 +61,9 @@ angular
 					})
 					.catch(function(error)
 					{
-						ctrl.error = error.statusText + ". " + error.Message;
+						ctrl.error = error.statusText + ". " + error.data;
 					});
-
+				}
 			};
 
 			ctrl.Create = function(user) {
@@ -83,7 +88,7 @@ angular
 						})
 						.catch(function(error)
 						{
-							ctrl.error = error.statusText + ". " + error.Message;
+							ctrl.error = error.statusText + ". " + error.data;
 						});
 				}
 			};

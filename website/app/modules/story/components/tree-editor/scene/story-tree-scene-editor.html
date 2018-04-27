@@ -17,11 +17,11 @@
 				<validated-select label="'Turns Needed'" ng-model="$ctrl.scene.turnReq" options="$ctrl.turnOptions" required="true" />
 			</div>
 			<div layout="column" class="column-layout">
-				<h3>Add at least 2 options</h3>
+				<h3 ng-if="$ctrl.doesntContainChoice(['Ignore']) || $ctrl.doesntContainChoice(['Citizen']) || $ctrl.doesntContainChoice(['Officer'])">Add at least 2 player choices</h3>
 				<div>
 					<md-button ng-click="$ctrl.addChoice('Ignore')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>
 					<md-button ng-click="$ctrl.addChoice('Citizen')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Citizen'])">Ask Citizen</md-button>
-					<md-button ng-click="$ctrl.addChoice('Officer')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officer</md-button>
+					<md-button ng-click="$ctrl.addChoice('Officer')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officer{{$ctrl.scene.officerReq != '1' ? 's' : ''}}</md-button>
 				</div>
 			</div>
 			<!-- todo make this display the same as the rest of the error messages -->
@@ -76,11 +76,11 @@
 					<div class="flex-row-container flex-between-spacing">
 						<div class="right-space" ng-if="$ctrl.scene.satisfactionImpact == 'None' || $ctrl.scene.satisfactionImpact == null">
 							<div layout="column" class="column-layout">
-								<h3>If Developing Further, Add at least 2 options</h3>
+								<h3 ng-if="$ctrl.doesntContainChoice(['Ignore']) || $ctrl.doesntContainChoice(['Citizen']) || $ctrl.doesntContainChoice(['Officer'])">If developing further, add at least 2 player choices</h3>
 								<div>
 									<md-button ng-click="$ctrl.addChoice('Ignore')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>
 									<md-button ng-click="$ctrl.addChoice('Citizen')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Citizen'])">Ask Citizen</md-button>
-									<md-button ng-click="$ctrl.addChoice('Officer')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officer</md-button>
+									<md-button ng-click="$ctrl.addChoice('Officer')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officer{{$ctrl.scene.officerReq != '1' ? 's' : ''}}</md-button>
 								</div>
 							</div>
 						</div>
@@ -89,7 +89,7 @@
 						</div>
 						<div class="right-space" ng-if="$ctrl.doesntContainChoice(['Ignore']) && $ctrl.doesntContainChoice(['Citizen']) && $ctrl.doesntContainChoice(['Officer'])">
 							<div>
-								<h3>Impact Used at end of path</h3>
+								<h3>Impact used at end of path</h3>
 							</div>
 							<div class="flex-row-container">
 								<div>
