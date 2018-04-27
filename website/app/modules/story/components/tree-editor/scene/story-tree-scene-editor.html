@@ -16,7 +16,7 @@
 				/>
 				<validated-select label="'Turns Needed'" ng-model="$ctrl.scene.turnReq" options="$ctrl.turnOptions" required="true" />
 			</div>
-			<div layout="column" style="margin:auto">
+			<div layout="column" class="column-layout">
 				<h3>Add at least 2 options</h3>
 				<div>
 					<md-button ng-click="$ctrl.addChoice('Ignore')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>
@@ -25,7 +25,7 @@
 				</div>
 			</div>
 			<!-- todo make this display the same as the rest of the error messages -->
-			<label ng-show="!$ctrl.form.$valid" style="color:red">One or more of the elements in this incident/branch are incomplete.</label>
+			<label ng-show="!$ctrl.form.$valid" class="error-text">One or more of the elements in this incident/branch are incomplete.</label>
 		</md-card-content>
 
 	</md-card>
@@ -73,9 +73,9 @@
 							<validated-select label="'Turns Needed'" ng-model="$ctrl.scene.turnReq" options="$ctrl.turnOptions" required="true" />
 						</div>
 					</div>
-					<div class="flex-row-container" style="justify-content:space-between">
-						<div style="margin-right:15px" ng-if="$ctrl.scene.satisfactionImpact == 'None' || $ctrl.scene.satisfactionImpact == null">
-							<div layout="column" style="margin:auto">
+					<div class="flex-row-container flex-between-spacing">
+						<div class="right-space" ng-if="$ctrl.scene.satisfactionImpact == 'None' || $ctrl.scene.satisfactionImpact == null">
+							<div layout="column" class="column-layout">
 								<h3>If Developing Further, Add at least 2 options</h3>
 								<div>
 									<md-button ng-click="$ctrl.addChoice('Ignore')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>
@@ -84,10 +84,10 @@
 								</div>
 							</div>
 						</div>
-						<div style="margin-right:15px" ng-if="$ctrl.doesntContainChoice(['Ignore']) && $ctrl.doesntContainChoice(['Citizen']) && $ctrl.doesntContainChoice(['Officer']) && ($ctrl.scene.satisfactionImpact == 'None' || $ctrl.scene.satisfactionImpact == null)">
-							<h3 style="color:red">OR</h3>
+						<div class="right-space" ng-if="$ctrl.doesntContainChoice(['Ignore']) && $ctrl.doesntContainChoice(['Citizen']) && $ctrl.doesntContainChoice(['Officer']) && ($ctrl.scene.satisfactionImpact == 'None' || $ctrl.scene.satisfactionImpact == null)">
+							<h3 class="error-text">OR</h3>
 						</div>
-						<div style="margin-right:15px" ng-if="$ctrl.doesntContainChoice(['Ignore']) && $ctrl.doesntContainChoice(['Citizen']) && $ctrl.doesntContainChoice(['Officer'])">
+						<div class="right-space" ng-if="$ctrl.doesntContainChoice(['Ignore']) && $ctrl.doesntContainChoice(['Citizen']) && $ctrl.doesntContainChoice(['Officer'])">
 							<div>
 								<h3>Impact Used at end of path</h3>
 							</div>
@@ -99,7 +99,7 @@
 						</div>
 					</div>
 				</collapsible-card-content>
-				<label ng-show="!$ctrl.form.$valid" style="color:red">One or more of the elements in this incident/branch are incomplete.</label>
+				<label ng-show="!$ctrl.form.$valid" class="error-text">One or more of the elements in this incident/branch are incomplete.</label>
 			</div>
 		</md-card-content>
 	</md-card>

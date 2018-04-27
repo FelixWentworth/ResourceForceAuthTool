@@ -73,10 +73,26 @@ h3{
     flex-wrap: wrap;
 }
 .flex-card-header{
+    align-items: baseline;
+}
+.flex-between-spacing
+{
+    justify-content: space-between;
+}
+.flex-card-header-buttons{
     flex-grow: 1;
     justify-content: space-between;
     display: flex;
     margin: 0px 15px;
+}
+.error-text{
+    color: red;
+}
+.column-layout{
+    margin: auto;
+}
+.right-space{
+    margin-right: 15px;
 }
 footer
 {
