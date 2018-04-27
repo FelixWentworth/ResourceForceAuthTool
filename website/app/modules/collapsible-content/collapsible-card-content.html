@@ -1,11 +1,11 @@
-<div class="flex-row-container">
+<div class="flex-row-container" style="align-items:baseline">
     <h3>{{$ctrl.title}}</h3>
-    <div style="margin-right:auto">
+    <div class="flex-card-header">
         <md-button class="md-raised" ng-click="$ctrl.select()">
             <label ng-show="$ctrl.isSelected">Hide Details</label>
             <label ng-show="!$ctrl.isSelected">Show Details</label>
         </md-button>
-        <md-button class="md-raised" style="margin-left:auto" ng-click="$ctrl.onClicked($ctrl.choice)">Remove Choice</md-button>
+        <md-button class="md-raised" ng-click="$ctrl.remove($ctrl.choice)">Remove Choice</md-button>
     </div>
 </div>
 <div ng-show="$ctrl.isSelected" ng-transclude>

@@ -3,7 +3,9 @@ angular
 .component("collapsibleCardContent", {
     templateUrl: "modules/collapsible-content/collapsible-card-content.html",
     bindings: {
-        title: "="
+        title: "=",
+        remove: "=",
+        choice: "="
     },
     transclude: true,
     controller: function () {

@@ -9,7 +9,7 @@ angular
         officers: [1,2,3,4],
         turns: [1,2,3,4],
         feedback: [1,2,3,4,5],
-        impact: [-5,-4,-3,-2,-1,0,1,2,3,4,5]
+        impact: ["None",-5,-4,-3,-2,-1,0,1,2,3,4,5]
     },
     constraints : {
         title : {

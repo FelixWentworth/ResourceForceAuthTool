@@ -16,10 +16,6 @@
 				/>
 				<validated-select label="'Turns Needed'" ng-model="$ctrl.scene.turnReq" options="$ctrl.turnOptions" required="true" />
 			</div>
-
-			<!-- todo make this display the same as the rest of the error messages -->
-			<div ng-show="!$ctrl.form.$valid">One or more of the elements in this incident/branch are incomplete.</div>
-
 			<div layout="column" style="margin:auto">
 				<h3>Add at least 2 options</h3>
 				<div>
@@ -28,6 +24,8 @@
 					<md-button ng-click="$ctrl.addChoice('Officer')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officer</md-button>
 				</div>
 			</div>
+			<!-- todo make this display the same as the rest of the error messages -->
+			<label ng-show="!$ctrl.form.$valid" style="color:red">One or more of the elements in this incident/branch are incomplete.</label>
 		</md-card-content>
 
 	</md-card>
@@ -37,8 +35,7 @@
 	<md-card ng-if="$ctrl.choice != null" ng-style="{'background-color' : ($ctrl.form.$valid) ? 'white' : '#ffeeee'}">
 		<md-card-content>
 			<div>
-
-				<collapsible-card-content title="$ctrl.choice.choice.choiceType">
+				<collapsible-card-content title="$ctrl.choice.choice.choiceType" remove="$ctrl.onClicked" choice="$ctrl.choice">
 					<div>
 						<h3>Feedback from choice</h3>
 					</div>
@@ -77,7 +74,7 @@
 						</div>
 					</div>
 					<div class="flex-row-container" style="justify-content:space-between">
-						<div>
+						<div style="margin-right:15px" ng-if="$ctrl.scene.satisfactionImpact == 'None' || $ctrl.scene.satisfactionImpact == null">
 							<div layout="column" style="margin:auto">
 								<h3>If Developing Further, Add at least 2 options</h3>
 								<div>
@@ -87,17 +84,16 @@
 								</div>
 							</div>
 						</div>
-						<div>
+						<div style="margin-right:15px" ng-if="$ctrl.doesntContainChoice(['Ignore']) && $ctrl.doesntContainChoice(['Citizen']) && $ctrl.doesntContainChoice(['Officer']) && ($ctrl.scene.satisfactionImpact == 'None' || $ctrl.scene.satisfactionImpact == null)">
 							<h3 style="color:red">OR</h3>
 						</div>
-						<div>
+						<div style="margin-right:15px" ng-if="$ctrl.doesntContainChoice(['Ignore']) && $ctrl.doesntContainChoice(['Citizen']) && $ctrl.doesntContainChoice(['Officer'])">
 							<div>
 								<h3>Impact Used at end of path</h3>
 							</div>
 							<div class="flex-row-container">
 								<div>
-									<validated-select label="'End Impact'" ng-model="$ctrl.scene.satisfactionImpact" options="$ctrl.impactOptions" required="true"
-									/>
+									<validated-select label="'End Impact'" ng-change="$ctrl.changeImpact()" ng-model="$ctrl.scene.satisfactionImpact" options="$ctrl.impactOptions" required="false"/>
 								</div>
 							</div>
 						</div>
