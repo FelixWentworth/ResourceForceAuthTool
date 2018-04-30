@@ -1,261 +1,220 @@
-var gulp = require("gulp");
-var jshint = require("gulp-jshint");
-var concat = require("gulp-concat");
-var inject = require("gulp-inject");
-var eventStream = require("event-stream");
-var del = require("del");
-var angularTemplateCache = require("gulp-angular-templatecache");
-var angularFileSort = require("gulp-angular-filesort");
-var babel = require("gulp-babel");
-var sourcemaps = require("gulp-sourcemaps");
-var cssUseref = require("gulp-css-useref");
-var gulpif = require("gulp-if");
-var filter = require("gulp-filter");
-var uglify = require("gulp-uglify");
-var cleanCSS = require("gulp-clean-css");
-var hash = require("gulp-hash-filename");
-var rename = require("gulp-rename");
-var replace = require("gulp-replace");
+const gulp = require("gulp");
+const jshint = require("gulp-jshint");
+const concat = require("gulp-concat");
+const inject = require("gulp-inject");
+const eventStream = require("event-stream");
+const del = require("del");
+const angularTemplateCache = require("gulp-angular-templatecache");
+const angularFileSort = require("gulp-angular-filesort");
+const babel = require("gulp-babel");
+const sourcemaps = require("gulp-sourcemaps");
+const cssUseref = require("gulp-css-useref");
+const gulpif = require("gulp-if");
+const filter = require("gulp-filter");
+const uglify = require("gulp-uglify");
+const cleanCSS = require("gulp-clean-css");
+const rename = require("gulp-rename");
+const rev = require("gulp-rev");
+const loadJsonFile = require("load-json-file");
+
 
 /*============================================
-PROJECT CONFIGURATION   
+BUILD CONSTANTS
 ============================================*/
-var config = {
-	index: "index.html",	
-	app: {
-		root: "app",
-		scripts: "app/**/*.js",
-		styles: "app/**/*.css",
-		templates: "app/**/*.html",
-	},
-	dev: {
-		vendor: {
-			scripts: [
-				"node_modules/jquery/dist/jquery.js",
-				"node_modules/angular/angular.js",
-				"node_modules/angular-ui-router/release/angular-ui-router.js",
-				"node_modules/angular-animate/angular-animate.js",
-				"node_modules/angular-aria/angular-aria.js",
-				"node_modules/angular-material/angular-material.js",
-				"node_modules/angular-messages/angular-messages.js",
-				"node_modules/angular-cookies/angular-cookies.js",
-				"node_modules/angular-uuid/angular-uuid.js"
-			],
-			styles: [
-				"node_modules/angular-material/angular-material.css",
-				"node_modules/material-design-icons/iconfont/material-icons.css"
-			]
-		},
-		sourcemaps: true,
-		bundle: false,
-		minifyScripts: false,
-		minifyCss: false,
-		hash: false,
-		output: {
-			app: "../server/PlayGen.ResourceForceAuthoringTool.WebAPI/wwwroot/app",
-			vendor: "../server/PlayGen.ResourceForceAuthoringTool.WebAPI/wwwroot/vendor",
-		}		
-	},
-	prod: {
-		vendor: {
-			scripts: [
-				"node_modules/jquery/dist/jquery.min.js",
-				"node_modules/angular/angular.min.js",
-				"node_modules/angular-ui-router/release/angular-ui-router.min.js",
-				"node_modules/angular-animate/angular-animate.min.js",
-				"node_modules/angular-aria/angular-aria.min.js",
-				"node_modules/angular-material/angular-material.min.js",
-				"node_modules/angular-messages/angular-messages.min.js",
-				"node_modules/angular-cookies/src/angular-cookies.js",
-				"node_modules/angular-uuid/angular-uuid.js"
-			],
-			styles: [
-				"node_modules/angular-material/angular-material.min.css",
-				"node_modules/material-design-icons/iconfont/material-icons.css"
-			]
-		},
-		sourcemaps: false,
-		bundle: true,
-		minifyScripts: true,
-		minifyCss: true,
-		hash: true,
-		output: {
-			app: "../server/PlayGen.ResourceForceAuthoringTool.WebAPI/wwwroot",
-			vendor: "../server/PlayGen.ResourceForceAuthoringTool.WebAPI/wwwroot",
-		}	
-	},
-	build: {
-		hashFormat: "{name}.{hash}.{ext}",
-		output: "../server/PlayGen.ResourceForceAuthoringTool.WebAPI/wwwroot",
-		babelPreset: "es2015"		
-	},
-	devTools: {
-		esversion: 6
-	}
-};
+const indexFile = "index.html";
+const babelPreset = "env";
+const esversion = 6;
+		
+
+/*============================================
+LOAD CONFIGS
+============================================*/
+const configs = loadJsonFile.sync("gulpfile.configs.json");
+
 
 /*============================================
 ACTIVE CONFIG
 ============================================*/
-var activeConfig = null
+let activeConfig = null;
 
-function setDev(done) {
-	activeConfig = config.dev;
+function setActiveConfig(configName, done) {
+	console.log(`Activating the "${configName}" configuration.`);
+
+	activeConfig = configs[configName];
 	done();
 }
 
-function setProd(done) {
-	activeConfig = config.prod;
-	done();
-}
 
 /*============================================
 STREAMS
 ============================================*/
 function clean() {
- 	return del([config.build.output + "/*"], { force: true });
+	return del(activeConfig.output.root + "/*", { force: true });
 }
 
 function validateJs() {
-	return gulp.src(config.app.scripts)
-		.pipe(jshint({esversion: config.devTools.esversion}))
+	return gulp.src(activeConfig.app.scripts)
+		.pipe(jshint({ esversion: esversion }))
 		.pipe(jshint.reporter("jshint-stylish"));
-};
+}
 
 function appScripts() {
-	return gulp.src(config.app.scripts)		
+	console.log("App Scripts");
+
+	const paths = [activeConfig.app.scripts];
+	activeConfig.ignoreSuffixes.forEach(ignoreSuffix => {
+		const ignorePath = "!" + activeConfig.app.root + "/**" + ignoreSuffix + "**";
+		paths.push(ignorePath);
+	});
+
+	return gulp.src(paths)
 		.pipe(gulpif(activeConfig.sourcemaps, sourcemaps.init()))
-		.pipe(babel({					// compiles ecma6 code to a version compatable with browsers and the angularFileSort plugin
-			presets: [config.build.babelPreset]
-		}))		
-};
+		.pipe(babel({ // compiles ecma6 code to a version compatable with browsers and the angularFileSort plugin
+			presets: [babelPreset]
+		}));
+}
 
 // combine the angular template html files into one javascript blob
 function templates() {
-	return gulp.src(config.app.templates)
-		.pipe(angularTemplateCache({standalone: true}))
-};
+	console.log("Templates");
+
+	const paths = [activeConfig.app.templates];
+	activeConfig.ignoreSuffixes.forEach(ignoreSuffix => {
+		const ignorePath = "!" + activeConfig.app.root + "/**" + ignoreSuffix + "**";
+		paths.push(ignorePath);
+	});
+
+	return gulp.src(paths)
+		.pipe(angularTemplateCache({ standalone: true }));
+}
+
 
 /*============================================
 OUTPUT STREAMS
 ============================================*/
 function generateIndex() {
-	console.log("Generating index: " + config.index);
-	return modifyIndex(config.index, { all: true });
+	console.log("Generating index");
+	return modifyIndex({ all: true });
 }
 
 function updateIndex(sections) {
-	console.log("Updating index");
-	return modifyIndex(config.build.output + "/index.html", sections);
+	console.log("Updating index: ");
+	return modifyIndex(`${activeConfig.output.root}/${indexFile}`, sections);
 }
 
-function modifyIndex(index, sections) {
-	return gulp.src(index)		
-		.pipe(gulpif(sections.all || sections.vendorStyles, inject(vendorStylesOutput(), {name: "vendor", ignorePath: config.build.output})))
-		.pipe(gulpif(sections.all || sections.vendorScripts, inject(vendorScriptsOutput(), {name: "vendor", ignorePath: config.build.output})))
-		.pipe(gulpif(sections.all || sections.srcStyles, inject(appStylesOutput(), {name: "src", ignorePath: config.build.output})))				
-		.pipe(gulpif(sections.all || sections.srcScripts, inject(srcScriptsOutput(), {name: "src", ignorePath: config.build.output})))
-		.pipe(gulp.dest(config.build.output));
-}
-
-function allStylesOutput() {
-	return eventStream.merge(
-		vendorStylesOutput(),
-		appStylesOutput()
-	);
-}
-
-function setTemplateUrl() {
-	console.log("Setting template url to start with slash");
-	return gulp.src(config.app.scripts)
-		.pipe(replace('templateUrl: "', 'templateUrl: "/'))
-		.pipe(gulp.dest(activeConfig.output.app));
+function modifyIndex(sections) {
+	return gulp.src(indexFile)
+		.pipe(gulpif(sections.all || sections.vendorStyles, inject(vendorStylesOutput(), { name: "vendor", ignorePath: activeConfig.output.root})))
+		.pipe(gulpif(sections.all || sections.vendorScripts, inject(vendorScriptsOutput(), { name: "vendor", ignorePath: activeConfig.output.root })))
+		.pipe(gulpif(sections.all || sections.srcStyles, inject(appStylesOutput(), { name: "src", ignorePath: activeConfig.output.root})))
+		.pipe(gulpif(sections.all || sections.srcScripts, inject(srcScriptsOutput(), { name: "src", ignorePath: activeConfig.output.root })))
+		.pipe(gulp.dest(activeConfig.output.root));
 }
 
 function srcScriptsOutput() {
 	return eventStream.merge(
-			appScripts(),
-			templates()
-		)				
+		appScripts(),
+		templates()
+	)
 		.pipe(angularFileSort())		// puts files in correct order to satisfy angular dependency injection		
-		.pipe(gulpif(activeConfig.bundle, concat("app.js")))				
-		.pipe(gulpif(activeConfig.hash, hash({"format": config.build.hashFormat})))	
-		.pipe(gulpif(activeConfig.bundle, rename(path => path.basename += ".bundle")))	
+		.pipe(gulpif(activeConfig.bundle, concat("app.js")))
+		.pipe(gulpif(activeConfig.hash, rev()))
+		.pipe(gulpif(activeConfig.bundle, rename(path => path.basename += ".bundle")))
 		.pipe(gulpif(activeConfig.minifyScripts, uglify()))
 		.pipe(gulpif(activeConfig.minifyScripts, rename(path => path.basename += ".min")))
 		.pipe(gulpif(activeConfig.sourcemaps, sourcemaps.write('.')))	// write sourcemaps for processed files
-		
+
 		.pipe(gulp.dest(activeConfig.output.app));
 }
 
 function appStylesOutput() {
-	var cssFilter = filter("**/*.css", {restore: true});
+	console.log("App Styles");
 
-	return gulp.src(config.app.styles)						
-		.pipe(cssUseref({base: "assets"}))	// copies referenced files (fonts/images) within the css file		
-		
+	const cssFilter = filter("**/*.css", { restore: true });
+
+	return gulp.src([activeConfig.app.styles,
+	"!" + activeConfig.app.root + "/**" + activeConfig.ignoreSuffix + "**"])
+		.pipe(cssUseref({ base: "assets" }))	// copies referenced files (fonts/images) within the css file		
+
 		// filter to apply transformations only to .css files
 		.pipe(cssFilter)
-		.pipe(gulpif(activeConfig.bundle, concat("app.css")))		
-		.pipe(gulpif(activeConfig.hash, hash({"format": config.build.hashFormat})))	
-		.pipe(gulpif(activeConfig.bundle, rename(path => path.basename += ".bundle")))	
+		.pipe(gulpif(activeConfig.bundle, concat("app.css")))
+		.pipe(gulpif(activeConfig.hash, rev()))
+		.pipe(gulpif(activeConfig.bundle, rename(path => path.basename += ".bundle")))
 		.pipe(gulpif(activeConfig.minifyCss, cleanCSS()))
 		.pipe(gulpif(activeConfig.minifyCss, rename(path => path.basename += ".min")))
 		.pipe(cssFilter.restore)
 
 		.pipe(gulp.dest(activeConfig.output.app));
-};
+}
 
 function vendorScriptsOutput() {
-	return gulp.src(activeConfig.vendor.scripts)				
+	console.log("Vendor Scripts");
+
+	return gulp.src(activeConfig.vendor.scripts)
 		.pipe(gulpif(activeConfig.bundle, concat("vendor.js")))
-		.pipe(gulpif(activeConfig.hash, hash({"format": config.build.hashFormat})))	
-		.pipe(gulpif(activeConfig.bundle, rename(path => path.basename += ".bundle")))	
+		.pipe(gulpif(activeConfig.hash, rev()))
+		.pipe(gulpif(activeConfig.bundle, rename(path => path.basename += ".bundle")))
 		.pipe(gulpif(activeConfig.minifyScripts, uglify()))
 		.pipe(gulpif(activeConfig.minifyScripts, rename(path => path.basename += ".min")))
 		.pipe(gulp.dest(activeConfig.output.vendor));
 }
 
 function vendorStylesOutput() {
-	var cssFilter = filter("**/*.css", {restore: true});
+	console.log("Vendor Styles");
 
-	return gulp.src(activeConfig.vendor.styles)		
-		.pipe(cssUseref({base: "assets"}))	// copies referenced files (fonts/images) within the css file		
+	const cssFilter = filter("**/*.css", { restore: true });
+
+	return gulp.src(activeConfig.vendor.styles)
+		.pipe(cssUseref({ base: "assets" }))	// copies referenced files (fonts/images) within the css file		
 
 		// filter to apply transformations only to .css files
-		.pipe(cssFilter)	
-		.pipe(gulpif(activeConfig.bundle, concat("vendor.css")))	
-		.pipe(gulpif(activeConfig.hash, hash({"format": config.build.hashFormat})))			
-		.pipe(gulpif(activeConfig.bundle, rename(path => path.basename += ".bundle")))	
-		.pipe(gulpif(activeConfig.minifyCss, cleanCSS()))	
-		.pipe(gulpif(activeConfig.minifyCss, rename(path => path.basename += ".min")))	
-		.pipe(cssFilter.restore)	
+		.pipe(cssFilter)
+		.pipe(gulpif(activeConfig.bundle, concat("vendor.css")))
+		.pipe(gulpif(activeConfig.hash, rev()))
+		.pipe(gulpif(activeConfig.bundle, rename(path => path.basename += ".bundle")))		
+		.pipe(gulpif(activeConfig.minifyCss, cleanCSS()))
+		.pipe(gulpif(activeConfig.minifyCss, rename(path => path.basename += ".min")))
+		.pipe(cssFilter.restore)
 
 		.pipe(gulp.dest(activeConfig.output.vendor));
-};
+}
+
+function extrasOutput(done) {
+	if(activeConfig.extras.length) {
+		return gulp.src(activeConfig.extras)
+			.pipe(gulp.dest(activeConfig.output.root));
+	} else {
+		done();
+	}
+}
+
 
 /*============================================
 TASKS
 ============================================*/
-gulp.task(clean);
+for(let configName in configs) {
+	let setThisConfigActive = done => setActiveConfig(configName, done);
+	let thisConfig = configs[configName];
+	
+	gulp.task(`${configName}-clean`, gulp.series(setThisConfigActive, clean));
+	
+	let buildTaskName = `${configName}-build`;
+	gulp.task(buildTaskName, gulp.series(setThisConfigActive, clean, validateJs, generateIndex, extrasOutput));
 
-gulp.task(validateJs);
+	let watchTaskName = `${configName}-watch`;
+	gulp.task(watchTaskName, function () {
+		gulp.watch(indexFile, gulp.series(setThisConfigActive, generateIndex));
+		// Vendor
+		gulp.watch(thisConfig.vendor.styles, gulp.series(setThisConfigActive, () => updateIndex({ vendorStyles: true })));
+		gulp.watch(thisConfig.vendor.scripts, gulp.series(setThisConfigActive, () => updateIndex({ vendorScripts: true })));
+		// Src
+		gulp.watch(thisConfig.app.styles, gulp.series(setThisConfigActive, () => updateIndex({ srcStyles: true })));
+		gulp.watch(thisConfig.app.images, gulp.series(setThisConfigActive, () => updateIndex({ srcStyles: true })));
+		gulp.watch(thisConfig.app.scripts, gulp.series(setThisConfigActive, validateJs, () => updateIndex({ srcScripts: true })));
+		gulp.watch(thisConfig.app.templates, gulp.series(setThisConfigActive, () => updateIndex({ srcScripts: true })));
+		gulp.watch(thisConfig.extras, gulp.series(setThisConfigActive, extrasOutput));
+	});
 
-gulp.task("build-dev", gulp.series(clean, setDev, validateJs, generateIndex, setTemplateUrl));
-
-gulp.task("build-local", gulp.series(clean, setDev, validateJs, generateIndex));
-
-gulp.task("build-prod", gulp.series(clean, setProd, generateIndex));
-
-gulp.task("watch-dev", function() {
-	gulp.watch(config.index, gulp.series(setDev, generateIndex));
-	// Vendor
-	gulp.watch(config.dev.vendor.styles, gulp.series(setDev, () => updateIndex({vendorStyles: true})));
-	gulp.watch(config.dev.vendor.scripts, gulp.series(setDev, () => updateIndex({vendorScripts: true})));
-	// Src
-	gulp.watch(config.app.styles, gulp.series(setDev, () => updateIndex({srcStyles: true})));
-	gulp.watch(config.app.scripts, gulp.series(setDev, validateJs, () => updateIndex({srcScripts: true})));
-	gulp.watch(config.app.templates, gulp.series(setDev, () => updateIndex({srcScripts: true})));	
-});
-
-gulp.task("default", gulp.series("build-local", "watch-dev"));
+	gulp.task(`${configName}-build-watch`, gulp.series(buildTaskName, watchTaskName));
+};
