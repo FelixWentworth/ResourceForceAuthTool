@@ -14,7 +14,7 @@ angular
 		};
 	})
 	.component("home", {
-		templateUrl: "pages/home/home.html",
+		templateUrl: "/pages/home/home.html",
 		controller: ["StoryStorageService", "$http", "$state", "Auth", function(StoryStorageService, $http, $state, Auth) {
 			var ctrl = this;
 			

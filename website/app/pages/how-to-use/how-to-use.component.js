@@ -1,7 +1,7 @@
 angular
 .module("resourceForceAuthoringTool")
 .component("howToUse", {
-    templateUrl: "pages/how-to-use/how-to-use.html",
+    templateUrl: "/pages/how-to-use/how-to-use.html",
     controller: ["StoryStorageService", "$http", "$state", "Auth", function(StoryStorageService, $http, $state, Auth) {
         var ctrl = this;
         ctrl.title = "Using The Authoring Tool"
