@@ -1,0 +1,78 @@
+{  
+    "development": {
+        "app": {
+            "root": "app",
+            "scripts": "app/**/*.js",
+            "styles": "app/**/*.css",
+            "images": "app/**/*.png",
+            "templates": "app/**/*.html"
+        },
+        "vendor": {
+            "scripts": [
+                "node_modules/jquery/dist/jquery.js",
+                "node_modules/angular/angular.js",
+                "node_modules/angular-ui-router/release/angular-ui-router.js",
+                "node_modules/angular-animate/angular-animate.js",
+                "node_modules/angular-aria/angular-aria.js",
+                "node_modules/angular-material/angular-material.js",
+                "node_modules/angular-messages/angular-messages.js",
+                "node_modules/angular-cookies/angular-cookies.js",
+                "node_modules/angular-uuid/angular-uuid.js"
+            ],
+            "styles": [
+                "node_modules/angular-material/angular-material.css",
+                "node_modules/material-design-icons/iconfont/material-icons.css"
+            ]
+        },
+        "extras": [],
+        "ignoreSuffixes": [".production.", ".tests."],
+        "sourcemaps": true,
+        "bundle": false,
+        "minifyScripts": false,
+        "minifyCss": false,
+        "hash": false,
+        "output": {
+            "root": "../server/PlayGen.ResourceForceAuthoringTool.WebAPI/wwwroot",
+            "app": "../server/PlayGen.ResourceForceAuthoringTool.WebAPI/wwwroot/app",
+            "vendor": "../server/PlayGen.ResourceForceAuthoringTool.WebAPI/wwwroot/vendor"
+        }
+    },
+    "production": {
+        "app": {
+            "root": "app",
+            "scripts": "app/**/*.js",
+            "styles": "app/**/*.css",
+            "images": "app/**/*.png",
+            "templates": "app/**/*.html"
+        },
+        "vendor": {
+            "scripts": [
+                "node_modules/jquery/dist/jquery.min.js",
+                "node_modules/angular/angular.min.js",
+                "node_modules/angular-ui-router/release/angular-ui-router.min.js",
+                "node_modules/angular-animate/angular-animate.min.js",
+                "node_modules/angular-aria/angular-aria.min.js",
+                "node_modules/angular-material/angular-material.min.js",
+                "node_modules/angular-messages/angular-messages.min.js",
+                "node_modules/angular-cookies/angular-cookies.min.js",
+                "node_modules/angular-uuid/angular-uuid.js"
+            ],
+            "styles": [
+                "node_modules/angular-material/angular-material.min.css",
+                "node_modules/material-design-icons/iconfont/material-icons.css"
+            ]
+        },
+        "extras": [],
+        "ignoreSuffixes": [".development.", ".tests."],
+        "sourcemaps": false,
+        "bundle": true,
+        "minifyScripts": true,
+        "minifyCss": true,
+        "hash": true,
+        "output": {
+            "root": "../server/PlayGen.ResourceForceAuthoringTool.WebAPI/wwwroot",
+            "app": "../server/PlayGen.ResourceForceAuthoringTool.WebAPI/wwwroot/app",
+            "vendor": "../server/PlayGen.ResourceForceAuthoringTool.WebAPI/wwwroot/vendor"
+        }
+    }
+}

@@ -7,7 +7,7 @@
  * # Auth
  * Service in the ResourceForceAuthoringTool.
  */
-angular.module('resourceForceAuthoringTool').factory('AuthService', function ($http, Session) {
+angular.module('resourceForceAuthoringTool').factory('AuthService', ["$http", "Session", function ($http, Session) {
   var authService = {};
  
   authService.login = function (id, name, type, allowedLocations) {
@@ -43,4 +43,4 @@ angular.module('resourceForceAuthoringTool').factory('AuthService', function ($h
   };
 
   return authService;
-})
+}])

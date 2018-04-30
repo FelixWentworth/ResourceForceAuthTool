@@ -1,7 +1,7 @@
 angular
 .module("resourceForceAuthoringTool")
 .component("approvedStory", {
-    templateUrl: "pages/approved-story/approved-story.html",
+    templateUrl: "/pages/approved-story/approved-story.html",
     controller: ["StoryStorageService", "$http", "Auth", "$q", "$state", function(StoryStorageService, $http, Auth, $q, $state) {
         var ctrl = this;
 
