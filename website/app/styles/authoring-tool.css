@@ -85,6 +85,9 @@ h3{
     display: flex;
     margin: 0px 15px;
 }
+.flex-grow-description{
+    flex-grow: 1;
+}
 .error-text{
     color: red;
 }

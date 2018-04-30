@@ -8,10 +8,12 @@
 			required/>
 <validated-select label="'Location'"
 			ng-model="$ctrl.metadata.location"
-			options="$ctrl.location"
+			ng-change="$ctrl.changeLocation()"
+			options="$ctrl.locations"
 			required="true"/>
 <validated-select label="'Language'"
+			ng-if="$ctrl.metadata.location != ''"
 			ng-model="$ctrl.metadata.language"
-			options="$ctrl.language"
+			options="$ctrl.languages"
 			required="true"/>
 </div>

@@ -9,7 +9,7 @@
 				<validated-text-input type="'field'" label="$ctrl.label" placeholder="'Title'" ng-model="$ctrl.scene.title" minlength="$ctrl.titleMin"
 				 maxlength="$ctrl.titleMax" required="true" />
 
-				<validated-text-input type="'area'" label="'Description'" placeholder="'Description'" ng-model="$ctrl.scene.description"
+				<validated-text-input class="flex-grow-description" type="'area'" label="'Description'" placeholder="'Description'" ng-model="$ctrl.scene.description"
 				 minlength="$ctrl.descriptionMin" maxlength="$ctrl.descriptionMax" required="true" />
 				<validated-select label="'Severity'" ng-model="$ctrl.scene.severity" options="$ctrl.severity" required="true" />
 				<validated-select label="'Officers Required'" ng-model="$ctrl.scene.officerReq" options="$ctrl.officerOptions" required="true"
@@ -45,7 +45,7 @@
 							<validated-select label="'Rating'" ng-model="$ctrl.choice.choice.feedbackRating" options="$ctrl.feedbackOptions" required="true"
 							/>
 						</div>
-						<div>
+						<div class="flex-grow-description">
 							<validated-text-input type="'area'" label="'Feedback'" placeholder="'Feedback Description'" ng-model="$ctrl.choice.choice.feedback"
 							 minlength="$ctrl.feedbackMin" maxlength="$ctrl.feedbackMax" required="true" />
 						</div>
@@ -58,7 +58,7 @@
 							<validated-text-input label="'Title'" type="'area'" placeholder="'Title'" ng-model="$ctrl.scene.title" minlength="$ctrl.titleMin"
 							 maxlength="$ctrl.titleMax" required="true" />
 						</div>
-						<div>
+						<div class="flex-grow-description">
 							<validated-text-input label="'Descrtiption'" type="'area'" placeholder="'Descrtiption'" ng-model="$ctrl.scene.description"
 							 minlength="$ctrl.descriptionMin" maxlength="$ctrl.descriptionMax" required="true" />
 						</div>
