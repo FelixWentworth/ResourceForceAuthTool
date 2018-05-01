@@ -94,7 +94,7 @@ OUTPUT STREAMS
 ============================================*/
 function generateIndex() {
 	console.log("Generating index");
-	return modifyIndex({ all: true });
+	return modifyIndex(indexFile, { all: true });
 }
 
 function updateIndex(sections) {
@@ -102,8 +102,8 @@ function updateIndex(sections) {
 	return modifyIndex(`${activeConfig.output.root}/${indexFile}`, sections);
 }
 
-function modifyIndex(sections) {
-	return gulp.src(indexFile)
+function modifyIndex(indexPath, sections) {
+	return gulp.src(indexPath)
 		.pipe(gulpif(sections.all || sections.vendorStyles, inject(vendorStylesOutput(), { name: "vendor", ignorePath: activeConfig.output.root})))
 		.pipe(gulpif(sections.all || sections.vendorScripts, inject(vendorScriptsOutput(), { name: "vendor", ignorePath: activeConfig.output.root })))
 		.pipe(gulpif(sections.all || sections.srcStyles, inject(appStylesOutput(), { name: "src", ignorePath: activeConfig.output.root})))
