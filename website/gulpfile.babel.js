@@ -193,6 +193,8 @@ function extrasOutput(done) {
 /*============================================
 TASKS
 ============================================*/
+let firstBuildWatchTask = null;
+
 for(let configName in configs) {
 	let setThisConfigActive = done => setActiveConfig(configName, done);
 	let thisConfig = configs[configName];
@@ -216,5 +218,12 @@ for(let configName in configs) {
 		gulp.watch(thisConfig.extras, gulp.series(setThisConfigActive, extrasOutput));
 	});
 
-	gulp.task(`${configName}-build-watch`, gulp.series(buildTaskName, watchTaskName));
+	let buildWatchTaskName = `${configName}-build-watch`;
+	gulp.task(buildWatchTaskName, gulp.series(buildTaskName, watchTaskName));
+
+	if(!firstBuildWatchTask) {
+		firstBuildWatchTask = buildWatchTaskName;
+	}
 };
+
+gulp.task("default", gulp.series(firstBuildWatchTask));
