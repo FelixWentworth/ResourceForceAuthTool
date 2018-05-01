@@ -5,7 +5,8 @@
 		<md-select name="select"
 			ng-model="$ctrl.ngModel" 				
 			placeholder="{{$ctrl.placeholder}}"
-			required="$ctrl.required">
+			required="$ctrl.required"
+			ng-change="$ctrl.ngChange">
 
 			<md-option ng-value="option" ng-repeat="option in $ctrl.options">{{option}}</md-option>
 
