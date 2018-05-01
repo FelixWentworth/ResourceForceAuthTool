@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PlayGen.ResourceForceAuthoringTool.Contracts;
 using PlayGen.ResourceForceAuthoringTool.Core.Utilities;
-using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using PlayGen.ResourceForceAuthoringTool.Data.EntityFramework;
 
 namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 {
@@ -46,7 +43,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 var metadata = user.ToMetadata();
                 return new ObjectResult(metadata);
             }
-            throw new Exception("Unable to log in, username or password is incrrect");
+            throw new AuthenticationException("Unable to log in, username or password is incrrect");
         }
 
         #endregion

@@ -20,12 +20,12 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
             {
 				if (user.Username.Length < 5)
 				{
-					throw new Exception("Username is too short");
+					throw new AccountCreationException("Username is too short.");
 				}
 				var taken = context.Users.Any(u => u.Username == user.Username);
                 if (taken)
                 {
-                    throw new Exception("Username already taken");
+                    throw new AccountCreationException("Username already taken.");
                 }
                 var existing = context.Users.FirstOrDefault(u => u.Id == user.Id);
 
@@ -50,7 +50,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                 {
                     return user;
                 }
-                throw new Exception($"Unable to find player with username {username}");
+                throw new AuthenticationException($"Unable to find player with username {username}");
             }
         }
         public User Get(int id)
@@ -62,7 +62,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                 {
                     return user;
                 }
-                throw new Exception($"Unable to find player with id {id}");
+                throw new AuthenticationException($"Unable to find player with id {id}");
             }
         }
         public User Update(User user)
@@ -78,7 +78,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                     SaveChanges(context);
                     return existing;
                 }
-                throw new Exception("The existing scenario could not be found.");
+                throw new AuthenticationException("The existing scenario could not be found.");
             }
         }
     }
