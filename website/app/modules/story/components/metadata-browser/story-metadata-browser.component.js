@@ -7,7 +7,8 @@ angular
 			creatorId: "=",
 			memberType: "=",
 			reviewing: "<",
-			viewDeleted: "<"
+			viewDeleted: "<",
+			managing: "<"
 		},
 		controller: ["StoryStorageService", "config", function (StoryStorageService, config) {
 			var ctrl = this;
