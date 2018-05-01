@@ -20,10 +20,10 @@
 										minlength="$ctrl.descriptionMin"
 										maxlength="$ctrl.descriptionMax"
 										required="true"/>	
-				<validated-select label="'Severity'"
-									ng-model="$ctrl.scene.severity"
-									options="$ctrl.severity"
-									required="true"/>
+				<validated-select-object label="'Severity'"
+										ng-model="$ctrl.scene.severity"
+										options="$ctrl.severity"
+										required="true"/>
 				<validated-select label="'Number Of Officers Required'"
 									ng-model="$ctrl.scene.officerReq"
 									options="$ctrl.officerOptions"
@@ -66,7 +66,7 @@
 									<h3>Feedback from choice</h3>
 							</div>
 							<div>	
-								<validated-select label="'Rating'"
+								<validated-select-object label="'Rating'"
 									ng-model="$ctrl.choice.choice.feedbackRating"
 									options="$ctrl.feedbackOptions"
 									required="true"/>
@@ -110,7 +110,7 @@
 												required="true"/>
 							</div>
 							<div>
-							<validated-select label="'Severity'"
+							<validated-select-object label="'Severity'"
 												ng-model="$ctrl.scene.severity"
 												options="$ctrl.severity"
 												required="true"/>
@@ -134,7 +134,7 @@
 							</div>
 
 							<div>
-							<validated-select label="'End Impact'"
+							<validated-select-object label="'End Impact'"
 												ng-model="$ctrl.scene.satisfactionImpact"
 												options="$ctrl.impactOptions"
 												required="true"/>
