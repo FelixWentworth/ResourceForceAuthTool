@@ -38,6 +38,16 @@ angular
 				StoryStorageService.updateMetadata(metadata);
 			};
 
+			ctrl.setEnabled = function(metadata){
+				metadata.enabled = true;
+				StoryStorageService.updateMetadata(metadata);
+			}
+
+			ctrl.setDisabled = function(metadata){
+				metadata.enabled = false;
+				StoryStorageService.updateMetadata(metadata);
+			}
+
 			ctrl.delete = function(metadata){
 				metadata.deleted = true;
 				metadata.isValid = false;

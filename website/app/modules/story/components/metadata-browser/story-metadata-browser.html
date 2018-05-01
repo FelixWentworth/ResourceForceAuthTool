@@ -58,6 +58,22 @@
                 </md-button>
                 
                 <md-button class="md-fab md-mini"
+                            aria-label="Enable Content"
+                            title="Enable Content"
+                            ng-click="$ctrl.setEnabled(metadata)"
+                            ng-if="!metadata.enabled && (metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.isValid && !$ctrl.reviewing && !metadata.deleted">
+                    <md-icon>add</md-icon>
+                </md-button>
+
+                <md-button class="md-fab md-mini"
+                            aria-label="Disable Content"
+                            title="Disable Content"
+                            ng-click="$ctrl.setDisabled(metadata)"
+                            ng-if="metadata.enabled && (metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.isValid &&!$ctrl.reviewing && !metadata.deleted">
+                    <md-icon>remove</md-icon>
+                </md-button>
+
+                <md-button class="md-fab md-mini"
                             aria-label="Delete"
                             title="Delete"
                             ng-click="$ctrl.delete(metadata)"

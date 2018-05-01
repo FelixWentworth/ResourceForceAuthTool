@@ -18,6 +18,8 @@ namespace PlayGen.ResourceForceAuthoringTool.Contracts
 
         public string Comment { get; set; }
 
-        public bool Deleted { get; set; }
+		public bool Enabled { get; set; }
+
+		public bool Deleted { get; set; }
     }
 }
