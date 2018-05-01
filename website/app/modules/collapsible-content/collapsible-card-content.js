@@ -1,7 +1,7 @@
 angular
 .module("collapsibleContent")
 .component("collapsibleCardContent", {
-    templateUrl: "modules/collapsible-content/collapsible-card-content.html",
+    templateUrl: "/modules/collapsible-content/collapsible-card-content.html",
     bindings: {
         title: "=",
         remove: "=",

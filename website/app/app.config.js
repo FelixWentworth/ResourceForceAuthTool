@@ -20,6 +20,7 @@ angular
             {id: 5, name: "Very Good"}
         ],
         impact: [
+            {id: -99, name: "None"},
             {id: -5, name: "Awful"},
             {id: -4, name: "Very Bad"}, 
             {id: -3, name: "Bad"},

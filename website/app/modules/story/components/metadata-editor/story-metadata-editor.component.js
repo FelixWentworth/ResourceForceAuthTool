@@ -36,6 +36,11 @@ angular
 			}
 
 			ctrl.changeLocation = function() {
+				if (ctrl.metadata.location == "")
+				{
+					// Not selected a location
+					return;
+				}
 				ctrl.languages = ctrl.allowedLocations[ctrl.metadata.location];
 				if (ctrl.languages.length == 1) {
 					ctrl.metadata.language = ctrl.languages[0];
