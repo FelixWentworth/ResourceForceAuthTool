@@ -20,20 +20,42 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         {
             using (var context = _rfContextFactory.Create())
             {
-                var existing =
-                    context.AccountRequests.FirstOrDefault(
-                        r => r.PlayerId == request.PlayerId && r.Language == request.Language &&
-                             r.Location == request.Location);
-
-                if (existing != null)
+                if (request.MemberType == "member")
                 {
-                    request = Update(existing);
+                    var user = context.Users.FirstOrDefault(u => u.Id == request.PlayerId);
+                    if (user != null)
+                    {
+                        var regions = new List<string>();
+                        if (!string.IsNullOrEmpty(user.ContentRegions))
+                        {
+                            regions = JsonConvert.DeserializeObject<List<string>>(user.ContentRegions);
+                        }
+                        if (!regions.Contains(request.Region))
+                        {
+                            regions.Add(request.Region);
+                        }
+
+                        user.ContentRegions = JsonConvert.SerializeObject(regions);
+
+                        SaveChanges(context);
+                        return request;
+                    }
+                    throw new Exception($"Unable to find player for id {request.PlayerId} from request with id {request.Id}");
+                }
+                else
+                {
+                    var existing = context.AccountRequests.FirstOrDefault(r => r.PlayerId == request.PlayerId && r.Region == request.Region);
+
+                    if (existing != null)
+                    {
+                        request = Update(existing);
+                        return request;
+                    }
+                    context.AccountRequests.Add(request);
+                    SaveChanges(context);
+
                     return request;
                 }
-                context.AccountRequests.Add(request);
-                SaveChanges(context);
-
-                return request;
             }
         }
 
@@ -55,19 +77,19 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
             }
         }
 
-        public AccountRequest Get(int playerId, string location, string language)
+        public AccountRequest Get(int playerId, string region)
         {
             using (var context = _rfContextFactory.Create())
             {
-                return context.AccountRequests.FirstOrDefault(r => r.PlayerId == playerId && r.Location == location && r.Language == language);
+                return context.AccountRequests.FirstOrDefault(r => r.PlayerId == playerId && r.Region == region);
             }
         }
 
-        public List<AccountRequest> Get(string location, string language)
+        public List<AccountRequest> Get(string region)
         {
             using (var context = _rfContextFactory.Create())
             {
-                var requests = context.AccountRequests.Where(r => r.Language == language && r.Location == location).ToList();
+                var requests = context.AccountRequests.Where(r => r.Region == region).ToList();
                 if (requests.Count > 0)
                 {
                     return requests;
@@ -99,8 +121,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                 {
                     existing.PlayerId = request.PlayerId;
                     existing.MemberType = request.MemberType;
-                    existing.Language = request.Language;
-                    existing.Location = request.Location;
+                    existing.Region = request.Region;
                     SaveChanges(context);
                     return existing;
                 }
@@ -108,31 +129,24 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
             }
         }
 
-        public void Update(string location, string language, AccountRequest request)
+        public void Update(string region, AccountRequest request)
         {
             using (var context = _rfContextFactory.Create())
             {
                 var user = context.Users.FirstOrDefault(u => u.Id == request.PlayerId);
                 if (user != null)
                 {
-					var locations = new Dictionary<string, List<string>>();
-					if (!string.IsNullOrEmpty(user.AllowedLocations))
+					var regions = new List<string>();
+					if (!string.IsNullOrEmpty(user.ValidationRegions))
 					{
-						locations = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(user.AllowedLocations);
+                        regions = JsonConvert.DeserializeObject<List<string>>(user.ValidationRegions);
 					}
-					if (!locations.ContainsKey(location))
+					if (!regions.Contains(region))
 					{
-						locations.Add(location, new List<string> { language });
-					}
-					else
-					{
-						if (!locations[location].Contains(language))
-						{
-							locations[location].Add(language);
-						}
+                        regions.Add(region);
 					}
 
-					user.AllowedLocations = JsonConvert.SerializeObject(locations);
+					user.ValidationRegions = JsonConvert.SerializeObject(regions);
 					if (user.MemberType != "admin")
 					{
 						user.MemberType = request.MemberType;

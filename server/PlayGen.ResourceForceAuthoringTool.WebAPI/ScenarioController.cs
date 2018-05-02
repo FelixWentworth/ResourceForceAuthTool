@@ -95,7 +95,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         }
 
         /// <summary>
-        /// Get a list of scenarios for a given location
+        /// Get a list of scenarios for a given region
         /// </summary>
         [HttpGet("validate")]
         public IActionResult GetForValidation([FromBody] ValidationRequest request )
@@ -133,15 +133,15 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         }
 
         /// <summary>
-        /// Get a list of all scenarios that have been approved for a location and language
+        /// Get a list of all scenarios that have been approved for a region and language
         /// </summary>
         /// <param name="language"></param>
-        /// <param name="location"></param>
+        /// <param name="region"></param>
         /// <returns></returns>
-        [HttpGet("approved/{language}/{location}")]
-        public IActionResult GetApprovedByFilter([FromRoute]string language, [FromRoute]string location)
+        [HttpGet("approved/{language}/{region}")]
+        public IActionResult GetApprovedByFilter([FromRoute]string language, [FromRoute]string region)
         {
-            var scenarios = _scenarioCoreController.GetApproved(language, location);
+            var scenarios = _scenarioCoreController.GetApproved(language, region);
             if (scenarios == null)
             {
                 return new ObjectResult(null);

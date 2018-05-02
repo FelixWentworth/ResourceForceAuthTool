@@ -74,7 +74,8 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                 if (existing != null)
                 {
                     existing.MemberType = user.MemberType;
-                    existing.AllowedLocations = user.AllowedLocations;
+                    existing.ContentRegions = user.ContentRegions;
+                    existing.ValidationRegions = user.ValidationRegions;
                     SaveChanges(context);
                     return existing;
                 }

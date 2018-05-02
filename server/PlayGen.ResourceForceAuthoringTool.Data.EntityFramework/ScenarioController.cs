@@ -81,10 +81,10 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                         // return all scenarios which have been submitted
                         return context.Scenarios.Where(s => s.Submitted).ToList();
                     case "validator":
-                        // return all scenarios the user has access to by language and location
-                        var allowedLocations = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(user.AllowedLocations);
+                        // return all scenarios the user has access to by region and language
+                        var regions = JsonConvert.DeserializeObject<List<string>>(user.ValidationRegions);
 
-						var scenarios = context.Scenarios.Where(s => s.Submitted && allowedLocations.ContainsKey(s.Location) && allowedLocations.First(a => a.Key == s.Location).Value.Any(v => v == s.Language)).ToList();
+						var scenarios = context.Scenarios.Where(s => s.Submitted && regions.Contains(s.Region)).ToList();
 						return scenarios;
 					default:
                         return null;
@@ -94,15 +94,15 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
 
         /// <summary>
-        /// Get a list of scenarios that match the filter data for language and location
+        /// Get a list of scenarios that match the filter data for region and language
         /// </summary>
-        /// <param name="filter">Language and location filter for scenarios</param>
+        /// <param name="filter">Language and region filter for scenarios</param>
         /// <returns></returns>
         public List<Scenario> GetForValidation (Scenario filter)
         {
             using (var context = _rfContextFactory.Create())
             {
-                var scenarios = context.Scenarios.Where(s => (s.Language == filter.Language || filter.Language == "Any")  && (s.Location == filter.Location || filter.Location == "Any")).ToList();
+                var scenarios = context.Scenarios.Where(s => (s.Language == filter.Language || filter.Language == "Any")  && (s.Region == filter.Region || filter.Region == "Any")).ToList();
                 return scenarios;
             }
         }
@@ -122,16 +122,16 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         }
 
         /// <summary>
-        /// Get all scenarios that have been approved for a specific language and location
+        /// Get all scenarios that have been approved for a specific language and region
         /// </summary>
         /// <param name="language"></param>
-        /// <param name="location"></param>
+        /// <param name="region"></param>
         /// <returns></returns>
-	    public List<Scenario> GetApproved(string language, string location)
+	    public List<Scenario> GetApproved(string language, string region)
 	    {
 	        using (var context = _rfContextFactory.Create())
 	        {
-	            var scenarios = context.Scenarios.Where(s => s.Language == language && s.Location == location && s.IsValid).ToList();
+	            var scenarios = context.Scenarios.Where(s => s.Language == language && s.Region == region && s.IsValid).ToList();
 	            return scenarios;
 	        }
 	    }
@@ -172,7 +172,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 					context.Entry(existing).State = EntityState.Modified;
 					existing.Title = scenario.Title;
 					existing.Language = scenario.Language;
-					existing.Location = scenario.Location;
+					existing.Region = scenario.Region;
 					existing.Content = scenario.Content;
                     existing.IsValid = scenario.IsValid;
                     existing.Submitted = scenario.Submitted;

@@ -25,7 +25,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 }
 				Title = (string)jObject["title"];
 				Language = (string)jObject["language"];
-				Location = (string)jObject["location"];
+				Region = (string)jObject["region"];
                 IsValid = (bool)jObject["isValid"];
                 Submitted = (bool)jObject["submitted"];
                 Deleted = (bool)jObject["deleted"];
@@ -36,7 +36,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             public int CreatorId { get; set; }
 			public string Title { get; set; }
 			public string Language { get; set; }
-			public string Location { get; set; }
+			public string Region { get; set; }
             public long SerialNumber { get; set; }
             public bool IsValid { get; set; }
             public bool Submitted { get; set; }
@@ -57,7 +57,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 CreatorId = storyModel.CreatorId,
                 Title = storyModel.Title,
                 Language = storyModel.Language,
-                Location = storyModel.Location,
+                Region = storyModel.Region,
                 SerialNumber = storyModel.SerialNumber,
                 IsValid = storyModel.IsValid,
                 Submitted = storyModel.Submitted,
@@ -81,7 +81,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 				Title = metadata.Title,
                 Submitted = metadata.Submitted,
 				Language = metadata.Language,
-				Location = metadata.Location,
+				Region = metadata.Region,
 				Content = scenarioContract.Content.ToString()
 			};
 		}
@@ -98,7 +98,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             return new Scenario
             {
                 Language = metadata.Language,
-                Location = metadata.Location,
+                Region = metadata.Region,
             };
         }
 
@@ -132,7 +132,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             {
                 Id = scenarioContract.Id,
                 SerialNumber = scenarioContract.SerialNumber,
-                Location = scenarioContract.Location,
+                Region = scenarioContract.Region,
                 Language = scenarioContract.Language,
                 Comment = scenarioContract.Comment,
                 Deleted = scenarioContract.Deleted,
@@ -144,7 +144,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         {
             scenarioContract.Title = metadata.Title;
             scenarioContract.Language = metadata.Language;
-            scenarioContract.Location = metadata.Location;
+            scenarioContract.Region = metadata.Region;
 
             scenarioContract.IsValid = metadata.IsValid;
             scenarioContract.Submitted = metadata.Submitted;
