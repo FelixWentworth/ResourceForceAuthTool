@@ -18,9 +18,14 @@ class StoriesMetadataLoader {
 				.then(onStoriesForValidationLoaded);
 		}
 		
-		self.loadExisting = function(language, location){
+		self.loadExisting = function(language, location, callback){
 			storyStorageService.loadExisting(language, location)
-				.then(onStoriesMetadataLoaded);
+				.then(storiesMetadata => {
+					onStoriesMetadataLoaded(storiesMetadata);
+					if (callback) {
+						callback(storiesMetadata);
+					}
+				});
 		}
 
 		// private methods

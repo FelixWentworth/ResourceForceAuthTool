@@ -45,13 +45,24 @@ angular
         ctrl.load = function(filter)
         {
             ctrl.status = "Loading..."
-            ctrl.loader.loadExisting(filter.language, filter.location);
+            ctrl.loader.loadExisting(filter.language, filter.location, onLoaded);
+        }
 
+        function onLoaded(storiesMetadata) {
+            ctrl.inGameStories = storiesMetadata.filter(storyMetadata => storyMetadata.enabled);
+            ctrl.inactiveStories = storiesMetadata.filter(storyMetadata => !storyMetadata.enabled);
+        }
+
+        ctrl.refreshStories = function() {
+            var allStories = [];
+            allStories = ctrl.inGameStories.concat(ctrl.inactiveStories);
+            ctrl.inGameStories = allStories.filter(storyMetadata => storyMetadata.enabled);
+            ctrl.inactiveStories = allStories.filter(storyMetadata => !storyMetadata.enabled);
         }
 
         ctrl.refresh = function()
         {
-            
+           
         }
 
         ctrl.delete = function(request)
@@ -66,20 +77,10 @@ angular
 
         ctrl.canDisable = function()
         {
-            return ctrl.activeContent() > ctrl.minimumActiveScenarios;
-        }
-
-        ctrl.activeContent = function()
-        {
-            var count = 0;
-            for(var i=0; i<ctrl.loader.storiesMetadata.length; i++)
-            {
-                if (ctrl.loader.storiesMetadata[i].enabled)
-                {
-                    count++;   
-                }
-            }
-            return count
+            var allStories = [];
+            allStories = ctrl.inGameStories.concat(ctrl.inactiveStories);
+            return allStories.filter(storyMetadata => storyMetadata.enabled).length > ctrl.minimumActiveScenarios;
+            
         }
     }]
 });

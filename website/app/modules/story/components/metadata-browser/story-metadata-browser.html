@@ -1,6 +1,5 @@
 <ul>
-
-	<li ng-repeat="metadata in $ctrl.storiesMetadata | filter: (!$ctrl.viewDeleted || '') && {deleted:false}">
+	<li ng-repeat="metadata in $ctrl.storiesMetadata | filter: (!$ctrl.viewDeleted || '') && {deleted:false} | orderBy:'-serialNumber'">
         <md-card ng-style="{'background-color' : ($ctrl.managing && metadata.enabled) ? '#cee7f7' : 'white'}">
             <md-card-content>
                 <h3 ng-if="metadata.deleted" class="error-text">DELETED</h3>
