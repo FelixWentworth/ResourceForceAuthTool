@@ -24,6 +24,7 @@ angular
         ctrl.status = "";
 
         ctrl.allowedLocations = {Loading : ["Loading"]};
+        ctrl.minimumActiveScenarios = config.constraints.minScenarios;        
 
         ctrl.$onInit = function() {
             if (!ctrl.isLoggedIn)

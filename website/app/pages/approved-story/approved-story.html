@@ -25,18 +25,16 @@
                 Minimum Required: {{$ctrl.minimumActiveScenarios}}
             </md-label>
             <br/>
-            <md-button class="md-raised" ng-click="$ctrl.refreshStories()">Refresh</md-button>
-            
             <active-state-split>                                        
                     
                 <active-title>In Game</active-title>
                 <active-content>
-                        <story-metadata-browser stories-metadata="$ctrl.inGameStories" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" managing=true can-disable="$ctrl.canDisable()"/>
+                        <story-metadata-browser stories-metadata="$ctrl.inGameStories" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" managing=true can-disable="$ctrl.canDisable()" on-change="$ctrl.refreshStories()"/>
                 </active-content>
 
                 <inactive-title>Inactive</inactive-title>
                 <inactive-content>
-                        <story-metadata-browser stories-metadata="$ctrl.inactiveStories" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" managing=true can-disable="$ctrl.canDisable()"/>
+                        <story-metadata-browser stories-metadata="$ctrl.inactiveStories" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" managing=true can-disable="$ctrl.canDisable()" on-change="$ctrl.refreshStories()" />
                 </inactive-content>
 
             </active-state-split>

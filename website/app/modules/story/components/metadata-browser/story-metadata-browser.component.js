@@ -9,7 +9,8 @@ angular
 			reviewing: "<",
 			viewDeleted: "<",
 			managing: "<",
-			canDisable: "<"
+			canDisable: "<",
+			onChange: "&"
 		},
 		controller: ["StoryStorageService", "config", function (StoryStorageService, config) {
 			var ctrl = this;
@@ -20,6 +21,7 @@ angular
 				metadata.submitted = true;
 				metadata.isValid = false; // has been changed, so needs validating again
 				StoryStorageService.updateMetadata(metadata);
+				ctrl.onChange();
 			};
 
 			ctrl.duplicate = function(id){
@@ -28,6 +30,7 @@ angular
 						ctrl.storiesMetadata.push(newStory.metadata);
 					}
 				);
+				ctrl.onChange();
 			};
 			
 			ctrl.validate = function(metadata, valid){
@@ -38,16 +41,19 @@ angular
 				metadata.isValid = valid;
 				metadata.submitted = false;
 				StoryStorageService.updateMetadata(metadata);
+				ctrl.onChange();
 			};
 
 			ctrl.setEnabled = function(metadata){
 				metadata.enabled = true;
 				StoryStorageService.updateMetadata(metadata);
+				ctrl.onChange();
 			}
 
 			ctrl.setDisabled = function(metadata){
 				metadata.enabled = false;
 				StoryStorageService.updateMetadata(metadata);
+				ctrl.onChange();				
 			}
 
 			ctrl.delete = function(metadata){
@@ -55,12 +61,14 @@ angular
 				metadata.isValid = false;
 				metadata.submitted = false;
 				StoryStorageService.updateMetadata(metadata);
+				ctrl.onChange();
 			};
 			ctrl.restore = function(metadata){
 				metadata.deleted = false;
 				metadata.isValid = false;
 				metadata.submitted = false;
 				StoryStorageService.updateMetadata(metadata);
+				ctrl.onChange();
 			};
 		}]
 	});	
