@@ -120,8 +120,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
 	                SerialNumber = scenario.SerialNumber,
 
 	                Title = $"Template Scenario {scenarioIndex + 1}",
-	                CreatorId = TemplateScenarioCreatorId,
-                    IsValid = true
+	                CreatorId = TemplateScenarioCreatorId
 	            });
 
 	            scenarioIndex++;
