@@ -11,6 +11,7 @@
         "url": "http://localhost:8728",        
         "webRoot": "${workspaceFolder}",
         "sourceMaps": true,
-        "disableNetworkCache": true
+        "disableNetworkCache": true,
+        "runtimeArgs": ["--auto-open-devtools-for-tabs"]
     }]
 }
