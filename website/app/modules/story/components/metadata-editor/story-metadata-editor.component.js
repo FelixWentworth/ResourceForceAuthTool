@@ -24,7 +24,7 @@ angular
 			ctrl.titleMax = config.constraints.title.max;
 
 			ctrl.$postLink = function() {
-				if (ctrl.isLoggedIn && Auth.getType() == 'admin')
+				if (ctrl.isLoggedIn && (Auth.getType() == 'admin' || Auth.getType() == 'guest'))
 				{
 					ctrl.regions = Object.keys(config.content.regions);
 				}
