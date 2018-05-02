@@ -2,16 +2,18 @@
 
 angular.module('resourceForceAuthoringTool')
 .service('Session', function () {
-  this.create = function (userId, userName, type, allowedLocations) {
+  this.create = function (userId, userName, type, contentRegions, validationRegions) {
     this.userId = userId;
     this.userName = userName;
     this.userType = type;
-    this.userAllowedLocations = allowedLocations;
+    this.contentRegions = contentRegions;
+    this.validationRegions = validationRegions;
   };
   this.destroy = function () {
     this.userId = null;
     this.userName = null;
     this.userType = null;
-    this.userAllowedLocations = null;    
+    this.contentRegions = null;
+    this.validationRegions = null;    
   };
 })

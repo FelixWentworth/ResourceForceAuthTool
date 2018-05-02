@@ -12,14 +12,15 @@ angular
         ctrl.memberType = ctrl.isLoggedIn ? Auth.getType() : "";
         ctrl.username = ctrl.isLoggedIn ? Auth.getName() : "";
 
-        ctrl.userAllowedLocations = ctrl.isLoggedIn ? Auth.getAllowedLocations() : "";
+        ctrl.userValidationRegions = ctrl.isLoggedIn ? Auth.getValidationRegions() : "";
+        ctrl.userContentRegions = ctrl.isLoggedIn ? Auth.getContentRegions() : "";
 
         ctrl.isAdmin = ctrl.memberType == 'admin';
         ctrl.isValidator = ctrl.memberType == 'validator';
         ctrl.isMember = ctrl.memberType == 'member';
 
-        ctrl.locations = config.content.locations;
-        ctrl.languages = config.content.languages;
+        ctrl.regions = [];
+        ctrl.languages = [];
 
         ctrl.reasonMin = config.constraints.reason.min;
         ctrl.reasonMax = config.constraints.reason.max;
@@ -34,6 +35,39 @@ angular
                 $state.go('home');
             }
             this.refresh();
+        }
+
+        ctrl.$postLink = function() {
+            if (ctrl.isLoggedIn && Auth.getType() == 'admin')
+            {
+                ctrl.regions = Object.keys(config.content.regions);
+            }
+            else
+            {
+                if (ctrl.userContentRegions != null && ctrl.userContentRegions != "")
+                {
+                    ctrl.regions = JSON.parse(ctrl.userContentRegions);
+                    if (ctrl.regions.length == 1) {
+                        ctrl.request.metadata.region = ctrl.regions[0];
+                    }
+                }
+            }
+        }
+
+        ctrl.changeRegion = function() {
+            if (ctrl.request == null || ctrl.request.metadata == null || ctrl.request.metadata.region == "")
+            {
+                // Not selected a region
+                return;
+            }
+            ctrl.languages = config.content.regions[ctrl.request.metadata.region];
+            if (!ctrl.languages.includes(ctrl.request.metadata.language))
+            {
+                ctrl.request.metadata.language = "";
+            }
+            if (ctrl.languages.length == 1) {
+                ctrl.request.metadata.language = ctrl.languages[0];
+            }
         }
 
         ctrl.submit = function(request)
@@ -65,8 +99,8 @@ angular
             }
             else if (ctrl.isValidator)
             {
-                // Load all requests made for language and location current validator has access to   
-                StoryStorageService.getValidatorRequests(ctrl.userAllowedLocations)
+                // Load all requests made for language and region current validator has access to   
+                StoryStorageService.getValidatorRequests(ctrl.userValidationRegions)
                 .then(function(response){
                 {
                     ctrl.requests = response;

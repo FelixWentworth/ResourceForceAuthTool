@@ -6,6 +6,6 @@ class Metadata {
 		self.id = id;
 		self.title = "";
 		self.language = "";
-		self.location = "";
+		self.region = "";
 	}
 }

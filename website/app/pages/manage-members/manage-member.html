@@ -12,11 +12,12 @@
             <div ng-if="$ctrl.isMember || $ctrl.isValidator">
                 <!-- Form to become a validator -->
                 <h2>Become a validator</h2>
-                <h3>To become a validator, select a language and location below and select submit. Your application will then be reviewed</h3>
+                <h3>To become a validator, select a language and region below and select submit. Your application will then be reviewed</h3>
                 <div>
-                    <validated-select label="'Location'"
-                        ng-model="$ctrl.request.metadata.location"
-                        options="$ctrl.locations"
+                    <validated-select label="'Region'"
+                        ng-model="$ctrl.request.metadata.region"
+                        ng-change="$ctrl.changeRegion()"
+                        options="$ctrl.regions"
                         required="true"/>
                 </div>
                 <div>
@@ -46,7 +47,7 @@
                 <div ng-repeat="request in $ctrl.requests">
                     <md-card style="padding:5px">
                         <div>
-                                <label>Location: {{request.metadata.location}}</label>
+                                <label>Region: {{request.metadata.region}}</label>
                         </div>
                         <div>
                                 <label>Language: {{request.metadata.language}}</label>

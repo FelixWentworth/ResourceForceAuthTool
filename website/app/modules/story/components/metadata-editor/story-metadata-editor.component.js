@@ -9,39 +9,48 @@ angular
 			var ctrl = this;
 
 			ctrl.isLoggedIn = Auth.isLoggedIn();
-			ctrl.userAllowedLocations = ctrl.isLoggedIn ? Auth.getAllowedLocations() : "";
+			ctrl.userRegions = ctrl.isLoggedIn ? Auth.getContentRegions() : "";
+			
+			ctrl.regions = [];
+			ctrl.languages = [];
 
 			ctrl.metadataHelp = {
 				"title": "",
-				"location": "",
+				"region": "",
 				"language": "",				
 			};
-
-			ctrl.allowedLocations = {};
-			ctrl.locations = [];
-			ctrl.languages = ctrl.metadata.location != null ? ctrl.allowedLocations[ctrl.metadata.location] : [];
 			
 			ctrl.titleMin = config.constraints.title.min;
 			ctrl.titleMax = config.constraints.title.max;
 
 			ctrl.$postLink = function() {
-				if (ctrl.userAllowedLocations != null && ctrl.userAllowedLocations != "")
-                {
-					ctrl.allowedLocations = JSON.parse(ctrl.userAllowedLocations);
-					ctrl.locations = Object.keys(ctrl.allowedLocations)
-					if (ctrl.locations.length == 1) {
-						ctrl.metadata.location = ctrl.locations[0];
+				if (ctrl.isLoggedIn && Auth.getType() == 'admin')
+				{
+					ctrl.regions = Object.keys(config.content.regions);
+				}
+				else
+				{
+					if (ctrl.userRegions != null && ctrl.userRegions != "")
+					{
+						ctrl.regions = JSON.parse(ctrl.userRegions);
+						if (ctrl.regions.length == 1) {
+							ctrl.metadata.region = ctrl.regions[0];
+						}
 					}
-                }
+				}
 			}
 
-			ctrl.changeLocation = function() {
-				if (ctrl.metadata.location == "")
+			ctrl.changeRegion = function() {
+				if (ctrl.metadata == null || ctrl.metadata.region == "")
 				{
-					// Not selected a location
+					// Not selected a region
 					return;
 				}
-				ctrl.languages = ctrl.allowedLocations[ctrl.metadata.location];
+				ctrl.languages = config.content.regions[ctrl.metadata.region];
+				if (!ctrl.languages.includes(ctrl.metadata.language))
+				{
+					ctrl.metadata.language = "";
+				}
 				if (ctrl.languages.length == 1) {
 					ctrl.metadata.language = ctrl.languages[0];
 				}

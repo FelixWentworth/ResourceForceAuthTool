@@ -3,11 +3,12 @@
     <div Id="content">
     </div>
     <div>
-        <md-label>To see content currently in the game, select a language and locations below and select "Load"</md-label>
+        <md-label>To see content currently in the game, select a language and region below and select "Load"</md-label>
         <br/>
-        <validated-select label="'Location'"
-                ng-model="$ctrl.selected.location"
-                options="$ctrl.locations"
+        <validated-select label="'Region'"
+                ng-model="$ctrl.selected.region"
+                ng-change="$ctrl.changeRegion()"
+                options="$ctrl.regions"
                 required="true"
                 style="width:50%"/>
         <validated-select label="'Language'"

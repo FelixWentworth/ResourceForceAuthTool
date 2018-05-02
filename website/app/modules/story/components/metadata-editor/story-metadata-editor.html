@@ -6,13 +6,13 @@
 			minlength="$ctrl.titleMin"
 			maxlength="$ctrl.titleMax"
 			required/>
-<validated-select label="'Location'"
-			ng-model="$ctrl.metadata.location"
-			ng-change="$ctrl.changeLocation()"
-			options="$ctrl.locations"
+<validated-select label="'Region'"
+			ng-model="$ctrl.metadata.region"
+			ng-change="$ctrl.changeRegion()"
+			options="$ctrl.regions"
 			required="true"/>
 <validated-select label="'Language'"
-			ng-if="$ctrl.metadata.location != ''"
+			ng-if="$ctrl.metadata.region != ''"
 			ng-model="$ctrl.metadata.language"
 			options="$ctrl.languages"
 			required="true"/>

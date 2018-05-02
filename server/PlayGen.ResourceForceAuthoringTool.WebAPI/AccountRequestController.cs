@@ -87,19 +87,23 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 		[HttpGet("validator/{region}")]
 		public IActionResult GetValidatorRequests([FromRoute]string region)
 		{
+            var regions = JsonConvert.DeserializeObject<string[]>(region);
             var requestContract = new List<AccountChangeResponse>();
 			if (region == null)
 			{
 				return null;
             }
-			var accountResponse = _accountRequestController.Get(region);
-			if (accountResponse != null)
-			{
-				foreach (var accountRequest in accountResponse)
-				{
-					requestContract.Add(accountRequest.ToAccountResponse());
-				}
-			}
+            foreach (var reg in regions)
+            {
+                var accountResponse = _accountRequestController.Get(reg);
+                if (accountResponse != null)
+                {
+                    foreach (var accountRequest in accountResponse)
+                    {
+                        requestContract.Add(accountRequest.ToAccountResponse());
+                    }
+                }
+            }
 
 			return new ObjectResult(requestContract);
         }

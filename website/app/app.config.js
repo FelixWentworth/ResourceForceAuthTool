@@ -2,8 +2,14 @@ angular
 .module("resourceForceAuthoringTool")
 .constant('config', {
     content : {
-        locations: ["Belfast", "Groningen", "Preston", "Nicosia", "Valencia"],
-        languages: ["Dutch", "English", "Greek", "Spanish"],
+        regions: {
+            "Belfast" : ["English"],
+            "Groningen" : ["English", "Dutch"],
+            "Preston" : ["English"],
+            "Nicosia" : ["English", "Greek"],
+            "Valencia" : ["English", "Spanish"],
+            "Lancashire" : ["English"]
+        },
         
         severity: [
             {id: 1, name: "Low"},
