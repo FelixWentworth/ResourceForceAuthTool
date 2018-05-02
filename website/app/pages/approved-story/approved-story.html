@@ -19,8 +19,13 @@
     </div>
     <div>
         <div>
+            <md-label ng-if="$ctrl.loader.storiesMetadata.length > 0">
+                Currently Active: {{$ctrl.activeContent()}}
+                <br/>
+                Minimum Required: {{$ctrl.minimumActiveScenarios}}
+            </md-label>
             <ul>
-                <story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" managing=true/>
+                <story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" managing=true can-disable="$ctrl.canDisable()"/>
             </ul>
             <br/>
             <md-label ng-if="$ctrl.loader.storiesMetadata.length == 0">No content loaded</md-label>            

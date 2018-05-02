@@ -58,6 +58,14 @@
                 </md-button>
                 
                 <md-button class="md-fab md-mini"
+                            aria-label="Delete"
+                            title="Delete"
+                            ng-click="$ctrl.delete(metadata)"
+                            ng-if="(metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && !$ctrl.reviewing && !metadata.deleted">
+                    <md-icon>delete_forever</md-icon>
+                </md-button>
+
+                <md-button class="md-fab md-mini"
                             aria-label="Enable Content"
                             title="Enable Content"
                             ng-click="$ctrl.setEnabled(metadata)"
@@ -69,17 +77,12 @@
                             aria-label="Disable Content"
                             title="Disable Content"
                             ng-click="$ctrl.setDisabled(metadata)"
+                            ng-disabled="!$ctrl.canDisable"
                             ng-if="metadata.enabled && (metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.isValid && $ctrl.managing && !metadata.deleted">
                     <md-icon>remove</md-icon>
                 </md-button>
 
-                <md-button class="md-fab md-mini"
-                            aria-label="Delete"
-                            title="Delete"
-                            ng-click="$ctrl.delete(metadata)"
-                            ng-if="(metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && !$ctrl.reviewing && !metadata.deleted">
-                    <md-icon>delete_forever</md-icon>
-                </md-button>
+                
                 <md-button class="md-fab md-mini"
                     aria-label="Restore"
                     title="Restore"
@@ -91,7 +94,7 @@
                 </div>
                 
                 <div>
-                    <label ng-if="metadata.comment != '' && !metadata.submitted"><br/>Comment: {{metadata.comment}}</label>                                            
+                    <label ng-if="metadata.comment != '' && !metadata.submitted"><br/>Feedback: {{metadata.comment}}</label>                                            
                 </div>
                 <h3 ng-if="metadata.deleted" class="error-text">DELETED</h3>
                 
@@ -99,12 +102,12 @@
                     <br/>
                     <span>
                     <validated-text-input
-                        label="'Comment To Creator'"
+                        label="'Feedback (Optional)'"
                         type="'field'" 
-                        placeholder="'Comment'"
+                        placeholder="'Feedback'"
                         ng-model="metadata.comment"
                         minlength="$ctrl.commentMin"
-                        required="true"
+                        required="false"
                         maxlength="$ctrl.commentMax"
                         ng-if="($ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.submitted"/>
                         

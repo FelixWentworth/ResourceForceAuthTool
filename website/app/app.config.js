@@ -58,6 +58,7 @@ angular
         depth : {
             min : 1,
             max : 5
-        }
+        },
+        minScenarios : 15
     }
 });

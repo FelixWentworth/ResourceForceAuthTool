@@ -8,7 +8,8 @@ angular
 			memberType: "=",
 			reviewing: "<",
 			viewDeleted: "<",
-			managing: "<"
+			managing: "<",
+			canDisable: "<"
 		},
 		controller: ["StoryStorageService", "config", function (StoryStorageService, config) {
 			var ctrl = this;

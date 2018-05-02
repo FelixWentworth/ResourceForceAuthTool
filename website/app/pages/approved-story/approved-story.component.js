@@ -2,7 +2,7 @@ angular
 .module("resourceForceAuthoringTool")
 .component("approvedStory", {
     templateUrl: "/pages/approved-story/approved-story.html",
-    controller: ["StoryStorageService", "$http", "Auth", "$q", "$state", function(StoryStorageService, $http, Auth, $q, $state) {
+    controller: ["StoryStorageService", "$http", "Auth", "$q", "$state","config", function(StoryStorageService, $http, Auth, $q, $state, config) {
         var ctrl = this;
 
         ctrl.title = "Content currently in game";
@@ -62,6 +62,24 @@ angular
                 console.log("[Error] Failed to send request");
                 ctrl.refresh();
             });
+        }
+
+        ctrl.canDisable = function()
+        {
+            return ctrl.activeContent() > ctrl.minimumActiveScenarios;
+        }
+
+        ctrl.activeContent = function()
+        {
+            var count = 0;
+            for(var i=0; i<ctrl.loader.storiesMetadata.length; i++)
+            {
+                if (ctrl.loader.storiesMetadata[i].enabled)
+                {
+                    count++;   
+                }
+            }
+            return count
         }
     }]
 });
