@@ -7,10 +7,14 @@ ul
 html
 {
     background-color: rgb(74, 74, 74);
+    overflow: initial !important;
 }
 body
 {
     background-color: rgb(74, 74, 74);
+    position: initial !important;
+    top: initial !important;
+    overflow: initial !important;
 }
 #window
 {
