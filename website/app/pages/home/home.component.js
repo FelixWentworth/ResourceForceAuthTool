@@ -111,7 +111,9 @@ angular
 				{
 					ctrl.viewDeleted = "View Deleted Content";
 				}
-				
+			}
+			ctrl.anyDeleted = function(){
+				return ctrl.loader.storiesMetadata.filter(storyMetadata => storyMetadata.deleted).length > 0;
 			}
 		}]
 	});
