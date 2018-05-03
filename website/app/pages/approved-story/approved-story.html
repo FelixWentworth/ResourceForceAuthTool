@@ -20,19 +20,17 @@
     <div>
         <div ng-if="$ctrl.loader.storiesMetadata.length > 0">
             <md-label>
-                Currently Active: {{$ctrl.inGameStories.length}}
-                <br/>
-                Minimum Required: {{$ctrl.minimumActiveScenarios}}
+                Minimum Active Required: {{$ctrl.minimumActiveScenarios}}
             </md-label>
             <br/>
             <active-state-split>                                        
                     
-                <active-title>In Game</active-title>
+                <active-title>In Game ({{$ctrl.inGameStories.length}})</active-title>
                 <active-content>
                         <story-metadata-browser stories-metadata="$ctrl.inGameStories" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" managing=true can-disable="$ctrl.canDisable()" on-change="$ctrl.refreshStories()"/>
                 </active-content>
 
-                <inactive-title>Inactive</inactive-title>
+                <inactive-title>Inactive ({{$ctrl.inactiveStories.length}})</inactive-title>
                 <inactive-content>
                         <story-metadata-browser stories-metadata="$ctrl.inactiveStories" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" managing=true can-disable="$ctrl.canDisable()" on-change="$ctrl.refreshStories()" />
                 </inactive-content>

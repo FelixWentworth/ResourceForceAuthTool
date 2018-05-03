@@ -5,20 +5,6 @@
                 <h3 ng-if="metadata.deleted" class="error-text">DELETED</h3>
         		<story-metadata metadata="metadata"></story-metadata>
 
-                <div>
-                    <label>Location: {{metadata.location}}</label>
-                    <br/>
-                    <label>Language: {{metadata.language}}</label>
-                </div>
-
-                <div>
-                    <label><b>Status</b></label>
-                    <label ng-if="metadata.submitted"><br/>Awaiting Validation</label>
-                    <label ng-if="!metadata.submitted && !metadata.isValid"><br/>Ready For Submission</label>
-                    <label ng-if="metadata.isValid && !metadata.submitted"><br/>Approved</label>
-                    <label ng-if="!metadata.isValid && !metadata.submitted"><br/>Not Approved</label>
-                </div>
-
         		<md-button class="md-fab md-mini" 
                             aria-label="Play"
                             title="Play"
@@ -92,9 +78,6 @@
                 
                 </div>
                 
-                <div>
-                    <label ng-if="metadata.comment != '' && !metadata.submitted"><br/>Feedback: {{metadata.comment}}</label>                                            
-                </div>
                 <h3 ng-if="metadata.deleted" class="error-text">DELETED</h3>
                 
                 <div ng-if="$ctrl.reviewing">
