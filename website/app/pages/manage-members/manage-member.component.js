@@ -65,6 +65,7 @@ angular
         {
             ctrl.response = "Sending";
             request.metadata.playerId = ctrl.creatorId;
+            request.metadata.username = ctrl.username;
             request.metadata.memberType = 'validator';
             StoryStorageService.submitValidatorRequest(request).then(function(){
                 ctrl.response = "Application Sent";

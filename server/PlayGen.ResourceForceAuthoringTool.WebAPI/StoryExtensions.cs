@@ -29,6 +29,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 IsValid = (bool)jObject["isValid"];
                 Submitted = (bool)jObject["submitted"];
                 Deleted = (bool)jObject["deleted"];
+				Enabled = (bool)jObject["enabled"];
                 Comment = (string)jObject["comment"];
             }
 
@@ -41,6 +42,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             public bool IsValid { get; set; }
             public bool Submitted { get; set; }
             public bool Deleted { get; set; }
+			public bool Enabled { get; set; }
             public string Comment { get; set; }
 		}
 
@@ -62,6 +64,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 IsValid = storyModel.IsValid,
                 Submitted = storyModel.Submitted,
                 Deleted = storyModel.Deleted,
+				Enabled = storyModel.Enabled,
                 Comment = storyModel.Comment
 			};
 		}
@@ -136,6 +139,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 Language = scenarioContract.Language,
                 Comment = scenarioContract.Comment,
                 Deleted = scenarioContract.Deleted,
+				Enabled = scenarioContract.Enabled,
                 Content = content
             };
         }
@@ -149,6 +153,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             scenarioContract.IsValid = metadata.IsValid;
             scenarioContract.Submitted = metadata.Submitted;
             scenarioContract.Deleted = metadata.Deleted;
+	        scenarioContract.Enabled = metadata.Enabled;
             scenarioContract.Comment = metadata.Comment;
 
             scenarioContract.SerialNumber = metadata.SerialNumber;

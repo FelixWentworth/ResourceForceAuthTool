@@ -1,0 +1,43 @@
+active-state-split {    
+    display: flex;
+}
+
+active-state-split .state-container {
+    flex-grow: 1;
+    display: flex;
+    width: 50%;
+    flex-direction: column;    
+}
+
+active-state-split .state-title {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+active-state-split #active-title {    
+    color: green;
+}
+
+active-state-split #inactive-title {
+    color: orange;
+}
+
+active-state-split .state-content {    
+    flex-grow: 1;
+    border: 1px;
+    border-style: solid;
+    margin: 8px;
+    /* copied from angular material md-card */
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+}
+
+active-state-split #active-content {
+    border-color: green;
+    background-color: rgb(200, 255, 200);
+}
+
+active-state-split #inactive-content {
+    border-color: orange;
+    background-color: rgb(255, 220, 150);
+}

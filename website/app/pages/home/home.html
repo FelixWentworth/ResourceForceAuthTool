@@ -38,10 +38,26 @@
 					Waiting for load
 				</div>
 
-				<ul ng-switch-when="false">
-					<md-button class="md-raised" ng-click="$ctrl.ToggleDeleted()">{{$ctrl.viewDeleted}}</md-button>
-					<story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" view-deleted="$ctrl.showDeleted"/>
-				</ul>
+                <div ng-switch-when="false">
+                    <active-state-split>                                        
+                                            
+                        <active-title>My Content</active-title>
+                        <active-content>
+							<md-button class="md-raised" ng-click="$ctrl.ToggleDeleted()">{{$ctrl.viewDeleted}}</md-button>
+							<!-- TODO: Show only deleted -->
+							<story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" view-deleted="$ctrl.showDeleted"/>
+                        </active-content>
+
+                        <inactive-title>Templates</inactive-title>
+                        <inactive-content>
+                                <!-- TODO: Show only templates -->
+                                <!-- <story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" view-deleted="$ctrl.showDeleted"/> -->
+                                
+                        </inactive-content>
+
+                    </active-state-split>
+
+                </div>
 			</div>
 		</div>
 	</div>

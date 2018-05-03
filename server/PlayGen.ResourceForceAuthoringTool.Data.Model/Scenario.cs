@@ -27,6 +27,8 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.Model
 
         public bool Deleted { get; set; }
 
+		public bool Enabled { get; set; }
+
         public bool Submitted { get; set; }
 
         public string Comment { get; set; }

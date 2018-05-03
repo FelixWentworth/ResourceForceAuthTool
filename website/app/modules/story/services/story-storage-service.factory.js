@@ -136,6 +136,7 @@ angular
 			story.metadata.isValid = false;
 			story.metadata.submitted = false;
 			story.metadata.deleted = false;
+			story.metadata.enabled = false;
 			return $http.post('../api' + '/scenario', story);
 		};
 

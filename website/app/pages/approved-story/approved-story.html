@@ -19,13 +19,27 @@
         <md-button class="md-raised" ng-click="$ctrl.load($ctrl.selected)">Load</md-button>
     </div>
     <div>
-        <div>
-            <ul>
-                <story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false"/>
-            </ul>
+        <div ng-if="$ctrl.loader.storiesMetadata.length > 0">
+            <md-label>
+                Minimum Active Required: {{$ctrl.minimumActiveScenarios}}
+            </md-label>
             <br/>
-            <md-label ng-if="$ctrl.loader.storiesMetadata.length == 0">No content loaded</md-label>            
+            <active-state-split>                                        
+                    
+                <active-title>In Game ({{$ctrl.inGameStories.length}})</active-title>
+                <active-content>
+                        <story-metadata-browser stories-metadata="$ctrl.inGameStories" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" managing=true can-disable="$ctrl.canDisable()" on-change="$ctrl.refreshStories()"/>
+                </active-content>
+
+                <inactive-title>Inactive ({{$ctrl.inactiveStories.length}})</inactive-title>
+                <inactive-content>
+                        <story-metadata-browser stories-metadata="$ctrl.inactiveStories" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" managing=true can-disable="$ctrl.canDisable()" on-change="$ctrl.refreshStories()" />
+                </inactive-content>
+
+            </active-state-split>
+            <br/>
         </div>
+        <md-label ng-if="$ctrl.loader.storiesMetadata.length == 0">No content loaded</md-label>                    
     </div>
 <custom-footer is-logged-in="$ctrl.isLoggedIn" show-guide="true" show-home="true" username="$ctrl.username"></custom-footer>
 </div>

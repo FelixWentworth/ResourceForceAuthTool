@@ -16,6 +16,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             {
                 JObject jObject = JObject.Parse(json);
                 PlayerId = (int)jObject["playerId"];
+	            Username = (string) jObject["username"];
                 MemberType = (string)jObject["memberType"];
                 Region = (string)jObject["region"];
                 Reason = (string)jObject["reason"];
@@ -23,6 +24,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 
             public int Id { get; set; }
             public int PlayerId{ get; set; }
+			public string Username { get; set; }
             public string MemberType { get; set; }
             public string Region { get; set; }
             public string Reason { get; set; }
@@ -44,6 +46,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             {
                 Id = requestModel.Id,
                 PlayerId = requestModel.PlayerId,
+				Username = requestModel.Username,
                 MemberType = requestModel.MemberType,
                 Region = requestModel.Region,
                 Reason = requestModel.Reason
@@ -56,6 +59,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             return new AccountRequest()
             {
                 PlayerId = metadata.PlayerId,
+				Username = metadata.Username,
                 MemberType = metadata.MemberType,
                 Region = metadata.Region,
                 Reason = metadata.Reason
