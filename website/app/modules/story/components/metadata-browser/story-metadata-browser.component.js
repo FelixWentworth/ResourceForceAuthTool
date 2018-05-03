@@ -34,7 +34,7 @@ angular
 			};
 			
 			ctrl.validate = function(metadata, valid){
-				if (metadata.comment == null || metadata.comment.length == 0 || metadata.comment.length > 200)
+				if (metadata.comment != null && metadata.comment.length > ctrl.commentMax)
 				{
 					return;
 				}
