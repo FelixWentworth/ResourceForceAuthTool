@@ -30,7 +30,8 @@ angular
 			ctrl.createAccount = false;
 			ctrl.regions = Object.keys(config.content.regions);
 
-			ctrl.error = "";
+			ctrl.signinerror = "";
+			ctrl.creationerror = "";
 			ctrl.viewDeleted = "View Deleted Content";
 			ctrl.showDeleted = false;
 
@@ -44,7 +45,7 @@ angular
 				// TODO send login request
 				if (user == null || user.metadata == null || user.metadata.username == null || user.metadata.password == null)
 				{
-					ctrl.error = "Please provide a username and password.";	
+					ctrl.signinerror = "Please provide a username and password.";	
 				}
 				else
 				{
@@ -65,7 +66,7 @@ angular
 					})
 					.catch(function(error)
 					{
-						ctrl.error = error.statusText + ". " + error.data;
+						ctrl.signinerror = error.statusText + ". " + error.data;
 					});
 				}
 			};
@@ -74,15 +75,15 @@ angular
 				// TODO send login request
 				if (user == null || user.metadata == null || user.metadata.username == null || user.metadata.username.length < 5)
 				{
-					ctrl.error = "Username must be at least five characters";	
+					ctrl.creationerror = "Username must be at least five characters";	
 				}
 				else if (user.metadata.password == null || user.metadata.password.length < 5)
 				{
-					ctrl.error = "Password must be at least five characters";	
+					ctrl.creationerror = "Password must be at least five characters";	
 				}
 				else if (user.metadata.password != user.metadata.passwordconfirm) 
 				{
-					ctrl.error = "Provided passwords do not match";	
+					ctrl.creationerror = "Provided passwords do not match";	
 				}
 				else
 				{
@@ -104,7 +105,7 @@ angular
 						})
 						.catch(function(error)
 						{
-							ctrl.error = error.statusText + ". " + error.data;
+							ctrl.creationerror = error.statusText + ". " + error.data;
 						});
 				}
 			};
