@@ -5,6 +5,7 @@ angular
     bindings: {
         label: "<",
         ngModel: "=",
+        ngChange: "=",
         options: "=",
         placeholder: "<",
            required: "<"

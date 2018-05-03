@@ -20,7 +20,6 @@ angular
         ctrl.isMember = ctrl.memberType == 'member';
 
         ctrl.regions = [];
-        ctrl.languages = [];
 
         ctrl.reasonMin = config.constraints.reason.min;
         ctrl.reasonMax = config.constraints.reason.max;
@@ -44,29 +43,21 @@ angular
             }
             else
             {
-                if (ctrl.userContentRegions != null && ctrl.userContentRegions != "")
+                if (ctrl.userContentRegions != null && ctrl.userContentRegions != "" && ctrl.userValidationRegions != null && ctrl.userValidationRegions != "")
                 {
-                    ctrl.regions = JSON.parse(ctrl.userContentRegions);
-                    if (ctrl.regions.length == 1) {
+                    var contentRegions = JSON.parse(ctrl.userContentRegions);
+                    var validationRegions = JSON.parse(ctrl.userValidationRegions);
+                    for (var region in contentRegions)
+                    {
+                        if (!validationRegions.includes(contentRegions[region]))
+                        {
+                            ctrl.regions.push(contentRegions[region]);
+                        }
+                    } 
+                    if (ctrl.request != null && ctrl.request.metadata != null && ctrl.regions.length == 1) {
                         ctrl.request.metadata.region = ctrl.regions[0];
                     }
                 }
-            }
-        }
-
-        ctrl.changeRegion = function() {
-            if (ctrl.request == null || ctrl.request.metadata == null || ctrl.request.metadata.region == "")
-            {
-                // Not selected a region
-                return;
-            }
-            ctrl.languages = config.content.regions[ctrl.request.metadata.region];
-            if (!ctrl.languages.includes(ctrl.request.metadata.language))
-            {
-                ctrl.request.metadata.language = "";
-            }
-            if (ctrl.languages.length == 1) {
-                ctrl.request.metadata.language = ctrl.languages[0];
             }
         }
 

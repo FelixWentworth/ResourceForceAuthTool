@@ -16,14 +16,7 @@
                 <div>
                     <validated-select label="'Region'"
                         ng-model="$ctrl.request.metadata.region"
-                        ng-change="$ctrl.changeRegion()"
                         options="$ctrl.regions"
-                        required="true"/>
-                </div>
-                <div>
-                    <validated-select label="'Language'"
-                        ng-model="$ctrl.request.metadata.language"
-                        options="$ctrl.languages"
                         required="true"/>
                 </div>
                 <div>
