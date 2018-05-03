@@ -28,11 +28,11 @@
                 <div>
                     <validated-text-input type="'area'" 
                         label="'Why do you want to be a validator?'"
-                        placeholder="'Reason'"
+                        placeholder="'Optional Comment'"
                         ng-model="$ctrl.request.metadata.reason"
                         minlength="$ctrl.reasonMin"
                         maxlength="$ctrl.reasonMax"
-                        required="true"/>	
+                        required="false"/>	
                 </div>
                 <div>
                     <md-button class="md-raised" ng-click="$ctrl.submit($ctrl.request)">Submit</md-button>
@@ -46,13 +46,16 @@
                 <div ng-repeat="request in $ctrl.requests">
                     <md-card style="padding:5px">
                         <div>
-                                <label>Location: {{request.metadata.location}}</label>
+                            <h4>Username: {{request.metadata.username}}</h4>
                         </div>
                         <div>
-                                <label>Language: {{request.metadata.language}}</label>
+                            <label>Location: {{request.metadata.location}}</label>
                         </div>
+                        <!-- <div>
+                            <label>Language: {{request.metadata.language}}</label>
+                        </div> -->
                         <div>
-                                <label>Reason: {{request.metadata.reason}}</label>
+                            <label>Comment: {{request.metadata.reason}}</label>
                         </div>
                         <div>
                             <span>

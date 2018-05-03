@@ -41,6 +41,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 			modelBuilder.Entity<AccountRequest>(a =>
 			{
 				a.ForMySQLHasCollation("utf8_bin");
+				a.Property(p => p.Username).ForMySQLHasCharset("utf8");
 				a.Property(p => p.Reason).ForMySQLHasCharset("utf8");
 			});
 		}

@@ -2,7 +2,7 @@ angular
 .module("resourceForceAuthoringTool")
 .component("approvedStory", {
     templateUrl: "/pages/approved-story/approved-story.html",
-    controller: ["StoryStorageService", "$http", "Auth", "$q", "$state", function(StoryStorageService, $http, Auth, $q, $state) {
+    controller: ["StoryStorageService", "$http", "Auth", "$q", "$state","config", function(StoryStorageService, $http, Auth, $q, $state, config) {
         var ctrl = this;
 
         ctrl.title = "Content currently in game";
@@ -24,6 +24,7 @@ angular
         ctrl.status = "";
 
         ctrl.allowedLocations = {Loading : ["Loading"]};
+        ctrl.minimumActiveScenarios = config.constraints.minScenarios;        
 
         ctrl.$onInit = function() {
             if (!ctrl.isLoggedIn)
@@ -45,13 +46,24 @@ angular
         ctrl.load = function(filter)
         {
             ctrl.status = "Loading..."
-            ctrl.loader.loadExisting(filter.language, filter.location);
+            ctrl.loader.loadExisting(filter.language, filter.location, onLoaded);
+        }
 
+        function onLoaded(storiesMetadata) {
+            ctrl.inGameStories = storiesMetadata.filter(storyMetadata => storyMetadata.enabled);
+            ctrl.inactiveStories = storiesMetadata.filter(storyMetadata => !storyMetadata.enabled);
+        }
+
+        ctrl.refreshStories = function() {
+            var allStories = [];
+            allStories = ctrl.inGameStories.concat(ctrl.inactiveStories);
+            ctrl.inGameStories = allStories.filter(storyMetadata => storyMetadata.enabled);
+            ctrl.inactiveStories = allStories.filter(storyMetadata => !storyMetadata.enabled);
         }
 
         ctrl.refresh = function()
         {
-            
+           
         }
 
         ctrl.delete = function(request)
@@ -62,6 +74,14 @@ angular
                 console.log("[Error] Failed to send request");
                 ctrl.refresh();
             });
+        }
+
+        ctrl.canDisable = function()
+        {
+            var allStories = [];
+            allStories = ctrl.inGameStories.concat(ctrl.inactiveStories);
+            return allStories.filter(storyMetadata => storyMetadata.enabled).length > ctrl.minimumActiveScenarios;
+            
         }
     }]
 });

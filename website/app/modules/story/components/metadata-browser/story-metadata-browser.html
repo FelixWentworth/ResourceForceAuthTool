@@ -1,24 +1,9 @@
 <ul>
-
-	<li ng-repeat="metadata in $ctrl.storiesMetadata | filter: (!$ctrl.viewDeleted || '') && {deleted:false}">
-        <md-card>
+	<li ng-repeat="metadata in $ctrl.storiesMetadata | filter: (!$ctrl.viewDeleted || '') && {deleted:false} | orderBy:'-serialNumber'">
+        <md-card ng-style="{'background-color' : ($ctrl.managing && metadata.enabled) ? '#cee7f7' : 'white'}">
             <md-card-content>
                 <h3 ng-if="metadata.deleted" class="error-text">DELETED</h3>
         		<story-metadata metadata="metadata"></story-metadata>
-
-                <div>
-                    <label>Location: {{metadata.location}}</label>
-                    <br/>
-                    <label>Language: {{metadata.language}}</label>
-                </div>
-
-                <div>
-                    <label><b>Status</b></label>
-                    <label ng-if="metadata.submitted"><br/>Awaiting Validation</label>
-                    <label ng-if="!metadata.submitted && !metadata.isValid"><br/>Ready For Submission</label>
-                    <label ng-if="metadata.isValid && !metadata.submitted"><br/>Approved</label>
-                    <label ng-if="!metadata.isValid && !metadata.submitted"><br/>Not Approved</label>
-                </div>
 
         		<md-button class="md-fab md-mini" 
                             aria-label="Play"
@@ -64,6 +49,25 @@
                             ng-if="(metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && !$ctrl.reviewing && !metadata.deleted">
                     <md-icon>delete_forever</md-icon>
                 </md-button>
+
+                <md-button class="md-fab md-mini"
+                            aria-label="Enable Content"
+                            title="Enable Content"
+                            ng-click="$ctrl.setEnabled(metadata)"
+                            ng-if="!metadata.enabled && (metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.isValid && $ctrl.managing && !metadata.deleted">
+                    <md-icon>add</md-icon>
+                </md-button>
+
+                <md-button class="md-fab md-mini"
+                            aria-label="Disable Content"
+                            title="Disable Content"
+                            ng-click="$ctrl.setDisabled(metadata)"
+                            ng-disabled="!$ctrl.canDisable"
+                            ng-if="metadata.enabled && (metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.isValid && $ctrl.managing && !metadata.deleted">
+                    <md-icon>remove</md-icon>
+                </md-button>
+
+                
                 <md-button class="md-fab md-mini"
                     aria-label="Restore"
                     title="Restore"
@@ -74,21 +78,18 @@
                 
                 </div>
                 
-                <div>
-                    <label ng-if="metadata.comment != '' && !metadata.submitted"><br/>Comment: {{metadata.comment}}</label>                                            
-                </div>
                 <h3 ng-if="metadata.deleted" class="error-text">DELETED</h3>
                 
                 <div ng-if="$ctrl.reviewing">
                     <br/>
                     <span>
                     <validated-text-input
-                        label="'Comment To Creator'"
+                        label="'Feedback (Optional)'"
                         type="'field'" 
-                        placeholder="'Comment'"
+                        placeholder="'Feedback'"
                         ng-model="metadata.comment"
                         minlength="$ctrl.commentMin"
-                        required="true"
+                        required="false"
                         maxlength="$ctrl.commentMax"
                         ng-if="($ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.submitted"/>
                         

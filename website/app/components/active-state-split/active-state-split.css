@@ -5,6 +5,7 @@ active-state-split {
 active-state-split .state-container {
     flex-grow: 1;
     display: flex;
+    width: 50%;
     flex-direction: column;    
 }
 

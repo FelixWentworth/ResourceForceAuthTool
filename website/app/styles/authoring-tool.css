@@ -44,6 +44,7 @@ md-toolbar
 }
 md-card{
     border: 1px;
+    padding-left: 10px;
     border-style:solid;
     border-color:rgb(63, 81, 181);
 }

@@ -1,1 +1,13 @@
-<div><h3>Title: {{$ctrl.metadata.title}}</h3></div>
+<div>
+    <label style="font-size: 20px"><b>{{$ctrl.metadata.title}}</b> ({{$ctrl.metadata.location}}, {{$ctrl.metadata.language}})</label>
+    <div style="padding-left: 10px">
+        <label><b>Status: </b></label>
+        <label ng-if="$ctrl.metadata.submitted">Awaiting Validation</label>
+        <label ng-if="!$ctrl.metadata.submitted && !$ctrl.metadata.isValid">Ready For Upload</label>
+        <label ng-if="!$ctrl.metadata.submitted && $ctrl.metadata.isValid && $ctrl.metadata.enabled">Approved (In Game)</label>
+        <label ng-if="!$ctrl.metadata.submitted && $ctrl.metadata.isValid && !$ctrl.metadata.enabled">Approved (Inactive)</label>
+    </div>
+    <div style="padding-left: 10px">
+        <label ng-if="$ctrl.metadata.comment != '' && !$ctrl.metadata.submitted"><b>Feedback: </b>{{$ctrl.metadata.comment}}</label>                                            
+    </div>
+</div>
