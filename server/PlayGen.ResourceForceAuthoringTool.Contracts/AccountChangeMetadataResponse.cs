@@ -10,11 +10,11 @@ namespace PlayGen.ResourceForceAuthoringTool.Contracts
 
         public int PlayerId { get; set; }
 
+		public string Username { get; set; }
+
         public string MemberType { get; set; }
 
-        public string Location { get; set; }
-
-        public string Language { get; set; }
+        public string Region { get; set; }
 
         public string Reason { get; set; }
     }

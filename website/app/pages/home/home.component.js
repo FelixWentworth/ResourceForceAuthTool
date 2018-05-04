@@ -39,7 +39,12 @@ angular
 
 			ctrl.Login = function(user) {
 				// TODO send login request
-
+				if (user == null || user.Metadata == null || user.Metadata.username == null || user.Metadata.password == null)
+				{
+					ctrl.error = "Please provide a username and password.";	
+				}
+				else
+				{
 				$http.post('../api' + '/user/login', user)
 					.then(function(response){
 						if (response.status === 200)
@@ -48,17 +53,18 @@ angular
 							ctrl.username = response.data.username;
 							ctrl.creatorId = response.data.id;
 							ctrl.memberType = response.data.memberType;
-							ctrl.allowedLocations = response.data.allowedLocations;
+							ctrl.contentRegions = response.data.contentRegions;
+							ctrl.validationRegions = response.data.validationRegions;
 
 							ctrl.loader.load(ctrl.creatorId);
-							Auth.set(ctrl.creatorId, ctrl.username, ctrl.memberType, ctrl.allowedLocations);
+							Auth.set(ctrl.creatorId, ctrl.username, ctrl.memberType, ctrl.contentRegions, ctrl.validationRegions);
 						}	
 					})
 					.catch(function(error)
 					{
-						ctrl.error = error.statusText + ". " + error.Message;
+						ctrl.error = error.statusText + ". " + error.data;
 					});
-
+				}
 			};
 
 			ctrl.Create = function(user) {
@@ -83,7 +89,7 @@ angular
 						})
 						.catch(function(error)
 						{
-							ctrl.error = error.statusText + ". " + error.Message;
+							ctrl.error = error.statusText + ". " + error.data;
 						});
 				}
 			};
@@ -105,7 +111,9 @@ angular
 				{
 					ctrl.viewDeleted = "View Deleted Content";
 				}
-				
+			}
+			ctrl.anyDeleted = function(){
+				return ctrl.loader.storiesMetadata.filter(storyMetadata => storyMetadata.deleted).length > 0;
 			}
 		}]
 	});

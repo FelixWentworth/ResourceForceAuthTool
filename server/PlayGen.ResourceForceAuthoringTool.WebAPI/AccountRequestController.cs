@@ -23,8 +23,8 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 
         #region Create
 
-        [HttpPost("validator")]
-        public IActionResult ValidatorRequest([FromBody]AccountChangeRequest request)
+        [HttpPost]
+        public IActionResult CreateRequest([FromBody]AccountChangeRequest request)
         {
             var requestModel = request.ToAccountRequestModel();
 
@@ -42,17 +42,17 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         {
             var requestModel = request.ToAccountRequestModel();
 
-            var accountRequest = _accountRequestController.Get(requestModel.PlayerId, requestModel.Location, requestModel.Language);
+            var accountRequest = _accountRequestController.Get(requestModel.PlayerId, requestModel.Region);
             if (accountRequest != null)
             {
                 if (accept)
                 {
-                    _accountRequestController.Update(requestModel.Location, requestModel.Language, requestModel);
+                    _accountRequestController.Update(requestModel.Region, requestModel);
                 }
                 _accountRequestController.Delete(accountRequest.Id);
                 return;
             }
-            throw new Exception($"No Request found for playerId {requestModel.PlayerId} and language {requestModel.Language} in {requestModel.Location}");
+            throw new Exception($"No Request found for playerId {requestModel.PlayerId} and region {requestModel.Region}");
         }
 
 
@@ -81,25 +81,29 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
         }
 
 		/// <summary>
-		/// Get all requests for a specific location and language
+		/// Get all requests for a specific region
 		/// </summary>
 		/// <returns></returns>
-		[HttpGet("validator/{location}/{language}")]
-		public IActionResult GetValidatorRequests([FromRoute]string location, [FromRoute]string language)
+		[HttpGet("validator/{region}")]
+		public IActionResult GetValidatorRequests([FromRoute]string region)
 		{
+            var regions = JsonConvert.DeserializeObject<string[]>(region);
             var requestContract = new List<AccountChangeResponse>();
-			if (location == null || language == null)
+			if (region == null)
 			{
 				return null;
             }
-			var accountResponse = _accountRequestController.Get(location, language);
-			if (accountResponse != null)
-			{
-				foreach (var accountRequest in accountResponse)
-				{
-					requestContract.Add(accountRequest.ToAccountResponse());
-				}
-			}
+            foreach (var reg in regions)
+            {
+                var accountResponse = _accountRequestController.Get(reg);
+                if (accountResponse != null)
+                {
+                    foreach (var accountRequest in accountResponse)
+                    {
+                        requestContract.Add(accountRequest.ToAccountResponse());
+                    }
+                }
+            }
 
 			return new ObjectResult(requestContract);
         }

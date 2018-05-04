@@ -24,9 +24,9 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
             return _accountRequestDbController.Get(id);
         }
 
-        public AccountRequest Get(int playerId, string location, string language)
+        public AccountRequest Get(int playerId, string region)
         {
-            return _accountRequestDbController.Get(playerId, location, language);
+            return _accountRequestDbController.Get(playerId, region);
         }
 
         public List<AccountRequest> Get()
@@ -39,14 +39,14 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
             return _accountRequestDbController.GetForPlayer(playerId);
         }
 
-        public List<AccountRequest> Get(string location, string language)
+        public List<AccountRequest> Get(string region)
         {
-            return _accountRequestDbController.Get(location, language);
+            return _accountRequestDbController.Get(region);
         }
 
-        public void Update(string location, string language, AccountRequest request)
+        public void Update(string region, AccountRequest request)
         {
-            _accountRequestDbController.Update(location, language, request);
+            _accountRequestDbController.Update(region, request);
         }
 
         public void Delete(int id)

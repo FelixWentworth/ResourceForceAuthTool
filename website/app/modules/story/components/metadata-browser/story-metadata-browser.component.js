@@ -7,7 +7,10 @@ angular
 			creatorId: "=",
 			memberType: "=",
 			reviewing: "<",
-			viewDeleted: "<"
+			viewDeleted: "<",
+			managing: "<",
+			canDisable: "<",
+			onChange: "&"
 		},
 		controller: ["StoryStorageService", "config", function (StoryStorageService, config) {
 			var ctrl = this;
@@ -18,6 +21,7 @@ angular
 				metadata.submitted = true;
 				metadata.isValid = false; // has been changed, so needs validating again
 				StoryStorageService.updateMetadata(metadata);
+				ctrl.onChange();
 			};
 
 			ctrl.duplicate = function(id){
@@ -26,29 +30,45 @@ angular
 						ctrl.storiesMetadata.push(newStory.metadata);
 					}
 				);
+				ctrl.onChange();
 			};
 			
 			ctrl.validate = function(metadata, valid){
-				if (metadata.comment == null || metadata.comment.length == 0 || metadata.comment.length > 200)
+				if (metadata.comment != null && metadata.comment.length > ctrl.commentMax)
 				{
 					return;
 				}
 				metadata.isValid = valid;
 				metadata.submitted = false;
 				StoryStorageService.updateMetadata(metadata);
+				ctrl.onChange();
 			};
+
+			ctrl.setEnabled = function(metadata){
+				metadata.enabled = true;
+				StoryStorageService.updateMetadata(metadata);
+				ctrl.onChange();
+			}
+
+			ctrl.setDisabled = function(metadata){
+				metadata.enabled = false;
+				StoryStorageService.updateMetadata(metadata);
+				ctrl.onChange();				
+			}
 
 			ctrl.delete = function(metadata){
 				metadata.deleted = true;
 				metadata.isValid = false;
 				metadata.submitted = false;
 				StoryStorageService.updateMetadata(metadata);
+				ctrl.onChange();
 			};
 			ctrl.restore = function(metadata){
 				metadata.deleted = false;
 				metadata.isValid = false;
 				metadata.submitted = false;
 				StoryStorageService.updateMetadata(metadata);
+				ctrl.onChange();
 			};
 		}]
 	});	

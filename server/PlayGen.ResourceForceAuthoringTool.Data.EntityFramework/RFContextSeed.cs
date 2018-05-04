@@ -23,12 +23,9 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 				    Username = "admin",
 				    Password = "073535bb18679f54cc7b64ce3dc1d3d047659731b90c0d44b37a58a5f7c3f015",
 				    MemberType = "admin",
-				    AllowedLocations = "{ \"Belfast\": [ \"Dutch\", \"English\", \"Greek\", \"Spanish\" ], "
-										+ "\"Groningen\": [ \"Dutch\", \"English\", \"Greek\", \"Spanish\" ], "
-										+ "\"Nicosia\": [ \"Dutch\", \"English\", \"Greek\", \"Spanish\" ], "
-										+ "\"Preston\": [ \"Dutch\", \"English\", \"Greek\", \"Spanish\" ], "
-										+ "\"Valencia\": [ \"Dutch\", \"English\", \"Greek\", \"Spanish\" ] }"
-				});
+				    ContentRegions = "[ \"Belfast\", \"Groningen\", \"Nicosia\", \"Preston\", \"Valencia\" ]",
+                    ValidationRegions = "[ \"Belfast\", \"Groningen\", \"Nicosia\", \"Preston\", \"Valencia\" ]"
+                });
 			    context.SaveChanges();
 
 			}

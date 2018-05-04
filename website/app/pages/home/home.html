@@ -38,36 +38,26 @@
 					Waiting for load
 				</div>
 
-				<div ng-switch-when="false">
+                <div ng-switch-when="false">
+                    <active-state-split>                                        
+                                            
+                        <active-title>My Content</active-title>
+                        <active-content>
+							<md-button ng-if="$ctrl.anyDeleted()" class="md-raised" ng-click="$ctrl.ToggleDeleted()">{{$ctrl.viewDeleted}}</md-button>
+							<!-- TODO: Show only deleted -->
+							<story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" view-deleted="$ctrl.showDeleted"/>
+                        </active-content>
 
-					<active-state-split>										
-											
-						<active-title>My Content</active-title>
-						<active-content>
+                        <inactive-title>Templates</inactive-title>
+                        <inactive-content>
+                                <!-- TODO: Show only templates -->
+                                <!-- <story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" view-deleted="$ctrl.showDeleted"/> -->
+                                
+                        </inactive-content>
 
-								<!-- TODO: Show only not deleted -->
-								<story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" view-deleted="$ctrl.showDeleted"/>
+                    </active-state-split>
 
-								<div id="deleted-scenarios-title"></div>
-								<div id="deleted-scenarios-content">
-									<md-button class="md-raised" ng-click="$ctrl.ToggleDeleted()">{{$ctrl.viewDeleted}}</md-button>
-									<!-- TODO: Show only deleted -->
-									<story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" view-deleted="$ctrl.showDeleted"/>
-								</div>
-
-						</active-content>
-
-						<inactive-title>Templates</inactive-title>
-						<inactive-content>
-								<!-- TODO: Show only templates -->
-								<story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" view-deleted="$ctrl.showDeleted"/>
-								
-						</inactive-content>
-
-					</active-state-split>
-
-				</div>
-
+                </div>
 			</div>
 		</div>
 	</div>

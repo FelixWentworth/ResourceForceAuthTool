@@ -9,7 +9,7 @@
 				placeholder="{{$ctrl.placeholder}}"
 				ng-minlength="$ctrl.minlength"
 		   		ng-maxlength="$ctrl.maxlength"
-		   		required="$ctrl.required"/>
+		   		ng-required="$ctrl.required"/>
 
    		<!-- text area -->
    		<textarea ng-if="$ctrl.type == 'area'"
@@ -18,7 +18,7 @@
 				placeholder="{{$ctrl.placeholder}}"
 				ng-minlength="$ctrl.minlength"
 		   		ng-maxlength="$ctrl.maxlength"
-		   		required="$ctrl.required"/>
+		   		ng-required="$ctrl.required"/>
 
 		<div ng-messages="$ctrl.form.input.$error">
 		    <div ng-message="required">You cannot leave this empty</div>

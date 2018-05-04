@@ -140,6 +140,11 @@ angular
 				checkValidity();
 			};
 
+			ctrl.changeImpact = function () {
+				checkEnd();
+				checkValidity();
+			}
+
 			// private methods
 			function checkValidity() {			
 
@@ -149,6 +154,10 @@ angular
 				{
 					// Player must have either no choices (an end) or more than 2 (a choice with 1 free choice, citizen or ignore)
 					ctrl.isThisSceneLevelComplete = false;
+				}
+				else if (choices == 0)
+				{
+					ctrl.isThisSceneLevelComplete = ctrl.scene.satisfactionImpact != "None" && ctrl.scene.satisfactionImpact != null;
 				}
 				else
 				{

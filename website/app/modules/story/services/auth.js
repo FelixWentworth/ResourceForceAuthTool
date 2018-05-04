@@ -14,10 +14,10 @@ angular.module('resourceForceAuthoringTool')
 		function($rootScope, AuthService, CookieService) {
 			var Auth;
 			Auth = {
-				set: function(userId, name, type, allowedLocations) {
+				set: function(userId, name, type, contentRegions, validationRegions) {
 
-					AuthService.login(userId, name, type, allowedLocations);
-					CookieService.set(userId, name, type, allowedLocations);
+					AuthService.login(userId, name, type, contentRegions, validationRegions);
+					CookieService.set(userId, name, type, contentRegions, validationRegions);
 				},
 				preApproved: false,
 
@@ -46,8 +46,12 @@ angular.module('resourceForceAuthoringTool')
 					return AuthService.getType();
 				},
 				
-				getAllowedLocations: function(){
-					return AuthService.getAllowedLocations();
+				getContentRegions: function(){
+					return AuthService.getContentRegions();
+				},
+
+				getValidationRegions: function(){
+					return AuthService.getValidationRegions();
 				},
 				
 				logout: function() {

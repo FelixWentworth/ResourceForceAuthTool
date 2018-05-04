@@ -15,7 +15,8 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.Model
 
         public string MemberType { get; set; }
 
-        public string AllowedLocations { get; set; }
+        public string ContentRegions { get; set; }
 
+        public string ValidationRegions { get; set; }
     }
 }

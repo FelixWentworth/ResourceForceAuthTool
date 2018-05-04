@@ -48,10 +48,10 @@ angular
 			return storiesValidatePromise.promise;
 		}
 
-		function getExistingStories(language, location){
+		function getExistingStories(language, region){
 			storiesPromise = $q.defer();
 
-			$http.get('../api' + '/scenario/approved/' + language +'/' + location)
+			$http.get('../api' + '/scenario/approved/' + language +'/' + region)
 			.then(function(story){
 				storiesPromise.resolve(story.data);
 			});
@@ -109,10 +109,10 @@ angular
 			return storiesValidateMetadataPromise.promise;
 		}
 
-		service.loadExisting = function(language, location){
+		service.loadExisting = function(language, region){
 			storiesMetadataPromise = $q.defer();
 
-			getExistingStories(language, location)
+			getExistingStories(language, region)
 				.then(function(scenarios){
 					var metadatas = [];
 					if (scenarios.length > 0)
@@ -136,6 +136,7 @@ angular
 			story.metadata.isValid = false;
 			story.metadata.submitted = false;
 			story.metadata.deleted = false;
+			story.metadata.enabled = false;
 			return $http.post('../api' + '/scenario', story);
 		};
 
@@ -170,11 +171,11 @@ angular
 			return requestsPromise.promise;
 		}
 		
-		service.getValidatorRequests = function(location, language) {
+		service.getValidatorRequests = function(region) {
             // get new data every time
 			requestsPromise = $q.defer();		
 			
-			$http.get('../api' + '/accountrequest/validator/' + location + "/" + language)
+			$http.get('../api' + '/accountrequest/validator/' + region)
 				.then(function(request){	
 					requestsPromise.resolve(request.data);		
 				});
@@ -183,7 +184,7 @@ angular
 		}
 
 		service.submitValidatorRequest = function(request) {
-			return $http.post('../api' + '/accountrequest/validator', request);
+			return $http.post('../api' + '/accountrequest', request);
 		}
 
 		service.approveRequest = function(request){

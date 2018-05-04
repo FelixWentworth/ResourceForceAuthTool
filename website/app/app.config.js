@@ -2,14 +2,43 @@ angular
 .module("resourceForceAuthoringTool")
 .constant('config', {
     content : {
-        locations: ["Belfast", "Groningen", "Preston", "Nicosia", "Valencia"],
-        languages: ["Dutch", "English", "Greek", "Spanish"],
+        regions: {
+            "Belfast" : ["English"],
+            "Groningen" : ["English", "Dutch"],
+            "Preston" : ["English"],
+            "Nicosia" : ["English", "Greek"],
+            "Valencia" : ["English", "Spanish"],
+            "Lancashire" : ["English"]
+        },
         
-        severity: [1,2,3],
+        severity: [
+            {id: 1, name: "Low"},
+            {id: 2, name: "Medium"}, 
+            {id: 3, name: "High"}
+        ],
         officers: [1,2,3,4],
         turns: [1,2,3,4],
-        feedback: [1,2,3,4,5],
-        impact: [-5,-4,-3,-2,-1,0,1,2,3,4,5]
+        feedback: [
+            {id: 1, name: "Very Bad"},
+            {id: 2, name: "Bad"}, 
+            {id: 3, name: "Ok"},
+            {id: 4, name: "Good"},
+            {id: 5, name: "Very Good"}
+        ],
+        impact: [
+            {id: -99, name: "None"},
+            {id: -5, name: "Awful"},
+            {id: -4, name: "Very Bad"}, 
+            {id: -3, name: "Bad"},
+            {id: -2, name: "Poor"},
+            {id: -1, name: "Not Ok"},
+            {id: 0,  name: "Neutral"},
+            {id: 1,  name: "Ok"}, 
+            {id: 2,  name: "Satisfactory"},
+            {id: 3,  name: "Good"},
+            {id: 4,  name: "Very Good"},
+            {id: 5,  name: "Outstanding"},
+        ]
     },
     constraints : {
         title : {
@@ -35,6 +64,7 @@ angular
         depth : {
             min : 1,
             max : 5
-        }
+        },
+        minScenarios : 15
     }
 });

@@ -10,7 +10,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Contracts
 
         public long SerialNumber { get; set; }
 
-        public string Location { get; set; }
+        public string Region { get; set; }
         
         public string Language { get; set; }
 
@@ -18,6 +18,8 @@ namespace PlayGen.ResourceForceAuthoringTool.Contracts
 
         public string Comment { get; set; }
 
-        public bool Deleted { get; set; }
+		public bool Enabled { get; set; }
+
+		public bool Deleted { get; set; }
     }
 }

@@ -12,27 +12,21 @@
             <div ng-if="$ctrl.isMember || $ctrl.isValidator">
                 <!-- Form to become a validator -->
                 <h2>Become a validator</h2>
-                <h3>To become a validator, select a language and location below and select submit. Your application will then be reviewed</h3>
+                <h3>To become a validator, select a language and region below and select submit. Your application will then be reviewed</h3>
                 <div>
-                    <validated-select label="'Location'"
-                        ng-model="$ctrl.request.metadata.location"
-                        options="$ctrl.locations"
-                        required="true"/>
-                </div>
-                <div>
-                    <validated-select label="'Language'"
-                        ng-model="$ctrl.request.metadata.language"
-                        options="$ctrl.languages"
+                    <validated-select label="'Region'"
+                        ng-model="$ctrl.request.metadata.region"
+                        options="$ctrl.regions"
                         required="true"/>
                 </div>
                 <div>
                     <validated-text-input type="'area'" 
                         label="'Why do you want to be a validator?'"
-                        placeholder="'Reason'"
+                        placeholder="'Optional Comment'"
                         ng-model="$ctrl.request.metadata.reason"
                         minlength="$ctrl.reasonMin"
                         maxlength="$ctrl.reasonMax"
-                        required="true"/>	
+                        required="false"/>	
                 </div>
                 <div>
                     <md-button class="md-raised" ng-click="$ctrl.submit($ctrl.request)">Submit</md-button>
@@ -46,13 +40,13 @@
                 <div ng-repeat="request in $ctrl.requests">
                     <md-card style="padding:5px">
                         <div>
-                                <label>Location: {{request.metadata.location}}</label>
+                            <h4>Username: {{request.metadata.username}}</h4>
                         </div>
                         <div>
-                                <label>Language: {{request.metadata.language}}</label>
+                            <label>Region: {{request.metadata.region}}</label>
                         </div>
                         <div>
-                                <label>Reason: {{request.metadata.reason}}</label>
+                            <label>Comment: {{request.metadata.reason}}</label>
                         </div>
                         <div>
                             <span>

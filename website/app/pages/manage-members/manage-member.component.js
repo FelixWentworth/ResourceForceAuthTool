@@ -12,14 +12,14 @@ angular
         ctrl.memberType = ctrl.isLoggedIn ? Auth.getType() : "";
         ctrl.username = ctrl.isLoggedIn ? Auth.getName() : "";
 
-        ctrl.userAllowedLocations = ctrl.isLoggedIn ? Auth.getAllowedLocations() : "";
+        ctrl.userValidationRegions = ctrl.isLoggedIn ? Auth.getValidationRegions() : "";
+        ctrl.userContentRegions = ctrl.isLoggedIn ? Auth.getContentRegions() : "";
 
         ctrl.isAdmin = ctrl.memberType == 'admin';
         ctrl.isValidator = ctrl.memberType == 'validator';
         ctrl.isMember = ctrl.memberType == 'member';
 
-        ctrl.locations = config.content.locations;
-        ctrl.languages = config.content.languages;
+        ctrl.regions = [];
 
         ctrl.reasonMin = config.constraints.reason.min;
         ctrl.reasonMax = config.constraints.reason.max;
@@ -36,10 +36,36 @@ angular
             this.refresh();
         }
 
+        ctrl.$postLink = function() {
+            if (ctrl.isLoggedIn && Auth.getType() == 'admin')
+            {
+                ctrl.regions = Object.keys(config.content.regions);
+            }
+            else
+            {
+                if (ctrl.userContentRegions != null && ctrl.userContentRegions != "" && ctrl.userValidationRegions != null && ctrl.userValidationRegions != "")
+                {
+                    var contentRegions = JSON.parse(ctrl.userContentRegions);
+                    var validationRegions = JSON.parse(ctrl.userValidationRegions);
+                    for (var region in contentRegions)
+                    {
+                        if (!validationRegions.includes(contentRegions[region]))
+                        {
+                            ctrl.regions.push(contentRegions[region]);
+                        }
+                    } 
+                    if (ctrl.request != null && ctrl.request.metadata != null && ctrl.regions.length == 1) {
+                        ctrl.request.metadata.region = ctrl.regions[0];
+                    }
+                }
+            }
+        }
+
         ctrl.submit = function(request)
         {
             ctrl.response = "Sending";
             request.metadata.playerId = ctrl.creatorId;
+            request.metadata.username = ctrl.username;
             request.metadata.memberType = 'validator';
             StoryStorageService.submitValidatorRequest(request).then(function(){
                 ctrl.response = "Application Sent";
@@ -65,8 +91,8 @@ angular
             }
             else if (ctrl.isValidator)
             {
-                // Load all requests made for language and location current validator has access to   
-                StoryStorageService.getValidatorRequests(ctrl.userAllowedLocations)
+                // Load all requests made for language and region current validator has access to   
+                StoryStorageService.getValidatorRequests(ctrl.userValidationRegions)
                 .then(function(response){
                 {
                     ctrl.requests = response;
