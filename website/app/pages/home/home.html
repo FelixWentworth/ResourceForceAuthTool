@@ -9,21 +9,21 @@
 			<br/>
 
 			<span>
-				<input placeholder="Username" ng-model="$ctrl.user.Metadata.username" ng-enter="$ctrl.Login($ctrl.user)"></input>
+				<input placeholder="Username" ng-model="$ctrl.user.metadata.username" ng-enter="$ctrl.Login($ctrl.user)"></input>
 			</span>
 			<br/>
 			<span>
-				<input placeholder="Password" type="password" ng-model="$ctrl.user.Metadata.password" ng-enter="$ctrl.Login($ctrl.user)"></input>
+				<input placeholder="Password" type="password" ng-model="$ctrl.user.metadata.password" ng-enter="$ctrl.Login($ctrl.user)"></input>
 			</span>
 			<br/>
 			<span>
-				<md-button class="md-raised" ng-click="$ctrl.Create($ctrl.user)">Create Account</md-button>
+				<md-button class="md-raised" ng-click="$ctrl.showCreateAccount(true)">Create Account</md-button>
 				<md-button class="md-raised" ng-click="$ctrl.Login($ctrl.user)">Log In</md-button>
 			</span>
 			<br/><br/>
 			<md-button ng-click="$ctrl.GuestLogin()">Continue as Guest</md-button>
 			<br/><br/>
-			<md-label>{{$ctrl.error}}</md-label>
+			<md-label>{{$ctrl.signinerror}}</md-label>
 		</div>
 
 		<div ng-if="$ctrl.isLoggedIn">
@@ -59,6 +59,43 @@
 
                 </div>
 			</div>
+		</div>
+		<div class="md-dialog-container" ng-if="$ctrl.createAccount">
+			<md-dialog>
+				<div id="centered">
+					<h3>Create Account</h3>
+				</div>
+				<div id="content">
+					<div id="centered">
+						<span>
+							<input placeholder="Username" ng-model="$ctrl.creationuser.metadata.username" ng-enter="$ctrl.Create($ctrl.creationuser)"></input>
+						</span>
+						<br/>
+						<span>
+							<input placeholder="Password" type="password" ng-model="$ctrl.creationuser.metadata.password" ng-enter="$ctrl.Create($ctrl.creationuser)"></input>
+						</span>
+						<br/>
+						<span>
+							<input placeholder="Confirm Password" type="password" ng-model="$ctrl.creationuser.metadata.passwordconfirm" ng-enter="$ctrl.Create($ctrl.creationuser)"></input>
+						</span>
+						<br/><br/>
+						<span>
+							<validated-select label="'Region'"
+										ng-model="$ctrl.request.metadata.region"
+										options="$ctrl.regions"
+										required="true"/>
+						</span>
+						<br/>
+						<span>
+							<md-button class="md-raised" ng-click="$ctrl.showCreateAccount(false)">Cancel</md-button>
+							<md-button class="md-raised" ng-click="$ctrl.Create($ctrl.creationuser)" ng-disabled="$ctrl.request == null || $ctrl.request.metadata == null || $ctrl.request.metadata.region == null">Create Account</md-button>
+						</span>
+						<br/><br/>
+						<md-label>{{$ctrl.creationerror}}</md-label>
+						<br/><br/>
+					</div>
+				</div>
+			</md-dialog>
 		</div>
 	</div>
 	<custom-footer is-logged-in="$ctrl.isLoggedIn" show-guide="true" show-home="false" username="$ctrl.username"></custom-footer>
