@@ -1,6 +1,6 @@
 <ul>
-	<li ng-repeat="metadata in $ctrl.storiesMetadata | filter: (!$ctrl.viewDeleted || '') && {deleted:false} | orderBy:'-serialNumber'">
-        <md-card ng-style="{'background-color' : ($ctrl.managing && metadata.enabled) ? '#cee7f7' : 'white'}">
+	<li ng-repeat="metadata in $ctrl.storiesMetadata | filter: (!$ctrl.viewDeleted || '') && {deleted:false} | orderBy:['-serialNumber', 'title']">
+        <md-card ng-style="{'background-color' : ($ctrl.managing && metadata.enabled) ? '#cee7f7' : 'white'}" ng-if="($ctrl.showTemplate && metadata.creatorId == -1) || (!$ctrl.showTemplate && metadata.creatorId != -1)">
             <md-card-content>
                 <h3 ng-if="metadata.deleted" class="error-text">DELETED</h3>
         		<story-metadata metadata="metadata"></story-metadata>
@@ -21,7 +21,8 @@
                 <md-button class="md-fab md-mini" 
                             aria-label="Edit"
                             title="Edit"
-                			ui-sref="edit-story({ storyId: metadata.id })">
+                            ui-sref="edit-story({ storyId: metadata.id })"
+                            ng-if="metadata.creatorId != -1">
                     <md-icon>mode_edit</md-icon>
                 </md-button>
 
@@ -37,7 +38,7 @@
                             aria-label="Submit"
                             title="Submit"
                             ng-click="$ctrl.submit(metadata)"
-                            ng-if="($ctrl.memberType == 'admin' || metadata.creatorId == $ctrl.creatorId) && !metadata.submitted && !$ctrl.reviewing && !metadata.isValid">    
+                            ng-if="metadata.creatorId != -1 && ($ctrl.memberType == 'admin' || metadata.creatorId == $ctrl.creatorId) && !metadata.submitted && !$ctrl.reviewing && !metadata.isValid">    
                     <md-icon>file_upload</md-icon>
                 </md-button>
                 
@@ -45,7 +46,7 @@
                             aria-label="Delete"
                             title="Delete"
                             ng-click="$ctrl.delete(metadata)"
-                            ng-if="(metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && !$ctrl.reviewing && !metadata.deleted">
+                            ng-if=" metadata.creatorId != -1 && (metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && !$ctrl.reviewing && !metadata.deleted">
                     <md-icon>delete_forever</md-icon>
                 </md-button>
 
@@ -53,7 +54,7 @@
                             aria-label="Enable Content"
                             title="Enable Content"
                             ng-click="$ctrl.setEnabled(metadata)"
-                            ng-if="!metadata.enabled && (metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.isValid && $ctrl.managing && !metadata.deleted">
+                            ng-if="metadata.creatorId != -1 && !metadata.enabled && (metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.isValid && $ctrl.managing && !metadata.deleted">
                     <md-icon>add</md-icon>
                 </md-button>
 
@@ -62,7 +63,7 @@
                             title="Disable Content"
                             ng-click="$ctrl.setDisabled(metadata)"
                             ng-disabled="!$ctrl.canDisable"
-                            ng-if="metadata.enabled && (metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.isValid && $ctrl.managing && !metadata.deleted">
+                            ng-if="metadata.creatorId != -1 && metadata.enabled && (metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.isValid && $ctrl.managing && !metadata.deleted">
                     <md-icon>remove</md-icon>
                 </md-button>
 
@@ -71,7 +72,7 @@
                     aria-label="Restore"
                     title="Restore"
                     ng-click="$ctrl.restore(metadata)"
-                    ng-if="!$ctrl.reviewing && metadata.deleted">
+                    ng-if="metadata.creatorId != -1 && !$ctrl.reviewing && metadata.deleted">
                     <md-icon>restore</md-icon>
                 </md-button>
                 

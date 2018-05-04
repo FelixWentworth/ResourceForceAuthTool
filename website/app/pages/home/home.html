@@ -44,14 +44,14 @@
                         <active-title>My Content</active-title>
                         <active-content>
 							<md-button ng-if="$ctrl.anyDeleted()" class="md-raised" ng-click="$ctrl.ToggleDeleted()">{{$ctrl.viewDeleted}}</md-button>
-							<!-- TODO: Show only deleted -->
-							<story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" view-deleted="$ctrl.showDeleted"/>
+							
+							<story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" view-deleted="$ctrl.showDeleted" show-template="false"/>
                         </active-content>
 
                         <inactive-title>Templates</inactive-title>
                         <inactive-content>
-                                <!-- TODO: Show only templates -->
-                                <!-- <story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" view-deleted="$ctrl.showDeleted"/> -->
+							
+							<story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" view-deleted="false" show-template="true"/>
                                 
                         </inactive-content>
 

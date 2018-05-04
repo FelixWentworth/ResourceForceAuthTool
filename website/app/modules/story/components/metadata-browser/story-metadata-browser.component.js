@@ -7,6 +7,7 @@ angular
 			creatorId: "=",
 			memberType: "=",
 			reviewing: "<",
+			showTemplate: "<",
 			viewDeleted: "<",
 			managing: "<",
 			canDisable: "<",
@@ -25,7 +26,7 @@ angular
 			};
 
 			ctrl.duplicate = function(id){
-				StoryStorageService.duplicateStory(id)
+				StoryStorageService.duplicateStory(id, ctrl.creatorId)
 					.then(function(newStory){
 						ctrl.storiesMetadata.push(newStory.metadata);
 					}

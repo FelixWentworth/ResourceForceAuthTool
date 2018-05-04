@@ -114,12 +114,12 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
 	            Create(new Scenario
 	            {
 	                Id = scenario.Id,
-	                Location = scenario.Location,
+	                Region = scenario.Location,
 	                Language = scenario.Language,
 	                Content = scenario.Content,
 	                SerialNumber = scenario.SerialNumber,
 
-	                Title = $"Template Scenario {scenarioIndex + 1}",
+	                Title = $"Template Scenario {scenarioIndex + 1:000}",
 	                CreatorId = TemplateScenarioCreatorId
 	            });
 
