@@ -1,8 +1,7 @@
 <ul>
 	<li ng-repeat="metadata in $ctrl.storiesMetadata | filter: (!$ctrl.viewDeleted || '') && {deleted:false} | orderBy:['-serialNumber', 'title']">
-        <md-card ng-style="{'background-color' : ($ctrl.managing && metadata.enabled) ? '#cee7f7' : 'white'}" ng-if="($ctrl.showTemplate && metadata.creatorId == -1) || (!$ctrl.showTemplate && metadata.creatorId != -1)">
+        <md-card ng-style="{'background-color' : (metadata.deleted) ? '#ffbbbb' : 'white'}" ng-if="($ctrl.showTemplate && metadata.creatorId == -1) || (!$ctrl.showTemplate && metadata.creatorId != -1)">
             <md-card-content>
-                <h3 ng-if="metadata.deleted" class="error-text">DELETED</h3>
         		<story-metadata metadata="metadata"></story-metadata>
         		<md-button class="md-fab md-mini" 
                             aria-label="Play"
@@ -77,8 +76,6 @@
                 </md-button>
                 
                 </div>
-                
-                <h3 ng-if="metadata.deleted" class="error-text">DELETED</h3>
                 
                 <div ng-if="$ctrl.reviewing">
                     <br/>
