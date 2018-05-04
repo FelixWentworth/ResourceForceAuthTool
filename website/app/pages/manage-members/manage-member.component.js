@@ -19,6 +19,7 @@ angular
         ctrl.isValidator = ctrl.memberType == 'validator';
         ctrl.isMember = ctrl.memberType == 'member';
 
+        ctrl.contentRegions = [];
         ctrl.regions = [];
 
         ctrl.reasonMin = config.constraints.reason.min;
@@ -40,12 +41,14 @@ angular
             if (ctrl.isLoggedIn && Auth.getType() == 'admin')
             {
                 ctrl.regions = Object.keys(config.content.regions);
+                ctrl.contentRegions = Object.keys(config.content.regions);
             }
             else
             {
                 if (ctrl.userContentRegions != null && ctrl.userContentRegions != "" && ctrl.userValidationRegions != null && ctrl.userValidationRegions != "")
                 {
                     var contentRegions = JSON.parse(ctrl.userContentRegions);
+                    ctrl.contentRegions = contentRegions;
                     var validationRegions = JSON.parse(ctrl.userValidationRegions);
                     for (var region in contentRegions)
                     {
