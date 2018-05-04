@@ -26,6 +26,8 @@ angular
 			ctrl.creatorId = ctrl.isLoggedIn ? Auth.getId() : 0;
 			ctrl.memberType = ctrl.isLoggedIn ? Auth.getType() : "";
 			ctrl.username = ctrl.isLoggedIn ? Auth.getName() : "";
+			ctrl.contentRegions = ctrl.isLoggedIn ? Auth.getContentRegions() : [];
+			ctrl.validationRegions = ctrl.isLoggedIn ? Auth.getValidationRegions() : [];
 
 			ctrl.createAccount = false;
 			ctrl.regions = Object.keys(config.content.regions);

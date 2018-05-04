@@ -45,13 +45,11 @@ angular
             {
                 if (ctrl.userContentRegions != null && ctrl.userContentRegions != "" && ctrl.userValidationRegions != null && ctrl.userValidationRegions != "")
                 {
-                    var contentRegions = JSON.parse(ctrl.userContentRegions);
-                    var validationRegions = JSON.parse(ctrl.userValidationRegions);
-                    for (var region in contentRegions)
+                    for (var region in contentRctrl.userContentRegionsegions)
                     {
-                        if (!validationRegions.includes(contentRegions[region]))
+                        if (!ctrl.userValidationRegions.includes(ctrl.userContentRegions[region]))
                         {
-                            ctrl.regions.push(contentRegions[region]);
+                            ctrl.regions.push(ctrl.userContentRegions[region]);
                         }
                     } 
                     if (ctrl.request != null && ctrl.request.metadata != null && ctrl.regions.length == 1) {

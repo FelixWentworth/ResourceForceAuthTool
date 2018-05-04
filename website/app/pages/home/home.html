@@ -45,13 +45,13 @@
                         <active-content>
 							<md-button ng-if="$ctrl.anyDeleted()" class="md-raised" ng-click="$ctrl.ToggleDeleted()">{{$ctrl.viewDeleted}}</md-button>
 							
-							<story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" view-deleted="$ctrl.showDeleted" show-template="false"/>
+							<story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" regions="$ctrl.contentRegions" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" view-deleted="$ctrl.showDeleted" show-template="false"/>
                         </active-content>
 
                         <inactive-title>Templates</inactive-title>
                         <inactive-content>
 							
-							<story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" view-deleted="false" show-template="true"/>
+							<story-metadata-browser stories-metadata="$ctrl.loader.storiesMetadata" regions="$ctrl.contentRegions" creator-id="$ctrl.creatorId" member-type="$ctrl.memberType" reviewing="false" view-deleted="false" show-template="true"/>
                                 
                         </inactive-content>
 
