@@ -1,6 +1,6 @@
 <ul>
 	<li ng-repeat="metadata in $ctrl.storiesMetadata | filter: (!$ctrl.viewDeleted || '') && {deleted:false} | orderBy:['-serialNumber', 'title']">
-        <md-card ng-style="{'background-color' : (metadata.deleted) ? '#ffbbbb' : 'white'}" ng-if="($ctrl.showTemplate && metadata.creatorId == -1) || (!$ctrl.showTemplate && metadata.creatorId != -1)">
+        <md-card ng-style="{'background-color' : (metadata.deleted) ? '#ffbbbb' : 'white'}" ng-if="$ctrl.managing || ($ctrl.showTemplate && metadata.creatorId == -1) || (!$ctrl.showTemplate && metadata.creatorId != -1)">
             <md-card-content>
         		<story-metadata metadata="metadata"></story-metadata>
         		<md-button class="md-fab md-mini" 
@@ -29,7 +29,7 @@
                             aria-label="Duplicate"
                             title="Duplicate"
                             ng-click="$ctrl.duplicate(metadata.id)"
-                            ng-if="(metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && !metadata.submitted && !$ctrl.reviewing">
+                            ng-if="$ctrl.showTemplate || (metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && !metadata.submitted && !$ctrl.reviewing">
                     <md-icon>content_copy</md-icon>
                 </md-button>
 
@@ -53,7 +53,7 @@
                             aria-label="Enable Content"
                             title="Enable Content"
                             ng-click="$ctrl.setEnabled(metadata)"
-                            ng-if="metadata.creatorId != -1 && !metadata.enabled && (metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.isValid && $ctrl.managing && !metadata.deleted">
+                            ng-if="!metadata.enabled && (metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.isValid && $ctrl.managing && !metadata.deleted">
                     <md-icon>add</md-icon>
                 </md-button>
 
@@ -62,7 +62,7 @@
                             title="Disable Content"
                             ng-click="$ctrl.setDisabled(metadata)"
                             ng-disabled="!$ctrl.canDisable"
-                            ng-if="metadata.creatorId != -1 && metadata.enabled && (metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.isValid && $ctrl.managing && !metadata.deleted">
+                            ng-if="metadata.enabled && (metadata.creatorId == $ctrl.creatorId || $ctrl.memberType == 'admin' || $ctrl.memberType == 'validator') && metadata.isValid && $ctrl.managing && !metadata.deleted">
                     <md-icon>remove</md-icon>
                 </md-button>
 
