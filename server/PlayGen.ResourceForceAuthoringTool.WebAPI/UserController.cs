@@ -52,7 +52,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 
         #endregion
 
-        #region Update
+        #region UpdateAndSubmitExisting
 
         #endregion
 

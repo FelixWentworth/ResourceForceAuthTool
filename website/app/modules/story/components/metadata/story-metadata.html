@@ -1,6 +1,8 @@
 <div>
-    <label style="font-size: 20px"><b>{{$ctrl.metadata.title}}</b> ({{$ctrl.metadata.region}}, {{$ctrl.metadata.language}})</label>
-    <div>
+    <label style="font-size: 20px">
+        <b>{{$ctrl.metadata.title}}</b> (<label ng-if="!$ctrl.showTemplate">{{$ctrl.metadata.region}}, </label>{{$ctrl.metadata.language}})
+    </label>
+    <div ng-if="!$ctrl.showTemplate">
         <label><b>Status: </b></label>
         <label ng-if="$ctrl.metadata.submitted">Awaiting Validation</label>
         <label ng-if="!$ctrl.metadata.submitted && !$ctrl.metadata.isValid">Ready For Upload</label>

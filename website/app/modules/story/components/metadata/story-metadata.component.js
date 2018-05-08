@@ -3,7 +3,8 @@ angular
 	.component("storyMetadata", {		
 		templateUrl: "/modules/story/components/metadata/story-metadata.html",
 		bindings: {
-			metadata: "<"
+			metadata: "<", 
+			showTemplate: "<"
 		}, 
 		controller: function () {
 			var ctrl = this;

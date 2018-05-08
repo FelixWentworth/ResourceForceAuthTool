@@ -27,7 +27,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             {
                 scenario.Comment = "";
             }
-            _scenarioCoreController.Create(scenario);
+            _scenarioCoreController.Create(scenario, true);
             var scenarioContract = scenario.ToScenarioContract();
             return new ObjectResult(scenarioContract);
         }
@@ -152,7 +152,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 
         #endregion
 
-        #region Update
+        #region UpdateAndSubmitExisting
 
         [HttpPut]
         public IActionResult Update([FromBody] ScenarioRequest scenario)

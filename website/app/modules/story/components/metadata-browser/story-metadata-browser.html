@@ -2,7 +2,7 @@
 	<li ng-repeat="metadata in $ctrl.storiesMetadata | filter: (!$ctrl.viewDeleted || '') && {deleted:false} | orderBy:['-serialNumber', 'title']">
         <md-card ng-style="{'background-color' : (metadata.deleted) ? '#ffbbbb' : 'white'}" ng-if="$ctrl.managing || ($ctrl.showTemplate && metadata.creatorId == -1) || (!$ctrl.showTemplate && metadata.creatorId != -1)">
             <md-card-content>
-        		<story-metadata metadata="metadata"></story-metadata>
+        		<story-metadata metadata="metadata" show-template="$ctrl.showTemplate"></story-metadata>
         		<md-button class="md-fab md-mini" 
                             aria-label="Play"
                             title="Play"

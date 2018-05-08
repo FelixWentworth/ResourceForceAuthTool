@@ -136,7 +136,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 	        }
 	    }
 
-		public Scenario Create(Scenario scenario)
+		public Scenario Create(Scenario scenario, bool contentChanged)
 		{
 			using (var context = _rfContextFactory.Create())
 			{
@@ -144,7 +144,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
 				if (existing != null)
 				{
-					scenario = Update(scenario, true);
+					scenario = UpdateAndSubmitExisting(scenario, contentChanged);
 					return scenario;
 				}
 				context.Scenarios.Add(scenario);
@@ -154,7 +154,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 			}
 		}
 
-		public Scenario Update(Scenario scenario, bool contentChanged)
+		public Scenario UpdateAndSubmitExisting(Scenario scenario, bool contentChanged)
 		{
 			using (var context = _rfContextFactory.Create())
 			{

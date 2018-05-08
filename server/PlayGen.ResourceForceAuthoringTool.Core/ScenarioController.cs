@@ -53,14 +53,14 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
 	        return _scenarioDbController.GetApproved(language, location);
 	    }
 
-        public Scenario Create(Scenario newStory)
+        public Scenario Create(Scenario newStory, bool contentChanged)
 		{
-			return _scenarioDbController.Create(newStory);
+			return _scenarioDbController.Create(newStory, contentChanged);
 		}
 
 		public Scenario Update(Scenario story, bool contentChanged)
 		{
-			return _scenarioDbController.Update(story, contentChanged);
+			return _scenarioDbController.UpdateAndSubmitExisting(story, contentChanged);
 		}
 
         public void Delete(string id)
@@ -122,7 +122,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
 	                Title = $"Template Scenario {scenarioIndex + 1:000}",
 	                CreatorId = TemplateScenarioCreatorId,
 					IsValid = true
-	            });
+	            }, false);
 
 	            scenarioIndex++;
 	        }
