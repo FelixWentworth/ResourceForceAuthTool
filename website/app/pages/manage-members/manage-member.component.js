@@ -34,10 +34,7 @@ angular
             {
                 $state.go('home');
             }
-            this.refresh();
-        }
-
-        ctrl.$postLink = function() {
+    
             if (ctrl.isLoggedIn && Auth.getType() == 'admin')
             {
                 ctrl.regions = Object.keys(config.content.regions);
@@ -45,23 +42,21 @@ angular
             }
             else
             {
-                if (ctrl.userContentRegions != null && ctrl.userContentRegions != "" && ctrl.userValidationRegions != null && ctrl.userValidationRegions != "")
+                var contentRegions = ctrl.userContentRegions;
+                ctrl.contentRegions = contentRegions;
+                var validationRegions = ctrl.userValidationRegions;
+                for (var region in contentRegions)
                 {
-                    var contentRegions = JSON.parse(ctrl.userContentRegions);
-                    ctrl.contentRegions = contentRegions;
-                    var validationRegions = JSON.parse(ctrl.userValidationRegions);
-                    for (var region in contentRegions)
+                    if (!validationRegions.includes(contentRegions[region]))
                     {
-                        if (!validationRegions.includes(contentRegions[region]))
-                        {
-                            ctrl.regions.push(contentRegions[region]);
-                        }
-                    } 
-                    if (ctrl.request != null && ctrl.request.metadata != null && ctrl.regions.length == 1) {
-                        ctrl.request.metadata.region = ctrl.regions[0];
+                        ctrl.regions.push(contentRegions[region]);
                     }
+                } 
+                if (ctrl.request != null && ctrl.request.metadata != null && ctrl.regions.length == 1) {
+                    ctrl.request.metadata.region = ctrl.regions[0];
                 }
             }
+            this.refresh();            
         }
 
         ctrl.submit = function(request)
@@ -95,7 +90,7 @@ angular
             else if (ctrl.isValidator)
             {
                 // Load all requests made for language and region current validator has access to   
-                StoryStorageService.getValidatorRequests(ctrl.userValidationRegions)
+                StoryStorageService.getValidatorRequests(JSON.stringify(ctrl.userValidationRegions))
                 .then(function(response){
                 {
                     ctrl.requests = response;

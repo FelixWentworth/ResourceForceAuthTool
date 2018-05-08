@@ -59,11 +59,11 @@ angular
 							ctrl.username = response.data.username;
 							ctrl.creatorId = response.data.id;
 							ctrl.memberType = response.data.memberType;
-							ctrl.contentRegions = response.data.contentRegions;
-							ctrl.validationRegions = response.data.validationRegions;
+							ctrl.contentRegions = JSON.parse(response.data.contentRegions);
+							ctrl.validationRegions = JSON.parse(response.data.validationRegions);
 
 							ctrl.loader.load(ctrl.creatorId);
-							Auth.set(ctrl.creatorId, ctrl.username, ctrl.memberType, ctrl.contentRegions, ctrl.validationRegions);
+							Auth.set(ctrl.creatorId, ctrl.username, ctrl.memberType, response.data.contentRegions, response.data.validationRegions);
 						}	
 					})
 					.catch(function(error)
