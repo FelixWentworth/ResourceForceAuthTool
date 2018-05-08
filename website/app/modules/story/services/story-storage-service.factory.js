@@ -195,9 +195,10 @@ angular
 			return $http.post('../api' + '/accountrequest/validator/false', request);			
 		}
 
-		service.duplicateStory = function(id){
+		service.duplicateStory = function(id, cId, region){
 			requestsPromise = $q.defer();	
-
+			creatorId = cId;
+			
 			var story = {};
 			getStory(id)
 				.then(function(content){
@@ -205,6 +206,8 @@ angular
 					// set Id to null to add as another row in table
 					story.metadata.id = uuid.v4();
 					story.metadata.title = story.metadata.title + "_copy"
+					story.metadata.creatorId = creatorId;
+					story.metadata.region = region;
 					service.save(story)
 						.then(function(story){
 							requestsPromise.resolve(story.data);

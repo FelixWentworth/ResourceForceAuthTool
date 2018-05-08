@@ -9,7 +9,7 @@
 <validated-select label="'Region'"
 			ng-model="$ctrl.metadata.region"
 			ng-change="$ctrl.changeRegion()"
-			options="$ctrl.regions"
+			options="$ctrl.userRegions"
 			required="true"/>
 <validated-select label="'Language'"
 			ng-if="$ctrl.metadata.region != ''"

@@ -9,7 +9,11 @@
             <label>Username: <b>{{$ctrl.username}}</b></label>
             <br/>
             <label>Account Type: <b>{{$ctrl.memberType}}</b></label>
-            <div ng-if="$ctrl.isMember || $ctrl.isValidator">
+            <br/><br/>
+            <label>Can Create Content For: <b>{{$ctrl.contentRegions.join(', ')}}</b></label>
+            <br ng-if="$ctrl.isAdmin || $ctrl.isValidator"/>
+            <label ng-if="$ctrl.isAdmin || $ctrl.isValidator">Can Validate For: <b>{{$ctrl.userValidationRegions.join(', ')}}</b></label>
+            <div ng-if="$ctrl.regions.length > 0 && ($ctrl.isMember || $ctrl.isValidator)">
                 <!-- Form to become a validator -->
                 <h2>Become a validator</h2>
                 <h3>To become a validator, select a language and region below and select submit. Your application will then be reviewed</h3>

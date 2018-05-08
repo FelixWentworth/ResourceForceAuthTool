@@ -51,12 +51,12 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
         {
             using (var context = _rfContextFactory.Create())
             {
-                var user = context.Users.Find(id);
-                if (user == null)
-                {
-                    return null;
-                }
-                return context.Scenarios.Where(s => s.CreatorId == id).ToList();
+		        var user = context.Users.Find(id);
+		        if (user == null)
+		        {
+			        return null;
+		        }
+	            return context.Scenarios.Where(s => s.CreatorId == id || s.CreatorId == -1).ToList();
            }
         }
 

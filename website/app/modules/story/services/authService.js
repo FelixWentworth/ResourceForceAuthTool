@@ -35,11 +35,15 @@ angular.module('resourceForceAuthoringTool').factory('AuthService', ["$http", "S
   };
 
   authService.getContentRegions = function () {
-    return Session.contentRegions;
+    var regions = Session.contentRegions;
+    regions = regions == "" ? "[]" : regions;
+    return JSON.parse(regions);
   };
 
   authService.getValidationRegions = function () {
-    return Session.validationRegions;
+    var regions = Session.validationRegions;
+    regions = regions == "" ? "[]" : regions;
+    return JSON.parse(regions);
   };
 
   authService.logout = function() {

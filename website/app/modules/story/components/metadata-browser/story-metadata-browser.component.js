@@ -5,8 +5,10 @@ angular
 		bindings: {
 			storiesMetadata: "=",
 			creatorId: "=",
+			regions: "<",
 			memberType: "=",
 			reviewing: "<",
+			showTemplate: "<",
 			viewDeleted: "<",
 			managing: "<",
 			canDisable: "<",
@@ -25,7 +27,7 @@ angular
 			};
 
 			ctrl.duplicate = function(id){
-				StoryStorageService.duplicateStory(id)
+				StoryStorageService.duplicateStory(id, ctrl.creatorId, ctrl.regions[0])
 					.then(function(newStory){
 						ctrl.storiesMetadata.push(newStory.metadata);
 					}

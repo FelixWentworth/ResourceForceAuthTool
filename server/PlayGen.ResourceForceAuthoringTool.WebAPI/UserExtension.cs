@@ -62,7 +62,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 Password = metadata.Password,
                 MemberType = "member",
 				ContentRegions = "",
-                ValidationRegions = ""
+                ValidationRegions = "[]"
             };
         }
 

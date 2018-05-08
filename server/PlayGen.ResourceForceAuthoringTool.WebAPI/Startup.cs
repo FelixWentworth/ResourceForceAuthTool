@@ -1,11 +1,10 @@
 ﻿using System;
-
+using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-
 using PlayGen.ResourceForceAuthoringTool.Data.EntityFramework;
 using PlayGen.ResourceForceAuthoringTool.Core.Utilities;
 
@@ -35,16 +34,23 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 		    {
 			    app.UseDeveloperExceptionPage();
 		    }
+
+	        AddTemplateScenarios(app.ApplicationServices);
 	    }
 
-		// This method gets called by the runtime. Use this method to add services to the container.
-		public void ConfigureServices(IServiceCollection services)
+        private void AddTemplateScenarios(IServiceProvider appApplicationServices)
+        {
+            var templateScenariosPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TemplateScenarios.json");
+            var templateScenarioJson = File.ReadAllText(templateScenariosPath);
+            var scenarioController = appApplicationServices.GetService<Core.ScenarioController>();
+            scenarioController.CreateFromJson(templateScenarioJson);
+        }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
         {
 			// Add framework services.
-			services.AddMvc(options =>
-			{
-				options.Filters.Add(typeof(ExceptionFilter));
-			});
+			services.AddMvc();
 
 			services.AddSingleton((_) => new PasswordEncryption());
 

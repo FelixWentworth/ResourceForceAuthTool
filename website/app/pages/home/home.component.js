@@ -15,7 +15,7 @@ angular
 	})
 	.component("home", {
 		templateUrl: "/pages/home/home.html",
-		controller: ["StoryStorageService", "$http", "$state", "Auth", function(StoryStorageService, $http, $state, Auth) {
+		controller: ["StoryStorageService", "$http", "$state", "Auth", "config", function(StoryStorageService, $http, $state, Auth, config) {
 			var ctrl = this;
 			
 			ctrl.title = "Resource Force Authoring Tool";
@@ -26,8 +26,14 @@ angular
 			ctrl.creatorId = ctrl.isLoggedIn ? Auth.getId() : 0;
 			ctrl.memberType = ctrl.isLoggedIn ? Auth.getType() : "";
 			ctrl.username = ctrl.isLoggedIn ? Auth.getName() : "";
+			ctrl.contentRegions = ctrl.isLoggedIn ? Auth.getContentRegions() : [];
+			ctrl.validationRegions = ctrl.isLoggedIn ? Auth.getValidationRegions() : [];
 
-			ctrl.error = "";
+			ctrl.createAccount = false;
+			ctrl.regions = Object.keys(config.content.regions);
+
+			ctrl.signinerror = "";
+			ctrl.creationerror = "";
 			ctrl.viewDeleted = "View Deleted Content";
 			ctrl.showDeleted = false;
 
@@ -39,9 +45,9 @@ angular
 
 			ctrl.Login = function(user) {
 				// TODO send login request
-				if (user == null || user.Metadata == null || user.Metadata.username == null || user.Metadata.password == null)
+				if (user == null || user.metadata == null || user.metadata.username == null || user.metadata.password == null)
 				{
-					ctrl.error = "Please provide a username and password.";	
+					ctrl.signinerror = "Please provide a username and password.";	
 				}
 				else
 				{
@@ -53,46 +59,62 @@ angular
 							ctrl.username = response.data.username;
 							ctrl.creatorId = response.data.id;
 							ctrl.memberType = response.data.memberType;
-							ctrl.contentRegions = response.data.contentRegions;
-							ctrl.validationRegions = response.data.validationRegions;
+							ctrl.contentRegions = JSON.parse(response.data.contentRegions);
+							ctrl.validationRegions = JSON.parse(response.data.validationRegions);
 
 							ctrl.loader.load(ctrl.creatorId);
-							Auth.set(ctrl.creatorId, ctrl.username, ctrl.memberType, ctrl.contentRegions, ctrl.validationRegions);
+							Auth.set(ctrl.creatorId, ctrl.username, ctrl.memberType, response.data.contentRegions, response.data.validationRegions);
 						}	
 					})
 					.catch(function(error)
 					{
-						ctrl.error = error.statusText + ". " + error.data;
+						ctrl.signinerror = error.statusText + ". " + error.data;
 					});
 				}
 			};
 
 			ctrl.Create = function(user) {
 				// TODO send login request
-				if (user == null || user.Metadata == null || user.Metadata.username == null || user.Metadata.username.length < 5)
+				if (user == null || user.metadata == null || user.metadata.username == null || user.metadata.username.length < 5)
 				{
-					ctrl.error = "Username must be at least five characters";	
+					ctrl.creationerror = "Username must be at least five characters";	
 				}
-				else if (user.Metadata.password == null || user.Metadata.password.length < 5)
+				else if (user.metadata.password == null || user.metadata.password.length < 5)
 				{
-					ctrl.error = "Password must be at least five characters";	
+					ctrl.creationerror = "Password must be at least five characters";	
+				}
+				else if (user.metadata.password != user.metadata.passwordconfirm) 
+				{
+					ctrl.creationerror = "Provided passwords do not match";	
 				}
 				else
 				{
-					user.memberType = 'member';
+					user.metadata.memberType = 'member';
 					$http.post('../api' + '/user', user)
 						.then(function(response){
 							if (response.status === 200)
 							{
-								ctrl.Login(user);
+								ctrl.request.metadata.playerId = response.data.metadata.id;
+								ctrl.request.metadata.username = response.data.metadata.username;
+								ctrl.request.metadata.memberType = 'member';
+								$http.post('../api' + '/accountrequest', ctrl.request)
+									.then(function(){
+										ctrl.createAccount = false;
+										ctrl.Login(user);
+									}).catch(function(){
+									});
 							}		
 						})
 						.catch(function(error)
 						{
-							ctrl.error = error.statusText + ". " + error.data;
+							ctrl.creationerror = error.statusText + ". " + error.data;
 						});
 				}
 			};
+
+			ctrl.showCreateAccount = function(show) {
+				ctrl.createAccount = show;
+			}
 
 			ctrl.GuestLogin = function() {
 				ctrl.isLoggedIn = true;

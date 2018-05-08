@@ -32,7 +32,6 @@ angular
 				{
 					if (ctrl.userRegions != null && ctrl.userRegions != "")
 					{
-						ctrl.regions = JSON.parse(ctrl.userRegions);
 						if (ctrl.regions.length == 1) {
 							ctrl.metadata.region = ctrl.regions[0];
 						}
