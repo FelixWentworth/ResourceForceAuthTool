@@ -131,7 +131,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 	    {
 	        using (var context = _rfContextFactory.Create())
 	        {
-	            var scenarios = context.Scenarios.Where(s => s.Language == language && s.Region == region && s.IsValid).ToList();
+	            var scenarios = context.Scenarios.Where(s => s.Language == language && s.Region == region && s.IsValid && s.CreatorId != -1).ToList();
 	            return scenarios;
 	        }
 	    }
