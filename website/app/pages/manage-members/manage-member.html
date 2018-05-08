@@ -9,6 +9,10 @@
             <label>Username: <b>{{$ctrl.username}}</b></label>
             <br/>
             <label>Account Type: <b>{{$ctrl.memberType}}</b></label>
+            <br/>
+            <label>Can Create Content For: <b>{{$ctrl.contentRegions.join(', ')}}</b></label>
+            <br ng-if="$ctrl.isAdmin || $ctrl.isValidator"/>
+            <label ng-if="$ctrl.isAdmin || $ctrl.isValidator">Can Validate For: <b>{{$ctrl.regions.join(', ')}}</b></label>
             <div ng-if="$ctrl.isMember || $ctrl.isValidator">
                 <!-- Form to become a validator -->
                 <h2>Become a validator</h2>
