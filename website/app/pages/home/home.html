@@ -16,13 +16,18 @@
 				<input placeholder="Password" type="password" ng-model="$ctrl.user.metadata.password" ng-enter="$ctrl.Login($ctrl.user)"></input>
 			</span>
 			<br/>
+
 			<span>
-				<md-button class="md-raised" ng-click="$ctrl.showCreateAccount(true)">Create Account</md-button>
 				<md-button class="md-raised" ng-click="$ctrl.Login($ctrl.user)">Log In</md-button>
 			</span>
 			<br/><br/>
-			<md-button ng-click="$ctrl.GuestLogin()">Continue as Guest</md-button>
+			<md-label>OR</md-label>
 			<br/><br/>
+			<span>
+				<md-button class="md-raised" ng-click="$ctrl.showCreateAccount(true)">Create New Account</md-button>
+			</span>
+			<!-- <md-button ng-click="$ctrl.GuestLogin()">Continue as Guest</md-button> -->
+			<!-- <br/><br/> -->
 			<md-label>{{$ctrl.signinerror}}</md-label>
 		</div>
 

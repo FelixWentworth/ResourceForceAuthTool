@@ -83,7 +83,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
 	        {
 	            var id = jScenario["id"].Value<string>();
 	            var language = jScenario["language"].Value<string>();
-	            var location = jScenario["location"].Value<string>();
+	            var location = jScenario["region"].Value<string>();
 	            var serialNumber = jScenario["serialNumber"].Value<int>();
 	            var content = jScenario["content"].ToString();
 
@@ -121,7 +121,6 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
 
 	                Title = $"Template Scenario {scenarioIndex + 1:000}",
 	                CreatorId = TemplateScenarioCreatorId,
-					Enabled = true,
 					IsValid = true
 	            });
 
