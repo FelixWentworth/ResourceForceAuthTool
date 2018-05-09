@@ -12,14 +12,15 @@ angular
 			// todo make data driven
 			ctrl.config = {};
 			ctrl.config.invalidMessage = "There seems to be an invalid part of your scenario." + 
-						" \nYou must find it and fix it in order to save." +
+						" \nYou must find it and fix it in order to submit your content." +
 						" \nMake sure each field is filled in for each section. You must have at least 2 decisions available for each incident that is not an end";
 
 			ctrl.saveStatus = "";
 
 			// public methods
-			ctrl.save = function() {
+			ctrl.save = function(completed) {
 				ctrl.saveStatus = "Saving...";
+				ctrl.story.metadata.completeContent = completed
 				StoryStorageService.save(ctrl.story)
 				.success(function(data){
 					ctrl.saveStatus = "Saved Successfully";

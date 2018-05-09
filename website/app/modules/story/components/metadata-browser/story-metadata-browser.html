@@ -37,7 +37,8 @@
                             aria-label="Submit"
                             title="Submit"
                             ng-click="$ctrl.submit(metadata)"
-                            ng-if="metadata.creatorId != -1 && ($ctrl.memberType == 'admin' || metadata.creatorId == $ctrl.creatorId) && !metadata.submitted && !$ctrl.reviewing && !metadata.isValid">    
+                            ng-if="metadata.creatorId != -1 && ($ctrl.memberType == 'admin' || metadata.creatorId == $ctrl.creatorId) && !metadata.submitted && !$ctrl.reviewing && !metadata.isValid && !metadata.deleted"
+                            ng-disabled="!metadata.completeContent">    
                     <md-icon>file_upload</md-icon>
                 </md-button>
                 

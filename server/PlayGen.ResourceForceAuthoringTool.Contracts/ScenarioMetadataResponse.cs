@@ -28,5 +28,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Contracts
 		public bool Enabled { get; set; }
 
         public string Comment { get; set; }
+
+		public bool CompleteContent { get; set; }
 	}
 }
