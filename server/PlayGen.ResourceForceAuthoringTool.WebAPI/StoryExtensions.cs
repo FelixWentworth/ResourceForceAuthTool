@@ -31,7 +31,8 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 Deleted = (bool)jObject["deleted"];
 				Enabled = (bool)jObject["enabled"];
                 Comment = (string)jObject["comment"];
-            }
+				CompleteContent = (bool) jObject["completeContent"];
+			}
 
             public string Id { get; set; }
             public int CreatorId { get; set; }
@@ -44,6 +45,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             public bool Deleted { get; set; }
 			public bool Enabled { get; set; }
             public string Comment { get; set; }
+			public bool CompleteContent { get; set; }
 		}
 
 		public static ScenarioMetadataResponse ToMetadata(this Scenario storyModel)
@@ -65,7 +67,8 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 Submitted = storyModel.Submitted,
                 Deleted = storyModel.Deleted,
 				Enabled = storyModel.Enabled,
-                Comment = storyModel.Comment
+                Comment = storyModel.Comment,
+				CompleteContent = storyModel.CompleteContent
 			};
 		}
 
@@ -85,7 +88,8 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 Submitted = metadata.Submitted,
 				Language = metadata.Language,
 				Region = metadata.Region,
-				Content = scenarioContract.Content.ToString()
+				Content = scenarioContract.Content.ToString(),
+				CompleteContent = metadata.CompleteContent
 			};
 		}
 
@@ -140,7 +144,8 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
                 Comment = scenarioContract.Comment,
                 Deleted = scenarioContract.Deleted,
 				Enabled = scenarioContract.Enabled,
-                Content = content
+                Content = content, 
+				CompleteContent = scenarioContract.CompleteContent
             };
         }
 

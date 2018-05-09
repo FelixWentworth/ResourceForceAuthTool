@@ -19,6 +19,8 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.Model
         
 		public string Content { get; set; }
 
+		public bool CompleteContent { get; set; }
+
 		public DateTime DateCreated { get; set; }
 
 		public DateTime DateModified { get; set; }

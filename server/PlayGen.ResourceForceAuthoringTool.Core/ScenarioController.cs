@@ -117,6 +117,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
 	                Region = scenario.Location,
 	                Language = scenario.Language,
 	                Content = scenario.Content,
+					CompleteContent = true,
 	                SerialNumber = scenario.SerialNumber,
 
 	                Title = $"Template Scenario {scenarioIndex + 1:000}",

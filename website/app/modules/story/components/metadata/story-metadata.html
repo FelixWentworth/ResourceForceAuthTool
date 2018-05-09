@@ -4,12 +4,13 @@
     </label>
     <div ng-if="!$ctrl.showTemplate">
         <label><b>Status: </b></label>
-        <label ng-if="$ctrl.metadata.submitted">Awaiting Validation</label>
-        <label ng-if="!$ctrl.metadata.submitted && !$ctrl.metadata.isValid">Ready For Upload</label>
-        <label ng-if="!$ctrl.metadata.submitted && $ctrl.metadata.isValid && $ctrl.metadata.enabled">Approved (In Game)</label>
-        <label ng-if="!$ctrl.metadata.submitted && $ctrl.metadata.isValid && !$ctrl.metadata.enabled">Approved (Inactive)</label>
+        <label ng-if="!$ctrl.metadata.completeContent">In Progress</label>
+        <label ng-if="$ctrl.metadata.completeContent && $ctrl.metadata.submitted">Awaiting Validation</label>
+        <label ng-if="$ctrl.metadata.completeContent && !$ctrl.metadata.submitted && !$ctrl.metadata.isValid">Ready For Upload</label>
+        <label ng-if="$ctrl.metadata.completeContent && !$ctrl.metadata.submitted && $ctrl.metadata.isValid && $ctrl.metadata.enabled">Approved (In Game)</label>
+        <label ng-if="$ctrl.metadata.completeContent && !$ctrl.metadata.submitted && $ctrl.metadata.isValid && !$ctrl.metadata.enabled">Approved (Inactive)</label>
     </div>
     <div>
-        <label ng-if="$ctrl.metadata.comment != '' && !$ctrl.metadata.submitted"><b>Feedback: </b>{{$ctrl.metadata.comment}}</label>                                            
+        <label ng-if="$ctrl.metadata.completeContent && $ctrl.metadata.comment != '' && !$ctrl.metadata.submitted"><b>Feedback: </b>{{$ctrl.metadata.comment}}</label>                                            
     </div>
 </div>

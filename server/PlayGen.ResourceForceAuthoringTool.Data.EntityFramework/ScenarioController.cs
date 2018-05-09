@@ -174,6 +174,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 					existing.Language = scenario.Language;
 					existing.Region = scenario.Region;
 					existing.Content = scenario.Content;
+					existing.CompleteContent = scenario.CompleteContent;
                     existing.IsValid = scenario.IsValid;
                     existing.Submitted = scenario.Submitted;
                     existing.Deleted = scenario.Deleted;
