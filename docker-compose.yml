@@ -6,7 +6,7 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: "t0pSECr3t"
         image: mariadb
-        container_name: "resourceforceauthoringtool-v0-mariadb"
+        container_name: "resourceforceauthoringtool-v1-mariadb"
         expose:
             - 3306
         ports:
@@ -15,10 +15,10 @@ services:
         network_mode: "bridge"
         build:
             context: .
-        image: "resourceforceauthoringtool-v0"
-        container_name: "resourceforceauthoringtool-v0"
+        image: "resourceforceauthoringtool-v1"
+        container_name: "resourceforceauthoringtool-v1"
         links:
-            - resourceforceauthoringtool-v0-mariadb
+            - resourceforceauthoringtool-v1-mariadb
         expose:
             - 5000
         environment:
