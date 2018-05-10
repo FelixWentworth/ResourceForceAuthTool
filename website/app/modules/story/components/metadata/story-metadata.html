@@ -10,7 +10,7 @@
         <label ng-if="$ctrl.metadata.completeContent && !$ctrl.metadata.submitted && $ctrl.metadata.isValid && $ctrl.metadata.enabled">Approved (In Game)</label>
         <label ng-if="$ctrl.metadata.completeContent && !$ctrl.metadata.submitted && $ctrl.metadata.isValid && !$ctrl.metadata.enabled">Approved (Inactive)</label>
     </div>
-    <div>
+    <div ng-if="!$ctrl.showTemplate">
         <label ng-if="$ctrl.metadata.completeContent && $ctrl.metadata.comment != '' && !$ctrl.metadata.submitted"><b>Feedback: </b>{{$ctrl.metadata.comment}}</label>                                            
     </div>
 </div>
