@@ -10,7 +10,7 @@ services:
         expose:
             - 3306
         ports:
-            - "45300:3306"
+            - "45301:3306"
     resourceforceauthoringtool-v1:
         network_mode: "bridge"
         build:
