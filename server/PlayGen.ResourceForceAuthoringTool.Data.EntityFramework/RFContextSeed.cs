@@ -26,7 +26,6 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
                     ValidationRegions = "[ \"Lancashire\", \"LondonMetDemo\"]"
 				});
 			    context.SaveChanges();
-
 			}
 		}
 

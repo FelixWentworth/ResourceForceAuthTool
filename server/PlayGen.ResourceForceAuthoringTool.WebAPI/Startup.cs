@@ -36,6 +36,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 		    }
 
 	        AddTemplateScenarios(app.ApplicationServices);
+		    AddDefaultUsers(app.ApplicationServices);
 	    }
 
         private void AddTemplateScenarios(IServiceProvider appApplicationServices)
@@ -46,8 +47,14 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
             scenarioController.CreateFromJson(templateScenarioJson);
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+	    private void AddDefaultUsers(IServiceProvider appApplicationServices)
+	    {
+		    var userController = appApplicationServices.GetService<Core.UserController>();
+		    userController.CreateDefaultUsers();
+	    }
+
+		// This method gets called by the runtime. Use this method to add services to the container.
+		public void ConfigureServices(IServiceCollection services)
         {
 			// Add framework services.
 			services.AddMvc();
