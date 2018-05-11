@@ -26,7 +26,9 @@
 		<br/>Severity: {{$ctrl.choice.scene.severity}}
 		<br/>Officers Required: {{$ctrl.choice.scene.officerReq}}
 		<br/>Turns Required: {{$ctrl.choice.scene.turnReq}}
+		<label ng-if="$ctrl.choice.scene.satisfactionImpact != 'None'">
 		<br/>Satisfaction Impact: {{$ctrl.choice.scene.satisfactionImpact}}
+		</label>
 
 	</md-card-content>
 	<md-card-content>
