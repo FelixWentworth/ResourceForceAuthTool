@@ -10,7 +10,7 @@ angular
 			ctrl.$onInit = function() {
 				ctrl.choice.scene.severity = config.content.severity.find(s => s.id == ctrl.choice.scene.severity).name;
 				
-				if (ctrl.choice.choice.satisfactionImpact >= -5 && ctrl.choice.choice.satisfactionImpact <= 5)
+				if (ctrl.choice.scene.satisfactionImpact >= -5 && ctrl.choice.scene.satisfactionImpact <= 5)
 				{
 					ctrl.choice.scene.satisfactionImpact = config.content.impact.find(s => s.id == ctrl.choice.scene.satisfactionImpact).name;					
 				}
