@@ -9,7 +9,16 @@ angular
 			var ctrl = this;
 			ctrl.$onInit = function() {
 				ctrl.choice.scene.severity = config.content.severity.find(s => s.id == ctrl.choice.scene.severity).name;
-				ctrl.choice.scene.satisfactionImpact = config.content.impact.find(s => s.id == ctrl.choice.scene.satisfactionImpact).name;
+				
+				if (ctrl.choice.choice.satisfactionImpact >= -5 && ctrl.choice.choice.satisfactionImpact <= 5)
+				{
+					ctrl.choice.scene.satisfactionImpact = config.content.impact.find(s => s.id == ctrl.choice.scene.satisfactionImpact).name;					
+				}
+				else
+				{
+					ctrl.choice.scene.satisfactionImpact = "None";					
+				}
+				
 				ctrl.choice.choice.feedbackRating = config.content.feedback.find(s => s.id == ctrl.choice.choice.feedbackRating).name;
 			}
 	}]
