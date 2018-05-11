@@ -35,9 +35,10 @@
 	Officers Required: {{$ctrl.story.content.scene.officerReq}}
 	<br/>
 	Turns Required: {{$ctrl.story.content.scene.turnReq}}
-	<br/>
+	<label ng-if="$ctrl.story.content.scene.satisfactionImpact != 'None'">
+	<br />
 	Satisfaction Impact: {{$ctrl.story.content.scene.satisfactionImpact}}
-	
+	</label>
 	</md-card-content>
 	
 

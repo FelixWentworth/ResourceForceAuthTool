@@ -10,7 +10,15 @@ angular
 			ctrl.$onInit = function() {
 				var scene = ctrl.story.content.scene;
 				ctrl.story.content.scene.severity = config.content.severity.find(s => s.id == scene.severity).name;
-				ctrl.story.content.scene.satisfactionImpact = config.content.impact.find(s => s.id == scene.satisfactionImpact).name;
+				
+				if (ctrl.story.content.scene.satisfactionImpact >= -5 && ctrl.story.content.scene.satisfactionImpact <= 5)
+				{
+					ctrl.story.content.scene.satisfactionImpact = config.content.impact.find(s => s.id == scene.satisfactionImpact).name;
+				}
+				else
+				{
+					ctrl.story.content.scene.satisfactionImpact = "None";
+				}
 			}
 	}]	
 });
