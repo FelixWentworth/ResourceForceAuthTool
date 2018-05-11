@@ -1,6 +1,6 @@
 <li ng-repeat="element in $ctrl.elements">
 	<div ng-switch="element._type">
-		<md-card ng-if="element._type != 'Choice'">
+		<md-card ng-if="element._type != 'Choice' && element._type != 'End'">
 			<md-card-content>
 				<story-subscene ng-switch-when="Subscene" subscene="element"></story-subscene>
 				<scene-element-end ng-switch-when="End"></scene-element-end>
