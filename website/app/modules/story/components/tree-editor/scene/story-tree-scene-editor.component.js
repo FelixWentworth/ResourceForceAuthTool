@@ -149,19 +149,28 @@ angular
 				checkValidity();
 			}
 
+			ctrl.hasValidSatisfactionImpact = function() {
+				return ctrl.scene.satisfactionImpact !== defaultImpactOption.id && ctrl.scene.satisfactionImpact != null;
+			};
+
+			ctrl.getChoiceCount = function() {
+				let choiceCount = 0;
+				ctrl.scene.choices.forEach(e => choiceCount += e._type == "Choice" ? 1 : 0);
+				return choiceCount;
+			}
+
 			// private methods
 			function checkValidity() {			
+				let choiceCount = ctrl.getChoiceCount();
 
-				var choices = 0;
-				ctrl.scene.choices.forEach(e => choices += e._type == "Choice" ? 1 : 0);
-				if (choices == 1)
+				if (choiceCount == 1)
 				{
 					// Player must have either no choices (an end) or more than 2 (a choice with 1 free choice, citizen or ignore)
 					ctrl.isThisSceneLevelComplete = false;
 				}
-				else if (choices == 0)
+				else if (choiceCount == 0)
 				{					
-					ctrl.isThisSceneLevelComplete = ctrl.scene.satisfactionImpact && ctrl.scene.satisfactionImpact !== defaultImpactOption.id;
+					ctrl.isThisSceneLevelComplete = ctrl.hasValidSatisfactionImpact();
 				}
 				else
 				{

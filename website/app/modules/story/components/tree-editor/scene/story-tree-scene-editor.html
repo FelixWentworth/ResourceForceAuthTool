@@ -77,9 +77,9 @@
 						</div>						
 					</div>
 					<div class="flex-row-container flex-between-spacing">
-						<div class="right-space" ng-if="$ctrl.scene.satisfactionImpact == -99 || $ctrl.scene.satisfactionImpact == null">
+						<div class="right-space" ng-if="!$ctrl.hasValidSatisfactionImpact()">
 							<div layout="column" class="column-layout">
-								<h3 ng-if="$ctrl.doesntContainChoice(['Ignore']) || $ctrl.doesntContainChoice(['Citizen']) || $ctrl.doesntContainChoice(['Officer'])">If developing further, add at least 2 player choices</h3>
+								<h3 ng-if="$ctrl.getChoiceCount() < 3">If developing further, add at least 2 player choices</h3>
 								<div>
 									<md-button ng-click="$ctrl.addChoice('Ignore')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>
 									<md-button ng-click="$ctrl.addChoice('Citizen')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Citizen'])">Ask Citizen</md-button>
@@ -87,10 +87,10 @@
 								</div>
 							</div>
 						</div>
-						<div class="right-space" ng-if="$ctrl.doesntContainChoice(['Ignore']) && $ctrl.doesntContainChoice(['Citizen']) && $ctrl.doesntContainChoice(['Officer']) && ($ctrl.scene.satisfactionImpact == 'None' || $ctrl.scene.satisfactionImpact == null)">
+						<div class="right-space" ng-if="$ctrl.getChoiceCount() === 0 && !$ctrl.hasValidSatisfactionImpact()">
 							<h3 class="error-text">OR</h3>
 						</div>
-						<div class="right-space" ng-if="$ctrl.doesntContainChoice(['Ignore']) && $ctrl.doesntContainChoice(['Citizen']) && $ctrl.doesntContainChoice(['Officer'])">
+						<div class="right-space" ng-if="$ctrl.getChoiceCount() === 0">
 							<div>
 								<h3>Impact used at end of path</h3>
 							</div>
