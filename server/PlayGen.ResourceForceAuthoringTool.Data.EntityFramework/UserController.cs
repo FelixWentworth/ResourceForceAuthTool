@@ -14,7 +14,25 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 	        _rfContextFactory = contextFactory;
         }
 
-        public User Create(User user)
+	    public void CreateDefaultUsers()
+	    {
+		    using (var context = _rfContextFactory.Create())
+		    {
+				context.Users.Add(new User
+				{
+					Id = 0,
+					Username = "admin",
+					Password = "073535bb18679f54cc7b64ce3dc1d3d047659731b90c0d44b37a58a5f7c3f015",
+					MemberType = "admin",
+					ContentRegions = "[ \"Lancashire\", \"LondonMetDemo\"]",
+					ValidationRegions = "[ \"Lancashire\", \"LondonMetDemo\"]"
+				});
+			    context.SaveChanges();
+			}
+
+		}
+
+		public User Create(User user)
         {
             using (var context = _rfContextFactory.Create())
             {

@@ -208,7 +208,16 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
             using (var context = _rfContextFactory.Create())
             {
                 var id = 1;
-                var serialNumber = context.SerialNumbers.Find(id);
+	            var serialNumber = new SerialNumber{Number = 1};
+	            if (!context.SerialNumbers.Any())
+	            {
+		            context.SerialNumbers.Add(serialNumber);
+	            }
+	            else
+	            {
+		            serialNumber = context.SerialNumbers.Find(id);
+	            }
+
                 if (serialNumber != null)
                 {
                     var num = ++serialNumber.Number;
@@ -217,6 +226,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 
                     return num;
                 }
+				
                 throw new Exception("Unable to find Serial Number");
             }
         }
