@@ -14,6 +14,8 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
 
         public int SerialNumber { get; set; }
 
+        public string Title { get; set; }
+
         public string Content { get; set; }
     }
 }

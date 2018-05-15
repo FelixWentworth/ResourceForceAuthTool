@@ -68,7 +68,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
             _scenarioDbController.Delete(id);
         }
 
-        //-------------------------------------------------------
+        //-w-h-a-t--d-o-e-s--t-h-i-s--l-i-n-e--m-e-a-n-?----------------------
 
         public long GetNewSerialNumber()
         {
@@ -82,7 +82,8 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
 	        foreach (var jScenario in JArray.Parse(serializedScenarios))
 	        {
 	            var id = jScenario["id"].Value<string>();
-	            var language = jScenario["language"].Value<string>();
+                var title = jScenario["title"].Value<string>();
+                var language = jScenario["language"].Value<string>();
 	            var location = jScenario["region"].Value<string>();
 	            var serialNumber = jScenario["serialNumber"].Value<int>();
 	            var content = jScenario["content"].ToString();
@@ -90,6 +91,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
 	            templateScenarios.Add(new TemplateScenario
 	            {
 	                Id = id,
+                    Title = title,
 	                Language = language,
 	                Location = location,
 	                SerialNumber = serialNumber,
@@ -108,24 +110,21 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
 
 	    public void CreateTemplateScenarios(List<TemplateScenario> templateScenarios)
         { 
-	        var scenarioIndex = 0;
 	        foreach (var scenario in templateScenarios)
 	        {
 	            Create(new Scenario
 	            {
 	                Id = scenario.Id,
-	                Region = scenario.Location,
+	                Title = scenario.Title,
+                    Region = scenario.Location,
 	                Language = scenario.Language,
 	                Content = scenario.Content,
 					CompleteContent = true,
 	                SerialNumber = scenario.SerialNumber,
-
-	                Title = $"Template Scenario {scenarioIndex + 1:000}",
+	                
 	                CreatorId = TemplateScenarioCreatorId,
 					IsValid = true
 	            }, false);
-
-	            scenarioIndex++;
 	        }
         }
 	}
