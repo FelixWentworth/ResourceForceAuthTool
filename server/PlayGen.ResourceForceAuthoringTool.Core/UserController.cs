@@ -15,6 +15,11 @@ namespace PlayGen.ResourceForceAuthoringTool.Core
             _userDbController = userDbController;
         }
 
+	    public void CreateDefaultUsers()
+	    {
+		    _userDbController.CreateDefaultUsers();
+	    }
+
         public User Create(User user)
         {
             return _userDbController.Create(user);

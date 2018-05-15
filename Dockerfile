@@ -13,7 +13,7 @@ COPY server app/server
 WORKDIR app/website
 RUN npm install
 RUN npm install gulp
-RUN gulp development-build
+RUN gulp production-build
 
 # Build Server
 WORKDIR /app/server/PlayGen.ResourceForceAuthoringTool.WebAPI/

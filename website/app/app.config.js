@@ -3,12 +3,8 @@ angular
 .constant('config', {
     content : {
         regions: {
-            "Belfast" : ["English"],
-            "Groningen" : ["English", "Dutch"],
-            "Preston" : ["English"],
-            "Nicosia" : ["English", "Greek"],
-            "Valencia" : ["English", "Spanish"],
-            "Lancashire" : ["English"]
+            "Lancashire" : ["English"],
+            "LondonMetDemo" : ["English"]
         },
         
         severity: [

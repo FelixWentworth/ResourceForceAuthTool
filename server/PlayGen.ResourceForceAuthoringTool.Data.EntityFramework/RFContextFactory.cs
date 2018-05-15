@@ -23,6 +23,7 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 			//return new RFContext(_options);			
 
 			var context = new RFContext(_options);
+			context.Database.Migrate();
 			var newlyCreated = context.Database.EnsureCreated();
 
 			if (newlyCreated)

@@ -20,9 +20,15 @@ angular
 				setEnabled(ctrl.sceneElements, false);
 
 				ctrl.sceneInformation = choice.scene;
-				ctrl.sceneInformation.severity = config.content.severity.find(s => s.id == choice.scene.severity).name;
-				ctrl.sceneInformation.satisfactionImpact = config.content.impact.find(s => s.id == choice.scene.satisfactionImpact).name;
-
+				ctrl.sceneInformation.severity = config.content.severity.find(s => s.id == ctrl.sceneInformation.severity).name;
+				if (ctrl.sceneInformation.satisfactionImpact >= -5 && ctrl.sceneInformation.satisfactionImpact <= 5)
+				{
+					ctrl.sceneInformation.satisfactionImpact = config.content.impact.find(s => s.id == ctrl.sceneInformation.satisfactionImpact).name;
+				}
+				else
+				{
+					ctrl.sceneInformation.satisfactionImpact = "None";
+				}
 				ctrl.sceneElements = choice.scene.choices;
 
 				ctrl.feedback = choice.choice;
@@ -35,9 +41,15 @@ angular
 			
 			ctrl.$onInit = function() {
 				ctrl.sceneInformation = ctrl.story.content.scene;
-				ctrl.sceneInformation.severity = config.content.severity.find(s => s.id == ctrl.story.content.scene.severity).name;
-				ctrl.sceneInformation.satisfactionImpact = config.content.impact.find(s => s.id == ctrl.story.content.scene.satisfactionImpact).name;
-
+				ctrl.sceneInformation.severity = config.content.severity.find(s => s.id == ctrl.sceneInformation.severity).name;
+				if (ctrl.sceneInformation.satisfactionImpact >= -5 && ctrl.sceneInformation.satisfactionImpact <= 5)
+				{
+					ctrl.sceneInformation.satisfactionImpact = config.content.impact.find(s => s.id == ctrl.sceneInformation.satisfactionImpact).name;
+				}
+				else
+				{
+					ctrl.sceneInformation.satisfactionImpact = "None";
+				}
 				ctrl.sceneElements = ctrl.story.content.scene.choices;
 
 				setEnabled(ctrl.sceneElements, true);
