@@ -29,6 +29,9 @@ angular
 			ctrl.feedbackMin = config.constraints.feedback.min;
 			ctrl.feedbackMax = config.constraints.feedback.max;
 
+			// private variables
+			let defaultImpactOption = ctrl.impactOptions[0];
+
 			// public methods
 			ctrl.removeElement = function(element) {
 				Array.remove(ctrl.scene.choices, element);
@@ -157,8 +160,8 @@ angular
 					ctrl.isThisSceneLevelComplete = false;
 				}
 				else if (choices == 0)
-				{
-					ctrl.isThisSceneLevelComplete = ctrl.scene.satisfactionImpact != "None" && ctrl.scene.satisfactionImpact != null;
+				{					
+					ctrl.isThisSceneLevelComplete = ctrl.scene.satisfactionImpact && ctrl.scene.satisfactionImpact !== defaultImpactOption.id;
 				}
 				else
 				{
