@@ -36,8 +36,11 @@ namespace PlayGen.ResourceForceAuthoringTool.Data.EntityFramework
 			modelBuilder.Entity<User>(u =>
 			{
 				u.ForMySQLHasCollation("utf8_bin");
-				u.Property(p => p.Username).ForMySQLHasCharset("utf8");
-			});
+				u.Property(p => p.Username).ForMySQLHasCharset("utf8").HasMaxLength(40);
+			    u.Property(p => p.Password).HasMaxLength(100);
+                u.HasIndex(us => us.Username).IsUnique();
+			    u.HasIndex(us => new {us.Username, us.Password});
+            });
 			modelBuilder.Entity<AccountRequest>(a =>
 			{
 				a.ForMySQLHasCollation("utf8_bin");
