@@ -11,17 +11,14 @@
 
 				<validated-text-input class="flex-grow-description" type="'area'" label="'Description'" placeholder="'Description'" ng-model="$ctrl.scene.description"
 				 minlength="$ctrl.descriptionMin" maxlength="$ctrl.descriptionMax" required="true" />
-				<validated-select-object label="'Severity'" ng-model="$ctrl.scene.severity" options="$ctrl.severity" required="true" />
-				<validated-select label="'Officers Required'" ng-model="$ctrl.scene.officerReq" options="$ctrl.officerOptions" required="true"
-				/>
-				<validated-select label="'Turns Needed'" ng-model="$ctrl.scene.turnReq" options="$ctrl.turnOptions" required="true" />
+				<validated-select-object label="'Severity'" ng-model="$ctrl.scene.severity" options="$ctrl.severity" required="true" />				
 			</div>
 			<div layout="column" class="column-layout">
 				<h3 ng-if="$ctrl.doesntContainChoice(['Ignore']) || $ctrl.doesntContainChoice(['Citizen']) || $ctrl.doesntContainChoice(['Officer'])">Add at least 2 player choices</h3>
 				<div>
 					<md-button ng-click="$ctrl.addChoice('Ignore')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>
 					<md-button ng-click="$ctrl.addChoice('Citizen')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Citizen'])">Ask Citizen</md-button>
-					<md-button ng-click="$ctrl.addChoice('Officer')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officer{{$ctrl.scene.officerReq != '1' ? 's' : ''}}</md-button>
+					<md-button ng-click="$ctrl.addChoice('Officer')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officers</md-button>
 				</div>
 			</div>
 			<!-- todo make this display the same as the rest of the error messages -->
@@ -36,20 +33,33 @@
 		<md-card-content>
 			<div>
 				<collapsible-card-content title="$ctrl.choice.choice.choiceType" remove="$ctrl.onClicked" choice="$ctrl.choice">
-					<div>
-						<h3>Feedback from choice</h3>
-					</div>
+					
 					<div class="flex-row-container">
+						<div ng-if="$ctrl.choice.choice.choiceType === 'Officer'">							
+							<h3>Resources</h3>
 
-						<div>
-							<validated-select-object label="'Rating'" ng-model="$ctrl.choice.choice.feedbackRating" options="$ctrl.feedbackOptions" required="true"
-							/>
+							<div class="flex-row-container">							
+								<validated-select label="'Officers Required'" ng-model="$ctrl.parentScene.officerReq" options="$ctrl.officerOptions" required="true"	style="min-width: 140px;"/>
+								<validated-select label="'Turns Needed'" ng-model="$ctrl.parentScene.turnReq" options="$ctrl.turnOptions" required="true" style="min-width: 110px;"/>						
+							</div>
 						</div>
-						<div class="flex-grow-description">
-							<validated-text-input type="'area'" label="'Feedback'" placeholder="'Feedback Description'" ng-model="$ctrl.choice.choice.feedback"
-							 minlength="$ctrl.feedbackMin" maxlength="$ctrl.feedbackMax" required="true" />
-						</div>
+
+						<div style="flex-grow: 1;">							
+							<h3>Feedback from choice</h3>
+						
+							<div class="flex-row-container">
+								<div>
+									<validated-select-object label="'Rating'" ng-model="$ctrl.choice.choice.feedbackRating" options="$ctrl.feedbackOptions" required="true"
+									/>
+								</div>
+								<div class="flex-grow-description">
+									<validated-text-input type="'area'" label="'Feedback'" placeholder="'Feedback Description'" ng-model="$ctrl.choice.choice.feedback"
+									minlength="$ctrl.feedbackMin" maxlength="$ctrl.feedbackMax" required="true" />
+								</div>
+							</div>
+						</div>						
 					</div>
+
 					<div>
 						<h3>Next Incident Information</h3>
 					</div>
@@ -64,14 +74,7 @@
 						</div>
 						<div>
 							<validated-select-object label="'Severity'" ng-model="$ctrl.scene.severity" options="$ctrl.severity" required="true" />
-						</div>
-						<div>
-							<validated-select label="'Officers Required'" ng-model="$ctrl.scene.officerReq" options="$ctrl.officerOptions" required="true"
-							/>
-						</div>
-						<div>
-							<validated-select label="'Turns Needed'" ng-model="$ctrl.scene.turnReq" options="$ctrl.turnOptions" required="true" />
-						</div>
+						</div>						
 					</div>
 					<div class="flex-row-container flex-between-spacing">
 						<div class="right-space" ng-if="$ctrl.scene.satisfactionImpact == -99 || $ctrl.scene.satisfactionImpact == null">
@@ -80,7 +83,7 @@
 								<div>
 									<md-button ng-click="$ctrl.addChoice('Ignore')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Ignore'])">Ignore</md-button>
 									<md-button ng-click="$ctrl.addChoice('Citizen')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Citizen'])">Ask Citizen</md-button>
-									<md-button ng-click="$ctrl.addChoice('Officer')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officer{{$ctrl.scene.officerReq != '1' ? 's' : ''}}</md-button>
+									<md-button ng-click="$ctrl.addChoice('Officer')" class="md-raised" ng-show="$ctrl.doesntContainChoice(['Officer'])">Send Officers</md-button>
 								</div>
 							</div>
 						</div>
@@ -108,7 +111,7 @@
 		<!-- scene/choice elements -->
 		<li ng-repeat="element in $ctrl.scene.choices  | filter:{_type:'Choice'}">
 
-			<story-tree-scene-editor ng-if="element._type == 'Choice'" scene="element" on-clicked="$ctrl.removeElement">
+			<story-tree-scene-editor ng-if="element._type == 'Choice'" scene="element" parent-scene="$ctrl.scene" on-clicked="$ctrl.removeElement">
 			</story-tree-scene-editor>
 		</li>
 	</ul>

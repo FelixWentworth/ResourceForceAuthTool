@@ -4,6 +4,7 @@ angular
 		templateUrl: "/modules/story/components/tree-editor/scene/story-tree-scene-editor.html",
 		bindings: {
 			scene: "=",
+			parentScene: "=",
 			onClicked: "="
 		},
 		controller: ["StoryEditorService", "config", function(StoryEditorService, config) {
