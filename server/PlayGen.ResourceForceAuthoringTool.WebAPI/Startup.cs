@@ -57,7 +57,7 @@ namespace PlayGen.ResourceForceAuthoringTool.WebAPI
 		public void ConfigureServices(IServiceCollection services)
         {
 			// Add framework services.
-			services.AddMvc();
+			services.AddMvc(options => { options.Filters.Add<ExceptionFilter>(); });
 
 			services.AddSingleton((_) => new PasswordEncryption());
 
