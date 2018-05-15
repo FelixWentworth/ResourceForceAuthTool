@@ -23,7 +23,7 @@
               ],
               "description": "Body has been found in a river and has been identified as the missing person",
               "officerReq": 1,
-              "satisfactionImpact": -5,
+              "satisfactionImpact": -3,
               "severity": 3,
               "title": "Body Found",
               "turnReq": 1
@@ -57,7 +57,7 @@
                     ],
                     "description": "Body has been found in a river and has been identified as the missing person",
                     "officerReq": 1,
-                    "satisfactionImpact": -5,
+                    "satisfactionImpact": -3,
                     "severity": 3,
                     "title": "Body Found",
                     "turnReq": 1
@@ -80,7 +80,7 @@
                     ],
                     "description": "Officers search a larger area and eventually find the woman and return her to her home",
                     "officerReq": 1,
-                    "satisfactionImpact": 4,
+                    "satisfactionImpact": 3,
                     "severity": 3,
                     "title": "Woman Found",
                     "turnReq": 1
@@ -114,7 +114,7 @@
                           ],
                           "description": "Body has been found in a river and has been identified as the missing person",
                           "officerReq": 1,
-                          "satisfactionImpact": -5,
+                          "satisfactionImpact": -3,
                           "severity": 3,
                           "title": "Body Found",
                           "turnReq": 1
@@ -137,7 +137,7 @@
                           ],
                           "description": "Officers locate the missing woman and take her to hospital for a checkup, she later returned home and is now safe",
                           "officerReq": 1,
-                          "satisfactionImpact": 4,
+                          "satisfactionImpact": 3,
                           "severity": 3,
                           "title": "Woman Found",
                           "turnReq": 1
@@ -195,7 +195,7 @@
                     ],
                     "description": "Body has been found in a river and has been identified as the missing person",
                     "officerReq": 1,
-                    "satisfactionImpact": -5,
+                    "satisfactionImpact": -3,
                     "severity": 3,
                     "title": "Body Found",
                     "turnReq": 1
@@ -218,7 +218,7 @@
                     ],
                     "description": "Officers locate the missing woman and take her to hospital for a checkup, she later returned home and is now safe",
                     "officerReq": 1,
-                    "satisfactionImpact": 4,
+                    "satisfactionImpact": 3,
                     "severity": 3,
                     "title": "Woman Found",
                     "turnReq": 1
@@ -335,7 +335,7 @@
                                 ],
                                 "description": "Offender has been arrested by police after finding him in a shed nearby",
                                 "officerReq": 1,
-                                "satisfactionImpact": 4,
+                                "satisfactionImpact": 3,
                                 "severity": 3,
                                 "title": "Offender Arrested",
                                 "turnReq": 1
@@ -369,7 +369,7 @@
                                       ],
                                       "description": "Officers clean up and a man is arrested for the assault",
                                       "officerReq": 1,
-                                      "satisfactionImpact": 4,
+                                      "satisfactionImpact": 3,
                                       "severity": 3,
                                       "title": "Man Arrested",
                                       "turnReq": 1
@@ -496,7 +496,7 @@
                                 ],
                                 "description": "Using citizen information, the officers manage to locate the man and arrest him",
                                 "officerReq": 1,
-                                "satisfactionImpact": 5,
+                                "satisfactionImpact": 3,
                                 "severity": 2,
                                 "title": "Man Located",
                                 "turnReq": 1
@@ -2254,7 +2254,7 @@
                           ],
                           "description": "Officer calms down the elderly man who was distressed",
                           "officerReq": 1,
-                          "satisfactionImpact": 4,
+                          "satisfactionImpact": 3,
                           "severity": 2,
                           "title": "Elderly man calmed",
                           "turnReq": 1
@@ -2392,7 +2392,7 @@
                           ],
                           "description": "Officer calms down the elderly man who was distressed",
                           "officerReq": 1,
-                          "satisfactionImpact": 4,
+                          "satisfactionImpact": 3,
                           "severity": 2,
                           "title": "Elderly male calmed",
                           "turnReq": 1

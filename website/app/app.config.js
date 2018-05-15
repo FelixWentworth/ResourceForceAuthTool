@@ -23,17 +23,13 @@ angular
         ],
         impact: [
             {id: -99, name: "None"},
-            {id: -5, name: "Awful"},
-            {id: -4, name: "Very Bad"}, 
-            {id: -3, name: "Bad"},
-            {id: -2, name: "Poor"},
+            {id: -3, name: "Very Bad"},
+            {id: -2, name: "Bad"},
             {id: -1, name: "Not Ok"},
             {id: 0,  name: "Neutral"},
             {id: 1,  name: "Ok"}, 
-            {id: 2,  name: "Satisfactory"},
-            {id: 3,  name: "Good"},
-            {id: 4,  name: "Very Good"},
-            {id: 5,  name: "Outstanding"},
+            {id: 2,  name: "Good"},
+            {id: 3,  name: "Very Good"},
         ]
     },
     constraints : {
