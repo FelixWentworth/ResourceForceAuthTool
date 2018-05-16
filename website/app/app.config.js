@@ -4,7 +4,8 @@ angular
     content : {
         regions: {
             "Lancashire" : ["English"],
-            "LondonMetDemo" : ["English"]
+            "LondonMetDemo" : ["English"],
+            "CityOfLondon": ["English"]
         },
         
         severity: [
