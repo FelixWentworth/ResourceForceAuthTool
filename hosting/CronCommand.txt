@@ -1,1 +1,1 @@
-[ "$(docker ps | grep resourceforceauthoringtool-mariadb)" ] && docker exec resourceforceauthoringtool-mariadb /usr/bin/mysqldump -u root --password=t0pSECr3t ResourceForceAuthoringTool> /home/syncthing/backup/database_dumps/resourceforceauthoringtool_dump.sql
+mkdir -p /home/syncthing/backup/database_dumps && [ "$(docker ps | grep resourceforceauthoringtool-mariadb)" ] && docker exec resourceforceauthoringtool-mariadb /usr/bin/mysqldump -u root --password=t0pSECr3t ResourceForceAuthoringTool> /home/syncthing/backup/database_dumps/resourceforceauthoringtool_dump.sql
